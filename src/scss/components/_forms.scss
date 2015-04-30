@@ -1,0 +1,20 @@
+// Base form styles
+
+#{$all-text-inputs},
+textarea,
+select {
+    background: color('white');
+    border: 1px solid $default-border-color;
+    padding: 6px;
+    border-radius: $base-borderRadius;
+    height: 34px;
+    line-height: 1.42857;
+    width: 100%;
+    margin-bottom: $base-whitespace;
+}
+
+// Override textarea height.
+textarea {
+    height: auto;
+    resize: vertical;
+}

@@ -1,0 +1,10 @@
+.vagrant
+*.lock
+node_modules/
+.sass-cache/
+
+
+# Project Stuffs
+dist/
+src/bower_components/*
+src/css/*

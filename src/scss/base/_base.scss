@@ -1,0 +1,41 @@
+// BASE STYLES
+// -----------------------------
+// For styling elements directly
+
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    background-color: $base-backgroundColor;
+
+}
+
+.container {
+    @include outer-container;
+    padding: 0 3%;
+    @include media($medium) {
+        padding: 0 $base-whitespace;
+    }
+}
+
+// Responsive media
+
+img,
+object,
+embed {
+    max-width: 100%;
+}
+
+hr {
+    margin: spacer() 0;
+    border: none;
+    height: 1px;
+    color: #ccc;
+    background-color: #ccc;
+}
+
+super {
+    font-size: 0.7em;
+    vertical-align: super;
+}

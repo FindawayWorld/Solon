@@ -1,0 +1,119 @@
+// COLORS
+// ------------------
+$colors: (
+    'aqua': #7FDBFF,
+    'blue': #008FD5,
+    'lime': #A7D38C,
+    'green': #4BA450,
+    'lpgreen': #8EC23F,
+
+    'yellow': #FAF39B,
+    'gold': #E3BA2B,
+    'orange': #F26222,
+    'red': #CC0000,
+    'purple': #8569B4,
+    'tan': #E7E5E0,
+    'tan-dark': #AFABA2,
+
+    'white': #FFFFFF,
+    'silver': #DDDDDD,
+    'gray': #999999,
+    'gray-dark': #666666,
+    'black': #333333
+);
+
+@function color($key) {
+    @return map-get($colors, $key);
+}
+
+// Brand colors
+
+$brand-color: color('lpgreen');
+
+// Default colors
+// Background Color
+$base-backgroundColor: color('white');
+$base-fontColor: color('black');
+$default-border-color: color('silver');
+
+// Link colors
+
+$link-color: color('gray-dark');
+$link-disabled: color('silver');
+
+// Button colors
+
+$button-text-color: color('white');
+$button-default: $brand-color;
+
+// CONTENT DEFAULTS
+// ------------------
+$em-base: 14;
+$base-fontSize: $em-base + 0px;
+
+
+// Spacing
+///////////////////////////////////////////////////////////////////////////////
+$single_spacer: 20px;
+
+@function spacer ($multiplier: 1) {
+    @return $single_spacer * $multiplier;
+}
+
+$base-whitespace: spacer();
+
+// Line height
+$base-lineHeight: 1.5;
+$header-lineHeight: 1.25;
+
+$base-borderRadius: 3px;
+
+// Grid
+$grid-max-columns: 12;
+
+// Typography
+// ------------------
+$base-fontFamily: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headline-font: $helvetica;
+$sans-serif-font: $helvetica;
+$serif-font: $georgia;
+$code-font: $monospace;
+
+$header-fontFamily: $base-fontFamily;
+
+// Font Sizes
+$h1-font-size: em(50);
+$h2-font-size: em(40);
+$h3-font-size: em(35);
+
+// LAYOUT
+// ------------------
+
+$max-width: em(960);
+
+
+$small:  new-breakpoint(max-width 640px);
+$medium: new-breakpoint(min-width 641px);
+$large: new-breakpoint(min-width 1025px);
+
+// Buttons
+///////////////////////////////////////////////////////////////////////////////
+$button-style: flat;
+$button-lineHeight: 1;
+$button-fontWeight: 400;
+$base-button-padding: 12; //12px
+
+$default-button-color: color('silver');
+$default-button-text-color: $base-fontColor;
+
+$dark-button-color: color('tan-dark');
+$dark-button-text-color: color('white');
+
+$primary-button-color: $brand-color;
+$primary-button-text-color: color('white');
+
+$disabled-button-color: color('silver');
+
+$button-danger-color: color('red');
+$button-danger-text-color: color('white');
+

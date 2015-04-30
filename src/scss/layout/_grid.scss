@@ -1,0 +1,45 @@
+// GRID
+// --------------------------------------------
+
+// Setup the variables with Bourbon's Flex Grid
+
+// Construct the grid
+
+.row {
+    @include row();
+}
+
+.no-small {
+    display: block;
+}
+
+.no-large {
+    display: none;
+}
+
+@include media($medium) {
+    .no-large {
+        display: block;
+    }
+    .no-small {
+        display: none;
+    }
+}
+
+@for $i from 1 through $grid-max-columns {
+    .col-#{$i} {
+        @include span-columns(12);
+
+        @include media($medium) {
+            @include span-columns($i);
+        }
+    }
+    .push-#{$i} {
+
+        @include shift(0);
+
+        @include media($medium) {
+            @include shift($i);
+        }
+    }
+}

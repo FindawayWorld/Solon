@@ -1,0 +1,64 @@
+section {
+    .section-header {
+        padding: 1em 0;
+    }
+
+    @include media($large) {
+        .section-inner {
+            background: rgba(0,0,0,.5);
+        }
+    }
+}
+
+.full-bleed {
+    @include clearfix;
+    background-repeat: no-repeat;
+}
+
+.sm-before {
+    background-size: contain;
+    background-position: top;
+    color: $base-fontColor;
+    padding: 69% 0 0;
+}
+
+.sm-after {
+    background-size: contain;
+    background-position: bottom;
+    color: $base-fontColor;
+    padding: 0 0 69%;
+}
+
+.sm-under {
+    background-position: center center;
+    background-size: cover;
+    color: color('white');
+}
+
+.md-aside-right {
+    @include media($medium) {
+        background-position: right center;
+        background-size: 40% auto;
+        color: $base-fontColor;
+        padding: 0 40% 0 0;
+    }
+}
+
+.md-aside-left {
+    @include media($medium) {
+        background-position: left center;
+        background-size: 40% auto;
+        color: $base-fontColor;
+        padding: 0 0 0 40%;
+    }
+}
+
+.lg-under {
+    @include media($large) {
+        background-position: center center;
+        background-size: cover;
+        color: color('white');
+        padding: 7rem 0;
+        min-height: 800px;
+    }
+}

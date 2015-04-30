@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Findaway Front-end Boilerplate</title>
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <script src="js/vendor/modernizr.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Findaway Front-end Boilerplate</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <h2>Body Copy</h2>
+                <hr />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, quam ea! Possimus recusandae sed accusamus, labore, quam placeat earum veniam debitis inventore, illo quasi nam magnam amet, quaerat nihil eligendi.</p>
+
+                <div class="row">
+                    <div class="col-6">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime minus hic porro cupiditate vitae, fugit recusandae officiis incidunt neque, itaque, quo assumenda! Distinctio corporis, nostrum molestiae doloribus quod aspernatur delectus!</p>
+                    </div>
+                    <div class="col-6">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident perferendis, facilis dolore inventore quaerat eligendi ipsa ipsam maiores fuga sunt quae enim modi. Explicabo libero deserunt, voluptatibus iusto perspiciatis vitae!</p>
+                    </div>
+                </div>
+
+                <h2>Forms</h2>
+                <hr />
+                <form action="">
+                    <div class="field">
+                        <label for="input">Input</label>
+                        <div class="input-box">
+                            <input type="text" id="input" name="input" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="select">Select</label>
+                        <div class="input-box">
+                            <select name="select" id="select">
+                                <option value="">option 1</option>
+                                <option value="">option 2</option>
+                                <option value="">option 3</option>
+                                <option value="">option 4</option>
+                                <option value="">option 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="text">Text Area</label>
+                        <div class="input-box">
+                            <textarea name="text" id="text" rows="10"></textarea>
+                        </div>
+                    </div>
+                </form>
+
+                <h2>Buttons</h2>
+                <hr />
+                <h3>Standard</h3>
+                <p>
+                    <button class="button">Button</button>
+                    <a href="#" class="button">Anchor</a>
+                    <input type="submit" class="button" value="Submit" />
+                </p>
+                <h3>Primary</h3>
+                <p>
+                    <button class="button button-primary">Button</button>
+                    <a href="#" class="button button-primary">Anchor</a>
+                    <input type="submit" class="button button-primary" value="Submit" />
+                </p>
+                <h3>Dark</h3>
+                <p>
+                    <button class="button button-dark">Button</button>
+                    <a href="#" class="button button-dark">Anchor</a>
+                    <input type="submit" class="button button-dark" value="Submit" />
+                </p>
+                <h3>Danger</h3>
+                <p>
+                    <button class="button button-danger">Button</button>
+                    <a href="#" class="button button-danger">Anchor</a>
+                    <input type="submit" class="button button-danger" value="Submit" />
+                </p>
+                <h3>Disabled</h3>
+                <p>
+                    <button class="button button-primary" disabled>Button</button>
+                    <a href="#" class="button button-disabled">Anchor</a>
+                    <input type="submit" class="button button-primary" value="Submit" disabled />
+                </p>
+                <h3>Text</h3>
+                <p>
+                    <button class="button button-text">Button</button>
+                    <a href="#" class="button button-text">Anchor</a>
+                    <input type="submit" class="button button-text" value="Submit" />
+                </p>
+
+                <h3>Square</h3>
+                <p>
+                    <button class="button button-square">Button</button>
+                    <a href="#" class="button button-square">Anchor</a>
+                    <input type="submit" class="button button-square" value="Submit" />
+                </p>
+
+                <h3>Large</h3>
+                <p>
+                    <button class="button button-large">Button</button>
+                    <a href="#" class="button button-large">Anchor</a>
+                    <input type="submit" class="button button-large" value="Submit" />
+                </p>
+
+                <h3>Full Width</h3>
+                <p>
+                    <button class="button button-primary button-full">Button</button>
+                </p>
+
+            </div>
+
+            <section class="full-bleed sm-before lg-under" style="background-image: url(http://audioengine.io/images/support-team@2x.jpg);">
+                <div class="section-inner container">
+                    <header class="section-header">
+                        <h2>Full Bleed background</h2>
+                    </header>
+
+                    <ul>
+                        <li><strong>Large Screen</strong>: Image under text</li>
+                        <li><strong>Small Screen</strong>: Image before text</li>
+                    </ul>
+                    <pre><code>
+&lt;div class="full-bleed sm-before lg-under"&gt;&lt;/div&gt;
+                    </code></pre>
+                </div>
+            </section>
+
+            <section class="full-bleed sm-after md-aside-right lg-under" style="background-image: url(http://audioengine.io/images/woman_headphones_header.jpg);">
+                <div class="section-inner container">
+                    <header class="section-header">
+                        <h2>Full Bleed background</h2>
+                    </header>
+
+                    <ul>
+                        <li><strong>Large Screen</strong>: Image under text</li>
+                        <li><strong>Medium Screen</strong>: Image to right of text</li>
+                        <li><strong>Small Screen</strong>: Image after text</li>
+                    </ul>
+                    <pre><code>
+&lt;div class="full-bleed sm-after md-aside-right lg-under"&gt;&lt;/div&gt;
+                    </code></pre>
+                </div>
+            </section>
+
+            <section class="full-bleed sm-under md-aside-left lg-under" style="background-image: url(http://audioengine.io/images/heavy-lifting@2x.jpg);">
+                <div class="section-inner container">
+                    <header class="section-header">
+                        <h2>Full Bleed background</h2>
+                    </header>
+
+                    <ul>
+                        <li><strong>Large Screen</strong>: Image under text</li>
+                        <li><strong>Medium Screen</strong>: Image to left of text</li>
+                        <li><strong>Small Screen</strong>: Image under text</li>
+                    </ul>
+
+                    <pre><code>
+&lt;div class="full-bleed sm-under md-aside-left lg-under"&gt;&lt;/div&gt;
+                    </code></pre>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <small>
+                    &copy; 2015 <a href="http://findaway.com">Findaway</a>.
+                </small>
+            </div>
+        </footer>
+
+        <!-- build:js js/main-dist.js -->
+        <script src="bower_components/requirejs/require.js" data-main="js/main"></script>
+        <!-- /build -->
+
+    </body>
+</html>
