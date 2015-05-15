@@ -17,8 +17,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network :forwarded_port, guest: 80,   host: 8280
     config.vm.network :forwarded_port, guest: 443,   host: 8243
     config.vm.network :forwarded_port, guest: 3306, host: 8233
+    config.vm.synced_folder "src/", "/var/www/gateway.dev"
 
-    config.vm.hostname = ""
+    config.vm.hostname = "gateway.dev"
 
     config.vm.provider "virtualbox" do |v|
         v.memory = 1024

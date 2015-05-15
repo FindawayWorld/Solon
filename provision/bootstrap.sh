@@ -1,6 +1,6 @@
 #! /bin/bash
 
-APPNAME=""
+APPNAME="gateway.dev"
 
 # update sources
 echo "Update Sources"
