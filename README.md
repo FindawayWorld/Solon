@@ -19,6 +19,12 @@ Front-end boilerplate/starter kit.
 
 _Make sure you change any reference to `gateway.dev` to your local domain._
 
+First choose your environment bootstrap file from `provision/` and update your `Vagrantfile` with the file path.
+
+```ruby
+config.vm.provision "shell", path: "provision/bootstrap_<env>.sh"
+```
+
 ```bash
 # install local node dependencies
 $ npm install
