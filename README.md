@@ -16,10 +16,6 @@ Front-end boilerplate/starter kit.
 - Hosts file entry for `127.0.0.1 gateway.dev` ***(optional)***
 
 ## Running locally
-If you have not already run through your platform's setup in The Avengers Wiki.
-
-- Windows: https://github.com/FindawayWorld/TheAvengers/wiki/Windows-Vagrant-Setup
-- OSX: https://github.com/FindawayWorld/TheAvengers/wiki/OSX-Vagrant-Setup
 
 _Make sure you change any reference to `gateway.dev` to your local domain._
 
