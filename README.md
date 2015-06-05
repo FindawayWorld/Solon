@@ -1,6 +1,7 @@
 Gateway
 =======
 Front-end boilerplate/starter kit.
+http://findaway-front-end-dev-standards.s3-website-us-east-1.amazonaws.com/gateway.html
 
 ## Requirements
 
