@@ -28,7 +28,7 @@
 
 @for $i from 1 through $grid-max-columns {
     .col-#{$i} {
-        @include span-columns(12);
+        @include span-columns($grid-max-columns);
 
         @include media($medium) {
             @include span-columns($i);
