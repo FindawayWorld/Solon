@@ -232,6 +232,24 @@ module.exports = function (grunt) {
                 }
             }
         },
+        
+        postcss: {
+            options: {
+                remove: false,
+                map: true,
+                processors: [
+                    require('autoprefixer-core')({
+                        browsers: ['> 1%', 'last 2 versions']
+                    })
+                ]
+            },
+            dev: {
+                src: [ '<%= paths.src.css %>/styles.css' ]
+            }
+            dist: {
+                src: [ '<%= paths.dist.css %>/styles.css' ]
+            }
+        },
 
         watch: {
             options: {
@@ -239,7 +257,7 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: ['<%= paths.src.scss %>/{,*/}*.scss'],
-                tasks: ['sass:dev']
+                tasks: ['sass:dev', 'postcss:dev']
             },
             js: {
                 files: ['<%= paths.src.js %>/{,*/}*.js'],
@@ -252,6 +270,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'copy',
         'sass:dist',
+        'postcss:dist',
         'jshint',
         'requirejs:dist',
         'processhtml',
