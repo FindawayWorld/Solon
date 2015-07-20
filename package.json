@@ -21,6 +21,7 @@
     "grunt-hashres": "^0.4.1",
     "grunt-processhtml": "^0.3.6",
     "grunt-string-replace": "^0.2.7",
+    "grunt-svgmin": "^2.0.0",
     "grunt-webfont": "^0.5.1",
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^0.4.0"
