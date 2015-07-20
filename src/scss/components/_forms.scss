@@ -3,7 +3,7 @@
 #{$all-text-inputs},
 textarea,
 select {
-    background: color('white');
+    background: $input-backgroundColor;
     border: 1px solid $default-border-color;
     padding: 6px;
     border-radius: $base-borderRadius;

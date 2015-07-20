@@ -1,9 +1,9 @@
 .footer {
-    background: color('black');
-    color: color('white');
+    background: $footer-backgroundColor;
+    color: $footer-fontColor;
     padding: $base-whitespace 0;
 
     a {
-        color: color('white');
+        color: $footer-link-color;
     }
 }
