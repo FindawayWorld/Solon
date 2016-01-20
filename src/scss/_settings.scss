@@ -1,50 +1,33 @@
 // COLORS
 // ------------------
-$colors: (
-    'aqua': #7FDBFF,
-    'blue': #008FD5,
-    'lime': #A7D38C,
-    'green': #4BA450,
-    'lpgreen': #8EC23F,
+$color-green: #4BA450;
+$color-yellow: #FAF39B;
+$color-gold: #E3BA2B;
+$color-orange: #F26222;
+$color-red: #CC0000;
+$color-tan-dark: #AFABA2;
+$color-white: #FFFFFF;
+$color-silver: #DDDDDD;
+$color-gray: #999999;
+$color-gray-dark: #666666;
+$color-black: #333333;
 
-    'yellow': #FAF39B,
-    'gold': #E3BA2B,
-    'orange': #F26222,
-    'red': #CC0000,
-    'purple': #8569B4,
-    'tan': #E7E5E0,
-    'tan-dark': #AFABA2,
-
-    'white': #FFFFFF,
-    'silver': #DDDDDD,
-    'gray': #999999,
-    'gray-dark': #666666,
-    'black': #333333
-);
-
-@function color($key) {
-    @return map-get($colors, $key);
-}
-
-// Brand colors
-
-$brand-color: color('lpgreen');
 
 // Default colors
 // Background Color
-$base-backgroundColor: color('white');
-$base-fontColor: color('black');
-$default-border-color: color('silver');
+$base-backgroundColor: $color-white;
+$base-fontColor: $color-black;
+$default-border-color: $color-silver;
 
 // Link colors
 
-$link-color: color('gray-dark');
-$link-disabled: color('silver');
+$link-color: $color-gray-dark;
+$link-disabled: $color-silver;
 
 // Button colors
 
-$button-text-color: color('white');
-$button-default: $brand-color;
+$button-text-color: $color-white;
+$button-default: $color-green;
 
 // CONTENT DEFAULTS
 // ------------------
@@ -103,16 +86,16 @@ $button-lineHeight: 1;
 $button-fontWeight: 400;
 $base-button-padding: 12; //12px
 
-$default-button-color: color('silver');
+$default-button-color: $color-silver;
 $default-button-text-color: $base-fontColor;
 
-$dark-button-color: color('tan-dark');
-$dark-button-text-color: color('white');
+$dark-button-color: $color-red;
+$dark-button-text-color: $color-white;
 
-$primary-button-color: $brand-color;
-$primary-button-text-color: color('white');
+$primary-button-color: $color-green;
+$primary-button-text-color: $color-white;
 
-$disabled-button-color: color('silver');
+$disabled-button-color: $color-silver;
 
-$button-danger-color: color('red');
-$button-danger-text-color: color('white');
+$button-danger-color: $color-red;
+$button-danger-text-color: $color-white;
