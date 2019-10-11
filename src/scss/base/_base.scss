@@ -3,22 +3,12 @@
 // For styling elements directly
 
 * {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
 }
 
 body {
     background-color: $base-backgroundColor;
 }
-
-.container {
-    @include outer-container;
-    padding: 0 3%;
-    @include media($medium) {
-        padding: 0 $base-whitespace;
-    }
-}
-
-// Responsive media
 
 img,
 object,

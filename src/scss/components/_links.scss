@@ -1,8 +1,8 @@
 a {
-  color: $link-color;
+  color: $primary;
 
   &:hover,
   &:focus {
-    color: darken($link-color, 10%);
+    color: darken($primary, 10%);
   }
 }

@@ -1,20 +1,379 @@
-// Base form styles
+$form-background-color: $white;
 
-#{$all-text-inputs},
-textarea,
-select {
-    background: color('white');
-    border: 1px solid $default-border-color;
-    padding: 6px;
-    border-radius: $base-borderRadius;
-    height: 34px;
-    line-height: 1.42857;
+.form-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.field-row {
+    > label {
+        display: block;
+    }
+}
+
+.legend {
+    margin: 0 0 1.5em;
+}
+
+.form-buttons {
+    margin-bottom: 2em;
+}
+
+.help-text {
+    margin-top: -1.5em;
+    padding: 0 .5em;
+}
+
+fieldset,
+.fieldset {
+    border: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+label {
+    color: $black;
+    display: block;
+    margin-bottom: $line-height / 4;
+
+    // &.hidden {
+    //     @include visuallyhidden;
+    // }
+
+    &.collapse {
+        margin-bottom: 0;
+    }
+
+    abbr {
+        display: none;
+    }
+
+    .no-placeholder &.hidden {
+        display: block;
+    }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    display: block;
     width: 100%;
-    margin-bottom: $base-whitespace;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $black;
+    background-color: $white;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid $gray-dark;
+    border-radius: $border-radius;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &:-webkit-autofill {
+        background-color: $form-background-color !important;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: $black;
+        outline: none;
+    }
+
+    &.input-flat {
+        border-color: $form-background-color;
+    }
+
+    &.input-inline {
+        display: inline-block;
+        width:auto;
+        margin:0 0.5em 0 0;
+        vertical-align: middle;
+    }
+
+    &.input-search-alt {
+        background: $orange;
+        color: $white;
+        border-color: $orange;
+        &::placeholder {
+            color: lighten($orange, 15%);
+        }
+    }
+
+    &.input-collapse {
+        margin-bottom: 0;
+    }
+
+    &::placeholder {
+        color: $gray-dark;
+    }
+
+    &:disabled {
+        color: #6c757d;
+        background-color: #e9ecef;
+        border: rem(1) solid $gray;
+    }
+
+    &.is-invalid {
+        border-color: #dc3545;
+        padding-right: calc(1.5em + .75rem);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center right calc(.375em + .1875rem);
+        background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    }
 }
 
-// Override textarea height.
-textarea {
+textarea.form-control {
     height: auto;
-    resize: vertical;
+
+    &.is-invalid {
+        padding-right: calc(1.5em + .75rem);
+        background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem);
+    }
 }
+
+.custom-select {
+    display: inline-block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $black;
+    vertical-align: middle;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+    background-color: rgba(0, 0, 0, 0);
+    background-color: $white;
+    border: 1px solid $gray-dark;
+    border-radius: $border-radius;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &[multiple] {
+        background: none;
+    }
+
+    &.is-invalid {
+        border-color: #dc3545;
+        padding-right: calc((1em + .75rem) * 3 / 4 + 1.75rem);
+        background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px, url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
+        &[multiple] {
+            background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
+        }
+    }
+}
+
+input[readonly="readonly"] {
+    border-color: transparent;
+    &:hover, &:active, &:focus {
+        border-color: transparent;
+    }
+}
+
+.input-box {
+    position: relative;
+
+    &.inline {
+        display: inline-block;
+    }
+
+    &.has-icon-right {
+        .input-icon {
+            right: 0;
+            left: auto;
+        }
+        input {
+            padding-right: 34px;
+        }
+    }
+
+    &.has-icon-left {
+        .input-icon {
+            right: auto;
+            left: 10px;
+            top: 8px;
+        }
+        input {
+            padding-left: 34px;
+        }
+    }
+}
+
+
+input[type="number"] {
+    text-align: center;
+    padding-right: 0;
+}
+
+select[multiple],
+select[size] {
+    height: auto;
+}
+
+textarea {
+    resize: vertical;
+    height: auto;
+}
+
+
+input[type="search"] {
+    appearance: none;
+}
+
+input[type="file"] {
+    width: 100%;
+}
+
+.checkbox,
+.radio {
+    position: relative;
+    margin-bottom: 2em;
+    // &.hidden {
+    //     @include visuallyhidden;
+    // }
+}
+
+.checkbox-inline,
+.radio-inline {
+    display: inline-block;
+    margin-bottom: 0;
+    &+.checkbox-inline, &+.radio-inline {
+        margin-left: rem(20);
+    }
+}
+
+.checkbox label,
+.checkbox-inline label,
+.radio label,
+.radio-inline label {
+    margin-bottom: 0;
+    border: rem(1) solid $form-background-color;
+}
+
+label > input[type="checkbox"],
+label > input[type="radio"] {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+}
+
+.form-inline {
+    .field {
+        display: inline-block;
+    }
+    input,
+    select {
+        display: inline-block;
+        width:auto;
+        margin:0 0.5em 0 0;
+        vertical-align: middle;
+    }
+}
+
+.form-flex {
+    .input-box {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        margin-bottom: 2em;
+        input, select, textarea {
+            margin-right:0.5em;
+            margin-bottom: 0;
+        }
+    }
+}
+
+label.required:before {
+    content: "*";
+    display: inline-block;
+    color: $red !important;
+    padding-right: .2em;
+}
+
+input.error,
+select.error,
+textarea.error,
+label.error,
+.react-select-error .react-select__control {
+    color: $red;
+    border: 1px solid $red;
+    border-radius: $border-radius $border-radius 0 0;
+
+    &:focus,
+    &:hover {
+        border-color: $red !important;
+    }
+
+    &:focus ~ .parsley-errors-list {
+        opacity: 1;
+        &:empty {
+            opacity: 0;
+        }
+    }
+}
+
+.invalid-feedback {
+    // display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.errors-list {
+    // opacity: 0;
+    position: absolute;
+    z-index: 1;
+    top: 33px;
+    background: #CC0000;
+    color: #eee;
+    padding: .3em 12px;
+    font-size: 0.7em;
+    width: 100%;
+    border-radius: 0 0 $border-radius $border-radius;
+    text-align: left;
+    transition: opacity 0.2s ease;
+
+    select.error ~ & {
+        top: 30px;
+    }
+
+    .checkbox &,
+    .radio & {
+        opacity: 1 !important;
+        top:100%;
+        border-radius: $border-radius;
+
+        &.filled {
+            opacity: 1;
+        }
+    }
+}
+
+.ghost-input {
+    display: inline-block;
+    // margin-bottom: 1rem;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: $border-radius;
+    box-shadow: none;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+
+    &:hover {
+        border-color: #ddd;
+        background-color: #f2f2f2;
+        cursor: pointer;
+    }
+}
+
