@@ -1,0 +1,11 @@
+@function rem($px) {
+    @return ($px / 16) * 1rem;
+}
+
+@function shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+
+@function tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}

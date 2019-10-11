@@ -1,20 +1,10 @@
-Gateway
-=======
-Front-end boilerplate/starter kit.
+# Gateway
 
-http://findaway-front-end-dev-standards.s3-website-us-east-1.amazonaws.com/gateway.html
+Front-end boilerplate/starter kit.
 
 ## Requirements
 
-
 - node
-    + npm
-    + [Grunt](http://gruntjs.com) `$ npm i -g grunt-cli`
-    + [Bower](http://bower.io) `$ npm i -g bower`
-- Ruby
-    + [Sass](http://sass-lang.com) `$ gem install sass`
-- Virtualbox ***(optional)***
-- Vagrant >= v1.5 ***(optional)***
 - Hosts file entry for `127.0.0.1 gateway.dev` ***(optional)***
 
 ## Running locally
@@ -35,6 +25,7 @@ $ vagrant up
 ```
 
 ## Build Front End components
+
 ```bash
 # SCSS for development
 $ grunt sass:dev
@@ -44,6 +35,7 @@ $ grunt watch
 ```
 
 ## Build production files
+
 ```bash
 # Generate folders and file for release
 $ grunt build

@@ -1,11 +1,10 @@
 /* Gateway v0.3.0 */
 // 3rd Party
-@import "bourbon/app/assets/stylesheets/bourbon",
-        "neat/app/assets/stylesheets/neat",
-        "normalize-scss/normalize";
+@import "normalize-scss/normalize";
 
 // Base
-@import "settings",
+@import "functions",
+        "settings",
         "base/base",
         "base/typography";
 
