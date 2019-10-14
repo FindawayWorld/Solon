@@ -1,11 +1,10 @@
-/* Gateway v0.3.0 */
-// 3rd Party
-@import "normalize-scss/normalize";
+/* Gateway v1.0.0 */
+
+@import "functions",
+        "settings";
 
 // Base
-@import "functions",
-        "settings",
-        "base/base",
+@import "base/base",
         "base/typography";
 
 // Components
@@ -17,8 +16,4 @@
 // Layout
 @import "layout/grid";
 
-@import "sections/full-bleed";
-
 // Modules
-
-@import "mods/footer";

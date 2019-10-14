@@ -1,11 +1,12 @@
 {
-  "name": "gateway",
-  "version": "1.0.0",
-  "description": "Findaway Front-end boilerplate",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Cameron Wardzala <cwardzala@findaway.com>",
-  "license": "MIT"
+    "name": "gateway",
+    "version": "1.0.0",
+    "description": "Findaway Front-end boilerplate",
+    "main": "src/scss/styles.scss",
+    "style": "src/scss/styles.scss",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Cameron Wardzala <cwardzala@findaway.com>",
+    "license": "MIT"
 }
