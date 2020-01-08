@@ -1,0 +1,38 @@
+.locator {
+    min-height: rem(690);
+    background-color: #F4EDE3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    .pane {
+        flex-basis: 50%;
+        width: 50%;
+    }
+
+    .results-pane {
+        padding: rem(60) rem(120);
+
+    }
+
+    .map-pane {
+        background-color: #F5F5F5;
+    }
+
+    .results {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: row;
+        input {
+            flex: 1;
+        }
+        button {
+            flex: none;
+        }
+    }
+}

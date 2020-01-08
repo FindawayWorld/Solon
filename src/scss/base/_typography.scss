@@ -1,0 +1,96 @@
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
+
+
+body {
+    color: #303030;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    font-size: $font-size-base;
+    line-height: 1.5;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+}
+
+h4 {
+    font-size: $h4-font-size;
+}
+
+h5 {
+    font-size: $h5-font-size;
+}
+
+h6 {
+    font-size: $h6-font-size;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.lead {
+    font-size: rem(24);
+    line-height: rem(38);
+    font-weight: $light-weight;
+}
+
+p > svg,
+li > svg {
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: .5rem;
+    margin-left: .5rem;
+}
+
+.txt-center {
+    text-align: center;
+}
+
+.txt-primary {
+    color: $primary;
+}
+
+.txt-secondary {
+    color: $secondary;
+}
+
+.txt-bold {
+    font-weight: 700 !important;
+}
+
+.txt-light {
+    font-weight: 300 !important;
+}
+
+.overflow-x-hidden {
+    overflow-x: hidden;
+}

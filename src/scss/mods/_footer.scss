@@ -1,0 +1,16 @@
+footer {
+    background-color: $black;
+    color: $white;
+
+    padding: rem(70) 1rem;
+
+    a {
+        color: $white;
+    }
+
+    .col-header {
+        display: block;
+        color:$white;
+        font-weight: 700;
+    }
+}

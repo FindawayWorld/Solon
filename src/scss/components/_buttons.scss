@@ -1,0 +1,83 @@
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+        color: shade($primary, 15%);
+        border-color: shade($primary, 15%);
+        outline: none;
+    }
+
+    .feather {
+        width: 1.2em;
+        height: 1.2em;
+        position: relative;
+        vertical-align: middle;
+    }
+    .feather-check {
+        top: -2px;
+    }
+
+
+
+    &.btn-primary {
+        background-color: $primary;
+        color: $white;
+        &:hover, &:active, &:focus {
+            background-color: shade($primary, 15%);
+        }
+    }
+
+    &.btn-success {
+        background-color: #8EC648;
+    }
+}
+
+.btn-danger {
+    background-color: $red;
+    border-color: $red;
+    color: $white;
+
+    &:hover, &:focus {
+        background-color: shade($red, 15%);
+        border-color: shade($red, 15%);
+        color: $white;
+    }
+}
+
+.btn-dark {
+    background-color: #384D8F;
+    padding: .5rem 4rem;
+
+    &:hover, &:focus {
+        background-color: tint(#384D8F, 10%);
+    }
+}
+
+.btn-link {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.5;
+}

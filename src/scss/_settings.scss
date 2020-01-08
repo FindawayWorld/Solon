@@ -1,0 +1,88 @@
+@function rem($px) {
+    @return ($px / 16) * 1rem;
+}
+@function shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+@function tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}
+
+// $xxlarge: 'only screen and (min-width: 102.4em)';
+$xlarge: 'only screen and (min-width: 1200px)';
+$xlarge2x: 'only screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2)';
+$large: 'only screen and (min-width: 992px)';
+$large2x: 'only screen and (min-width: 992px) and (-webkit-min-device-pixel-ratio: 2)';
+$medium: 'only screen and (min-width: 768px)';
+$medium2x: 'only screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2)';
+$small: 'only screen and (min-width: 576px)';
+$small2x: 'only screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2)';
+$retina: 'only screen and (-webkit-min-device-pixel-ratio: 2)';
+
+$light-weight: 300;
+$line-height: 1.5;
+
+$border-radius: rem(3);
+
+// Colors
+///////////////////////////////////////////////////////////////////////////////
+
+$teal: #A8D7CE;
+$blue: #008FD5;
+$dark-blue: #626677;
+
+$green: #4BA450;
+
+$orange: #FF7D50;
+$orange-light: #FF9D83;
+$red: #DE1A22;
+
+$white: #FFFFFF;
+$off-white: #FCFAF8;
+$gray: #6c757d;
+$gray-dark: #343a40;
+$black: #343a40;
+
+$light: #f8f9fa;
+
+$font-color: $black;
+$border-color: #ced4da;
+
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+    (
+        "dark-blue": $dark-blue,
+        "green": $green,
+
+        "orange": $orange,
+        "red": $red,
+
+        "white": $white,
+        "off-white": $off-white,
+        "gray": $gray,
+        "gray-dark": $gray-dark,
+        "black": $black
+    ),
+    $colors
+);
+
+$primary: $blue;
+$secondary: $gray;
+$success: $green !default;
+$danger: $red !default;
+$warning: #FFDC00 !default;
+
+$themeColors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$themeColors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "danger":     $danger,
+    "warning":    $warning,
+  ),
+  $themeColors
+);

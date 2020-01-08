@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #ECDFCA;
+    border-bottom: solid 1px #414241;
+    padding: 2rem;
+
+    .container,
+    .conatiner-sm {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .navbar-item {
+        margin-right: 5rem;
+        font-weight: $light-weight;
+        text-decoration: none;
+        &.active {
+            font-weight: 600;
+        }
+    }
+}

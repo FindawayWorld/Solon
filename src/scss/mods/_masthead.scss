@@ -1,0 +1,132 @@
+.masthead {
+    display: flex;
+    flex-direction: column;
+    margin-top: rem(-120);
+    padding-top: rem(120);
+    min-height: rem(430);
+    position: relative;
+    background-color: $gray;
+    background-size: cover;
+    background-position: top center;
+    text-align: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+
+    .content {
+        height: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .page-title {
+        font-size: rem(18);
+        text-transform: uppercase;
+        line-height: 1;
+        font-weight: 700;
+        color: $white;
+    }
+
+    svg {
+        color: $white;
+    }
+
+    @media #{$medium} {
+        .content {
+            max-width: 70%;
+        }
+    }
+
+    @media #{$large} {
+        min-height: 27.5rem;
+        .content {
+            max-width: 50%;
+        }
+    }
+
+    @media #{$xlarge} {
+        .content {
+            max-width: 50%;
+        }
+    }
+
+
+}
+
+.masthead h1 {
+    color: $white;
+    margin: 0 0 1rem;
+
+    @media #{$medium} {
+        margin-bottom: 0;
+    }
+}
+
+.masthead .overlap-wrapper {
+    @media #{$medium} {
+        position: absolute;
+        bottom: -21px;
+        width: 100%;
+    }
+}
+
+$gradient: linear-gradient(0deg, rgba(0,0,0,.8) 0%, rgba(255,255,255,0) 100%);
+
+.masthead-voices {
+    background-image:#{$gradient}, url('../images/page_headers/voices_header.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/voices_header@2x.jpg');
+    }
+    .content {
+        margin: 0 auto;
+    }
+}
+
+.masthead-ppg {
+    background-image:#{$gradient}, url('../images/page_headers/ppg_header.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/ppg_header@2x.jpg');
+    }
+    .content {
+        margin: 0 auto;
+    }
+}
+
+.masthead-pub-services {
+    background-image:#{$gradient}, url('../images/page_headers/publisher_services_header.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/publisher_services_header@2x.jpg');
+    }
+}
+
+.masthead-audio-engine {
+    background-image:#{$gradient}, url('../images/page_headers/audioengine_header.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/audioengine_header@2x.jpg');
+    }
+}
+
+.masthead-about {
+    background-image:#{$gradient}, url('../images/page_headers/about_findaway_header.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/about_findaway_header@2x.jpg');
+    }
+}
+
+.masthead-being {
+    background-image:#{$gradient}, url('../images/page_headers/being_a_findawayer_edited.jpg');
+    @media #{$retina} {
+        background-image:#{$gradient}, url('../images/page_headers/being_a_findawayer_edited@2x.jpg');
+    }
+}
+
+.pre-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    @media #{$medium} {
+        padding-top: rem(80);
+        padding-bottom: rem(80);
+    }
+}
+
+

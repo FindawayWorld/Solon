@@ -1,0 +1,62 @@
+
+a {
+    color: $orange;
+    font-weight: inherit;
+    text-decoration: none;
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+a.cta {
+    color: $black;
+    border-bottom: solid 2px $primary;
+    transition: border-color 200ms ease-in-out;
+    font-weight: 400;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: transparent;
+        text-decoration: none;
+    }
+}
+
+a.reverse-cta {
+    border-bottom: solid 2px transparent;
+    transition: border-color 200ms ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: $primary;
+        text-decoration: none;
+    }
+}
+
+a.fancy-cta {
+    color: $black;
+    transition: border-color 200ms ease-in-out;
+    font-weight: 600;
+
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+        transition: transform 200ms ease-in-out;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        border-color: transparent;
+        text-decoration: none;
+
+        svg {
+            transform: translateX(20px);
+        }
+    }
+}

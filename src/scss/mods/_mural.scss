@@ -1,0 +1,91 @@
+.mural {
+    background-image: url('../images/about/mural/mural_pattern_bkg.jpg');
+    padding: 1.5rem 0;
+    border-top: solid 1px $gray-dark;
+}
+.mural-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media #{$medium} {
+        flex-direction: row;
+    }
+}
+
+.mural-item {
+    position: relative;
+    padding: 0 .9rem;
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.mural-dot {
+    width: rem(24);
+    height: rem(24);
+    border: solid 3px $orange;
+    background-color: $white;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    border-radius: rem(12);
+
+    @media #{$medium} {
+        width: rem(14);
+        height: rem(14);
+        border-radius: rem(7);
+    }
+
+    .meeting & {
+        right: rem(25);
+        top: rem(25);
+    }
+
+    .playaway & {
+        right: rem(60);
+        top: rem(6);
+    }
+
+    .first-office & {
+        top: rem(12);
+        right: rem(50);
+    }
+
+    .cpl &,
+    .arrow &{
+        top: rem(20);
+        right: rem(20);
+    }
+
+    .military & {
+        right: rem(40);
+        top: 1rem;
+    }
+
+    .largest-catalog & {
+        top: rem(30);
+        right: rem(33);
+    }
+
+    .first-audiobook & {
+        top: 0;
+        right: rem(30);
+    }
+    .findaway-baby & {
+        top: 0;
+        right: rem(40);
+    }
+    .every-audiobook & {
+        top: rem(-7);
+        right: rem(40);
+    }
+    .yearly-celebration & {
+        top: rem(25);
+        right: rem(45);
+    }
+}

@@ -1,0 +1,58 @@
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
+
+    li {
+        line-height: rem(35);
+    }
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: spacer();
+}
+
+.list-flat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-inline {
+    list-style:none;
+    padding:0;
+    margin-left:-1rem;
+
+    > li {
+        line-height: 1.5;
+        display:inline-block;
+        margin-left: 1rem;
+        margin-bottom: 0;
+    }
+}
+
+.list-flex-inline {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media #{$small} {
+        flex-direction: row;
+    }
+}
