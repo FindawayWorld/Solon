@@ -16,8 +16,9 @@ function App() {
             <div className="p-5">
                 <h1>Gateway</h1>
                 <p>Gateway is Findaway's boilerplate for React sites/applications.</p>
-                <p>This repository can be copied to start any react project.</p>
+                <p>This repository can be copied to start any react project. Get the latest from <a href="https://github.com/FindawayWorld/gateway">https://github.com/FindawayWorld/gateway</a></p>
                 <p>By default this repository contains CSS (SCSS), React Components, and utilities to help get any project up-and-running quickly with consistency to all other projects.</p>
+                <p></p>
 
                 <ul className="list-inline">
                     <li><Link to="content">Content</Link></li>
