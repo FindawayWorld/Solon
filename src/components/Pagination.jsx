@@ -1,6 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import {Link} from 'react-router-dom';
+// For Gatsby projects use this instead.
+// import {Link} from 'gatsby';
+
+
 const Pagination = ({
     numPages = 1,
     currentPage = 1,
@@ -32,8 +37,8 @@ const Pagination = ({
     return (
         <ul className={classnames('pagination', className)}>
         {!isFirst &&<>
-            {showJumpFirst && <li className="page-item"><a className="page-link" href={pathName}>First</a></li>}
-            <li className="page-item"><a className="page-link" href={prevPage}>Previous</a></li>
+            {showJumpFirst && <li className="page-item"><Link to={pathName} className="page-link">First</Link></li>}
+            <li className="page-item"><Link to={prevPage} className="page-link">Previous</Link></li>
         </>}
         {allPages.slice(begin, end).map((i, p) => {
             let current = (i) === currentPage;
@@ -41,13 +46,13 @@ const Pagination = ({
                 <li key={`page_${p}`} className={classnames('page-item', {
                     active: current
                 })}>
-                    <a className={classnames('page-link')} aria-current={current ? 'page' : null} href={`${pathName}/${i === 1 ? '' : i}`}>{i}</a>
+                    <Link to={`${pathName}/${i === 1 ? '' : i}`} className={classnames('page-link')} aria-current={current ? 'page' : null}>{i}</Link>
                 </li>
             );
         })}
         {!isLast && <>
-            <li className="page-item"><a className="page-link" href={nextPage}>Next</a></li>
-            {showJumpLast && <li className="page-item"><a className="page-link" href={`${pathName}/${numPages}`}>Last</a></li>}
+            <li className="page-item"><Link to={nextPage} className="page-link">Next</Link></li>
+            {showJumpLast && <li className="page-item"><Link to={`${pathName}/${numPages}`} className="page-link">Last</Link></li>}
         </>}
         </ul>
     );

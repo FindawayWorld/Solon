@@ -147,6 +147,12 @@ const ContentPage = () => {
                     </li>
                 </ul>
             </section>
+
+            <section id="icons" className="mb-5">
+                <h2>Icons</h2>
+                <hr/>
+                <p>Use <a href="https://feathericons.com/">Feather Icons</a> for all your icon needs. Unless provided from creative.</p>
+            </section>
         </>
     );
 };

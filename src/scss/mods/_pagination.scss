@@ -25,22 +25,22 @@
     padding: .4rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: $orange;
+    color: $primary;
     background-color:$white;
     border: 1px solid $border-color;
 
     &:hover {
         z-index: 2;
-        color: $orange;
+        color: $white;
         text-decoration: none;
         background-color: $gray;
-        border-color: $gray-dark;
+        border-color: $gray;
     }
 }
 
 .page-item.active .page-link {
     z-index: 1;
     color: #fff;
-    background-color: $orange;
-    border-color: $orange;
+    background-color: $primary;
+    border-color: $primary;
 }
