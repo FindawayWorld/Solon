@@ -38,8 +38,8 @@ function App() {
                     <h1 className="branding"><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/">Gateway</NavLink></h1>
                     <ul className="list-inline">
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/content">Content</NavLink></li>
-                        <li><Link className="reverse-cta" to="/components">Components</Link></li>
-                        <li><Link className="reverse-cta" to="/utils">Utils</Link></li>
+                        <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/components">Components</NavLink></li>
+                        <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/utils">Utils</NavLink></li>
                         <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <ExternalLinkIcon width=".875em" height=".875em" /></a></li>
                     </ul>
                 </div>

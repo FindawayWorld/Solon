@@ -28,7 +28,11 @@ const ComponentsPage = () => {
                     perPage={10}
                     currentPage={1}
                 />
-
+                <Pagination
+                    numPages={1000}
+                    perPage={20}
+                    currentPage={60}
+                />
             </section>
 
             <section id="forms" className="mb-5">
