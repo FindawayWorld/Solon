@@ -1,32 +1,55 @@
 import React from 'react';
-
+import classnames from 'classnames';
 import {
   HashRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useRouteMatch
 } from "react-router-dom";
+
 import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';
 import UtilsPage from './pages/Utils';
+import HomePage from './pages/Home';
+import {ReactComponent as ExternalLinkIcon} from './svg/external-link.svg';
+
+const NavLink = ({to, children, className, activeClass, activeWhenExact =  true}) => {
+    let match = useRouteMatch({
+        path: to,
+        exact: activeWhenExact
+    });
+
+    return (
+        <Link className={classnames(
+            className,
+            {
+                [activeClass]:  match
+            }
+        )} to={to}>{children}</Link>
+    );
+}
 
 function App() {
     return (
         <Router>
-            <div className="p-5">
-                <h1>Gateway</h1>
-                <p>Gateway is Findaway's boilerplate for React sites/applications.</p>
-                <p>This repository can be copied to start any react project. Get the latest from <a href="https://github.com/FindawayWorld/gateway">https://github.com/FindawayWorld/gateway</a></p>
-                <p>By default this repository contains CSS (SCSS), React Components, and utilities to help get any project up-and-running quickly with consistency to all other projects.</p>
-                <p></p>
+            <div className="site-header">
+                <div className="container">
+                    <h1 className="branding"><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/">Gateway</NavLink></h1>
+                    <ul className="list-inline">
+                        <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/content">Content</NavLink></li>
+                        <li><Link className="reverse-cta" to="/components">Components</Link></li>
+                        <li><Link className="reverse-cta" to="/utils">Utils</Link></li>
+                        <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <ExternalLinkIcon width=".875em" height=".875em" /></a></li>
+                    </ul>
+                </div>
+            </div>
 
-                <ul className="list-inline">
-                    <li><Link to="content">Content</Link></li>
-                    <li><Link to="components">Components</Link></li>
-                    <li><Link to="utils">Utils</Link></li>
-                </ul>
-
+                <div className="container">
                 <Switch>
+                    <Route exact path="/">
+                        <HomePage />
+                    </Route>
                     <Route path="/components">
                         <ComponentsPage />
                     </Route>
@@ -37,7 +60,8 @@ function App() {
                         <UtilsPage />
                     </Route>
                 </Switch>
-            </div>
+                </div>
+
         </Router>
 
 

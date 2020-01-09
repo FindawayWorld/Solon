@@ -1,6 +1,6 @@
 
 a {
-    color: $orange;
+    color: $primary;
     font-weight: inherit;
     text-decoration: none;
     &:hover,
@@ -18,19 +18,22 @@ a.cta {
 
     &:hover,
     &:active,
-    &:focus {
+    &:focus,
+    &.active {
         border-color: transparent;
         text-decoration: none;
     }
 }
 
 a.reverse-cta {
+    color: $black;
     border-bottom: solid 2px transparent;
     transition: border-color 200ms ease-in-out;
 
     &:hover,
     &:active,
-    &:focus {
+    &:focus,
+    &.active {
         border-color: $primary;
         text-decoration: none;
     }
@@ -42,6 +45,7 @@ a.fancy-cta {
     font-weight: 600;
 
     svg {
+        color: $primary;
         display: inline-block;
         vertical-align: middle;
         position: relative;

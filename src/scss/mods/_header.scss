@@ -1,10 +1,9 @@
 .site-header {
-    background: transparent;
-    // border-bottom: solid 1px #414241;
-    padding: 0 1rem;
-    height: rem(120);
+    background: $white;
+    padding: 1rem;
     position: relative;
     z-index: 5;
+    margin-bottom: 2rem;
 
     .fixed & {
         position: fixed;
@@ -17,8 +16,12 @@
         padding-right: calc(1rem + 15px);
     }
 
-    a {
-        text-decoration: none;
+    .branding a {
+        color: $font-color;
+    }
+
+    ul {
+        margin-bottom: 0;
     }
 
     .container {
@@ -29,90 +32,21 @@
     .container,
     .container-sm,
     .row {
-        // display: flex;
-        // flex-direction: row;
-        // justify-content: space-between;
-        // align-items: center;
-        // flex-wrap: wrap;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
         margin: 0 auto;
         height: 100%;
     }
 
     &.dark-header {
         background: #2B2B35;
-    }
-}
-
-.navigation {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    padding-top: rem(100);
-    padding-right: 1rem;
-    padding-left: 1rem;
-
-    background: rgba(#282732, .95);
-    z-index: 5;
-
-    .hasScrollbars.fixed & {
-        padding-right: calc(1rem + 15px);
-    }
-
-    .nav-item, .nav-group-header {
-        display: block;
-        width: auto;
-        font-size: 1.3rem;
         color: $white;
 
-        @media #{$small} {
-            font-size: 1.5rem;
-        }
-    }
-
-    .nav-item {
-        margin-bottom: 1rem;
-    }
-
-    .nav-item span {
-        border-bottom: solid 2px transparent;
-        transition: border-color 200ms ease-in-out;
-
-        &:hover {
-            border-color: $orange;
-        }
-    }
-
-    .nav-group {
-        margin-bottom: 1rem;
-    }
-
-    .nav-group-header {
-        margin-bottom: 1rem;
-    }
-
-    .nav-group .nav-item {
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        padding-left: .5rem;
-
-        &::before {
-            content: '-';
-            display: inline-block;
-            margin-right: .5rem;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    @media #{$medium} {
-        padding-top: rem(160);
-        .nav-item {
-            margin-bottom: 1.5rem;
+        h1 a {
+            color: $white;
         }
     }
 }
