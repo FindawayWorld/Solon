@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const Checkbox = ({
-    checked = false,
+    checked = undefined,
     label = '',
     help = null,
     placeholder = null,
@@ -10,7 +10,7 @@ const Checkbox = ({
     name = null,
     errors = false,
     touched = true,
-    value = '',
+    value = undefined,
     required = false,
     className = '',
     inline = false,

@@ -2,21 +2,33 @@
     display: flex;
     padding-left: 0;
     list-style: none;
-    border-radius: .25rem;
+    border-radius: $border-radius;
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto;
+    overflow: hidden;
+}
+
+.page-item {
+    &:first-child .page-link {
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+    }
+    &:last-child .page-link {
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+    }
 }
 
 .page-link {
     text-decoration: none;
     position: relative;
     display: block;
-    padding: .3rem .75rem .5rem;
+    padding: .4rem .75rem;
     margin-left: -1px;
     line-height: 1.25;
     color: $orange;
     background-color:$white;
-    border: 1px solid $gray-dark;
+    border: 1px solid $border-color;
 
     &:hover {
         z-index: 2;
