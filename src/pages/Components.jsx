@@ -7,7 +7,7 @@ import Checkbox from '../components/form/Checkbox';
 import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import {Formik, Form} from 'formik';
-import {object, string, boolean} from 'yup';
+import {object, string, boolean, array} from 'yup';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
@@ -146,15 +146,17 @@ const ComponentsPage = () => {
                         name: 'Test Name',
                         signup: false,
                         fav_fruit: 'avocado',
+                        jobType: []
                     }}
                     validationSchema={
                         object().shape({
                             name: string().required(),
                             signup: boolean().oneOf([true], 'Please sign up for news'),
-                            fav_fruit: string().required('Please choose a fruit')
+                            fav_fruit: string().required('Please choose a fruit'),
+                            jobType: array()
                         })
                     }
-                    onSubmit={(values) => alert(JSON.stringify(values))}
+                    onSubmit={(values) => alert(JSON.stringify(values, null, 4))}
                 >
                     <Form>
                         <Input id="name" label="name" />
@@ -163,6 +165,12 @@ const ComponentsPage = () => {
                             <option value="">Select a fruit</option>
                             {fruits.map(item => <option key={item} value={item}>{item}</option>)}
                         </Select>
+                        <div className="label">
+                            What best describes you? (check all that apply)
+                        </div>
+                            <Checkbox label="Designer" name="jobType" value="designer" />
+                            <Checkbox label="Developer" name="jobType" value="developer" />
+                            <Checkbox label="Product Manager" name="jobType" value="product" />
                         <button className="btn btn-primary" type="submit">Submit</button>
                     </Form>
                 </Formik>

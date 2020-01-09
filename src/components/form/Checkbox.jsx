@@ -7,7 +7,7 @@ const Checkbox = ({
     label = '',
     help = null,
     placeholder = null,
-    id = 'input',
+    id = null,
     name = null,
     errors = false,
     touched = false,
@@ -24,8 +24,13 @@ const Checkbox = ({
     let handleChange = onChange;
     let handleBlur = onBlur;
 
+    if (!id && name && value) {
+        id = `${name}_${value}`;
+    }
+
     if (formikContext) {
-        checked = formikContext.values[id];
+        let _value = formikContext.values[id];
+        checked = Array.isArray(_value) ? _value.includes(value) : _value;
         touched = formikContext.touched[id];
         errors = formikContext.errors[id];
         handleChange = formikContext.handleChange;
