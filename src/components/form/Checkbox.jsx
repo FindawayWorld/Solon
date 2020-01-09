@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import {useFormikContext} from 'formik';
 
 const Checkbox = ({
     checked = undefined,
@@ -9,7 +10,7 @@ const Checkbox = ({
     id = 'input',
     name = null,
     errors = false,
-    touched = true,
+    touched = false,
     value = undefined,
     required = false,
     className = '',
@@ -19,6 +20,18 @@ const Checkbox = ({
     onChange = () => {},
     onBlur = () => {}
 }) => {
+    let formikContext = useFormikContext();
+    let handleChange = onChange;
+    let handleBlur = onBlur;
+
+    if (formikContext) {
+        checked = formikContext.values[id];
+        touched = formikContext.touched[id];
+        errors = formikContext.errors[id];
+        handleChange = formikContext.handleChange;
+        handleBlur = formikContext.handleBlur;
+    }
+
     return (
         <div className={classnames('form-group form-check', className, {
             'checkbox-inline': inline
@@ -34,8 +47,8 @@ const Checkbox = ({
                 name={name || id}
                 id={id}
                 required={required}
-                onChange={onChange}
-                onBlur={onBlur}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 disabled={disabled}
             />
             <label htmlFor={id} className={classnames('form-check-label', {
@@ -43,7 +56,7 @@ const Checkbox = ({
             })}>
                 {label || children}
             </label> {help}
-            {errors && <div className="form-error standalone">
+            {errors && touched && <div className="form-error standalone">
                 <span>{errors}</span>
             </div>}
         </div>

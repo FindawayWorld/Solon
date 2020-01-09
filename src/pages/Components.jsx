@@ -6,9 +6,12 @@ import TextArea from '../components/form/TextArea';
 import Checkbox from '../components/form/Checkbox';
 import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
+import {Formik, Form} from 'formik';
+import {object, string, boolean} from 'yup';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
+    let fruits = ['apple', 'banana', 'orange', 'avocado'];
     return (
         <>
             <section id="Buttons" className="mb-5">
@@ -122,7 +125,33 @@ const ComponentsPage = () => {
                     touched={true}
                 />
 
-
+                <h3>Formik Example</h3>
+                <hr/>
+                <Formik
+                    initialValues={{
+                        name: 'Test Name',
+                        signup: false,
+                        fav_fruit: 'avocado',
+                    }}
+                    validationSchema={
+                        object().shape({
+                            name: string().required(),
+                            signup: boolean().oneOf([true], 'Please sign up for news'),
+                            fav_fruit: string().required('Please choose a fruit')
+                        })
+                    }
+                    onSubmit={(values) => alert(JSON.stringify(values))}
+                >
+                    <Form>
+                        <Input id="name" label="name" />
+                        <Checkbox id="signup" label="Sign up for news" />
+                        <Select id="fav_fruit" label="Favorite Fruit">
+                            <option value="">Select a fruit</option>
+                            {fruits.map(item => <option key={item} value={item}>{item}</option>)}
+                        </Select>
+                        <button className="btn btn-primary" type="submit">Submit</button>
+                    </Form>
+                </Formik>
             </section>
         </>
     )

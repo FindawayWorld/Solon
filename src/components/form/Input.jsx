@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import {useFormikContext} from 'formik';
 
 const Input = ({
         label = '',
@@ -20,8 +21,6 @@ const Input = ({
         prependLabel = false,
         autoComplete = null,
         hidden = false,
-        errors = false,
-        touched = true,
         children = false,
         prepend = null,
         append = null,
@@ -32,6 +31,8 @@ const Input = ({
         help = null,
         flex = false,
         ghost = false,
+        errors = null,
+        touched = false,
         onBlur,
         onChange,
         onFocus = () => {},
@@ -41,6 +42,17 @@ const Input = ({
     }) => {
 
     let isRequired = required || showRequired;
+    let formikContext = useFormikContext();
+    let handleChange = onChange;
+    let handleBlur = onBlur;
+
+    if (formikContext) {
+        value = formikContext.values[id];
+        touched = formikContext.touched[id];
+        errors = formikContext.errors[id];
+        handleChange = formikContext.handleChange;
+        handleBlur = formikContext.handleBlur;
+    }
 
     if (hidden) {
         return null;
@@ -106,8 +118,8 @@ const Input = ({
                     readOnly={readOnly}
 
                     onFocus={onFocus}
-                    onBlur={onBlur}
-                    onChange={onChange}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
                     onKeyUp={onKeyUp}
                     onKeyDown={onKeyDown}
                     onKeyPress={onKeyPress}

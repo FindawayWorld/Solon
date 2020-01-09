@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import {useFormikContext} from 'formik';
 
 const TextArea = ({
     label = '',
@@ -42,19 +43,18 @@ const TextArea = ({
     onKeyPress = () => {}
 }) => {
 
-    // handleRestricted = (e) => {
-    //     let restricted = restricted;
-
-    //     let isClean = restricted.reduce((acc, value) => {
-    //         return acc && !this._input.value.includes(value);
-    //     }, true);
-
-    //     if (!isClean) { return; }
-
-    //     this.handleChange();
-    // }
-
     let isRequired = required || showRequired;
+    let formikContext = useFormikContext();
+    let handleChange = onChange;
+    let handleBlur = onBlur;
+
+    if (formikContext) {
+        value = formikContext.values[id];
+        touched = formikContext.touched[id];
+        errors = formikContext.errors[id];
+        handleChange = formikContext.handleChange;
+        handleBlur = formikContext.handleBlur;
+    }
 
     if (hidden) {
         return null;
@@ -109,8 +109,8 @@ const TextArea = ({
                     rows={rows}
 
                     onFocus={onFocus}
-                    onBlur={onBlur}
-                    onChange={onChange}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
                     onKeyUp={onKeyUp}
                     onKeyDown={onKeyDown}
                     onKeyPress={onKeyPress}
