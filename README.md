@@ -1,7 +1,9 @@
 # Gateway
 
-Front-end boilerplate/starter kit.
+Gateway is Findaway's boilerplate for React sites/applications.
 
-[See the wiki for more info.](wiki)
+This repository can be copied to start any react project.
 
-Built with Create-React-App
+By default this repository contains CSS (SCSS), React Components, and utilities to help get any project up-and-running quickly with consistency to all other projects.
+
+See <https://findawayworld.github.io/gateway> for more info.
