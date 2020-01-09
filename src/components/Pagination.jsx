@@ -5,16 +5,19 @@ const Pagination = ({
     numPages = 1,
     currentPage = 1,
     perPage = 5,
+    pagesToShow = null,
+    showJumpFirst = false,
+    showJumpLast = false,
     pathName = '',
     className = ''
 }) => {
 
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? pathName : `${pathName}/${(currentPage - 1).toString()}`
+    const prevPage = currentPage - 1 === 1 ? pathName : `${pathName}/${(currentPage - 1).toString()}`;
     const nextPage = `${pathName}/${(currentPage + 1).toString()}`;
 
-    let half = Math.ceil(perPage / 2);
+    let half = Math.ceil((pagesToShow || perPage) / 2);
 
     let cp = currentPage;
 
@@ -28,9 +31,10 @@ const Pagination = ({
 
     return (
         <ul className={classnames('pagination', className)}>
-        {!isFirst &&
+        {!isFirst &&<>
+            {showJumpFirst && <li className="page-item"><a className="page-link" href={pathName}>First</a></li>}
             <li className="page-item"><a className="page-link" href={prevPage}>Previous</a></li>
-        }
+        </>}
         {allPages.slice(begin, end).map((i, p) => {
             let current = (i) === currentPage;
             return (
@@ -41,7 +45,10 @@ const Pagination = ({
                 </li>
             );
         })}
-        {!isLast && <li className="page-item"><a className="page-link" href={nextPage}>Next</a></li>}
+        {!isLast && <>
+            <li className="page-item"><a className="page-link" href={nextPage}>Next</a></li>
+            {showJumpLast && <li className="page-item"><a className="page-link" href={`${pathName}/${numPages}`}>Last</a></li>}
+        </>}
         </ul>
     );
 };

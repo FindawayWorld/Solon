@@ -38,6 +38,20 @@ const ComponentsPage = () => {
                     perPage={20}
                     currentPage={60}
                 />
+                <Pagination
+                    numPages={1000}
+                    perPage={20}
+                    currentPage={60}
+                    pagesToShow={5}
+                />
+                <Pagination
+                    numPages={1000}
+                    perPage={20}
+                    currentPage={60}
+                    pagesToShow={5}
+                    showJumpFirst
+                    showJumpLast
+                />
             </section>
 
             <section id="modal" className="mb-5">
