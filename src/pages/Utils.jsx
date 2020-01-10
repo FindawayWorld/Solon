@@ -162,7 +162,7 @@ const UtilsPage = () => (
 
         <section id="grids" className="mb-5">
             <h2 className="mb-1">Grids</h2>
-            <p><small>Based on <a href="flexboxgrid.com" target="_blank" rel="noopener noreferrer">Flexbox Grid</a>.</small></p>
+            <p><small>Based on <a href="http://flexboxgrid.com/" target="_blank" rel="noopener noreferrer">Flexbox Grid</a>.</small></p>
             <hr/>
 
             <section className="page-section">
