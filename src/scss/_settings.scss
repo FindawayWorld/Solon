@@ -26,63 +26,74 @@ $border-radius: rem(3);
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
-
-$teal: #A8D7CE;
-$blue: #003b6f;
-$dark-blue: #626677;
-
-$green: #4BA450;
-
-$orange: #FF7D50;
-$orange-light: #FF9D83;
-$red: #DE1A22;
-
-$white: #FFFFFF;
-$off-white: #FCFAF8;
-$gray: #6c757d;
-$gray-dark: #343a40;
-$black: #343a40;
-
-$light: #f8f9fa;
+$aqua:  #7FDBFF;
+$blue:  #0074D9;
+$navy:  #001F3F;
+$teal:  #39CCCC;
+$green: #2ECC40;
+$olive: #3D9970;
+$lime:  #01FF70;
+$yellow:  #FFDC00;
+$orange:  #FF851B;
+$red:     #FF4136;
+$fuchsia: #F012BE;
+$purple:  #B10DC9;
+$maroon:  #85144B;
+$white:  #FFFFFF;
+$silver: #DDDDDD;
+$gray:   #AAAAAA;
+$black:  #111111;
 
 $font-color: $black;
-$border-color: #ced4da;
+$border-color: $silver;
 
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $colors: map-merge(
     (
-        "dark-blue": $dark-blue,
+        "aqua": $aqua,
+        "blue": $blue,
+        "navy": $navy,
+        "teal": $teal,
         "green": $green,
-
+        "olive": $olive,
+        "lime": $lime,
+        "yellow": $yellow,
         "orange": $orange,
         "red": $red,
-
+        "fuchsia": $fuchsia,
+        "purple": $purple,
+        "maroon": $maroon,
         "white": $white,
-        "off-white": $off-white,
+        "silver": $silver,
         "gray": $gray,
-        "gray-dark": $gray-dark,
         "black": $black
     ),
     $colors
 );
 
 $primary: $blue;
-$secondary: $gray;
+$secondary: $silver;
 $success: $green !default;
 $danger: $red !default;
 $warning: #FFDC00 !default;
+$light: #f8f9fa;
+$dark: #343a40;
 
 $themeColors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $themeColors: map-merge(
   (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "danger":     $danger,
-    "warning":    $warning,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "danger": $danger,
+    "warning": $warning,
+    "info": $teal,
+    "light": $light,
+    "dark": $dark,
+    "body": $font-color
   ),
   $themeColors
 );

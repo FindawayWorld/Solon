@@ -2,8 +2,67 @@ import React from 'react';
 import {ReactComponent as ArrowCTA} from '../svg/arrow-cta.svg';
 
 const ContentPage = () => {
+    const colors = [
+        "aqua",
+        "blue",
+        "navy",
+        "teal",
+        "green",
+        "olive",
+        "lime",
+        "yellow",
+        "orange",
+        "red",
+        "fuchsia",
+        "purple",
+        "maroon",
+        "white",
+        "silver",
+        "gray",
+        "black"
+    ];
+    const brandColors = [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning",
+        "info",
+        "light",
+        "dark",
+        "body",
+    ];
     return (
         <>
+
+            <section id="colors" className="mb-5">
+                <h2>Colors</h2>
+                <hr/>
+
+                <h3>Generic Colors</h3>
+                <div className="swatch-list mb-3">
+                    <div className="row">
+                        {colors.map(color => (
+                            <div className="col-xs-6 col-md-2 txt-center">
+                                <div className={`swatch bg-${color}`}></div>
+                                <p><code>${color}</code></p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <h3>Brand Colors</h3>
+                <div className="swatch-list">
+                    <div className="row">
+                        {brandColors.map(color => (
+                            <div className="col-xs-6 col-md-2 txt-center">
+                                <div className={`swatch bg-${color}`}></div>
+                                <p><code>${color}</code></p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
             <section id="headings" className="mb-5">
                 <h2>Headings</h2>
                 <hr />
