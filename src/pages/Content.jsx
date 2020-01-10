@@ -39,7 +39,8 @@ const ContentPage = () => {
                 <h2>Colors</h2>
                 <hr/>
 
-                <h3>Generic Colors</h3>
+                <h3 className="mb-0">Generic Colors</h3>
+                <p><small>Colors from <a href="http://clrs.cc/">clrs.cc</a></small></p>
                 <div className="swatch-list mb-3">
                     <div className="row">
                         {colors.map(color => (
@@ -63,6 +64,7 @@ const ContentPage = () => {
                     </div>
                 </div>
             </section>
+
             <section id="headings" className="mb-5">
                 <h2>Headings</h2>
                 <hr />

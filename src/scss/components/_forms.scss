@@ -1,5 +1,3 @@
-$form-background-color: $white;
-
 .form-list {
     list-style: none;
     margin: 0;
@@ -167,17 +165,17 @@ label {
     transition: all .15s ease-in-out;
 
     &:-webkit-autofill {
-        background-color: $form-background-color !important;
+        background-color: $white !important;
     }
 
     &:hover,
     &:focus {
-        border-color: $black;
+        border-color: $gray;
         outline: none;
     }
 
     &.input-flat {
-        border-color: $form-background-color;
+        border-color: $white;
     }
 
     &.input-inline {
