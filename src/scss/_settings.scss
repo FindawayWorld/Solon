@@ -68,7 +68,10 @@ $colors: map-merge(
         "white": $white,
         "silver": $silver,
         "gray": $gray,
-        "black": $black
+        "black": $black,
+        "black-50": rgba($black, .5),
+        "white-50": rgba($white, .5),
+        "transparent": transparent !important
     ),
     $colors
 );
