@@ -1,12 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
 import {useFormikContext} from 'formik';
+import {useId} from '@reach/auto-id';
 
 const Input = ({
         label = '',
         labelHelp = null,
         placeholder = null,
-        id = 'input',
+        id = undefined,
         name = null,
         value = undefined,
         initalValue = undefined,
@@ -45,6 +46,7 @@ const Input = ({
     let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
+    id = useId(id);
 
     if (formikContext) {
         value = formikContext.values[id];

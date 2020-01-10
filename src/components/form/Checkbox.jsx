@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import {useFormikContext} from 'formik';
+import {useId} from '@reach/auto-id';
 
 const Checkbox = ({
     checked = undefined,
@@ -23,9 +24,13 @@ const Checkbox = ({
     let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
+    let autoId = useId(id);
 
     if (!id && name && value) {
         id = `${name}_${value}`;
+    }
+    if (!id && !name) {
+        id = autoId;
     }
 
     if (formikContext) {

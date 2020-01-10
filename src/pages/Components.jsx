@@ -86,7 +86,6 @@ const ComponentsPage = () => {
                 <h3>Input and Label</h3>
                 <hr/>
                 <Input
-                    id="input"
                     label="Text Input"
                     placeholder="Placeholder Text"
                 />
