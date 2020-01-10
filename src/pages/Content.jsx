@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as ArrowCTA} from '../svg/arrow-cta.svg';
+import {ReactComponent as ArrowRight} from '../svg/arrow-right.svg';
 
 const ContentPage = () => {
     const colors = [
@@ -138,7 +138,7 @@ const ContentPage = () => {
                     </li>
                     <li>
                         <a href="#link" className="fancy-cta">
-                            Fancy CTA w/ SVG <ArrowCTA />
+                            Fancy CTA w/ SVG <ArrowRight width="1em" height="1em" />
                         </a>
                     </li>
                 </ul>
