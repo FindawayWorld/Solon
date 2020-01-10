@@ -36,16 +36,22 @@ const ContentPage = () => {
         <>
             <section id="colors" className="mb-5">
                 <h2>Colors</h2>
-                <hr/>
+                <hr />
 
                 <h3 className="mb-0">Generic Colors</h3>
-                <p><small>Colors from <a href="http://clrs.cc/">clrs.cc</a></small></p>
+                <p>
+                    <small>
+                        Colors from <a href="http://clrs.cc/">clrs.cc</a>
+                    </small>
+                </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
                         {colors.map(color => (
                             <div className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
-                                <p><code>${color}</code></p>
+                                <p>
+                                    <code>${color}</code>
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -57,7 +63,9 @@ const ContentPage = () => {
                         {brandColors.map(color => (
                             <div className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
-                                <p><code>${color}</code></p>
+                                <p>
+                                    <code>${color}</code>
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -137,7 +145,8 @@ const ContentPage = () => {
                     </li>
                     <li>
                         <a href="#link" className="fancy-cta">
-                            Fancy CTA w/ SVG <ArrowRight width="1em" height="1em" />
+                            Fancy CTA w/ SVG{' '}
+                            <ArrowRight width="1em" height="1em" />
                         </a>
                     </li>
                 </ul>
@@ -210,8 +219,102 @@ const ContentPage = () => {
 
             <section id="icons" className="mb-5">
                 <h2>Icons</h2>
-                <hr/>
-                <p>Use <a href="https://feathericons.com/">Feather Icons</a> for all your icon needs. Unless provided from creative.</p>
+                <hr />
+                <p>
+                    Use <a href="https://feathericons.com/">Feather Icons</a>{' '}
+                    for all your icon needs. Unless provided from creative.
+                </p>
+            </section>
+
+            <section id="tables" className="mb-5">
+                <h2>Tables</h2>
+                <hr />
+
+                <table className="table mb-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">John Doe</th>
+                            <td>jdoe@example.com</td>
+                            <td>Finance</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jane Smith</th>
+                            <td>jsmith@example.com</td>
+                            <td>Web Development</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rick Sanchez</th>
+                            <td>rsanchez@example.com</td>
+                            <td>Science</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Full Width (100%)</h3>
+
+                <table className="table full-width mb-4">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">John Doe</th>
+                            <td>jdoe@example.com</td>
+                            <td>Finance</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jane Smith</th>
+                            <td>jsmith@example.com</td>
+                            <td>Web Development</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rick Sanchez</th>
+                            <td>rsanchez@example.com</td>
+                            <td>Science</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Sriped</h3>
+
+                <table className="table striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Department</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">John Doe</th>
+                            <td>jdoe@example.com</td>
+                            <td>Finance</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Jane Smith</th>
+                            <td>jsmith@example.com</td>
+                            <td>Web Development</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Rick Sanchez</th>
+                            <td>rsanchez@example.com</td>
+                            <td>Science</td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </section>
         </>
     );
