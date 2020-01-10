@@ -74,21 +74,25 @@ const ComponentsPage = () => {
                 <h3>Input and Label</h3>
                 <hr/>
                 <Input
+                    id="input"
                     label="Text Input"
                     placeholder="Placeholder Text"
                 />
 
                 <Input
+                    id="input_prepend"
                     label="Prepend Label"
                     prependLabel={true}
                 />
 
                 <Input
+                    id="input_append"
                     label="Appended Component"
                     append={<button className="btn btn-primary">Submit</button>}
                 />
 
                 <Input
+                    id="input_error"
                     label="With Error"
                     errors="This is an error message."
                     touched={true}
@@ -98,6 +102,7 @@ const ComponentsPage = () => {
                 <hr/>
                 <div>
                     <Select
+                        id="select"
                         label="Single Select"
                     >
                         <option value="1">Option 1</option>
@@ -108,6 +113,7 @@ const ComponentsPage = () => {
                     </Select>
 
                     <Select
+                        id="select_multiple"
                         label="Multiple Select"
                         multiple
                     >
@@ -122,7 +128,8 @@ const ComponentsPage = () => {
                 <h3>Text Area</h3>
                 <hr/>
                 <TextArea
-                            label="Text Area"
+                    id="text_area"
+                    label="Text Area"
                 />
 
                 <h3>Checkbox</h3>
