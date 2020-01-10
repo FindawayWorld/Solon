@@ -7,6 +7,16 @@
 @function tint($color, $percent) {
   @return mix(#fff, $color, $percent);
 }
+// Color contrast
+@function color-yiq($color, $dark: $black, $light: $white) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @return if($yiq >= 200, $dark, $light);
+}
 
 // $xxlarge: 'only screen and (min-width: 102.4em)';
 $xlarge: 'only screen and (min-width: 1200px)';
@@ -68,16 +78,13 @@ $colors: map-merge(
         "white": $white,
         "silver": $silver,
         "gray": $gray,
-        "black": $black,
-        "black-50": rgba($black, .5),
-        "white-50": rgba($white, .5),
-        "transparent": transparent !important
+        "black": $black
     ),
     $colors
 );
 
 $primary: $blue;
-$secondary: $silver;
+$secondary: $gray;
 $success: $green !default;
 $danger: $red !default;
 $warning: #FFDC00 !default;
@@ -95,8 +102,7 @@ $themeColors: map-merge(
     "warning": $warning,
     "info": $teal,
     "light": $light,
-    "dark": $dark,
-    "body": $font-color
+    "dark": $dark
   ),
   $themeColors
 );

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
+
+import {titleCase} from '../utils';
 
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
@@ -8,6 +11,7 @@ import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import {Formik, Form} from 'formik';
 import {object, string, boolean, array} from 'yup';
+import {brandColors} from './Content';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
@@ -19,8 +23,10 @@ const ComponentsPage = () => {
                 <hr/>
 
                 <p>
-                    <button className="btn mr-3">Default</button>
-                    <button className="btn btn-primary">Primary</button>
+                    {brandColors.map(color => <button className={classnames('btn mr-3', `btn-${color}`)}>{titleCase(color)}</button>)}
+                </p>
+                <p>
+                    {brandColors.map(color => <button className={classnames('btn mr-3', `btn-outline-${color}`)}>{titleCase(color)}</button>)}
                 </p>
             </section>
 

@@ -52,24 +52,64 @@
     }
 }
 
-.btn-danger {
-    background-color: $red;
-    border-color: $red;
-    color: $white;
+@mixin make-button (
+    $background,
+    $border,
+    $color: color-yiq($background),
+    $hover-background: darken($background, 7.5%),
+    $hover-border: darken($border, 10%),
+    $hover-color: color-yiq($hover-background),
+    $active-background: darken($background, 10%),
+    $active-border: darken($border, 12.5%),
+    $active-color: color-yiq($active-background)
+) {
+    background-color: $background;
+    border-color: $border;
+    color: $color;
 
     &:hover, &:focus {
-        background-color: shade($red, 15%);
-        border-color: shade($red, 15%);
-        color: $white;
+        background-color: $hover-background;
+        border-color: $hover-border;
+        color: $hover-color;
+    }
+    &:active {
+        background-color: $active-background;
+        border-color: $active-border;
+        color: $active-color;
     }
 }
 
-.btn-dark {
-    background-color: #384D8F;
-    padding: .5rem 4rem;
+@mixin make-outline-button (
+    $color,
+    $color-hover: color-yiq($color),
+    $active-background: $color,
+    $active-border: $color,
+    $active-color: color-yiq($active-background)
+) {
+    border-color: $color;
+    color: $color;
 
     &:hover, &:focus {
-        background-color: tint(#384D8F, 10%);
+        background-color: $color;
+        border-color: $color;
+        color: $color-hover;
+    }
+    &:active {
+        background-color: $active-background;
+        border-color: $active-border;
+        color: $active-color;
+    }
+}
+
+@each $color, $value in $themeColors {
+    .btn-#{$color} {
+        @include make-button($value, $value);
+    }
+}
+
+@each $color, $value in $themeColors {
+    .btn-outline-#{$color} {
+        @include make-outline-button($value);
     }
 }
 

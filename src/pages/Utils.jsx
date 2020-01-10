@@ -1,44 +1,32 @@
 import React from 'react';
+import classnames from 'classnames';
+import { brandColors } from './Content';
 
 const UtilsPage = () => (
     <>
         <section id="color-utils" className="mb-5">
             <h2 className="mb-0">Color Utils</h2>
             <p><small>Based on <a href="https://getbootstrap.com/docs/4.3/utilities/colors/">Bootstrap Color Utils</a></small></p>
-
             <hr/>
+
+            <h3>Text color</h3>
             <p className="bd-lead">Convey meaning through color with a handful of color utility classes.</p>
             <div className="bd-example">
-                <p className="txt-primary">.txt-primary</p>
-                <p className="txt-secondary">.txt-secondary</p>
-                <p className="txt-success">.txt-success</p>
-                <p className="txt-danger">.txt-danger</p>
-                <p className="txt-warning">.txt-warning</p>
-                <p className="txt-info">.txt-info</p>
-                <p className="txt-light bg-dark">.txt-light</p>
-                <p className="txt-dark">.txt-dark</p>
-                <p className="txt-body">.txt-body</p>
-                <p className="txt-muted">.txt-muted</p>
-                <p className="txt-white bg-dark">.txt-white</p>
-                <p className="txt-black-50">.txt-black-50</p>
-                <p className="txt-white-50 bg-dark">.txt-white-50</p>
+                {brandColors.map(color => <p className={classnames(`txt-${color}`, {'bg-dark': ['white', 'light'].includes(color)})}>{`.txt-${color}`}</p>)}
             </div>
 
-            <h3 id="background-color">Background color</h3>
-
+            <h3>Background color</h3>
             <p>Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes. Background utilities <strong>do not set <code className="highlighter-rouge">color</code></strong>, so in some cases you’ll want to use <code className="highlighter-rouge">.text-*</code> utilities.</p>
 
             <div className="bd-example">
-                <div className="p-3 mb-2 bg-primary txt-white">.bg-primary</div>
-                <div className="p-3 mb-2 bg-secondary txt-white">.bg-secondary</div>
-                <div className="p-3 mb-2 bg-success txt-white">.bg-success</div>
-                <div className="p-3 mb-2 bg-danger txt-white">.bg-danger</div>
-                <div className="p-3 mb-2 bg-warning txt-dark">.bg-warning</div>
-                <div className="p-3 mb-2 bg-info txt-white">.bg-info</div>
-                <div className="p-3 mb-2 bg-light txt-dark">.bg-light</div>
-                <div className="p-3 mb-2 bg-dark txt-white">.bg-dark</div>
-                <div className="p-3 mb-2 bg-white txt-dark">.bg-white</div>
-                <div className="p-3 mb-2 bg-transparent txt-dark">.bg-transparent</div>
+                {brandColors.map(color => {
+                    return (
+                        <p className={classnames('p-3 mb-2', `bg-${color}`, {
+                            'txt-dark': ['white', 'light'].includes(color),
+                            'txt-white': !['white', 'light'].includes(color)
+                        })}>{`.bg-${color}`}</p>
+                    )
+                })}
             </div>
 
         </section>

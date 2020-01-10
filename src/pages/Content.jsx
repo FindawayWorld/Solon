@@ -1,40 +1,39 @@
 import React from 'react';
 import {ReactComponent as ArrowRight} from '../svg/arrow-right.svg';
 
+export const colors = [
+    "aqua",
+    "blue",
+    "navy",
+    "teal",
+    "green",
+    "olive",
+    "lime",
+    "yellow",
+    "orange",
+    "red",
+    "fuchsia",
+    "purple",
+    "maroon",
+    "white",
+    "silver",
+    "gray",
+    "black"
+];
+export const brandColors = [
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark"
+];
+
 const ContentPage = () => {
-    const colors = [
-        "aqua",
-        "blue",
-        "navy",
-        "teal",
-        "green",
-        "olive",
-        "lime",
-        "yellow",
-        "orange",
-        "red",
-        "fuchsia",
-        "purple",
-        "maroon",
-        "white",
-        "silver",
-        "gray",
-        "black"
-    ];
-    const brandColors = [
-        "primary",
-        "secondary",
-        "success",
-        "danger",
-        "warning",
-        "info",
-        "light",
-        "dark",
-        "body",
-    ];
     return (
         <>
-
             <section id="colors" className="mb-5">
                 <h2>Colors</h2>
                 <hr/>
