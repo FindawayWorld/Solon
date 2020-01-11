@@ -23,10 +23,11 @@ const ComponentsPage = () => {
                 <hr/>
 
                 <p>
-                    {brandColors.map(color => <button className={classnames('btn mr-3', `btn-${color}`)}>{titleCase(color)}</button>)}
+                    {brandColors.map(color => <button className={classnames('btn mr-1', `btn-${color}`)}>{titleCase(color)}</button>)}
+                    <button className="btn btn-link">Link</button>
                 </p>
                 <p>
-                    {brandColors.map(color => <button className={classnames('btn mr-3', `btn-outline-${color}`)}>{titleCase(color)}</button>)}
+                    {brandColors.map(color => <button className={classnames('btn mr-1', `btn-outline-${color}`)}>{titleCase(color)}</button>)}
                 </p>
             </section>
 
