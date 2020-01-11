@@ -29,6 +29,16 @@ const ComponentsPage = () => {
                 <p>
                     {brandColors.map(color => <button className={classnames('btn mr-1', `btn-outline-${color}`)}>{titleCase(color)}</button>)}
                 </p>
+
+                <h3>Button Tags</h3>
+                <p>The .btn classes are designed to be used with the <code>&lt;button&gt;</code> element. However, you can also use these classes on <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though some browsers may apply a slightly different rendering).</p>
+                <p>
+                    <a class="btn btn-primary mr-1" href="#demo" role="button">Link/Anchor</a>
+                    <button class="btn btn-primary mr-1" type="submit">Button</button>
+                    <input class="btn btn-primary mr-1" type="button" value="Input"/>
+                    <input class="btn btn-primary mr-1" type="submit" value="Submit"/>
+                    <input class="btn btn-primary mr-1" type="reset" value="Reset"/>
+                </p>
             </section>
 
             <section className="mb-5">
