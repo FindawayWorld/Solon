@@ -1,0 +1,62 @@
+/* Menu Button */
+/* Use Reach-UI Menu Button */
+/* https://reacttraining.com/reach-ui/menu-button */
+
+/* Used to detect in JavaScript if apps have loaded styles or not. */
+:root {
+  --reach-menu-button: 1;
+}
+
+[data-reach-menu] {
+  display: block;
+  position: absolute;
+}
+
+[data-reach-menu-list],
+[data-reach-menu-items] {
+  display: block;
+  white-space: nowrap;
+  border: solid rem(1) $border-color;
+  background: $white;
+  border-radius: $border-radius;
+  outline: none;
+  padding: 1rem 0;
+  font-size: 85%;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+[data-reach-menu-item] {
+  display: block;
+  user-select: none;
+}
+
+/*
+ The dom structure of a MenuLink is reach-menu-item > a,
+ so to target all items we can use `data-reach-menu-item`
+*/
+[data-reach-menu-item] {
+
+  /* reach-menu-item */
+  cursor: pointer;
+
+  /* a */
+  display: block;
+  color: inherit;
+  font: inherit;
+  text-decoration: initial;
+
+  /* both */
+  padding: 5px 20px;
+}
+
+/* pseudo pseudo selector */
+[data-reach-menu-item][data-selected] {
+  background: shade($light, 3%);
+  outline: none;
+}
+
+[data-reach-menu] {
+  display: block;
+  position: absolute;
+}

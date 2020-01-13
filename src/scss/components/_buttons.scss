@@ -112,3 +112,9 @@
         @include make-outline-button($value);
     }
 }
+
+.button-dropdown {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}

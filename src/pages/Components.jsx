@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 import {titleCase} from '../utils';
 
+import {Link} from 'react-router-dom';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
@@ -13,6 +14,8 @@ import {Formik, Form} from 'formik';
 import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
 
+import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuItems,  MenuPopover,  MenuLink} from "@reach/menu-button";
+
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
@@ -20,41 +23,86 @@ const ComponentsPage = () => {
         <>
             <section id="Buttons" className="mb-5">
                 <h2>Buttons</h2>
-                <hr/>
+                <hr />
 
                 <p>
-                    {brandColors.map(color => <button className={classnames('btn mr-1', `btn-${color}`)}>{titleCase(color)}</button>)}
+                    {brandColors.map(color => (
+                        <button
+                            className={classnames('btn mr-1', `btn-${color}`)}
+                        >
+                            {titleCase(color)}
+                        </button>
+                    ))}
                     <button className="btn btn-link">Link</button>
                 </p>
                 <p>
-                    {brandColors.map(color => <button className={classnames('btn mr-1', `btn-outline-${color}`)}>{titleCase(color)}</button>)}
+                    {brandColors.map(color => (
+                        <button
+                            className={classnames(
+                                'btn mr-1',
+                                `btn-outline-${color}`
+                            )}
+                        >
+                            {titleCase(color)}
+                        </button>
+                    ))}
                 </p>
 
                 <h3>Button Tags</h3>
-                <p>The .btn classes are designed to be used with the <code>&lt;button&gt;</code> element. However, you can also use these classes on <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though some browsers may apply a slightly different rendering).</p>
                 <p>
-                    <a class="btn btn-primary mr-1" href="#demo" role="button">Link/Anchor</a>
-                    <button class="btn btn-primary mr-1" type="submit">Button</button>
-                    <input class="btn btn-primary mr-1" type="button" value="Input"/>
-                    <input class="btn btn-primary mr-1" type="submit" value="Submit"/>
-                    <input class="btn btn-primary mr-1" type="reset" value="Reset"/>
+                    The .btn classes are designed to be used with the{' '}
+                    <code>&lt;button&gt;</code> element. However, you can also
+                    use these classes on <code>&lt;a&gt;</code> or{' '}
+                    <code>&lt;input&gt;</code> elements (though some browsers
+                    may apply a slightly different rendering).
                 </p>
+                <p>
+                    <a
+                        className="btn btn-primary mr-1"
+                        href="#demo"
+                        role="button"
+                    >
+                        Link/Anchor
+                    </a>
+                    <button className="btn btn-primary mr-1" type="submit">
+                        Button
+                    </button>
+                    <input
+                        className="btn btn-primary mr-1"
+                        type="button"
+                        value="Input"
+                    />
+                    <input
+                        className="btn btn-primary mr-1"
+                        type="submit"
+                        value="Submit"
+                    />
+                    <input
+                        className="btn btn-primary mr-1"
+                        type="reset"
+                        value="Reset"
+                    />
+                </p>
+
+                <h3>Reach-UI MenuButton</h3>
+                <Menu>
+                    <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
+                    <MenuList className="dropdown-menu">
+                        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+                        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+                        <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
+                        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+                        <MenuLink as={Link} to="/content">Go to Content Page</MenuLink>
+                    </MenuList>
+                </Menu>
             </section>
 
             <section className="mb-5">
                 <h2>Pagination</h2>
-                <hr/>
+                <hr />
 
-                <Pagination
-                    numPages={100}
-                    perPage={10}
-                    currentPage={1}
-                />
-                <Pagination
-                    numPages={1000}
-                    perPage={20}
-                    currentPage={60}
-                />
+                <Pagination numPages={100} perPage={10} currentPage={1} />
+                <Pagination numPages={1000} perPage={20} currentPage={60} />
                 <Pagination
                     numPages={1000}
                     perPage={20}
@@ -73,33 +121,60 @@ const ComponentsPage = () => {
 
             <section id="modal" className="mb-5">
                 <h2>Modal</h2>
-                <hr/>
+                <hr />
 
-                <button className="btn btn-primary mb-3" onClick={() => setCurrentModal('a')}>Show Modal</button>
-                <Modal visible={currentModal === 'a'} onClose={() => setCurrentModal(null)}>
+                <button
+                    className="btn btn-primary mb-3"
+                    onClick={() => setCurrentModal('a')}
+                >
+                    Show Modal
+                </button>
+                <Modal
+                    visible={currentModal === 'a'}
+                    onClose={() => setCurrentModal(null)}
+                >
                     <h1>Modal</h1>
-                    <p>By default modal windows will be centered horizontally, and fixed to <code>2rem</code> from the top of the window. To center a modal both vertically and horizontally use the <code>center</code> prop.</p>
+                    <p>
+                        By default modal windows will be centered horizontally,
+                        and fixed to <code>2rem</code> from the top of the
+                        window. To center a modal both vertically and
+                        horizontally use the <code>center</code> prop.
+                    </p>
                 </Modal>
 
-                <button className="btn btn-primary" onClick={() => setCurrentModal('centered')}>Show Centered Modal</button>
-                <Modal visible={currentModal === 'centered'} onClose={() => setCurrentModal(null)} center>
+                <button
+                    className="btn btn-primary"
+                    onClick={() => setCurrentModal('centered')}
+                >
+                    Show Centered Modal
+                </button>
+                <Modal
+                    visible={currentModal === 'centered'}
+                    onClose={() => setCurrentModal(null)}
+                    center
+                >
                     <h1>Centered Modal</h1>
-                    <p>This modal will always be centered both vertically and horizontally in the window. <strong>WARNING:</strong> This could cause content to get cut off on certain screen heights.</p>
+                    <p>
+                        This modal will always be centered both vertically and
+                        horizontally in the window. <strong>WARNING:</strong>{' '}
+                        This could cause content to get cut off on certain
+                        screen heights.
+                    </p>
                 </Modal>
             </section>
 
             <section id="forms" className="mb-5">
                 <h2>Forms</h2>
-                <p>Forms should be built with <a href="https://jaredpalmer.com/formik/">Formik</a>.</p>
+                <p>
+                    Forms should be built with{' '}
+                    <a href="https://jaredpalmer.com/formik/">Formik</a>.
+                </p>
                 <p>Form markup is derrived from Bootstrap.</p>
-                <hr/>
+                <hr />
 
                 <h3>Input and Label</h3>
-                <hr/>
-                <Input
-                    label="Text Input"
-                    placeholder="Placeholder Text"
-                />
+                <hr />
+                <Input label="Text Input" placeholder="Placeholder Text" />
 
                 <Input
                     id="input_prepend"
@@ -121,12 +196,9 @@ const ComponentsPage = () => {
                 />
 
                 <h3>Select</h3>
-                <hr/>
+                <hr />
                 <div>
-                    <Select
-                        id="select"
-                        label="Single Select"
-                    >
+                    <Select id="select" label="Single Select">
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
                         <option value="3">Option 3</option>
@@ -148,18 +220,12 @@ const ComponentsPage = () => {
                 </div>
 
                 <h3>Text Area</h3>
-                <hr/>
-                <TextArea
-                    id="text_area"
-                    label="Text Area"
-                />
+                <hr />
+                <TextArea id="text_area" label="Text Area" />
 
                 <h3>Checkbox</h3>
-                <hr/>
-                <Checkbox
-                    label="Checkbox"
-                    id="checkbox_1"
-                />
+                <hr />
+                <Checkbox label="Checkbox" id="checkbox_1" />
 
                 <Checkbox
                     label="With Errors"
@@ -169,43 +235,62 @@ const ComponentsPage = () => {
                 />
 
                 <h3>Formik Example</h3>
-                <hr/>
+                <hr />
                 <Formik
                     initialValues={{
                         name: 'Test Name',
                         signup: false,
                         fav_fruit: 'avocado',
-                        jobType: []
+                        jobType: [],
                     }}
-                    validationSchema={
-                        object().shape({
-                            name: string().required(),
-                            signup: boolean().oneOf([true], 'Please sign up for news'),
-                            fav_fruit: string().required('Please choose a fruit'),
-                            jobType: array()
-                        })
-                    }
-                    onSubmit={(values) => alert(JSON.stringify(values, null, 4))}
+                    validationSchema={object().shape({
+                        name: string().required(),
+                        signup: boolean().oneOf(
+                            [true],
+                            'Please sign up for news'
+                        ),
+                        fav_fruit: string().required('Please choose a fruit'),
+                        jobType: array(),
+                    })}
+                    onSubmit={values => alert(JSON.stringify(values, null, 4))}
                 >
                     <Form>
                         <Input id="name" label="name" />
                         <Checkbox id="signup" label="Sign up for news" />
                         <Select id="fav_fruit" label="Favorite Fruit">
                             <option value="">Select a fruit</option>
-                            {fruits.map(item => <option key={item} value={item}>{item}</option>)}
+                            {fruits.map(item => (
+                                <option key={item} value={item}>
+                                    {item}
+                                </option>
+                            ))}
                         </Select>
                         <div className="label">
                             What best describes you? (check all that apply)
                         </div>
-                            <Checkbox label="Designer" name="jobType" value="designer" />
-                            <Checkbox label="Developer" name="jobType" value="developer" />
-                            <Checkbox label="Product Manager" name="jobType" value="product" />
-                        <button className="btn btn-primary" type="submit">Submit</button>
+                        <Checkbox
+                            label="Designer"
+                            name="jobType"
+                            value="designer"
+                        />
+                        <Checkbox
+                            label="Developer"
+                            name="jobType"
+                            value="developer"
+                        />
+                        <Checkbox
+                            label="Product Manager"
+                            name="jobType"
+                            value="product"
+                        />
+                        <button className="btn btn-primary" type="submit">
+                            Submit
+                        </button>
                     </Form>
                 </Formik>
             </section>
         </>
-    )
+    );
 };
 
 export default ComponentsPage;
