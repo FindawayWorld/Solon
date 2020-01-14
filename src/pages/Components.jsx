@@ -14,7 +14,7 @@ import {Formik, Form} from 'formik';
 import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
 
-import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuItems,  MenuPopover,  MenuLink} from "@reach/menu-button";
+import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
