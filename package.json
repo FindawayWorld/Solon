@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://findawayworld.github.io/gateway",
+  "license" : "MIT",
   "dependencies": {
     "@reach/auto-id": "^0.7.1",
     "@reach/menu-button": "^0.7.2",
