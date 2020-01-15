@@ -29,7 +29,9 @@
     background-color:$white;
     border: 1px solid $border-color;
 
-    &:hover {
+    &:hover,
+    &:active,
+    &:focus {
         z-index: 2;
         color: $white;
         text-decoration: none;

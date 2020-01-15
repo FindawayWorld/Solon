@@ -246,8 +246,23 @@ textarea.form-control {
     -moz-appearance: none;
     appearance: none;
 
-    &[multiple] {
-        background: none;
+    &:focus {
+        &::-ms-value {
+            // For visual consistency with other platforms/browsers,
+            // suppress the default white text on blue background highlight given to
+            // the selected option text when the (still closed) <select> receives focus
+            // in IE and (under certain conditions) Edge.
+            // See https://github.com/twbs/bootstrap/issues/19398.
+            color: $font-color;
+            background-color: $white;
+        }
+    }
+
+    &[multiple],
+    &[size]:not([size="1"]) {
+        height: auto;
+        padding-right: .75rem;
+        background-image: none;
     }
 
     &.is-invalid {
@@ -257,6 +272,15 @@ textarea.form-control {
         &[multiple] {
             background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E") #fff no-repeat center right 1.75rem/calc(.75em + .375rem) calc(.75em + .375rem);
         }
+    }
+    // Hides the default caret in IE11
+    &::-ms-expand {
+        display: none;
+    }
+    // Remove outline from select box in FF
+    &:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 $font-color;
     }
 }
 
