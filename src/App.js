@@ -14,7 +14,7 @@ import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
 import {ReactComponent as ExternalLinkIcon} from './svg/external-link.svg';
 
-const NavLink = ({to, children, className, activeClass, activeWhenExact =  true}) => {
+const NavLink = ({to, children, className, activeClass, activeWhenExact = true}) => {
     let match = useRouteMatch({
         path: to,
         exact: activeWhenExact

@@ -5,7 +5,7 @@ import classnames from 'classnames';
 // Test to deterimine if we have a hidden scrollbar (MacOS, mobile/touch);
 export const testForHiddenScrollbar = () => {
     let elem = document.createElement('div');
-    elem.style = 'width: 100px; height: 100px; overflow: scroll;top: -9999999rem; left: -999999rem; position:absolute;';
+    elem.style.cssText = 'width: 100px; height: 100px; overflow: scroll;top: -9999999rem; left: -999999rem; position:absolute;';
     document.body.appendChild(elem);
     const result = elem.offsetWidth === elem.clientWidth;
     document.body.removeChild(elem);
