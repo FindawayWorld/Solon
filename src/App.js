@@ -12,6 +12,8 @@ import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';
 import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
+import JSPage from './pages/Javascript';
+
 import {ReactComponent as ExternalLinkIcon} from './svg/external-link.svg';
 import {ReactComponent as GatewayLogo} from './svg/GatewayLogo.svg';
 
@@ -41,6 +43,7 @@ function App() {
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/content">Content</NavLink></li>
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/components">Components</NavLink></li>
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/utils">Utils</NavLink></li>
+                        <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/javascript">Javascript</NavLink></li>
                         <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <ExternalLinkIcon width=".875em" height=".875em" /></a></li>
                     </ul>
                 </div>
@@ -59,6 +62,9 @@ function App() {
                     </Route>
                     <Route path="/utils">
                         <UtilsPage />
+                    </Route>
+                    <Route path="/javascript">
+                        <JSPage />
                     </Route>
                 </Switch>
                 </div>
