@@ -17,7 +17,22 @@
     }
 
     .branding a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         color: $font-color;
+
+        svg {
+            margin-right: .5rem;
+        }
+
+        &:hover,
+        &:focus,
+        &.active {
+            text-decoration: underline;
+            text-decoration-color: $blue;
+            border-bottom: none;
+        }
     }
 
     ul {

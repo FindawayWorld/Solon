@@ -13,6 +13,7 @@ import ContentPage from './pages/Content';
 import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
 import {ReactComponent as ExternalLinkIcon} from './svg/external-link.svg';
+import {ReactComponent as GatewayLogo} from './svg/GatewayLogo.svg';
 
 const NavLink = ({to, children, className, activeClass, activeWhenExact = true}) => {
     let match = useRouteMatch({
@@ -35,7 +36,7 @@ function App() {
         <Router>
             <div className="site-header">
                 <div className="container">
-                    <h1 className="branding"><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/">Gateway</NavLink></h1>
+                    <h1 className="branding"><NavLink activeClass="active" activeWhenExact to="/"><GatewayLogo height="1.5em" width="auto" /> Gateway</NavLink></h1>
                     <ul className="list-inline">
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/content">Content</NavLink></li>
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/components">Components</NavLink></li>
