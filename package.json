@@ -2,7 +2,7 @@
   "name": "gateway",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://findawayworld.github.io/gateway",
+  "homepage": "http://gateway.findaway.com",
   "license": "MIT",
   "dependencies": {
     "@reach/auto-id": "^0.7.2",
