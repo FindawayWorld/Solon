@@ -10,6 +10,8 @@ import TextArea from '../components/form/TextArea';
 import Checkbox from '../components/form/Checkbox';
 import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
+import FormattedCurrency from '../components/FormattedCurrency';
+
 import {Formik, Form} from 'formik';
 import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
@@ -117,6 +119,19 @@ const ComponentsPage = () => {
                     showJumpFirst
                     showJumpLast
                 />
+            </section>
+
+            <section id="formatted-currency" className="mb-5">
+                <h2>Formatted Currency</h2>
+                <hr/>
+                <p>Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop and return a <code>String</code>.</p>
+                <p>This uses the <code>window.Intl.NumberFormat</code> function, you may need to include a <a href="https://polyfill.io">polyfill</a>.</p>
+
+                <p><FormattedCurrency value={10.56} currency="USD" /></p>
+                <p><FormattedCurrency value="230.99" currency="EUR" /></p>
+                <p><FormattedCurrency value={16.75} currency="JPY" /></p>
+                <p><FormattedCurrency value={123456.789} curency="CAD" /></p>
+
             </section>
 
             <section id="modal" className="mb-5">

@@ -234,6 +234,10 @@ $spacers: map-merge(
         }
     }
 
+    .col-#{$size}-auto {
+        flex-basis: auto;
+    }
+
     .col-#{$size}-centered,
     .col-#{$size}-centered:last-child {
         margin-left: auto;
