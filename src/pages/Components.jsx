@@ -17,6 +17,8 @@ import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
 
 import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
+import FormattedPlural from '../components/FormattedPlural';
+import Loading from '../components/Loading';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
@@ -131,7 +133,29 @@ const ComponentsPage = () => {
                 <p><FormattedCurrency value="230.99" currency="EUR" /></p>
                 <p><FormattedCurrency value={16.75} currency="JPY" /></p>
                 <p><FormattedCurrency value={123456.789} curency="CAD" /></p>
+            </section>
 
+            <section id="formatted-currency" className="mb-5">
+                <h2>Formatted Plural</h2>
+                <hr/>
+                <p>Return a plural string based on a given <code>value</code>.</p>
+
+                <p>10 <FormattedPlural value={10} one="Car" many="Cars" /></p>
+                <p>1 <FormattedPlural value={1} one="Bike" many="Bikes" /></p>
+                <p>0 <FormattedPlural value={0} one="Scooter" many="Scooters" /></p>
+            </section>
+
+            <section>
+                <h2>Loading Animation</h2>
+                <hr/>
+
+                <Loading />
+
+                <p>Inline Loading <Loading inline /></p>
+
+                <p className="bg-dark txt-white p-3">
+                    Inverted <Loading invert />
+                </p>
             </section>
 
             <section id="modal" className="mb-5">
