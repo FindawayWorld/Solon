@@ -10,7 +10,7 @@ const Input = ({
         id = undefined,
         name = null,
         value = undefined,
-        initalValue = undefined,
+        initialValue = undefined,
         required = false,
         className = '',
         type = 'text',
@@ -109,7 +109,7 @@ const Input = ({
 
                     style={inputStyles}
                     value={value}
-                    defaultValue={initalValue}
+                    defaultValue={initialValue}
                     type={type}
                     name={name || id}
                     id={id}
