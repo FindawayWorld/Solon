@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { brandColors } from './Content';
+import UseAxiosGetByIdDemo from '../boiler/UseAxiosGetByIdDemo'
 
 const UtilsPage = () => (
     <>
@@ -12,7 +13,7 @@ const UtilsPage = () => (
             <h3>Text color</h3>
             <p className="bd-lead">Convey meaning through color with a handful of color utility classes.</p>
             <div className="bd-example">
-                {brandColors.map(color => <p className={classnames(`txt-${color}`, {'bg-dark': ['white', 'light'].includes(color)})}>{`.txt-${color}`}</p>)}
+                {brandColors.map(color => <p key={Math.random() + '_gold'} className={classnames(`txt-${color}`, {'bg-dark': ['white', 'light'].includes(color)})}>{`.txt-${color}`}</p>)}
             </div>
 
             <h3>Background color</h3>
@@ -21,7 +22,7 @@ const UtilsPage = () => (
             <div className="bd-example">
                 {brandColors.map(color => {
                     return (
-                        <p className={classnames('p-3 mb-2', `bg-${color}`, {
+                        <p key={Math.random() + '_gold'} className={classnames('p-3 mb-2', `bg-${color}`, {
                             'txt-dark': ['white', 'light'].includes(color),
                             'txt-white': !['white', 'light'].includes(color)
                         })}>{`.bg-${color}`}</p>
@@ -442,7 +443,7 @@ const UtilsPage = () => (
                 </div>
             </section>
 
-            <section className="page-section">
+            <section className="page-section mb-5">
                 <h3 className="mb-3">Reversing</h3>
 
                 <p className="mb-2"><code>.row.reverse</code></p>
@@ -458,6 +459,16 @@ const UtilsPage = () => (
                                 <div className="col-xs-2"><div className="box-nested">6</div></div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="page-section">
+                <h3  className="mb-3">useAxiosGetById</h3>
+                <p><code>{`useAxiosGet(baseUrl: string, headers: obj, id: string)`}</code></p>
+                <div className="row">
+                    <div className="col-xs-12">
+                        <UseAxiosGetByIdDemo />
                     </div>
                 </div>
             </section>
