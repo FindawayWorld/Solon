@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-import {titleCase} from '../utils';
+import {titleCase} from '../../utils';
 
 import {Link} from 'react-router-dom';
-import Input from '../components/form/Input';
-import Select from '../components/form/Select';
-import TextArea from '../components/form/TextArea';
-import Checkbox from '../components/form/Checkbox';
-import Pagination from '../components/Pagination';
-import Modal from '../components/Modal';
-import FormattedCurrency from '../components/FormattedCurrency';
+import Input from '../../components/form/Input';
+import Select from '../../components/form/Select';
+import TextArea from '../../components/form/TextArea';
+import Checkbox from '../../components/form/Checkbox';
+import Pagination from '../../components/Pagination';
+import Modal from '../../components/Modal';
+import FormattedCurrency from '../../components/FormattedCurrency';
 
 import {Formik, Form} from 'formik';
 import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
 
 import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
-import FormattedPlural from '../components/FormattedPlural';
-import Loading from '../components/Loading';
+import FormattedPlural from '../../components/FormattedPlural';
+import Loading from '../../components/Loading';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
@@ -32,6 +32,7 @@ const ComponentsPage = () => {
                 <p>
                     {brandColors.map(color => (
                         <button
+                            key={Math.random() + '_button'}
                             className={classnames('btn mr-1', `btn-${color}`)}
                         >
                             {titleCase(color)}
@@ -42,6 +43,7 @@ const ComponentsPage = () => {
                 <p>
                     {brandColors.map(color => (
                         <button
+                            key={Math.random() + '_button'}
                             className={classnames(
                                 'btn mr-1',
                                 `btn-outline-${color}`

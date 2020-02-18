@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
-import { useAxiosGetById } from '../hooks/useAxiosGetById';
+import { useAxiosGetById } from '../../hooks/useAxiosGetById';
 // import {useRouteMatch} from 'react-router-dom';
-import { useWhyDidYouUpdate } from '../hooks/useWhyDidYouUpdate';
+// import { useWhyDidYouUpdate } from '../../hooks/useWhyDidYouUpdate';
 export const UseAxiosGetByIdExample = props => {
-    useWhyDidYouUpdate('UseAxiosGetByIdExample', props);
+    // useWhyDidYouUpdate('UseAxiosGetByIdExample', props);
     /*
         Typical scenario: extract id from url, though id can come from elsewhere (i.e. user form input)
     */

@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { brandColors } from './Content';
-import UseAxiosGetByIdDemo from '../boiler/UseAxiosGetByIdDemo'
+import UseAxiosGetByIdDemo from '../demos/UseAxiosGetByIdDemo'
 
 const UtilsPage = () => (
     <>
