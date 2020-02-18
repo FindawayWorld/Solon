@@ -47,7 +47,7 @@ const ContentPage = () => {
                 <div className="swatch-list mb-3">
                     <div className="row">
                         {colors.map(color => (
-                            <div className="col-xs-6 col-md-2 txt-center">
+                            <div key={`txt-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
                                     <code>${color}</code>
@@ -61,7 +61,7 @@ const ContentPage = () => {
                 <div className="swatch-list">
                     <div className="row">
                         {brandColors.map(color => (
-                            <div className="col-xs-6 col-md-2 txt-center">
+                            <div key={`txt-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
                                     <code>${color}</code>
