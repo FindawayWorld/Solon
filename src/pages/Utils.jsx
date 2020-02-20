@@ -30,6 +30,15 @@ const UtilsPage = () => (
             </div>
         </section>
 
+        <section id="text-alignment">
+            <h2>Text Alignment</h2>
+            <hr/>
+
+            <p className="txt-left">Text aligned left (default) <code>.txt-left</code></p>
+            <p className="txt-right">Text aligned right <code>.txt-right</code></p>
+            <p className="txt-center">Text aligned center <code>.txt-center</code></p>
+        </section>
+
         <section id="spacing-utils" className="mb-5">
             <h2 className="mb-0">Spacing Utils</h2>
             <p><small>Based on <a href="https://getbootstrap.com/docs/4.3/utilities/spacing/" target="_blank" rel="noopener noreferrer">Bootstrap Spacing Utils</a>.</small></p>
