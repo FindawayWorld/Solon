@@ -63,15 +63,15 @@ li > svg {
 }
 
 .txt-center {
-    text-align: center;
+    text-align: center !important;
 }
 
-.txt-primary {
-    color: $primary;
+.txt-right {
+    text-align: right !important;
 }
 
-.txt-secondary {
-    color: $secondary;
+.txt-left {
+    text-align: left !important;
 }
 
 .txt-bold {
