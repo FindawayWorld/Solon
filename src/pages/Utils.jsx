@@ -12,7 +12,7 @@ const UtilsPage = () => (
             <h3>Text color</h3>
             <p className="bd-lead">Convey meaning through color with a handful of color utility classes.</p>
             <div className="bd-example">
-                {brandColors.map(color => <p className={classnames(`txt-${color}`, {'bg-dark': ['white', 'light'].includes(color)})}>{`.txt-${color}`}</p>)}
+                {brandColors.map(color => <p key={`txt-${color}`} className={classnames(`txt-${color}`, {'bg-dark': ['white', 'light'].includes(color)})}>{`.txt-${color}`}</p>)}
             </div>
 
             <h3>Background color</h3>
@@ -21,7 +21,7 @@ const UtilsPage = () => (
             <div className="bd-example">
                 {brandColors.map(color => {
                     return (
-                        <p className={classnames('p-3 mb-2', `bg-${color}`, {
+                        <p key={`bg-${color}`} className={classnames('p-3 mb-2', `bg-${color}`, {
                             'txt-dark': ['white', 'light'].includes(color),
                             'txt-white': !['white', 'light'].includes(color)
                         })}>{`.bg-${color}`}</p>
