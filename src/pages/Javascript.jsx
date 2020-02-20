@@ -1,6 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
-import { brandColors } from './Content';
 
 const JSPage = () => (
     <>
