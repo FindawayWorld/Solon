@@ -90,6 +90,14 @@ const ComponentsPage = () => {
                     />
                 </p>
 
+                <h3>Button Sizes</h3>
+
+                <p>
+                    <button className="btn btn-primary btn-lg mr-3">Large</button>
+                    <button className="btn btn-primary mr-3">Normal</button>
+                    <button className="btn btn-primary btn-sm">Small</button>
+                </p>
+
                 <h3>Reach-UI MenuButton</h3>
                 <Menu>
                     <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
