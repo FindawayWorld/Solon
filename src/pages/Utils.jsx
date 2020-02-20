@@ -21,7 +21,7 @@ const UtilsPage = () => (
             <div className="bd-example">
                 {brandColors.map(color => {
                     return (
-                        <p key={`txt-${color}`} className={classnames('p-3 mb-2', `bg-${color}`, {
+                        <p key={`bg-${color}`} className={classnames('p-3 mb-2', `bg-${color}`, {
                             'txt-dark': ['white', 'light'].includes(color),
                             'txt-white': !['white', 'light'].includes(color)
                         })}>{`.bg-${color}`}</p>

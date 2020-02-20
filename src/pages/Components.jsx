@@ -32,7 +32,7 @@ const ComponentsPage = () => {
                 <p>
                     {brandColors.map(color => (
                         <button
-                            key={`txt-${color}`}
+                            key={`btn-${color}`}
                             className={classnames('btn mr-1', `btn-${color}`)}
                         >
                             {titleCase(color)}
@@ -43,7 +43,7 @@ const ComponentsPage = () => {
                 <p>
                     {brandColors.map(color => (
                         <button
-                            key={`txt-${color}`}
+                            key={`btn-outline-${color}`}
                             className={classnames(
                                 'btn mr-1',
                                 `btn-outline-${color}`
