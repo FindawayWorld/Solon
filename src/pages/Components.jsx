@@ -12,17 +12,45 @@ import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import FormattedCurrency from '../components/FormattedCurrency';
 
-import {Formik, Form} from 'formik';
+import {useFormik} from 'formik';
 import {object, string, boolean, array} from 'yup';
 import {brandColors} from './Content';
 
 import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
 import FormattedPlural from '../components/FormattedPlural';
 import Loading from '../components/Loading';
+import DisplayFormikState from '../components/DisplayFormikState';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
+    const {
+        handleSubmit,
+        handleChange,
+        values,
+        errors,
+        touched
+    } = useFormik({
+        initialValues: {
+            name: 'Test Name',
+            signup: false,
+            fav_fruit: 'avocado',
+            jobType: [],
+        },
+        validationSchema: object().shape({
+            name: string().required(),
+            signup: boolean().oneOf(
+                [true],
+                'Please sign up for news'
+            ),
+            fav_fruit: string().required('Please choose a fruit'),
+            jobType: array(),
+        }),
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 4));
+        }
+    });
+
     return (
         <>
             <section id="Buttons" className="mb-5">
@@ -115,9 +143,9 @@ const ComponentsPage = () => {
                 <h2>Pagination</h2>
                 <hr />
 
-                <Pagination numPages={100} perPage={10} currentPage={1} />
-                <Pagination numPages={1000} perPage={20} currentPage={60} />
-                <Pagination
+                <Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
+                <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
+                <Pagination as={Link} toProp="to"
                     numPages={1000}
                     perPage={20}
                     currentPage={60}
@@ -244,6 +272,18 @@ const ComponentsPage = () => {
                     touched={true}
                 />
 
+                <Input
+                    id="input_search"
+                    label="Search"
+                    type="search"
+                />
+
+                <Input
+                    id="input_file"
+                    label="File Upload"
+                    type="file"
+                />
+
                 <h3>Select</h3>
                 <hr />
                 <div>
@@ -285,28 +325,32 @@ const ComponentsPage = () => {
 
                 <h3>Formik Example</h3>
                 <hr />
-                <Formik
-                    initialValues={{
-                        name: 'Test Name',
-                        signup: false,
-                        fav_fruit: 'avocado',
-                        jobType: [],
-                    }}
-                    validationSchema={object().shape({
-                        name: string().required(),
-                        signup: boolean().oneOf(
-                            [true],
-                            'Please sign up for news'
-                        ),
-                        fav_fruit: string().required('Please choose a fruit'),
-                        jobType: array(),
-                    })}
-                    onSubmit={values => alert(JSON.stringify(values, null, 4))}
-                >
-                    <Form>
-                        <Input id="name" label="name" />
-                        <Checkbox id="signup" label="Sign up for news" />
-                        <Select id="fav_fruit" label="Favorite Fruit">
+                    <form onSubmit={handleSubmit} noValidate>
+                        <Input
+                            id="name"
+                            label="name"
+                            value={values.name}
+                            error={errors.name}
+                            touched={touched.name}
+                            onChange={handleChange}
+                        />
+                        <Checkbox
+                            id="signup"
+                            label="Sign up for news"
+                            value={values.signup}
+                            error={errors.signup}
+                            touched={touched.signup}
+                            onChange={handleChange}
+                            required
+                        />
+                        <Select
+                            id="fav_fruit"
+                            label="Favorite Fruit"
+                            value={values.fav_fruit}
+                            error={errors.fav_fruit}
+                            touched={touched.fav_fruit}
+                            onChange={handleChange}
+                        >
                             <option value="">Select a fruit</option>
                             {fruits.map(item => (
                                 <option key={item} value={item}>
@@ -317,26 +361,40 @@ const ComponentsPage = () => {
                         <div className="label">
                             What best describes you? (check all that apply)
                         </div>
-                        <Checkbox
-                            label="Designer"
-                            name="jobType"
-                            value="designer"
-                        />
-                        <Checkbox
-                            label="Developer"
-                            name="jobType"
-                            value="developer"
-                        />
-                        <Checkbox
-                            label="Product Manager"
-                            name="jobType"
-                            value="product"
-                        />
+                        <fieldset>
+                            <Checkbox
+                                label="Designer"
+                                name="jobType"
+                                value="designer"
+                                checked={values.jobType.includes('designer')}
+                                error={errors.jobType}
+                                touched={touched.jobType}
+                                onChange={handleChange}
+                            />
+                            <Checkbox
+                                label="Developer"
+                                name="jobType"
+                                value="developer"
+                                checked={values.jobType.includes('developer')}
+                                error={errors.jobType}
+                                touched={touched.jobType}
+                                onChange={handleChange}
+                            />
+                            <Checkbox
+                                label="Product Manager"
+                                name="jobType"
+                                value="product"
+                                checked={values.jobType.includes('product')}
+                                error={errors.jobType}
+                                touched={touched.jobType}
+                                onChange={handleChange}
+                            />
+                        </fieldset>
                         <button className="btn btn-primary" type="submit">
                             Submit
                         </button>
-                    </Form>
-                </Formik>
+                    </form>
+                    <DisplayFormikState {...{errors, values, touched}} />
             </section>
         </>
     );

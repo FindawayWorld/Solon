@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import {useFormikContext} from 'formik';
 import {useId} from '@reach/auto-id';
 
 const Checkbox = ({
@@ -10,7 +9,7 @@ const Checkbox = ({
     placeholder = null,
     id = null,
     name = null,
-    errors = false,
+    error = false,
     touched = false,
     value = undefined,
     required = false,
@@ -21,7 +20,6 @@ const Checkbox = ({
     onChange = () => {},
     onBlur = () => {}
 }) => {
-    let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
     let autoId = useId(id);
@@ -33,23 +31,14 @@ const Checkbox = ({
         id = autoId;
     }
 
-    if (formikContext) {
-        let _value = formikContext.values[id];
-        checked = Array.isArray(_value) ? _value.includes(value) : _value;
-        touched = formikContext.touched[id];
-        errors = formikContext.errors[id];
-        handleChange = formikContext.handleChange;
-        handleBlur = formikContext.handleBlur;
-    }
-
     return (
         <div className={classnames('form-group form-check', className, {
             'checkbox-inline': inline
         })}>
             <input
                 className={classnames('form-check-input', {
-                    'success': touched && !errors,
-                    'error': errors
+                    'success': touched && !error,
+                    'error': error
                 })}
                 checked={checked}
                 value={value}
@@ -66,8 +55,8 @@ const Checkbox = ({
             })}>
                 {label || children}
             </label> {help}
-            {errors && touched && <div className="form-error standalone">
-                <span>{errors}</span>
+            {error && touched && <div className="form-error standalone">
+                <span>{error}</span>
             </div>}
         </div>
     );

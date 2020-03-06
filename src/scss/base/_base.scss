@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+html, body {
+    background-color:$white;
+}
+
+body {
+    margin: 0;
+    -webkit-overflow-scrolling: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+main {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
+hr {
+    height: rem(1);
+    background-color: $gray;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+    border: none;
+    box-sizing: content-box;
+    overflow: visible;
+}
+
+img {
+    border-style: none;
+}

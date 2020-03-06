@@ -3,6 +3,8 @@ a {
     color: $primary;
     font-weight: inherit;
     text-decoration: none;
+    background-color: transparent;
+
     &:hover,
     &:active,
     &:focus {

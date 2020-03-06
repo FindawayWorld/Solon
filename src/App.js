@@ -14,7 +14,7 @@ import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
 import JSPage from './pages/Javascript';
 
-import {ReactComponent as ExternalLinkIcon} from './svg/external-link.svg';
+import {FiExternalLink} from 'react-icons/fi';
 import {ReactComponent as GatewayLogo} from './svg/GatewayLogo.svg';
 
 const NavLink = ({to, children, className, activeClass, activeWhenExact = true}) => {
@@ -44,7 +44,7 @@ function App() {
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/components">Components</NavLink></li>
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/utils">Utils</NavLink></li>
                         <li><NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/javascript">Javascript</NavLink></li>
-                        <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <ExternalLinkIcon width=".875em" height=".875em" /></a></li>
+                        <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <FiExternalLink width=".875em" height=".875em" /></a></li>
                     </ul>
                 </div>
             </div>

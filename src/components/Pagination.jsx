@@ -1,12 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import {Link} from 'react-router-dom';
-// For Gatsby projects use this instead.
-// import {Link} from 'gatsby';
-
-
 const Pagination = ({
+    as: Comp = 'a',
+    toProp = 'href',
     numPages = 1,
     currentPage = 1,
     perPage = 5,
@@ -37,8 +35,8 @@ const Pagination = ({
     return (
         <ul className={classnames('pagination', className)}>
         {!isFirst &&<>
-            {showJumpFirst && <li className="page-item"><Link to={pathName} className="page-link">First</Link></li>}
-            <li className="page-item"><Link to={prevPage} className="page-link">Previous</Link></li>
+            {showJumpFirst && <li className="page-item"><Comp {...{[toProp]: pathName}} className="page-link">First</Comp></li>}
+            <li className="page-item"><Comp {...{[toProp]: prevPage}} className="page-link">Previous</Comp></li>
         </>}
         {allPages.slice(begin, end).map((i, p) => {
             let current = (i) === currentPage;
@@ -46,16 +44,29 @@ const Pagination = ({
                 <li key={`page_${p}`} className={classnames('page-item', {
                     active: current
                 })}>
-                    <Link to={`${pathName}/${i === 1 ? '' : i}`} className={classnames('page-link')} aria-current={current ? 'page' : null}>{i}</Link>
+                    <Comp {...{[toProp]: `${pathName}/${i === 1 ? '' : i}`}} className={classnames('page-link')} aria-current={current ? 'page' : null}>{i}</Comp>
                 </li>
             );
         })}
         {!isLast && <>
-            <li className="page-item"><Link to={nextPage} className="page-link">Next</Link></li>
-            {showJumpLast && <li className="page-item"><Link to={`${pathName}/${numPages}`} className="page-link">Last</Link></li>}
+            <li className="page-item"><Comp {...{[toProp]: nextPage}} className="page-link">Next</Comp></li>
+            {showJumpLast && <li className="page-item"><Comp {...{[toProp]: `${pathName}/${numPages}`}} className="page-link">Last</Comp></li>}
         </>}
         </ul>
     );
+};
+
+Pagination.propTypes = {
+    as: PropTypes.elementType,
+    toProp: PropTypes.string,
+    numPages: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    perPage: PropTypes.number.isRequired,
+    pagesToShow: PropTypes.number,
+    showJumpFirst: PropTypes.bool,
+    showJumpLast: PropTypes.bool,
+    pathName: PropTypes.string,
+    className: PropTypes.string
 };
 
 export default Pagination;

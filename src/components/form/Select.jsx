@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import {useFormikContext} from 'formik';
 
 const Select = ({
     label = '',
@@ -22,7 +21,7 @@ const Select = ({
     autoComplete = null,
     disabled = false,
     hideOptional = false,
-    errors = false,
+    error = false,
     touched = false,
     readOnly = false,
     prepend = null,
@@ -35,24 +34,15 @@ const Select = ({
     onFocus = () => {}
 }) => {
     let isRequired = required || showRequired;
-    let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
-
-    if (formikContext) {
-        value = formikContext.values[id];
-        touched = formikContext.touched[id];
-        errors = formikContext.errors[id];
-        handleChange = formikContext.handleChange;
-        handleBlur = formikContext.handleBlur;
-    }
 
     if (readOnly) {
         return value;
     }
 
     return (
-        <div className={classnames('form-group', {'was-validated': !errors, 'mb-0': collapse}, className)}>
+        <div className={classnames('form-group', {'was-validated': !error, 'mb-0': collapse}, className)}>
             {label && !prependLabel && <div className="label-wrapper">
                 <label htmlFor={id} className={classnames({
                     'required': isRequired,
@@ -77,8 +67,8 @@ const Select = ({
                         'form-control': !readOnly,
                         'form-control-plaintext': readOnly,
                         'input-collapse': collapse,
-                        'error-visible': touched && errors,
-                        'error': touched && errors,
+                        'error-visible': touched && error,
+                        'error': touched && error,
                         'form-control-sm': small,
                         'input-group-control': (prepend || prependLabel) || append,
                         'input-group-control-prepend': (prepend || prependLabel),
@@ -108,9 +98,9 @@ const Select = ({
                     </small>
                 }
 
-                {errors && touched &&
+                {error && touched &&
                     <div className="form-error">
-                        <span>{errors}</span>
+                        <span>{error}</span>
                     </div>
                 }
             </div>

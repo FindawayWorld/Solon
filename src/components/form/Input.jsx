@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import {useFormikContext} from 'formik';
 import {useId} from '@reach/auto-id';
 
 const Input = ({
@@ -10,7 +9,7 @@ const Input = ({
         id = undefined,
         name = null,
         value = undefined,
-        initialValue = undefined,
+        defaultValue = undefined,
         required = false,
         className = '',
         type = 'text',
@@ -32,7 +31,7 @@ const Input = ({
         help = null,
         flex = false,
         ghost = false,
-        errors = null,
+        error = null,
         touched = false,
         onBlur,
         onChange,
@@ -43,18 +42,9 @@ const Input = ({
     }) => {
 
     let isRequired = required || showRequired;
-    let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
     id = useId(id);
-
-    if (formikContext) {
-        value = formikContext.values[id];
-        touched = formikContext.touched[id];
-        errors = formikContext.errors[id];
-        handleChange = formikContext.handleChange;
-        handleBlur = formikContext.handleBlur;
-    }
 
     if (hidden) {
         return null;
@@ -97,8 +87,8 @@ const Input = ({
 
                 <input
                     className={classnames('form-control', {
-                        'error': touched && errors,
-                        'error-visible': touched && errors,
+                        'error': touched && error,
+                        'error-visible': touched && error,
                         'mb-0': collapse,
                         'input-group-control': (prepend || prependLabel) || append,
                         'input-group-control-prepend': (prepend || prependLabel),
@@ -109,7 +99,7 @@ const Input = ({
 
                     style={inputStyles}
                     value={value}
-                    defaultValue={initialValue}
+                    defaultValue={defaultValue}
                     type={type}
                     name={name || id}
                     id={id}
@@ -132,9 +122,9 @@ const Input = ({
                     </div>
                 }
 
-                {!!errors && touched &&
+                {!!error && touched &&
                     <div className="form-error">
-                        <span>{errors}</span>
+                        <span>{error}</span>
                     </div>
                 }
             </div>

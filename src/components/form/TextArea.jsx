@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import {useFormikContext} from 'formik';
 
 const TextArea = ({
     label = '',
@@ -44,17 +43,8 @@ const TextArea = ({
 }) => {
 
     let isRequired = required || showRequired;
-    let formikContext = useFormikContext();
     let handleChange = onChange;
     let handleBlur = onBlur;
-
-    if (formikContext) {
-        value = formikContext.values[id];
-        touched = formikContext.touched[id];
-        errors = formikContext.errors[id];
-        handleChange = formikContext.handleChange;
-        handleBlur = formikContext.handleBlur;
-    }
 
     if (hidden) {
         return null;

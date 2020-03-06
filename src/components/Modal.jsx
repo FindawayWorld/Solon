@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import classnames from 'classnames';
 
-
 // Test to deterimine if we have a hidden scrollbar (MacOS, mobile/touch);
 export const testForHiddenScrollbar = () => {
     let elem = document.createElement('div');

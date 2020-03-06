@@ -1,5 +1,5 @@
 import React from 'react';
-import {ReactComponent as ArrowRight} from '../svg/arrow-right.svg';
+import {FiArrowRight} from 'react-icons/fi';
 
 export const colors = [
     'aqua',
@@ -146,7 +146,7 @@ const ContentPage = () => {
                     <li>
                         <a href="#link" className="fancy-cta">
                             Fancy CTA w/ SVG{' '}
-                            <ArrowRight width="1em" height="1em" />
+                            <FiArrowRight width="1em" height="1em" />
                         </a>
                     </li>
                 </ul>
@@ -221,7 +221,7 @@ const ContentPage = () => {
                 <h2>Icons</h2>
                 <hr />
                 <p>
-                    Use <a href="https://feathericons.com/">Feather Icons</a>{' '}
+                    Use <a href="https://react-icons.netlify.com/#/">React Icons</a>{' '}
                     for all your icon needs. Unless provided from creative.
                 </p>
             </section>
