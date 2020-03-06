@@ -30,7 +30,18 @@ const UtilsPage = () => (
             </div>
         </section>
 
-        <section id="text-alignment">
+        <section id="border-radius" className="mb-5">
+            <h2>Border Radius</h2>
+            <hr/>
+            <div className="bg-dark rounded mb-3 p-3">
+                <code>.rounded</code>
+            </div>
+            <div className="bg-dark rounded-pill p-3">
+                <code>.rounded-pill</code>
+            </div>
+        </section>
+
+        <section id="text-alignment" className="mb-5">
             <h2>Text Alignment</h2>
             <hr/>
 
