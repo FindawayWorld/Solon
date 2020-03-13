@@ -1,15 +1,15 @@
 {
-  "endOfLine": "lf",
-  "semi": true,
-  "singleQuote": true,
-  "tabWidth": 4,
-  "trailingComma": "es5",
-  "overrides": [
-      {
-          "files": "package.json",
-          "options": {
-              "tabWidth": 2
-          }
-      }
-  ]
+    "endOfLine": "lf",
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "overrides": [
+        {
+            "files": "package.json",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
 }
