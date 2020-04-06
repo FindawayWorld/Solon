@@ -269,7 +269,7 @@ const ComponentsPage = () => {
                 <Input
                     id="input_error"
                     label="With Error"
-                    errors="This is an error message."
+                    error="This is an error message."
                     touched={true}
                 />
 
@@ -320,7 +320,7 @@ const ComponentsPage = () => {
                 <Checkbox
                     label="With Errors"
                     id="error_checkbox"
-                    errors="Checkbox error message"
+                    error="Checkbox error message"
                     touched={true}
                 />
 

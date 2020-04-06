@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import {Auth} from 'aws-amplify';
 import {Link} from 'react-router-dom';
-import {Formik, Form} from 'formik';
+import {Formik, Form, useFormik} from 'formik';
 import {string, object} from 'yup';
 import {FaChevronLeft} from 'react-icons/fa';
+
 // locals
-import InputContainerAuth from '../../components/InputContainerAuth';
-import {ReactComponent as Logo} from '../../svg/audioengine_dark.svg';
-import Loading from '../../components/SpinnerCircle';
+import Loading from '../../components/Loading';
 import Input from '../../components/form/Input';
+
 // utils
 import PasswordHelper from '../../components/PasswordHelper';
 import ChangePasswordConfirm from './ChangePasswordConfirm';
+import AuthLayout from '../../components/AuthLayout';
 
 const forgotPasswordVerificationSchema = object().shape({
     verificationCode: string().required('required'),
@@ -22,7 +23,7 @@ const forgotPasswordVerificationSchema = object().shape({
     password: string()
         .required('Required')
         .matches(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{12,}$/gm,
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
             'Must Contain at least 12 Characters, one (1) uppercase letter, one (1) lowercase letter, and one (1) Number',
         ),
 });
@@ -32,7 +33,7 @@ const ForgotPasswordVerification = props => {
 
     const [verifyPasswordError, setVerifyPasswordError] = useState(null);
 
-    const handleSubmit = async (values, {setSubmitting, resetForm}) => {
+    const _handleSubmit = async (values, {setSubmitting, resetForm}) => {
         setSubmitting(true);
         const {email, verificationCode, password} = values;
         try {
@@ -41,94 +42,82 @@ const ForgotPasswordVerification = props => {
             setSubmitting(false);
             setIsPasswordChangeSuccess(true);
         } catch (error) {
-            process.env.NODE_ENV !== 'production' &&
-                console.log('\n', `ForgotPasswordVerification submit, error = `, error, '\n');
+            if (error.code === 'CodeMismatchException' || error.code === 'ExpiredCodeException') {
+                setFieldError('verificationCode', error.message);
+            }
+
+            if (error.code === 'InvalidPasswordException') {
+                setFieldError('password', error.message);
+            }
+
             setVerifyPasswordError(error);
             setSubmitting(false);
-            resetForm();
         }
     };
 
-    if (isPasswordChangeSuccess) {
-        return <ChangePasswordConfirm />;
-    }
+    const {values, errors, touched, handleChange, handleSubmit, isSubmitting, setFieldError} = useFormik({
+        initialValues:{
+            verificationCode: '',
+            email: '',
+            password: '',
+        },
+        onSubmit: _handleSubmit,
+        validationSchema:forgotPasswordVerificationSchema
+    });
+
     return (
-        <div className="page-signin">
-            <div className="row center-xs">
-                <Logo className="sign-in-logo" alt="audio engine logo" />
-            </div>
-            <Formik
-                initialValues={{
-                    verificationCode: '',
-                    email: '',
-                    password: '',
-                }}
-                onSubmit={handleSubmit}
-                validationSchema={forgotPasswordVerificationSchema}
-            >
-                {({values, errors, handleChange, handleSubmit, isSubmitting}) => {
-                    return (
-                        <Form className="form-signin" onSubmit={handleSubmit}>
-                            <InputContainerAuth isMarginBottom>
-                                <Input
-                                    id="verificationCode"
-                                    placeholder="Verification code"
-                                    value={values.verificationCode}
-                                    onChange={handleChange}
-                                    errors={errors.verificationCode}
-                                />
-                            </InputContainerAuth>
-                            <InputContainerAuth isMarginBottom>
-                                <Input
-                                    id="email"
-                                    placeholder="Email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    errors={errors.email}
-                                />
-                            </InputContainerAuth>
-                            <InputContainerAuth>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    placeholder="New password"
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    errors={errors.password}
-                                />
-                            </InputContainerAuth>
-                            <PasswordHelper password={values.password} />
-                            <div className="row center-xs mb-5">
-                                <button onClick={handleSubmit} className="btn btn-primary py-2 px-5">
-                                    {isSubmitting ? <Loading /> : 'Change Password'}
-                                </button>
-                            </div>
-                            <div className="row start-xs middle-xs">
-                                <Link
-                                    className="forgot-password"
-                                    to="/login"
-                                    style={{textDecoration: 'none'}}
-                                >
-                                    <FaChevronLeft size={10} className="mr-1" /> Back to sign in
-                                </Link>
-                            </div>
-                            {verifyPasswordError && (
-                                <>
-                                    <p className="mt-4 error-text">{verifyPasswordError.message}</p>
-                                </>
-                            )}
-                            <div className="signin-footer mt-5">
-                                <p>
-                                    <small>
-                                        &copy; {new Date().getFullYear()} Findaway. All rights reserved.
-                                    </small>
-                                </p>
-                            </div>
-                        </Form>
-                    );
-                }}
-            </Formik>
-        </div>
+        <AuthLayout>
+            {isPasswordChangeSuccess &&
+                <ChangePasswordConfirm />
+            }
+            {!isPasswordChangeSuccess && <div className="row">
+                <form className="col-xs-12 col-lg-7 col-lg-offset-1" onSubmit={handleSubmit}>
+                    <Input
+                        id="verificationCode"
+                        label="Verification code"
+                        value={values.verificationCode}
+                        touched={touched.verificationCode}
+                        error={errors.verificationCode}
+                        onChange={handleChange}
+                    />
+                    <Input
+                        id="email"
+                        label="Email"
+                        value={values.email}
+                        touched={touched.email}
+                        error={errors.email}
+                        onChange={handleChange}
+                    />
+                    <Input
+                        id="password"
+                        type="password"
+                        label="New Password"
+                        value={values.password}
+                        touched={touched.password}
+                        error={errors.password}
+                        onChange={handleChange}
+                    />
+                    <div className="txt-center mb-5">
+                        <button type="submit" className="btn btn-primary">
+                            {isSubmitting ? <Loading /> : 'Change Password'}
+                        </button>
+                        {verifyPasswordError && <p className="mt-2 txt-danger">{verifyPasswordError.message}</p>}
+                    </div>
+                    <div>
+                        <Link
+                            className="forgot-password"
+                            to="/log-in"
+                        >
+                            <FaChevronLeft size={10} /> Back to sign in
+                        </Link>
+                    </div>
+
+                </form>
+                <div className="col-xs-12 col-lg-3">
+                    <PasswordHelper password={values.password}/>
+                </div>
+            </div>}
+        </AuthLayout>
     );
 };
 

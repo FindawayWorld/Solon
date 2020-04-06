@@ -67,7 +67,7 @@ const ListInputBox = ({
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onKeyPress={handleEnter}
-                        errors={errors}
+                        error={errors}
                         touched={touched}
                     />
                 </div>}

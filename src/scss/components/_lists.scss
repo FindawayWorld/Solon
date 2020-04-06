@@ -23,10 +23,14 @@ dd {
     margin-bottom: spacer();
 }
 
-.list-flat {
-    margin: 0;
+.list-unstyled, .list-flat, .list-inline {
     padding: 0;
+    margin: 0;
     list-style: none;
+
+    li:before {
+        content: "\200B"; /* add zero-width space */
+    }
 }
 
 .list-inline {

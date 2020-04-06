@@ -6,7 +6,7 @@ import {Auth} from 'aws-amplify';
 
 import Input from '../../components/form/Input';
 import Loading from '../../components/Loading';
-import {ReactComponent as GatewayLogo} from '../../svg/GatewayLogo.svg';
+import AuthLayout from '../../components/AuthLayout';
 
 // utils
 import {AuthContext, appActions} from '../../context/AuthContext';
@@ -68,10 +68,7 @@ const SignIn = props => {
     }
 
     return (
-        <div className="page-signin p-3">
-            <div className="mb-4 txt-center">
-                <GatewayLogo height="8em" width="auto" />
-            </div>
+        <AuthLayout>
             <div className="row">
                 <div className="col-xs-12 col-md-4 col-md-offset-4">
                     <Formik
@@ -94,7 +91,7 @@ const SignIn = props => {
                                     id="email"
                                     label="Email"
                                     value={values.email}
-                                    errors={errors.email}
+                                    error={errors.email}
                                     onChange={handleChange}
                                 />
                                 <Input
@@ -102,7 +99,7 @@ const SignIn = props => {
                                     label="Password"
                                     type="password"
                                     value={values.password}
-                                    errors={errors.password}
+                                    error={errors.password}
                                     onChange={handleChange}
                                 />
                                 <Link to="/forgot-password">
@@ -139,14 +136,7 @@ const SignIn = props => {
                     </Formik>
                 </div>
             </div>
-
-            <div className="signin-footer txt-center mt-5">
-                <small>
-                    &copy; {new Date().getFullYear()} Findaway. All rights reserved.
-                </small>
-            </div>
-
-        </div>
+        </AuthLayout>
     );
 };
 

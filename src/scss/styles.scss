@@ -6,7 +6,8 @@
 
 @import 'layout/grids';
 
-@import 'components/forms',
+@import 'components/card',
+        'components/forms',
         'components/buttons',
         'components/links',
         'components/lists',
@@ -35,16 +36,19 @@
 }
 
 .indicator {
-    border-left: solid 3px transparent;
-    padding-left: .5rem;
+    border-radius: 50%;
+    height: .5rem;
+    width: .5rem;
+    display: inline-block;
+    margin-right: .5rem;
 }
 
 .indicator-success {
-    border-color: #8EC648;
+    background-color: #8EC648;
 }
 
 .indicator-danger {
-    border-color: #DE1A22;
+    background-color: #DE1A22;
 }
 
 .address, .address p {

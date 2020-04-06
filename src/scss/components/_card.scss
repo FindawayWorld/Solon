@@ -1,0 +1,38 @@
+.card {
+    padding: rem(20);
+    background: $white;
+
+    border-radius: $border-radius;
+    border: solid 1px $border-color;
+}
+
+.card-flat {
+    padding: 0;
+    border-radius: 0;
+    background: none;
+}
+
+.card-item {
+    margin-bottom: .5rem;
+}
+
+.card-header {
+    background: $light;
+    color: $dark;
+    padding: .5rem 1rem;
+
+    h3, .h3, h6 {
+        margin-bottom:0;
+        color: $dark;
+    }
+}
+
+.card-body {
+    padding: 1rem;
+    border-radius: $border-radius;
+    background: $white;
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}

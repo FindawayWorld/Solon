@@ -113,7 +113,7 @@ const NewPasswordRequired = props => {
                                     type="password"
                                     value={values.newPassword}
                                     onChange={handleChange}
-                                    errors={errors.newPassword}
+                                    error={errors.newPassword}
                                 />
                             </InputContainerAuth>
                             <InputContainerAuth isMarginBottom>
@@ -123,7 +123,7 @@ const NewPasswordRequired = props => {
                                     type="password"
                                     value={values.confirmNewPassword}
                                     onChange={handleChange}
-                                    errors={errors.confirmNewPassword}
+                                    error={errors.confirmNewPassword}
                                 />
                             </InputContainerAuth>
                             <div className="row center-xs mb-3">

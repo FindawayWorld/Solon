@@ -11,9 +11,11 @@ import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
 import JSPage from './pages/Javascript';
 import SignIn from './pages/auth/SignIn';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 
 import { AuthProvider } from './context/AuthContext';
+import ForgotPasswordVerification from './pages/auth/ForgotPasswordVerification';
 
 function App() {
     return (
@@ -37,6 +39,12 @@ function App() {
                     </Route>
                     <Route path="/log-in">
                         <SignIn />
+                    </Route>
+                    <Route path="/forgot-password">
+                        <ForgotPassword />
+                    </Route>
+                    <Route path="/forgot-password-verification">
+                        <ForgotPasswordVerification />
                     </Route>
                 </Switch>
             </AuthProvider>
