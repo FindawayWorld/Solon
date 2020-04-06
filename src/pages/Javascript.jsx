@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const JSPage = () => (
-    <>
+    <Layout>
         <section className="mb-5">
             <h2 className="mb-0">Javascript Utils</h2>
             <p><small>Found in <code>src/utils/index.js</code></small></p>
@@ -53,7 +54,7 @@ const JSPage = () => (
             </table>
 
         </section>
-    </>
+    </Layout>
 );
 
 export default JSPage;

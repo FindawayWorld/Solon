@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import {titleCase} from '../utils';
 
 import {Link} from 'react-router-dom';
+import Layout from '../components/Layout';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
@@ -52,7 +53,7 @@ const ComponentsPage = () => {
     });
 
     return (
-        <>
+        <Layout>
             <section id="Buttons" className="mb-5">
                 <h2>Buttons</h2>
                 <hr />
@@ -396,7 +397,7 @@ const ComponentsPage = () => {
                     </form>
                     <DisplayFormikState {...{errors, values, touched}} />
             </section>
-        </>
+        </Layout>
     );
 };
 

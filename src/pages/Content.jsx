@@ -1,5 +1,6 @@
 import React from 'react';
 import {FiArrowRight} from 'react-icons/fi';
+import Layout from '../components/Layout';
 
 export const colors = [
     'aqua',
@@ -33,7 +34,7 @@ export const brandColors = [
 
 const ContentPage = () => {
     return (
-        <>
+        <Layout>
             <section id="colors" className="mb-5">
                 <h2>Colors</h2>
                 <hr />
@@ -316,7 +317,7 @@ const ContentPage = () => {
                 </table>
 
             </section>
-        </>
+        </Layout>
     );
 };
 

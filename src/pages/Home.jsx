@@ -1,7 +1,8 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const HomePage = () => (
-    <>
+    <Layout>
         <p>Gateway is Findaway's boilerplate for React sites/applications.</p>
         <p className="mb-5">By default this repository contains CSS (SCSS), React Components, and utilities to help any project get up-and-running quickly with consistency to all other projects.</p>
 
@@ -26,7 +27,7 @@ const HomePage = () => (
             <p>Unfortunately this repository cannot be used as a template for Gatsby. However, the components can be used in a Gatsby project.</p>
             <p><strong>WARNING:</strong> This project uses <code>react-router-dom</code>, any routing specific Components (Pagination) will have to be updated to work with Gatsby's router. Any components affected should include notes on Gatsby compat.</p>
         </section>
-    </>
+    </Layout>
 );
 
 export default HomePage;

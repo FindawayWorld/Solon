@@ -1,9 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
 import { brandColors } from './Content';
+import Layout from '../components/Layout';
 
 const UtilsPage = () => (
-    <>
+    <Layout>
         <section id="color-utils" className="mb-5">
             <h2 className="mb-0">Color Utils</h2>
             <p><small>Based on <a href="https://getbootstrap.com/docs/4.3/utilities/colors/">Bootstrap Color Utils</a></small></p>
@@ -482,7 +483,7 @@ const UtilsPage = () => (
                 </div>
             </section>
         </section>
-    </>
+    </Layout>
 );
 
 export default UtilsPage;
