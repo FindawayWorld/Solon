@@ -1,32 +1,28 @@
-import React, {useState} from 'react';
-import {string, object} from 'yup';
-import {Auth} from 'aws-amplify';
-import {Link} from 'react-router-dom';
-import {Formik, Form} from 'formik';
-import {FaChevronLeft} from 'react-icons/fa';
+import React, { useState } from 'react';
+import { string, object } from 'yup';
+import { Auth } from 'aws-amplify';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { FaChevronLeft } from 'react-icons/fa';
 // locals
 import Input from '../../components/form/Input';
-import Loading from '../../components/Loading';
 import AuthLayout from '../../components/AuthLayout';
 
 const forgotPasswordSchema = object().shape({
-    email: string()
-        .email()
-        .lowercase()
-        .required('Email is required'),
+    email: string().email().lowercase().required('Email is required')
 });
 
-const ForgotPassword = props => {
+const ForgotPassword = (props) => {
     const [email, setEmail] = useState('');
     const [isSentSuccess, setIsSentSuccess] = useState(false);
     const [forgotPasswordError, setForgotPasswordError] = useState(null);
 
-    const handleSubmit = async (values, {setSubmitting}) => {
+    const _handleSubmit = async (values, { setSubmitting }) => {
         setSubmitting(true);
-        const {email} = values;
+        const { email } = values;
         try {
             await Auth.forgotPassword(email);
-            setIsSentSuccess(b => !b);
+            setIsSentSuccess((b) => !b);
             setSubmitting(false);
             setEmail(email);
             setForgotPasswordError(null);
@@ -36,6 +32,21 @@ const ForgotPassword = props => {
             setSubmitting(false);
         }
     };
+
+    const {
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleSubmit,
+        isSubmitting
+    } = useFormik({
+        initialValues: {
+            email: ''
+        },
+        onSubmit: _handleSubmit,
+        validationSchema: forgotPasswordSchema
+    });
 
     return (
         <AuthLayout>
@@ -47,76 +58,80 @@ const ForgotPassword = props => {
                     </h2>
                     {!isSentSuccess && (
                         <div className="txt-center">
-                            <p>Please enter your email address. <br/> We'll email you a link to reset your password.</p>
+                            <p>
+                                Please enter your email address. <br /> We'll
+                                email you a link to reset your password.
+                            </p>
                         </div>
                     )}
                     {isSentSuccess && (
                         <p className="txt-center">
-                            An email has been sent to your address <strong>{email}</strong>.
+                            An email has been sent to your address{' '}
+                            <strong>{email}</strong>.
                         </p>
                     )}
-                    <Formik
-                        initialValues={{
-                            email: '',
-                        }}
-                        onSubmit={handleSubmit}
-                        validationSchema={forgotPasswordSchema}
-                    >
-                        {({
-                            values,
-                            errors,
-                            handleChange,
-                            handleSubmit,
-                            isSubmitting
-                        }) => (
-                            <Form className="form-signin" onSubmit={handleSubmit}>
-                                {!isSentSuccess && (
-                                    <Input
-                                        className="login-min-width"
-                                        label="Email"
-                                        id="email"
-                                        value={values.email}
-                                        error={errors.email}
-                                        onChange={handleChange}
-                                    />
-                                )}
-                                {!isSentSuccess && (
-                                    <>
-                                        <div className="row start-xs mb-2 middle-xs">
-                                            <Link
-                                                className="forgot-password pl-3"
-                                                to="/log-in"
-                                            >
-                                                <FaChevronLeft size={10} className="mr-1" /> Back to sign in
-                                            </Link>
-                                        </div>
-                                        <div className="row start-xs mb-4 middle-xs">
-                                            <Link
-                                                className="forgot-password pl-3"
-                                                to="/forgot-password-verification"
-                                            >
-                                                I already have a reset code
-                                            </Link>
-                                        </div>
-                                    </>
-                                )}
-                                <div className="row center-xs mb-5">
-                                    {isSentSuccess && (
-                                        <Link className="btn btn-primary" to="/forgot-password-verification">
-                                            Enter Reset Code
-                                        </Link>
-                                    )}
-                                    {!isSentSuccess && (
-                                        <button onClick={handleSubmit} className="btn btn-primary">
-                                            {isSubmitting ? <Loading /> : 'Reset Password'}
-                                        </button>
-                                    )}
-                                </div>
-
-                                {forgotPasswordError && <p className="mt-4 error-text">{forgotPasswordError}</p>}
-                            </Form>
+                    <form onSubmit={handleSubmit}>
+                        {!isSentSuccess && (
+                            <Input
+                                className="login-min-width"
+                                label="Email"
+                                id="email"
+                                value={values.email}
+                                error={errors.email}
+                                touched={touched.email}
+                                onChange={handleChange}
+                            />
                         )}
-                    </Formik>
+                        {!isSentSuccess && (
+                            <>
+                                <div className="row start-xs mb-2 middle-xs">
+                                    <Link
+                                        className="forgot-password pl-3"
+                                        to="/sign-in"
+                                    >
+                                        <FaChevronLeft
+                                            size={10}
+                                            className="mr-1"
+                                        />{' '}
+                                        Back to sign in
+                                    </Link>
+                                </div>
+                                <div className="row start-xs mb-4 middle-xs">
+                                    <Link
+                                        className="forgot-password pl-3"
+                                        to="/forgot-password-verification"
+                                    >
+                                        I already have a reset code
+                                    </Link>
+                                </div>
+                            </>
+                        )}
+                        <div className="row center-xs mb-5">
+                            {isSentSuccess && (
+                                <Link
+                                    className="btn btn-primary"
+                                    to="/forgot-password-verification"
+                                >
+                                    Enter Reset Code
+                                </Link>
+                            )}
+                            {!isSentSuccess && (
+                                <button
+                                    onClick={handleSubmit}
+                                    className="btn btn-primary"
+                                    disabled={isSubmitting}
+                                >
+                                    Reset Password
+                                </button>
+                            )}
+                        </div>
+
+                        {forgotPasswordError && (
+                            <p className="mt-4 error-text">
+                                {forgotPasswordError}
+                            </p>
+                        )}
+                    </form>
                 </div>
             </div>
         </AuthLayout>

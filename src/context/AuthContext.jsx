@@ -1,4 +1,15 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
+import passwordValidator from 'password-validator';
+
+export const passwordSchema = new passwordValidator();
+
+//prettier-ignore
+passwordSchema
+    .is().min(8)
+    .has().uppercase()
+    .has().lowercase()
+    .has().digits()
+    .has().symbols();
 
 const PERSIST_LOGIN_START = 'PERSIST_LOGIN_START';
 const PERSIST_LOGIN_SUCCESS = 'PERSIST_LOGIN_SUCCESS';
@@ -25,10 +36,10 @@ export const appActions = {
     LOGIN_FAIL,
     LOGOUT,
     TOGGLE_NAVBAR,
-    COMPLETE_NEW_PASSWORD_TIMEOUT,
+    COMPLETE_NEW_PASSWORD_TIMEOUT
 };
 
-const AuthContext = createContext({});
+export const AuthContext = createContext({});
 
 // useReducer Initial State
 const initialState = {
@@ -37,69 +48,68 @@ const initialState = {
     isDarkMode: false,
     isNavbarOpen: false,
     errors: null,
-    intendedRoute: '/',
+    intendedRoute: '/'
 };
 
-function authReducer(state = {}, action = null) {
-    // console.log('\n', `auth reducer action.type = `, action.type, '\n');
+const authReducer = (state = {}, action = null) => {
     switch (action.type) {
         case appActions.PERSIST_LOGIN_START: {
             return {
                 ...state,
-                isLoading: true,
+                isLoading: true
             };
         }
         case appActions.PERSIST_LOGIN_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload.user,
+                user: action.payload.user
             };
         }
         case appActions.PERSIST_LOGIN_FAIL: {
             return {
                 ...state,
-                isLoading: false,
+                isLoading: false
             };
         }
         case appActions.FIRST_LOGIN_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload.user,
+                user: action.payload.user
             };
         }
         case appActions.COMPLETE_NEW_PASSWORD_SUCCESS: {
             return {
                 ...state,
                 user: null,
-                isLoading: false,
+                isLoading: false
             };
         }
         case appActions.COMPLETE_NEW_PASSWORD_TIMEOUT: {
             console.log('\n', `COMPLETE_NEW_PASSWORD_TIMEOUT `, '\n');
             return {
                 ...state,
-                user: null,
+                user: null
             };
         }
         case appActions.LOGIN_SUCCESS: {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload.user,
+                user: action.payload.user
             };
         }
         case appActions.LOGOUT: {
             return {
                 ...initialState,
-                isLoading: false,
+                isLoading: false
             };
         }
         case appActions.TOGGLE_NAVBAR: {
             return {
                 ...state,
-                isNavbarOpen: !state.isNavbarOpen,
+                isNavbarOpen: !state.isNavbarOpen
             };
         }
         case appActions.REFRESH_USER: {
@@ -109,18 +119,17 @@ function authReducer(state = {}, action = null) {
                     ...state.user,
                     attributes: {
                         ...state.user.attributes,
-                        ...action.payload.updatedUserAttributes,
-                    },
-                },
+                        ...action.payload.updatedUserAttributes
+                    }
+                }
             };
         }
         default:
             return state;
     }
-}
+};
 
-function AuthProvider(props) {
-    // useReducer(reducer, initialState)
+export const AuthProvider = (props) => {
     const [state, dispatch] = useReducer(authReducer, initialState);
 
     return (
@@ -128,10 +137,8 @@ function AuthProvider(props) {
             {...props}
             value={{
                 state,
-                dispatch,
+                dispatch
             }}
         />
     );
-}
-
-export {AuthContext, AuthProvider};
+};

@@ -1,22 +1,8 @@
 import React from 'react';
-import classnames from 'classnames';
-import {FaCheck} from 'react-icons/fa';
+import { passwordSchema } from '../context/AuthContext';
 
-export const passwordRequirements = [
-    'Must be at least 8 characters long',
-    'Must contain at least one (1) uppercase letter',
-    'Must contain at least one (1) lowercase letter',
-    'Must contain at least one (1) number',
-];
-
-export const passwordRegex = {
-    oneNumber: /\d/,
-    oneUppercaseLetter: /[A-Z]/,
-    oneLowercaseLetter: /[a-z]/,
-    twelveCharsMinimum: /^.{12,}$/,
-};
-
-const PasswordHelper = ({password = ''}) => {
+const PasswordHelper = ({ password = '' }) => {
+    let valid = passwordSchema.validate(password, { list: true });
     return (
         <div className="card card-flat password-reqs">
             <div className="card-header">
@@ -24,11 +10,38 @@ const PasswordHelper = ({password = ''}) => {
             </div>
             <div className="card-body">
                 <ul className="list-unstyled">
-                    <li>{passwordRegex.twelveCharsMinimum.test(password) && <span className="indicator indicator-success"></span>} Minimum 12 characters</li>
-                    <li>{passwordRegex.oneNumber.test(password) && <span className="indicator indicator-success"></span>} Include numbers</li>
-                    {/* <li>{!valid.includes('symbols') && !!password.length && <span className="indicator indicator-success"></span>} Include special character</li> */}
-                    <li>{passwordRegex.oneUppercaseLetter.test(password) && <span className="indicator indicator-success"></span>} Include uppercase letters</li>
-                    <li>{passwordRegex.oneLowercaseLetter.test(password) && <span className="indicator indicator-success"></span>} Include lowercase letters</li>
+                    <ul className="list-unstyled">
+                        <li>
+                            {!valid.includes('min') && !!password.length && (
+                                <span className="indicator indicator-success"></span>
+                            )}{' '}
+                            Minimum {process.env.REACT_APP_MIN_PASSWORD_LENGTH} characters
+                        </li>
+                        <li>
+                            {!valid.includes('digits') && !!password.length && (
+                                <span className="indicator indicator-success"></span>
+                            )}{' '}
+                            Include numbers
+                        </li>
+                        <li>
+                            {!valid.includes('symbols') && !!password.length && (
+                                <span className="indicator indicator-success"></span>
+                            )}{' '}
+                            Include special character
+                        </li>
+                        <li>
+                            {!valid.includes('uppercase') && !!password.length && (
+                                <span className="indicator indicator-success"></span>
+                            )}{' '}
+                            Include uppercase letters
+                        </li>
+                        <li>
+                            {!valid.includes('lowercase') && !!password.length && (
+                                <span className="indicator indicator-success"></span>
+                            )}{' '}
+                            Include lowercase letters
+                        </li>
+                    </ul>
                 </ul>
             </div>
         </div>

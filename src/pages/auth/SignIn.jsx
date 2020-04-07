@@ -1,63 +1,110 @@
-import React, {useState, useContext} from 'react';
-import {Link, Redirect, useLocation} from 'react-router-dom';
-import {Formik, Form} from 'formik';
-import {string, object} from 'yup';
-import {Auth} from 'aws-amplify';
+import React, { useState, useContext } from 'react';
+import { Link, Redirect, useLocation } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { string, object } from 'yup';
+import { Auth } from 'aws-amplify';
 
 import Input from '../../components/form/Input';
-import Loading from '../../components/Loading';
 import AuthLayout from '../../components/AuthLayout';
 
 // utils
-import {AuthContext, appActions} from '../../context/AuthContext';
+import { AuthContext, appActions } from '../../context/AuthContext';
 
 const signInSchema = object().shape({
-    email: string()
-        .email()
-        .lowercase()
-        .required('Email is required'),
+    email: string().email().lowercase().required('Email is required'),
     password: string().required('Password is required')
 });
 
-const SignIn = props => {
-    const {state, dispatch} = useContext(AuthContext);
+const SignIn = (props) => {
+    const { state, dispatch } = useContext(AuthContext);
     const location = useLocation();
 
     const [newPasswordChallenge, setNewPasswordChallenge] = useState(false);
     const [signInError, setSignInError] = useState(null);
     const defaultNextPage = '/';
 
-    const {from} = location.state || {from: {pathname: defaultNextPage}};
+    const { from } = location.state || { from: { pathname: defaultNextPage } };
 
-    const handleSubmit = async (values, {setSubmitting}) => {
+    const _handleSubmit = async (values, { setSubmitting, setFieldError }) => {
         setSubmitting(true);
-        const {email, password} = values;
+        const { email, password } = values;
         try {
             const user = await Auth.signIn(email, password);
 
             setSubmitting(false);
 
-            if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-                setNewPasswordChallenge(true);
-                dispatch({type: appActions.FIRST_LOGIN_SUCCESS, payload: {user}});
-            } else {
-                dispatch({type: appActions.LOGIN_SUCCESS, payload: {user}});
+            switch (user.challengeName) {
+                case 'SMS_MFA':
+                case 'SOFTWARE_TOKEN_MFA':
+                    // You need to get the code from the UI inputs
+                    // and then trigger the following function with a button click
+                    // const code = getCodeFromUserInput();
+                    // If MFA is enabled, sign-in should be confirmed with the confirmation code
+                    // await Auth.confirmSignIn(
+                    //     user, // Return object from Auth.signIn()
+                    //     code, // Confirmation code
+                    //     user.challengeName // MFA Type e.g. SMS_MFA, SOFTWARE_TOKEN_MFA
+                    // );
+                    break;
+
+                case 'NEW_PASSWORD_REQUIRED':
+                    setNewPasswordChallenge(true);
+                    dispatch({
+                        type: appActions.FIRST_LOGIN_SUCCESS,
+                        payload: { user }
+                    });
+                    break;
+
+                case 'MFA_SETUP':
+                    // This happens when the MFA method is TOTP
+                    // The user needs to setup the TOTP before using it
+                    // More info please check the Enabling MFA part
+                    Auth.setupTOTP(user);
+                    break;
+
+                default:
+                    dispatch({ type: appActions.LOGIN_SUCCESS, payload: { user } });
+            }
+        } catch (err) {
+            switch (err.code) {
+                case 'UserNotConfirmedException':
+                    // The error happens if the user didn't finish the confirmation step when signing up
+                    // In this case you need to resend the code and confirm the user
+                    break;
+                case 'PasswordResetRequiredException':
+                    // The error happens when the password is reset in the Cognito console
+                    // In this case you need to call forgotPassword to reset the password
+                    err.message =
+                        'Your password has been reset by an administrator. You should have received an email with a password reset code.';
+                    break;
+
+                case 'NotAuthorizedException':
+                    // The error happens when the incorrect password is provided
+                    setFieldError('password', err.message);
+                    break;
+
+                case 'UserNotFoundException':
+                    // The error happens when the supplied username/email does not exist in the Cognito user pool
+                    setFieldError('email', err.message);
+                    break;
+
+                default:
+                    console.error(err);
             }
 
-        } catch (error) {
-
-            if (error.message === 'Password reset required for the user') {
-                setSignInError({
-                    message: 'Your password has been reset by an administrator. You should have received an email with a password reset code.'
-                });
-            }
-
-            setSignInError({
-                message: error.message
-            });
+            setSignInError(err);
             setSubmitting(false);
         }
     };
+
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting } = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        onSubmit: _handleSubmit,
+        validationSchema: signInSchema
+    });
 
     if (newPasswordChallenge && state.user) {
         return <Redirect to="/new-password-required" />;
@@ -71,69 +118,48 @@ const SignIn = props => {
         <AuthLayout>
             <div className="row">
                 <div className="col-xs-12 col-md-4 col-md-offset-4">
-                    <Formik
-                        initialValues={{
-                            email: '',
-                            password: '',
-                        }}
-                        onSubmit={handleSubmit}
-                        validationSchema={signInSchema}
-                    >
-                        {({
-                            values,
-                            errors,
-                            handleChange,
-                            handleSubmit,
-                            isSubmitting
-                        }) => (
-                            <Form className="form-signin" onSubmit={handleSubmit}>
-                                <Input
-                                    id="email"
-                                    label="Email"
-                                    value={values.email}
-                                    error={errors.email}
-                                    onChange={handleChange}
-                                />
-                                <Input
-                                    id="password"
-                                    label="Password"
-                                    type="password"
-                                    value={values.password}
-                                    error={errors.password}
-                                    onChange={handleChange}
-                                />
-                                <Link to="/forgot-password">
-                                    Forgot Password?
-                                </Link>
+                    <form className="form-signin" onSubmit={handleSubmit}>
+                        <Input
+                            id="email"
+                            label="Email"
+                            value={values.email}
+                            error={errors.email}
+                            touched={touched.email}
+                            onChange={handleChange}
+                        />
+                        <Input
+                            id="password"
+                            label="Password"
+                            type="password"
+                            value={values.password}
+                            error={errors.password}
+                            touched={touched.password}
+                            onChange={handleChange}
+                        />
+                        <Link to="/forgot-password">Forgot Password?</Link>
 
-                                <div className="txt-center">
-                                    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-                                        {isSubmitting ? <Loading /> : 'Sign In'}
-                                    </button>
-                                </div>
+                        <div className="txt-center">
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                                onClick={handleSubmit}
+                                disabled={isSubmitting}
+                            >
+                                Sign In
+                            </button>
+                        </div>
 
-                                {signInError?.message === 'Password reset required for the user' && (
-                                    <p className="mt-4 error-text">
-                                        {signInError.message}
-                                        <Link to="/forgot-password-verification">
-                                            Click here to input code and reset password.
-                                        </Link>
-                                    </p>
+                        {signInError && (
+                            <p className="mt-4 txt-danger">
+                                {signInError.message}{' '}
+                                {signInError.code === 'PasswordResetRequiredException' && (
+                                    <Link to="/forgot-password-verification">
+                                        Click here to input code and reset password.
+                                    </Link>
                                 )}
-
-                                {signInError?.message === 'Incorrect username or password.' && (
-                                    <p className="mt-4 error-text">{signInError.message}</p>
-                                )}
-
-                                {signInError?.message &&
-                                    signInError?.message !== 'Incorrect username or password.' &&
-                                    signInError?.message !== 'Password reset required for the user' && (
-                                        <p className="mt-4 error-text">{signInError.message}</p>
-                                    )
-                                }
-                            </Form>
+                            </p>
                         )}
-                    </Formik>
+                    </form>
                 </div>
             </div>
         </AuthLayout>

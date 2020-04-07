@@ -16,7 +16,7 @@
     font-size: 1rem;
     line-height: 1.5;
     border-radius: $border-radius;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: all .15s ease-in-out;
     text-transform: none;
 
     &:hover,
@@ -39,6 +39,15 @@
     }
     .feather-check {
         top: -2px;
+    }
+
+    // Opinionated: add "hand" cursor to non-disabled .btn elements
+    &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    &:disabled {
+        opacity: .65;
     }
 }
 

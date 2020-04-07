@@ -1,164 +1,124 @@
-import React, {useState, useContext} from 'react';
-import {Formik, Form} from 'formik';
-import {Redirect} from 'react-router-dom';
-import {string, object} from 'yup';
-import {Auth} from 'aws-amplify';
+import React, { useState, useContext } from 'react';
+import { useFormik } from 'formik';
+import { Redirect } from 'react-router-dom';
+import { string, object } from 'yup';
+import { Auth } from 'aws-amplify';
 // locals
 import ChangePasswordConfirm from '../auth/ChangePasswordConfirm';
-import InputContainerAuth from '../../components/InputContainerAuth';
-import PasswordHelper from '../../components/PasswordHelper';
 import Input from '../../components/form/Input';
-import {ReactComponent as Logo} from '../../svg/audioengine_dark.svg';
 // utils
-import {AuthContext, appActions} from '../../context/AuthContext';
+import { AuthContext, appActions } from '../../context/AuthContext';
 import ChangePasswordTimeout from './ChangePasswordTimeout';
+
+import { passwordSchema } from '../../context/AuthContext';
+import AuthLayout from '../../components/AuthLayout';
 
 const newPasswordRequiredSchema = object().shape({
     newPassword: string()
         .required('Required')
-        .matches(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{12,}$/gm,
+        .test(
+            'is-valid',
             'Must Contain at least 12 Characters, one (1) uppercase letter, one (1) lowercase letter, and one (1) Number',
+            (value) => passwordSchema.validate(value)
         ),
     confirmNewPassword: string()
         .required('Required')
-        .test('passwords-match', 'Passwords must match', function(value) {
+        .test('passwords-match', 'Passwords must match', function (value) {
             return this.parent.newPassword === value;
-        }),
+        })
 });
 
-const NewPasswordRequired = props => {
-    const {state, dispatch} = useContext(AuthContext);
+const NewPasswordRequired = (props) => {
+    const { state, dispatch } = useContext(AuthContext);
     const [invalidPasswordError, setInvalidPasswordError] = useState(null);
     const [isPasswordChangeSuccess, setIsPasswordChangeSuccess] = useState(false);
 
-    const handleSubmitCompleteNewPassword = async (values, {setSubmitting, resetForm}) => {
+    const handleSubmitCompleteNewPassword = async (values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
         try {
             await Auth.completeNewPassword(state.user, values.newPassword, {});
             setSubmitting(false);
             resetForm();
             setIsPasswordChangeSuccess(true);
-            dispatch({type: appActions.COMPLETE_NEW_PASSWORD_SUCCESS});
+            dispatch({ type: appActions.COMPLETE_NEW_PASSWORD_SUCCESS });
         } catch (error) {
-            process.env.NODE_ENV !== 'production' &&
-                console.log('\n', '\n', `handleSubmitCompleteNewPassword, error = `, error, '\n', '\n');
             if (error?.message === 'Invalid session for the user, session is expired.') {
                 setInvalidPasswordError(error);
                 setSubmitting(false);
-                dispatch({type: appActions.COMPLETE_NEW_PASSWORD_TIMEOUT});
-            } else {
-                setInvalidPasswordError(error);
-                setSubmitting(false);
-                resetForm();
+                dispatch({ type: appActions.COMPLETE_NEW_PASSWORD_TIMEOUT });
+                return;
             }
+
+            setInvalidPasswordError(error);
+            setSubmitting(false);
+            resetForm();
         }
     };
+
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting } = useFormik({
+        initialValues: {
+            newPassword: '',
+            confirmNewPassword: ''
+        },
+        validationSchema: newPasswordRequiredSchema,
+        onSubmit: handleSubmitCompleteNewPassword
+    });
+
+    const isTimeout = invalidPasswordError?.message === 'Invalid session for the user, session is expired.';
 
     if (isPasswordChangeSuccess) {
         return <ChangePasswordConfirm />;
     }
 
-    if (invalidPasswordError?.message === 'Invalid session for the user, session is expired.') {
-        return <ChangePasswordTimeout />;
+    if (!state.user && !isTimeout) {
+        return <Redirect to="/sign-in" />;
     }
 
-    if (
-        !state.user &&
-        invalidPasswordError?.message !== 'Invalid session for the user, session is expired.'
-    ) {
-        return <Redirect to="/login" />;
-    } else if (
-        state.user?.attributes &&
-        state.user?.attributes['custom:aeSessionKey'] &&
-        !setInvalidPasswordError?.message
-    ) {
-        // console.log('\n', `NewPasswordRequired, redirect to catalog `, '\n');
-        return <Redirect to="/catalog" />;
+    if (state.user?.attributes && !setInvalidPasswordError?.message) {
+        return <Redirect to="/" />;
     }
 
     return (
-        <div className="page-signin">
-            <div className="row center-xs mb-4">
-                <Logo className="sign-in-logo" alt="audio engine logo" />
-            </div>
-            <div className="row center-xs mb-3">
-                <h2 className="m-0">New Password Required</h2>
-            </div>
-            <Formik
-                initialValues={{
-                    newPassword: '',
-                    confirmNewPassword: '',
-                }}
-                validationSchema={newPasswordRequiredSchema}
-                validateOnChange={false}
-                validateOnBlur={false}
-                onSubmit={handleSubmitCompleteNewPassword}
-            >
-                {({values, errors, handleChange, handleSubmit, isSubmitting}) => {
-                    // console.log('\n', '\n', `values = `, values, '\n', '\n');
-                    return (
-                        <Form className="form-signin" onSubmit={handleSubmit} noValidate>
-                            <div className="row center-xs mb-2">
-                                <h2 className="m-0">Create a Password</h2>
-                            </div>
-                            <div className="row center-xs mb-4">
-                                <p>Your temporary password has expired.</p>
-                                <p>Create a unique password for your profile.</p>
-                            </div>
-                            <InputContainerAuth isMarginBottom>
-                                <Input
-                                    id="newPassword"
-                                    placeholder="New Password"
-                                    type="password"
-                                    value={values.newPassword}
-                                    onChange={handleChange}
-                                    error={errors.newPassword}
-                                />
-                            </InputContainerAuth>
-                            <InputContainerAuth isMarginBottom>
-                                <Input
-                                    id="confirmNewPassword"
-                                    placeholder="Confirm New Password"
-                                    type="password"
-                                    value={values.confirmNewPassword}
-                                    onChange={handleChange}
-                                    error={errors.confirmNewPassword}
-                                />
-                            </InputContainerAuth>
-                            <div className="row center-xs mb-3">
-                                <button
-                                    className="btn btn-primary"
-                                    type="submit"
-                                    disabled={
-                                        !values.newPassword.length ||
-                                        !values.confirmNewPassword.length ||
-                                        !values.newPassword.length ||
-                                        isSubmitting ||
-                                        values.newPassword !== values.confirmNewPassword
-                                    }
-                                >
-                                    Submit
-                                </button>
-                            </div>
-                            <PasswordHelper password={values.newPassword} />
-                            <div className="signin-footer mt-5">
-                                <p>
-                                    <small>
-                                        &copy; {new Date().getFullYear()} Findaway. All rights reserved.
-                                    </small>
-                                </p>
-                            </div>
-                            {invalidPasswordError && (
-                                <>
-                                    <p className="mt-4 error-text">{invalidPasswordError.message}</p>
-                                </>
-                            )}
-                        </Form>
-                    );
-                }}
-            </Formik>
-        </div>
+        <AuthLayout>
+            {isTimeout && <ChangePasswordTimeout />}
+            {!isTimeout && (
+                <div className="page-signin">
+                    <form className="form-signin" onSubmit={handleSubmit} noValidate>
+                        <div className="row center-xs mb-2">
+                            <h2 className="m-0">Create a Password</h2>
+                        </div>
+                        <div className="row center-xs mb-4">
+                            <p>Your temporary password has expired.</p>
+                            <p>Create a unique password for your profile.</p>
+                        </div>
+                        <Input
+                            id="newPassword"
+                            label="New Password"
+                            type="password"
+                            value={values.newPassword}
+                            error={errors.newPassword}
+                            touched={touched.newPassword}
+                            onChange={handleChange}
+                        />
+                        <Input
+                            id="confirmNewPassword"
+                            label="Confirm New Password"
+                            type="password"
+                            value={values.confirmNewPassword}
+                            error={errors.confirmNewPassword}
+                            touched={touched.confirmNewPassword}
+                            onChange={handleChange}
+                        />
+                        <div className="txt-center mb-3">
+                            <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
+                                Submit
+                            </button>
+                            {invalidPasswordError && <p className="mt-4 txt-danger">{invalidPasswordError.message}</p>}
+                        </div>
+                    </form>
+                </div>
+            )}
+        </AuthLayout>
     );
 };
 
