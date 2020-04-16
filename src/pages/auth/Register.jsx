@@ -19,7 +19,7 @@ const Register = () => {
             });
         } catch (e) {}
     };
-    const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
         initialValues: {
             given_name: '',
             family_name: '',
@@ -49,6 +49,7 @@ const Register = () => {
                                     error={errors.given_name}
                                     touched={touched.given_name}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     required
                                 />
                             </div>
@@ -61,6 +62,7 @@ const Register = () => {
                                     error={errors.family_name}
                                     touched={touched.family_name}
                                     onChange={handleChange}
+                                    onBlur={handleBlur}
                                     required
                                 />
                             </div>

@@ -39,7 +39,8 @@ const ForgotPassword = (props) => {
         touched,
         handleChange,
         handleSubmit,
-        isSubmitting
+        isSubmitting,
+        handleBlur
     } = useFormik({
         initialValues: {
             email: ''
@@ -80,6 +81,7 @@ const ForgotPassword = (props) => {
                                 error={errors.email}
                                 touched={touched.email}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                             />
                         )}
                         {!isSentSuccess && (

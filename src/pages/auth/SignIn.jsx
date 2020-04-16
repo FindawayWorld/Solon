@@ -97,7 +97,7 @@ const SignIn = (props) => {
         }
     };
 
-    const { values, errors, touched, handleChange, handleSubmit, isSubmitting } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting, handleBlur } = useFormik({
         initialValues: {
             email: '',
             password: ''
@@ -126,6 +126,7 @@ const SignIn = (props) => {
                             error={errors.email}
                             touched={touched.email}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Input
                             id="password"
@@ -135,6 +136,7 @@ const SignIn = (props) => {
                             error={errors.password}
                             touched={touched.password}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Link to="/forgot-password">Forgot Password?</Link>
 

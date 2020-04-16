@@ -55,7 +55,7 @@ const NewPasswordRequired = (props) => {
         }
     };
 
-    const { values, errors, touched, handleChange, handleSubmit, isSubmitting } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting, handleBlur } = useFormik({
         initialValues: {
             newPassword: '',
             confirmNewPassword: ''
@@ -99,6 +99,7 @@ const NewPasswordRequired = (props) => {
                             error={errors.newPassword}
                             touched={touched.newPassword}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Input
                             id="confirmNewPassword"
@@ -108,6 +109,7 @@ const NewPasswordRequired = (props) => {
                             error={errors.confirmNewPassword}
                             touched={touched.confirmNewPassword}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <div className="txt-center mb-3">
                             <button className="btn btn-primary" type="submit" disabled={isSubmitting}>
