@@ -28,7 +28,7 @@ const AccountIndex = () => {
             console.error(e);
         }
     };
-    const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
         initialValues: {
             given_name: ''
         },
@@ -53,6 +53,7 @@ const AccountIndex = () => {
                             error={errors.given_name}
                             touched={touched.given_name}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Input id="email" label="Email" defaultValue={state.user?.attributes.email} disabled />
                         <Input id="username" label="Username" defaultValue={state.user?.username} disabled />

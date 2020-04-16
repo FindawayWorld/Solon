@@ -54,7 +54,7 @@ const ForgotPasswordVerification = (props) => {
         }
     };
 
-    const { values, errors, touched, handleChange, handleSubmit, isSubmitting, setFieldError } = useFormik({
+    const { values, errors, touched, handleChange, handleSubmit, isSubmitting, setFieldError, handleBlur } = useFormik({
         initialValues: {
             verificationCode: '',
             email: '',
@@ -80,6 +80,7 @@ const ForgotPasswordVerification = (props) => {
                             touched={touched.verificationCode}
                             error={errors.verificationCode}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Input
                             id="email"
@@ -88,6 +89,7 @@ const ForgotPasswordVerification = (props) => {
                             touched={touched.email}
                             error={errors.email}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <Input
                             id="password"
@@ -97,6 +99,7 @@ const ForgotPasswordVerification = (props) => {
                             touched={touched.password}
                             error={errors.password}
                             onChange={handleChange}
+                            onBlur={handleBlur}
                         />
                         <div className="txt-center mb-5">
                             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
