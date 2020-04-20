@@ -59,7 +59,7 @@ const SignIn = (props) => {
                     // This happens when the MFA method is TOTP
                     // The user needs to setup the TOTP before using it
                     // More info please check the Enabling MFA part
-                    Auth.setupTOTP(user);
+                    // Auth.setupTOTP(user);
                     break;
 
                 default:

@@ -24,7 +24,7 @@ const App = () => {
         async function persistLogin() {
             dispatch({ type: appActions.PERSIST_LOGIN_START });
             try {
-                const user = await Auth.currentAuthenticatedUser();
+                const user = await Auth.currentAuthenticatedUser({ bypassCache: true });
                 dispatch({ type: appActions.PERSIST_LOGIN_SUCCESS, payload: { user } });
             } catch (error) {
                 dispatch({ type: appActions.PERSIST_LOGIN_FAIL, payload: { error } });

@@ -9,7 +9,7 @@ import { Auth } from 'aws-amplify';
 const Register = () => {
     const handleSave = async (values) => {
         try {
-            Auth.signUp({
+            await Auth.signUp({
                 username: values.email,
                 password: values.password,
                 attributes: {

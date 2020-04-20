@@ -10,18 +10,14 @@ import { Redirect } from 'react-router-dom';
 const AccountIndex = () => {
     const { state, dispatch } = useContext(AuthContext);
     const handleSave = async (values) => {
-        const { given_name } = values;
         try {
             const user = await Auth.currentAuthenticatedUser();
-            await Auth.updateUserAttributes(user, {
-                given_name: given_name.trim()
-            });
+            const result = await Auth.updateUserAttributes(user, values);
+            console.log(result);
             dispatch({
                 type: appActions.REFRESH_USER,
                 payload: {
-                    updatedUserAttributes: {
-                        given_name: given_name.trim()
-                    }
+                    updatedUserAttributes: (await Auth.currentAuthenticatedUser({ bypassCache: true })).attributes
                 }
             });
         } catch (e) {
@@ -29,13 +25,15 @@ const AccountIndex = () => {
         }
     };
     const { values, errors, touched, handleChange, handleSubmit, handleBlur } = useFormik({
+        enableReinitialize: true,
         initialValues: {
-            given_name: ''
+            given_name: state.user?.attributes?.given_name ?? '',
+            family_name: state.user?.attributes?.family_name ?? ''
         },
         onSubmit: handleSave
     });
 
-    if (!state.user) {
+    if (!state.user && !state.isLoading) {
         return <Redirect to="/" />;
     }
 
@@ -54,6 +52,14 @@ const AccountIndex = () => {
                             touched={touched.given_name}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                        />
+                        <Input
+                            id="family_name"
+                            label="Last Name"
+                            value={values.family_name}
+                            error={errors.family_name}
+                            touched={touched.family_name}
+                            onChange={handleChange}
                         />
                         <Input id="email" label="Email" defaultValue={state.user?.attributes.email} disabled />
                         <Input id="username" label="Username" defaultValue={state.user?.username} disabled />

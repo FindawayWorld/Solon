@@ -70,7 +70,7 @@ const ForgotPasswordVerification = (props) => {
             {!isPasswordChangeSuccess && (
                 <div className="row">
                     <form
-                        className="col-xs-12 col-lg-7 col-lg-offset-1 col-xl-6 col-xl-offset-2"
+                        className="col-xs-12 col-lg-7 col-lg-offset-1 col-xl-5 col-xl-offset-2"
                         onSubmit={handleSubmit}
                     >
                         <Input
@@ -113,7 +113,7 @@ const ForgotPasswordVerification = (props) => {
                             </Link>
                         </div>
                     </form>
-                    <div className="col-xs-12 col-lg-3 col-xl-2">
+                    <div className="col-xs-12 col-lg-3">
                         <PasswordHelper password={values.password} />
                     </div>
                 </div>

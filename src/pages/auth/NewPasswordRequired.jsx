@@ -8,7 +8,6 @@ import ChangePasswordConfirm from '../auth/ChangePasswordConfirm';
 import Input from '../../components/form/Input';
 // utils
 import { AuthContext, appActions } from '../../context/AuthContext';
-import ChangePasswordTimeout from './ChangePasswordTimeout';
 
 import { passwordSchema } from '../../context/AuthContext';
 import AuthLayout from '../../components/AuthLayout';
@@ -64,13 +63,7 @@ const NewPasswordRequired = (props) => {
         onSubmit: handleSubmitCompleteNewPassword
     });
 
-    const isTimeout = invalidPasswordError?.message === 'Invalid session for the user, session is expired.';
-
-    if (isPasswordChangeSuccess) {
-        return <ChangePasswordConfirm />;
-    }
-
-    if (!state.user && !isTimeout) {
+    if (!state.user) {
         return <Redirect to="/sign-in" />;
     }
 
@@ -80,8 +73,8 @@ const NewPasswordRequired = (props) => {
 
     return (
         <AuthLayout>
-            {isTimeout && <ChangePasswordTimeout />}
-            {!isTimeout && (
+            {isPasswordChangeSuccess && <ChangePasswordConfirm />}
+            {isPasswordChangeSuccess && (
                 <div className="page-signin">
                     <form className="form-signin" onSubmit={handleSubmit} noValidate>
                         <div className="row center-xs mb-2">
