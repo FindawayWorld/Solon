@@ -1,0 +1,48 @@
+$backgroundColor: #F36221;
+$white: #ffffff;
+$buttonColor: #492f2f;
+$toggleButtonBorder:#F57C46;
+
+.contactWidgetContainer{
+    background-color: $backgroundColor;
+    font-size: 14px;
+    border-radius: 2px;
+    width:300px;
+    position:fixed;
+    bottom:0; 
+    right:50px;
+    form *{
+        color:$white;
+        border-radius: 2px;
+        font-size: 14px;
+    }
+    .notesLabel{
+        font-size: 12px;
+    }
+    label.required:before{
+        color:white !important;
+    }
+    .toggleBtnContainer{
+        width:100%;
+        border-bottom: 2px $white;
+    }
+    .button-one{
+        width:100%;
+        background-color: $backgroundColor;
+        border:1px solid $backgroundColor;
+        border-bottom: 1px solid $toggleButtonBorder;
+        text-align: left;
+        color:$white;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .button-two{
+        width:100%;
+        background-color: #492f2f;
+        border:none;
+        font-weight: bolder;
+    }
+    .custom-select{
+        background: url("../../svg/chevron-down.svg") no-repeat right 0.75rem center $white;
+    }
+}

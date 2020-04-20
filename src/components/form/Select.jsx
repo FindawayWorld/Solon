@@ -3,6 +3,7 @@ import classnames from 'classnames';
 
 const Select = ({
     label = '',
+    labelClass='',
     labelHelp = null,
     placeholder = null,
     id = 'input',
@@ -42,9 +43,9 @@ const Select = ({
     }
 
     return (
-        <div className={classnames('form-group', {'was-validated': !error, 'mb-0': collapse}, className)}>
+        <div className={classnames('form-group ', {'was-validated': !error, 'mb-0': collapse}, className)}>
             {label && !prependLabel && <div className="label-wrapper">
-                <label htmlFor={id} className={classnames({
+                <label htmlFor={id} className={classnames(labelClass,{
                     'required': isRequired,
                     'hidden': hidden,
                     'label-sm': small

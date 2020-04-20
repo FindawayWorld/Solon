@@ -27,7 +27,7 @@ const Input = ({
         small = false,
         disabled = false,
         readOnly = false,
-        labelClass = null,
+        labelClass = '',
         help = null,
         flex = false,
         ghost = false,
@@ -56,7 +56,7 @@ const Input = ({
                 <div className={classnames("label-wrapper", {'mb-0': !!help})}>
                     <label
                         htmlFor={id}
-                        className={classnames(labelClass, {
+                        className={classnames(labelClass , {
                             'required': isRequired,
                             'sr-only': hideLabel,
                             'flex': flex,

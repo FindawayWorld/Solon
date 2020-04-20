@@ -16,6 +16,7 @@ import JSPage from './pages/Javascript';
 
 import {FiExternalLink} from 'react-icons/fi';
 import {ReactComponent as GatewayLogo} from './svg/GatewayLogo.svg';
+import ContactWidget from './components/ContactWidget';
 
 const NavLink = ({to, children, className, activeClass, activeWhenExact = true}) => {
     let match = useRouteMatch({
@@ -47,8 +48,9 @@ function App() {
                         <li><a href="https://github.com/FindawayWorld/gateway" target="_blank" rel="noopener noreferrer">Github <FiExternalLink width=".875em" height=".875em" /></a></li>
                     </ul>
                 </div>
+                
             </div>
-
+            
                 <div className="container">
                 <Switch>
                     <Route exact path="/">
@@ -68,7 +70,7 @@ function App() {
                     </Route>
                 </Switch>
                 </div>
-
+            <ContactWidget id="93617eea-1737-4846-a0eb-71bc3087bf80"/>
         </Router>
 
 
