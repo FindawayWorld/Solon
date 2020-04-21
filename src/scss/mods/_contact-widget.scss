@@ -11,7 +11,35 @@ $toggleButtonBorder:#F57C46;
     position:fixed;
     bottom:0; 
     right:50px;
-    form *{
+    -webkit-transform: height 100%;
+    transform:height 100%;
+    transition-property: all;
+    transition-duration:2.5s;
+    transition-timing-function:transform 100s ease-in-out;
+    transition-delay: .2s; 
+    &.hide{
+        -webkit-transform: translateY(92.65%);
+        transform: translateY(92.65%);
+        transition-property: all;
+        transition-duration: 2.5s;
+        transition-timing-function:transform 100s ease-in-out;
+        transition-delay: .2s;
+    }
+    svg{
+        transition-property: all;
+        transition-duration: 2.5s;
+        transition-timing-function:transform 100s ease-in-out;
+        transition-delay: .2s;
+        &.hide{
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            transition-property: all;
+            transition-duration: 2.5s;
+            transition-timing-function:transform 100s ease-in-out;
+            transition-delay: .2s;
+        }
+    }
+    label,legend{
         color:$white;
         border-radius: 2px;
         font-size: 14px;
@@ -37,6 +65,8 @@ $toggleButtonBorder:#F57C46;
         font-weight: bold;
     }
     .button-two{
+        color: $white;
+        font-size:16px;
         width:100%;
         background-color: #492f2f;
         border:none;
@@ -46,3 +76,15 @@ $toggleButtonBorder:#F57C46;
         background: url("../../svg/chevron-down.svg") no-repeat right 0.75rem center $white;
     }
 }
+.successMessageModal{
+    .modal-inner{
+        background-color: $backgroundColor;
+        color:$white;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: .5px;
+    }
+    .modal-close{
+        color: $white;
+    }
+} 
