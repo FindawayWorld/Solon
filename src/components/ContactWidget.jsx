@@ -1,32 +1,60 @@
 import React from 'react';
-import Input from "./form/Input"
-import TextArea from "./form/TextArea"
-import Select from "./form/Select"
-import {Formik} from 'formik';
+import Input from './form/Input';
+import TextArea from './form/TextArea';
+import Select from './form/Select';
+import { Formik } from 'formik';
 import classnames from 'classnames';
 import axios from 'axios';
 import { FaChevronDown } from 'react-icons/fa';
 import { useState } from 'react';
 import Modal from './Modal';
+import fiftyStates from '../utils/fiftyStatesAbbrev';
 
-const ContactWidget = props => {
+const ContactWidget = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [isSuccessMessageOpen, setIsSuccessMessageOpen]= useState(false);
+    const [isSuccessMessageOpen, setIsSuccessMessageOpen] = useState(false);
     return (
         <>
-            <div className={classnames("contactWidgetContainer p-0",{"hide":!isOpen})}>
-                <button className="button-one p-3" onClick={()=>setIsOpen(!isOpen)}>Request More Information 
-                    <span className="ml-6 span"><FaChevronDown className={classnames("",{"hide":!isOpen})}size={14}/></span>
+            <div
+                className={classnames('contactWidgetContainer p-0', {
+                    hide: !isOpen,
+                })}
+            >
+                <button
+                    className="button-one p-3"
+                    onClick={() => {
+                        setIsOpen(!isOpen);
+                    }}
+                >
+                    Request More Information
+                    <span className="ml-6 span">
+                        <FaChevronDown
+                            className={classnames('', { hide: !isOpen })}
+                            size={14}
+                        />
+                    </span>
                 </button>
                 <Formik
-                    initialValues={{ id:props.id,email: '', orgType: '' , name:'',orgName:'',notes:'',phone:''}}
-                    validate={values => {
-                        console.log('validate')
+                    initialValues={{
+                        id: props.id,
+                        email: '',
+                        orgType: '',
+                        name: '',
+                        orgName: '',
+                        notes: '',
+                        phone: '',
+                        city: '',
+                        state: '',
+                        key: 'contactWidgetFormik',
+                    }}
+                    validate={(values) => {
                         const errors = {};
                         if (!values.email) {
                             errors.email = 'Required';
                         } else if (
-                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                                values.email
+                            )
                         ) {
                             errors.email = 'Invalid email address';
                         }
@@ -40,30 +68,28 @@ const ContactWidget = props => {
                                 dataType: 'json',
                                 headers: { 'content-type': 'application/json' },
                                 data: JSON.stringify({
-                                    "subject":"New message via Contact Widget",
-                                    "email":values.email,
-                                    "organization_name":values.orgName,
-                                    "your_name":values.name,
-                                    "phone":values.phone,
-                                    "organization_type":values.orgType,
-                                    "additional_notes":values.notes,
+                                    subject: 'New message via Contact Widget',
+                                    email: values.email,
+                                    organization_name: values.orgName,
+                                    your_name: values.name,
+                                    phone: values.phone,
+                                    organization_type: values.orgType,
+                                    additional_notes: values.notes,
+                                    location: `${values.city}, ${values.state}`,
                                 }),
-                                redirect:"/"
-                            })
-                            .then(
+                            }).then(
                                 function success(response) {
-                                    setIsOpen(false)
-                                    alert("Request was successful")
+                                    setIsOpen(false);
+                                    setIsSuccessMessageOpen(true);
                                 },
                                 function fail(status) {
                                     alert(`${status}:Something has gone wrong`);
                                 }
                             );
-                        setSubmitting(false);
-                        }, 1700);
+                            setSubmitting(false);
+                        }, 100);
                     }}
-                
-                    >
+                >
                     {({
                         values,
                         errors,
@@ -72,9 +98,19 @@ const ContactWidget = props => {
                         isSubmitting,
                         /* and other goodies */
                     }) => (
-                        <form id={props.id} target="_blank" className={classnames("pl-3 pr-3 pt-2 pb-2",{"hide":!isOpen})} onSubmit={handleSubmit}>
-                            <legend className="pb-2">Complete this form and we'll reach out within 24hours.</legend>
-                            <Input 
+                        <form
+                            id={props.id}
+                            target="_blank"
+                            className={classnames('pl-3 pr-3 pt-2 pb-2', {
+                                hide: !isOpen,
+                            })}
+                            onSubmit={handleSubmit}
+                        >
+                            <legend className="pb-2">
+                                Complete this form and we'll reach out within
+                                24hours.
+                            </legend>
+                            <Input
                                 id="email"
                                 label="Email"
                                 labelClass="mb-1"
@@ -85,7 +121,7 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                                 required
                             />
-                            <Input 
+                            <Input
                                 id="orgName"
                                 label="Organization Name"
                                 labelClass="mb-1"
@@ -96,7 +132,7 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                                 required
                             />
-                            <Input 
+                            <Input
                                 id="name"
                                 label="Your Name"
                                 labelClass="mb-1"
@@ -107,7 +143,7 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                                 required
                             />
-                            <Input 
+                            <Input
                                 id="phone"
                                 label="Phone"
                                 labelClass="mb-1"
@@ -117,7 +153,8 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                                 type="phone"
                             />
-                            <Select 
+
+                            <Select
                                 id="orgType"
                                 label="Organization Type"
                                 labelClass="mb-1"
@@ -125,12 +162,44 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                             >
                                 <option value="">---</option>
-                                <option value="school"> School</option>
-                                <option value="library">Library</option>
-                                <option value="government">Government</option>
-                                <option value="other">Other</option>
+                                <option value="School"> School</option>
+                                <option value="Library">Library</option>
+                                <option value="Government">Government</option>
+                                <option value="Other">Other</option>
                             </Select>
-                            <TextArea 
+                            <div className="row">
+                                <div className="col-xs-8">
+                                    <Input
+                                        id="city"
+                                        type="text"
+                                        label="City"
+                                        labelClass="mb-1"
+                                        value={values.city}
+                                        error={errors.zipcode}
+                                        placeholder="Library Location"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="col-xs-4">
+                                    <Select
+                                        id="state"
+                                        type="text"
+                                        label="State"
+                                        labelClass="mb-1"
+                                        value={values.state}
+                                        error={errors.state}
+                                        onChange={handleChange}
+                                    >
+                                        <option value="">--</option>
+                                        {fiftyStates.map((state, idx) => (
+                                            <option value={state} key={idx}>
+                                                {state}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                </div>
+                            </div>
+                            <TextArea
                                 id="notes"
                                 labelClass="mb-1"
                                 label="Additional Notes"
@@ -141,13 +210,32 @@ const ContactWidget = props => {
                                 onChange={handleChange}
                                 required
                             />
-                            <label htmlFor="Notes" className="pb-3 notesLabel">Please mention products you are interested in, like preloaded audiobooks, eReaders or tablets.</label>
-                            <button className="button-two p-2 m-auto" type='submit' disabled={isSubmitting} >Send</button>
+                            <label htmlFor="Notes" className="pb-3 notesLabel">
+                                Please mention products you are interested in,
+                                like preloaded audiobooks, eReaders or tablets.
+                            </label>
+                            <button
+                                className="button-two p-2 m-auto"
+                                type="submit"
+                                disabled={isSubmitting}
+                            >
+                                Send
+                            </button>
                         </form>
-                        )}
+                    )}
                 </Formik>
             </div>
-            <section className="successMessageModal"><Modal innerClassName="col-xs-8 col-sm-6 mt-7" visible={isSuccessMessageOpen} onClose={()=>setIsSuccessMessageOpen(false)}><p className="m-auto pt-5 pb-5 txt-center">Request was successful!</p></Modal></section>
+            <section className="successMessageModal">
+                <Modal
+                    innerClassName="col-xs-8 col-sm-6 mt-7"
+                    visible={isSuccessMessageOpen}
+                    onClose={() => setIsSuccessMessageOpen(false)}
+                >
+                    <p className="m-auto pt-5 pb-5 txt-center">
+                        Request was successful!
+                    </p>
+                </Modal>
+            </section>
         </>
     );
 };

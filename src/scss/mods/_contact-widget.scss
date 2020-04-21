@@ -1,6 +1,6 @@
 $backgroundColor: #F36221;
 $white: #ffffff;
-$buttonColor: #492f2f;
+$secondaryColor: #292631;
 $toggleButtonBorder:#F57C46;
 
 .contactWidgetContainer{
@@ -18,8 +18,8 @@ $toggleButtonBorder:#F57C46;
     transition-timing-function:transform 100s ease-in-out;
     transition-delay: .2s; 
     &.hide{
-        -webkit-transform: translateY(92.65%);
-        transform: translateY(92.65%);
+        -webkit-transform: translateY(93.65%);
+        transform: translateY(93.65%);
         transition-property: all;
         transition-duration: 2.5s;
         transition-timing-function:transform 100s ease-in-out;
@@ -48,11 +48,7 @@ $toggleButtonBorder:#F57C46;
         font-size: 12px;
     }
     label.required:before{
-        color:white !important;
-    }
-    .toggleBtnContainer{
-        width:100%;
-        border-bottom: 2px $white;
+        color:$white !important;
     }
     .button-one{
         width:100%;
@@ -68,23 +64,23 @@ $toggleButtonBorder:#F57C46;
         color: $white;
         font-size:16px;
         width:100%;
-        background-color: #492f2f;
+        background-color: $secondaryColor;
         border:none;
         font-weight: bolder;
     }
     .custom-select{
-        background: url("../../svg/chevron-down.svg") no-repeat right 0.75rem center $white;
+        background: url("../../svg/chevron-down.svg") no-repeat right 0.75rem center/20px $white;
     }
 }
 .successMessageModal{
     .modal-inner{
         background-color: $backgroundColor;
         color:$white;
-        font-size: 24px;
+        font-size: 20px;
         font-weight: bold;
         letter-spacing: .5px;
     }
     .modal-close{
-        color: $white;
+        color: $secondaryColor;
     }
 } 
