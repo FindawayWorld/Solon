@@ -62,9 +62,23 @@ const ContactWidget = (props) => {
                     }}
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
+                            let mrContactEndpoint;
+                            if (
+                                process.env.NODE_ENV === 'development' ||
+                                process.env.NODE_ENV === 'test'
+                            ) {
+                                mrContactEndpoint =
+                                    process.env
+                                        .REACT_APP_MRCONTACT_DEV_ENDPOINT;
+                            }
+                            if (process.env.NODE_ENV === 'production') {
+                                mrContactEndpoint =
+                                    process.env
+                                        .REACT_APP_MRCONTACT_PROD_ENDPOINT;
+                            }
                             axios({
                                 method: 'POST',
-                                url: `${process.env.REACT_APP_MRCONTACT_DEV_ENDPOINT}${values.id}`,
+                                url: `${mrContactEndpoint}${values.id}`,
                                 dataType: 'json',
                                 headers: { 'content-type': 'application/json' },
                                 data: JSON.stringify({

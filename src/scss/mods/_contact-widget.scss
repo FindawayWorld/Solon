@@ -1,8 +1,7 @@
 $backgroundColor: #F36221;
-$white: #ffffff;
 $secondaryColor: #292631;
-$toggleButtonBorder:#F57C46;
-
+$ButtonOneBorder:#F57C46;
+$fontColor: #ffffff;
 .contactWidgetContainer{
     background-color: $backgroundColor;
     font-size: 14px;
@@ -11,36 +10,24 @@ $toggleButtonBorder:#F57C46;
     position:fixed;
     bottom:0; 
     right:50px;
-    -webkit-transform: height 100%;
-    transform:height 100%;
     transition-property: all;
     transition-duration:2.5s;
-    transition-timing-function:transform 100s ease-in-out;
     transition-delay: .2s; 
     &.hide{
         -webkit-transform: translateY(93.65%);
         transform: translateY(93.65%);
-        transition-property: all;
-        transition-duration: 2.5s;
-        transition-timing-function:transform 100s ease-in-out;
-        transition-delay: .2s;
     }
     svg{
         transition-property: all;
         transition-duration: 2.5s;
-        transition-timing-function:transform 100s ease-in-out;
         transition-delay: .2s;
         &.hide{
             -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
-            transition-property: all;
-            transition-duration: 2.5s;
-            transition-timing-function:transform 100s ease-in-out;
-            transition-delay: .2s;
         }
     }
     label,legend{
-        color:$white;
+        color:$fontColor;
         border-radius: 2px;
         font-size: 14px;
     }
@@ -48,20 +35,20 @@ $toggleButtonBorder:#F57C46;
         font-size: 12px;
     }
     label.required:before{
-        color:$white !important;
+        color:$fontColor !important;
     }
     .button-one{
         width:100%;
         background-color: $backgroundColor;
         border:1px solid $backgroundColor;
-        border-bottom: 1px solid $toggleButtonBorder;
+        border-bottom: 1px solid $ButtonOneBorder;
         text-align: left;
-        color:$white;
+        color:$fontColor;
         font-size: 14px;
         font-weight: bold;
     }
     .button-two{
-        color: $white;
+        color: $fontColor;
         font-size:16px;
         width:100%;
         background-color: $secondaryColor;
@@ -75,7 +62,7 @@ $toggleButtonBorder:#F57C46;
 .successMessageModal{
     .modal-inner{
         background-color: $backgroundColor;
-        color:$white;
+        color:$fontColor;
         font-size: 20px;
         font-weight: bold;
         letter-spacing: .5px;
