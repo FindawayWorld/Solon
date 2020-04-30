@@ -54,10 +54,10 @@
 @mixin make-button(
     $background,
     $border,
-    $color: color-yiq($background),
+    $color: color-contrast($background),
     $hover-background: scale-color($background, $lightness: -15%),
     $hover-border: scale-color($border, $lightness: -20%),
-    $hover-color: color-yiq($hover-background),
+    $hover-color: color-contrast($hover-background),
     $active-background: $hover-background,
     $active-border: $hover-border,
     $active-color: $hover-color
@@ -93,10 +93,10 @@
 
 @mixin make-outline-button(
     $color,
-    $color-hover: color-yiq($color),
+    $color-hover: color-contrast($color),
     $active-background: $color,
     $active-border: $color,
-    $active-color: color-yiq($active-background)
+    $active-color: color-contrast($active-background)
 ) {
     border-color: $color;
     color: $color;

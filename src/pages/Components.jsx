@@ -64,8 +64,8 @@ const ComponentsPage = () => {
                     Solid button <code>:hover</code> style is as follows.
                 </p>
                 <ul className="mt-0">
-                    <li>Background color: 15% darker than original color</li>
-                    <li>Border color: 20% darker than original color</li>
+                    <li>Background color: shades the original color by 15%</li>
+                    <li>Border color: shades the original color by 20%</li>
                     <li>
                         Text color: either black or white depending on the hover
                         color.

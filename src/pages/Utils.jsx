@@ -50,12 +50,7 @@ const UtilsPage = () => (
                     return (
                         <p
                             key={`bg-${color}`}
-                            className={classnames('p-3 mb-2', `bg-${color}`, {
-                                'txt-dark': ['white', 'light'].includes(color),
-                                'txt-white': !['white', 'light'].includes(
-                                    color
-                                ),
-                            })}
+                            className={classnames('p-3 mb-2', `bg-${color}`)}
                         >{`.bg-${color}`}</p>
                     );
                 })}
