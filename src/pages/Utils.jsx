@@ -8,25 +8,19 @@ const UtilsPage = () => (
             <h2 className="mb-0">Color Utils</h2>
             <p>
                 <small>
-                    Based on{' '}
-                    <a href="https://getbootstrap.com/docs/4.3/utilities/colors/">
-                        Bootstrap Color Utils
-                    </a>
+                    Based on <a href="https://getbootstrap.com/docs/4.3/utilities/colors/">Bootstrap Color Utils</a>
                 </small>
             </p>
             <hr />
 
             <h3>Text color</h3>
-            <p className="bd-lead">
-                Convey meaning through color with a handful of color utility
-                classes.
-            </p>
+            <p className="bd-lead">Convey meaning through color with a handful of color utility classes.</p>
             <div className="bd-example">
                 {brandColors.map((color) => (
                     <p
                         key={`txt-${color}`}
                         className={classnames(`txt-${color}`, {
-                            'bg-dark': ['white', 'light'].includes(color),
+                            'bg-dark': ['white', 'light'].includes(color)
                         })}
                     >{`.txt-${color}`}</p>
                 ))}
@@ -34,24 +28,18 @@ const UtilsPage = () => (
 
             <h3>Background color</h3>
             <p>
-                Similar to the contextual text color classes, easily set the
-                background of an element to any contextual class. Anchor
-                components will darken on hover, just like the text classes.
-                Background utilities{' '}
+                Similar to the contextual text color classes, easily set the background of an element to any contextual
+                class. Anchor components will darken on hover, just like the text classes. Background utilities{' '}
                 <strong>
                     do not set <code className="highlighter-rouge">color</code>
                 </strong>
-                , so in some cases you’ll want to use{' '}
-                <code className="highlighter-rouge">.text-*</code> utilities.
+                , so in some cases you’ll want to use <code className="highlighter-rouge">.text-*</code> utilities.
             </p>
 
             <div className="bd-example">
                 {brandColors.map((color) => {
                     return (
-                        <p
-                            key={`bg-${color}`}
-                            className={classnames('p-3 mb-2', `bg-${color}`)}
-                        >{`.bg-${color}`}</p>
+                        <p key={`bg-${color}`} className={classnames('p-3 mb-2', `bg-${color}`)}>{`.bg-${color}`}</p>
                     );
                 })}
             </div>
@@ -95,20 +83,12 @@ const UtilsPage = () => (
                     >
                         Bootstrap Spacing Utils
                     </a>
-                    , Tailwind CSS{' '}
-                    <a
-                        href="https://tailwindcss.com/docs/margin"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    , and Tailwind CSS{' '}
+                    <a href="https://tailwindcss.com/docs/margin" target="_blank" rel="noopener noreferrer">
                         Margins
                     </a>
                     , and{' '}
-                    <a
-                        href="https://tailwindcss.com/docs/margin"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a href="https://tailwindcss.com/docs/margin" target="_blank" rel="noopener noreferrer">
                         Padding
                     </a>
                     .
@@ -118,38 +98,32 @@ const UtilsPage = () => (
             <hr />
 
             <p className="lead">
-                we include a wide range of shorthand responsive margin and
-                padding utility classes to modify an element’s appearance.
+                we include a wide range of shorthand responsive margin and padding utility classes to modify an
+                element’s appearance.
             </p>
 
             <p>How it works</p>
 
             <p>
-                Assign responsive-friendly <code>margin</code> or{' '}
-                <code>padding</code> values to an element or a subset of its
-                sides with shorthand classes. Includes support for individual
-                properties, all properties, and vertical and horizontal
-                properties. Classes are built from a default Sass map ranging
-                from <code>.25rem</code> to <code>3rem</code>.
+                Assign responsive-friendly <code>margin</code> or <code>padding</code> values to an element or a subset
+                of its sides with shorthand classes. Includes support for individual properties, all properties, and
+                vertical and horizontal properties. Classes are built from a default Sass map ranging from{' '}
+                <code>.25rem</code> to <code>3rem</code>.
             </p>
 
             <p>Notation</p>
 
             <p>
-                Spacing utilities that apply to all breakpoints, from{' '}
-                <code>xs</code> to <code>xl</code>, have no breakpoint
-                abbreviation in them. This is because those classes are applied
-                from <code>min-width: 0</code> and up, and thus are not bound by
-                a media query. The remaining breakpoints, however, do include a
-                breakpoint abbreviation.
+                Spacing utilities that apply to all breakpoints, from <code>xs</code> to <code>xl</code>, have no
+                breakpoint abbreviation in them. This is because those classes are applied from{' '}
+                <code>min-width: 0</code> and up, and thus are not bound by a media query. The remaining breakpoints,
+                however, do include a breakpoint abbreviation.
             </p>
 
             <p>
-                The classes are named using the format{' '}
-                <code>{`{property}{sides}-{size}`}</code> for <code>xs</code>{' '}
-                and <code>{`{property}{sides}-{breakpoint}-{size}`}</code> for{' '}
-                <code>sm</code>, <code>md</code>, <code>lg</code>, and{' '}
-                <code>xl</code>.
+                The classes are named using the format <code>{`{property}{sides}-{size}`}</code> for <code>xs</code> and{' '}
+                <code>{`{property}{sides}-{breakpoint}-{size}`}</code> for <code>sm</code>, <code>md</code>,{' '}
+                <code>lg</code>, and <code>xl</code>.
             </p>
 
             <p>
@@ -171,32 +145,26 @@ const UtilsPage = () => (
 
             <ul>
                 <li>
-                    <code>t</code> - for classes that set{' '}
-                    <code>margin-top</code> or <code>padding-top</code>
+                    <code>t</code> - for classes that set <code>margin-top</code> or <code>padding-top</code>
                 </li>
                 <li>
-                    <code>b</code> - for classes that set{' '}
-                    <code>margin-bottom</code> or <code>padding-bottom</code>
+                    <code>b</code> - for classes that set <code>margin-bottom</code> or <code>padding-bottom</code>
                 </li>
                 <li>
-                    <code>l</code> - for classes that set{' '}
-                    <code>margin-left</code> or <code>padding-left</code>
+                    <code>l</code> - for classes that set <code>margin-left</code> or <code>padding-left</code>
                 </li>
                 <li>
-                    <code>r</code> - for classes that set{' '}
-                    <code>margin-right</code> or <code>padding-right</code>
+                    <code>r</code> - for classes that set <code>margin-right</code> or <code>padding-right</code>
                 </li>
                 <li>
-                    <code>x</code> - for classes that set both{' '}
-                    <code>*-left</code> and <code>*-right</code>
+                    <code>x</code> - for classes that set both <code>*-left</code> and <code>*-right</code>
                 </li>
                 <li>
-                    <code>y</code> - for classes that set both{' '}
-                    <code>*-top</code> and <code>*-bottom</code>
+                    <code>y</code> - for classes that set both <code>*-top</code> and <code>*-bottom</code>
                 </li>
                 <li>
-                    blank - for classes that set a <code>margin</code> or{' '}
-                    <code>padding</code> on all 4 sides of the element
+                    blank - for classes that set a <code>margin</code> or <code>padding</code> on all 4 sides of the
+                    element
                 </li>
             </ul>
 
@@ -223,17 +191,15 @@ const UtilsPage = () => (
                     [40, 10],
                     [48, 12],
                     [56, 14],
-                    [64, 16],
+                    [64, 16]
                 ].map((int) => (
                     <li>
-                        <code>{int[0]}</code> - for classes that eliminate the{' '}
-                        <code>margin</code> or <code>padding</code> by setting
-                        it to <code>{int[1] ? `${int[1]}rem` : int[1]}</code>
+                        <code>{int[0]}</code> - for classes that eliminate the <code>margin</code> or{' '}
+                        <code>padding</code> by setting it to <code>{int[1] ? `${int[1]}rem` : int[1]}</code>
                     </li>
                 ))}
                 <li>
-                    <code>auto</code> - for classes that set the{' '}
-                    <code>margin</code> to <code>auto</code>
+                    <code>auto</code> - for classes that set the <code>margin</code> to <code>auto</code>
                 </li>
             </ul>
 
@@ -365,11 +331,7 @@ const UtilsPage = () => (
             <p>
                 <small>
                     Based on{' '}
-                    <a
-                        href="http://flexboxgrid.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a href="http://flexboxgrid.com/" target="_blank" rel="noopener noreferrer">
                         Flexbox Grid
                     </a>
                     .
@@ -380,21 +342,16 @@ const UtilsPage = () => (
             <section className="page-section">
                 <h3>Simple Syntax</h3>
                 <p>
-                    All you need to remember is <code>.row</code> and{' '}
-                    <code>{`.col-{breakpoint}-{column count}`}</code>.
+                    All you need to remember is <code>.row</code> and <code>{`.col-{breakpoint}-{column count}`}</code>.
                 </p>
-                <pre>
-                    &lt;div className="row"&gt;&lt;div
-                    className="col-xs-12"&gt;&lt;/div&gt;&lt;/div&gt;
-                </pre>
+                <pre>&lt;div className="row"&gt;&lt;div className="col-xs-12"&gt;&lt;/div&gt;&lt;/div&gt;</pre>
             </section>
 
             <section className="page-section mb-5">
                 <h3 className="mb-1">Responsive</h3>
                 <p className="mb-3">
-                    Responsive modifiers enable specifying different column
-                    sizes, offsets, alignment and distribution at xs, sm, md
-                    &amp; lg viewport widths.
+                    Responsive modifiers enable specifying different column sizes, offsets, alignment and distribution
+                    at xs, sm, md &amp; lg viewport widths.
                 </p>
 
                 <div className="row">
@@ -428,10 +385,7 @@ const UtilsPage = () => (
 
             <section className="page-section mb-5">
                 <h3 className="mb-1">Fluid</h3>
-                <p className="mb-3">
-                    Percent based widths allow fluid resizing of columns and
-                    rows.
-                </p>
+                <p className="mb-3">Percent based widths allow fluid resizing of columns and rows.</p>
 
                 <div className="row">
                     <div className="col-xs-12">
@@ -491,8 +445,7 @@ const UtilsPage = () => (
             <section className="page-section mb-5">
                 <h3 className="mb-1">Offsets</h3>
                 <p className="mb-3">
-                    Offset a column.{' '}
-                    <code>{`.col-{breakpoint}-offset-{column count}`}</code>
+                    Offset a column. <code>{`.col-{breakpoint}-offset-{column count}`}</code>
                 </p>
 
                 <div className="row">
@@ -555,8 +508,8 @@ const UtilsPage = () => (
             <section className="page-section mb-5">
                 <h3 className="mb-1">Auto Width</h3>
                 <p className="mb-3">
-                    Add any number of auto sizing columns to a row. Let the grid
-                    figure it out. <code>{`.col-{breakpoint}`}</code>
+                    Add any number of auto sizing columns to a row. Let the grid figure it out.{' '}
+                    <code>{`.col-{breakpoint}`}</code>
                 </p>
                 <div className="row">
                     <div className="col-xs">
@@ -634,8 +587,8 @@ const UtilsPage = () => (
             <section className="page-section mb-5">
                 <h3 className="mb-1">Alignment</h3>
                 <p className="mb-3">
-                    Add classes to align elements to the start or end of a row
-                    as well as the top, bottom, or center of a column.
+                    Add classes to align elements to the start or end of a row as well as the top, bottom, or center of
+                    a column.
                 </p>
 
                 <p>
@@ -684,8 +637,8 @@ const UtilsPage = () => (
                 </div>
 
                 <p>
-                    Here is an example of using the modifiers in conjunction to
-                    acheive different alignment at different viewport sizes.
+                    Here is an example of using the modifiers in conjunction to acheive different alignment at different
+                    viewport sizes.
                 </p>
                 <div className="row mb-3">
                     <div className="col-xs-12">
@@ -738,9 +691,7 @@ const UtilsPage = () => (
 
             <section className="page-section mb-5">
                 <h3 className="mb-1">Distribution</h3>
-                <p className="mb-3">
-                    Add classes to distribute the contents of a row or column.
-                </p>
+                <p className="mb-3">Add classes to distribute the contents of a row or column.</p>
 
                 <p>
                     <code>{`.around-{breakpoint}`}</code>
