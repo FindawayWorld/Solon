@@ -12,11 +12,11 @@
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-    padding: .375rem .75rem;
+    padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: $border-radius;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: all 0.15s ease-in-out;
     text-transform: none;
 
     &:hover,
@@ -28,7 +28,7 @@
 
     &:focus {
         outline: 0;
-        box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+        // box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
     }
 
     .feather {
@@ -40,29 +40,40 @@
     .feather-check {
         top: -2px;
     }
+
+    // Opinionated: add "hand" cursor to non-disabled .btn elements
+    &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+    }
+
+    &:disabled {
+        opacity: 0.65;
+    }
 }
 
-@mixin make-button (
+@mixin make-button(
     $background,
     $border,
-    $color: color-yiq($background),
-    $hover-background: darken($background, 7.5%),
-    $hover-border: darken($border, 10%),
-    $hover-color: color-yiq($hover-background),
-    $active-background: darken($background, 10%),
-    $active-border: darken($border, 12.5%),
-    $active-color: color-yiq($active-background)
+    $color: color-contrast($background),
+    $hover-background: scale-color($background, $lightness: -15%),
+    $hover-border: scale-color($border, $lightness: -20%),
+    $hover-color: color-contrast($hover-background),
+    $active-background: $hover-background,
+    $active-border: $hover-border,
+    $active-color: $hover-color
 ) {
     background-color: $background;
     border-color: $border;
     color: $color;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $hover-background;
         border-color: $hover-border;
         color: $hover-color;
     }
-    &:active {
+    &:active,
+    &.active {
         background-color: $active-background;
         border-color: $active-border;
         color: $active-color;
@@ -80,22 +91,24 @@
     }
 }
 
-@mixin make-outline-button (
+@mixin make-outline-button(
     $color,
-    $color-hover: color-yiq($color),
+    $color-hover: color-contrast($color),
     $active-background: $color,
     $active-border: $color,
-    $active-color: color-yiq($active-background)
+    $active-color: color-contrast($active-background)
 ) {
     border-color: $color;
     color: $color;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background-color: $color;
         border-color: $color;
         color: $color-hover;
     }
-    &:active {
+    &:active,
+    &.active {
         background-color: $active-background;
         border-color: $active-border;
         color: $active-color;
@@ -106,19 +119,54 @@
     .btn-#{$color} {
         @include make-button($value, $value);
     }
-}
-
-@each $color, $value in $themeColors {
     .btn-outline-#{$color} {
         @include make-outline-button($value);
     }
 }
 
 .btn-lg {
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     font-size: $font-size-lg;
 }
 .btn-sm {
-    padding: .25rem .5rem;
+    padding: 0.25rem 0.5rem;
     font-size: $font-size-sm;
+}
+
+.btn-group,
+.btn-group-vertical {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn-group > .btn-group:not(:first-child),
+.btn-group > .btn:not(:first-child) {
+    margin-left: -1px;
+}
+
+.btn-group-vertical > .btn,
+.btn-group > .btn {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.btn-group > .btn-group:not(:last-child) > .btn,
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.btn-group > .btn-group:not(:first-child) > .btn,
+.btn-group > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group-vertical > .btn.active,
+.btn-group-vertical > .btn:active,
+.btn-group-vertical > .btn:focus,
+.btn-group > .btn.active,
+.btn-group > .btn:active,
+.btn-group > .btn:focus {
+    z-index: 1;
 }

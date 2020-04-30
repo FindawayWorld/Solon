@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-import {titleCase} from '../utils';
+import { titleCase } from '../utils';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
@@ -12,11 +12,11 @@ import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import FormattedCurrency from '../components/FormattedCurrency';
 
-import {useFormik} from 'formik';
-import {object, string, boolean, array} from 'yup';
-import {brandColors} from './Content';
+import { useFormik } from 'formik';
+import { object, string, boolean, array } from 'yup';
+import { brandColors } from './Content';
 
-import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
+import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 import FormattedPlural from '../components/FormattedPlural';
 import Loading from '../components/Loading';
 import DisplayFormikState from '../components/DisplayFormikState';
@@ -24,29 +24,20 @@ import DisplayFormikState from '../components/DisplayFormikState';
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
-    const {
-        handleSubmit,
-        handleChange,
-        values,
-        errors,
-        touched
-    } = useFormik({
+    const { handleSubmit, handleChange, values, errors, touched } = useFormik({
         initialValues: {
             name: 'Test Name',
             signup: false,
             fav_fruit: 'avocado',
-            jobType: [],
+            jobType: []
         },
         validationSchema: object().shape({
             name: string().required(),
-            signup: boolean().oneOf(
-                [true],
-                'Please sign up for news'
-            ),
+            signup: boolean().oneOf([true], 'Please sign up for news'),
             fav_fruit: string().required('Please choose a fruit'),
-            jobType: array(),
+            jobType: array()
         }),
-        onSubmit: values => {
+        onSubmit: (values) => {
             alert(JSON.stringify(values, null, 4));
         }
     });
@@ -56,66 +47,74 @@ const ComponentsPage = () => {
             <section id="Buttons" className="mb-5">
                 <h2>Buttons</h2>
                 <hr />
-
                 <p>
-                    {brandColors.map(color => (
-                        <button
-                            key={`btn-${color}`}
-                            className={classnames('btn mr-1', `btn-${color}`)}
-                        >
+                    Button styles are based on the defined <a href="/content">color</a> variables.
+                </p>
+
+                <h3>Solid Buttons</h3>
+
+                <p className="mb-1">
+                    Solid button <code>:hover</code> style is as follows.
+                </p>
+                <ul className="mt-0">
+                    <li>Background color: shades the original color by 15%</li>
+                    <li>Border color: shades the original color by 20%</li>
+                    <li>Text color: either black or white depending on the hover color.</li>
+                </ul>
+
+                <p className="mb-8">
+                    {brandColors.map((color) => (
+                        <button key={`btn-${color}`} className={classnames('btn mr-1', `btn-${color}`)}>
                             {titleCase(color)}
                         </button>
                     ))}
                     <button className="btn btn-link">Link</button>
                 </p>
+
+                <h3>Outline Buttons</h3>
+                <p className="mb-1">
+                    Outline button <code>:hover</code> style is as follows.
+                </p>
+                <ul className="mt-0">
+                    <li>Background color: the original color</li>
+                    <li>Border color: the original color</li>
+                    <li>Text color: either black or white depending on the hover color.</li>
+                </ul>
                 <p>
-                    {brandColors.map(color => (
-                        <button
-                            key={`btn-outline-${color}`}
-                            className={classnames(
-                                'btn mr-1',
-                                `btn-outline-${color}`
-                            )}
-                        >
-                            {titleCase(color)}
-                        </button>
-                    ))}
+                    <small>
+                        NOTE: The <code>$light</code> color outline button is available but unreadable, it's advised to
+                        avoid using.
+                    </small>
+                </p>
+                <p>
+                    {brandColors
+                        .filter((color) => color !== 'light')
+                        .map((color) => (
+                            <button
+                                key={`btn-outline-${color}`}
+                                className={classnames('btn mr-1', `btn-outline-${color}`)}
+                            >
+                                {titleCase(color)}
+                            </button>
+                        ))}
                 </p>
 
                 <h3>Button Tags</h3>
                 <p>
-                    The .btn classes are designed to be used with the{' '}
-                    <code>&lt;button&gt;</code> element. However, you can also
-                    use these classes on <code>&lt;a&gt;</code> or{' '}
-                    <code>&lt;input&gt;</code> elements (though some browsers
-                    may apply a slightly different rendering).
+                    The .btn classes are designed to be used with the <code>&lt;button&gt;</code> element. However, you
+                    can also use these classes on <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though
+                    some browsers may apply a slightly different rendering).
                 </p>
                 <p>
-                    <a
-                        className="btn btn-primary mr-1"
-                        href="#demo"
-                        role="button"
-                    >
+                    <a className="btn btn-primary mr-1" href="#demo" role="button">
                         Link/Anchor
                     </a>
                     <button className="btn btn-primary mr-1" type="submit">
                         Button
                     </button>
-                    <input
-                        className="btn btn-primary mr-1"
-                        type="button"
-                        value="Input"
-                    />
-                    <input
-                        className="btn btn-primary mr-1"
-                        type="submit"
-                        value="Submit"
-                    />
-                    <input
-                        className="btn btn-primary mr-1"
-                        type="reset"
-                        value="Reset"
-                    />
+                    <input className="btn btn-primary mr-1" type="button" value="Input" />
+                    <input className="btn btn-primary mr-1" type="submit" value="Submit" />
+                    <input className="btn btn-primary mr-1" type="reset" value="Reset" />
                 </p>
 
                 <h3>Button Sizes</h3>
@@ -134,9 +133,24 @@ const ComponentsPage = () => {
                         <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
                         <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
                         <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-                        <MenuLink as={Link} to="/content">Go to Content Page</MenuLink>
+                        <MenuLink as={Link} to="/content">
+                            Go to Content Page
+                        </MenuLink>
                     </MenuList>
                 </Menu>
+
+                <h3>Button Groups</h3>
+                <div className="btn-group mb-4">
+                    <button className="btn btn-primary active">First</button>
+                    <button className="btn btn-primary">Second</button>
+                    <button className="btn btn-primary">Third</button>
+                </div>
+
+                <div className="btn-group d-flex">
+                    <button className="btn btn-outline-primary">First</button>
+                    <button className="btn btn-outline-primary active">Second</button>
+                    <button className="btn btn-outline-primary">Third</button>
+                </div>
             </section>
 
             <section className="mb-5">
@@ -145,51 +159,63 @@ const ComponentsPage = () => {
 
                 <Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
                 <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
-                <Pagination as={Link} toProp="to"
-                    numPages={1000}
-                    perPage={20}
-                    currentPage={60}
-                    pagesToShow={5}
-                />
-                <Pagination
-                    numPages={1000}
-                    perPage={20}
-                    currentPage={60}
-                    pagesToShow={5}
-                    showJumpFirst
-                    showJumpLast
-                />
+                <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
+                <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
             </section>
 
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Currency</h2>
-                <hr/>
-                <p>Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop and return a <code>String</code>.</p>
-                <p>This uses the <code>window.Intl.NumberFormat</code> function, you may need to include a <a href="https://polyfill.io">polyfill</a>.</p>
+                <hr />
+                <p>
+                    Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop
+                    and return a <code>String</code>.
+                </p>
+                <p>
+                    This uses the <code>window.Intl.NumberFormat</code> function, you may need to include a{' '}
+                    <a href="https://polyfill.io">polyfill</a>.
+                </p>
 
-                <p><FormattedCurrency value={10.56} currency="USD" /></p>
-                <p><FormattedCurrency value="230.99" currency="EUR" /></p>
-                <p><FormattedCurrency value={16.75} currency="JPY" /></p>
-                <p><FormattedCurrency value={123456.789} curency="CAD" /></p>
+                <p>
+                    <FormattedCurrency value={10.56} currency="USD" />
+                </p>
+                <p>
+                    <FormattedCurrency value="230.99" currency="EUR" />
+                </p>
+                <p>
+                    <FormattedCurrency value={16.75} currency="JPY" />
+                </p>
+                <p>
+                    <FormattedCurrency value={123456.789} curency="CAD" />
+                </p>
             </section>
 
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Plural</h2>
-                <hr/>
-                <p>Return a plural string based on a given <code>value</code>.</p>
+                <hr />
+                <p>
+                    Return a plural string based on a given <code>value</code>.
+                </p>
 
-                <p>10 <FormattedPlural value={10} one="Car" many="Cars" /></p>
-                <p>1 <FormattedPlural value={1} one="Bike" many="Bikes" /></p>
-                <p>0 <FormattedPlural value={0} one="Scooter" many="Scooters" /></p>
+                <p>
+                    10 <FormattedPlural value={10} one="Car" many="Cars" />
+                </p>
+                <p>
+                    1 <FormattedPlural value={1} one="Bike" many="Bikes" />
+                </p>
+                <p>
+                    0 <FormattedPlural value={0} one="Scooter" many="Scooters" />
+                </p>
             </section>
 
             <section>
                 <h2>Loading Animation</h2>
-                <hr/>
+                <hr />
 
                 <Loading />
 
-                <p>Inline Loading <Loading inline /></p>
+                <p>
+                    Inline Loading <Loading inline />
+                </p>
 
                 <p className="bg-dark txt-white p-3">
                     Inverted <Loading invert />
@@ -200,42 +226,26 @@ const ComponentsPage = () => {
                 <h2>Modal</h2>
                 <hr />
 
-                <button
-                    className="btn btn-primary mb-3"
-                    onClick={() => setCurrentModal('a')}
-                >
+                <button className="btn btn-primary mb-3" onClick={() => setCurrentModal('a')}>
                     Show Modal
                 </button>
-                <Modal
-                    visible={currentModal === 'a'}
-                    onClose={() => setCurrentModal(null)}
-                >
+                <Modal visible={currentModal === 'a'} onClose={() => setCurrentModal(null)}>
                     <h1>Modal</h1>
                     <p>
-                        By default modal windows will be centered horizontally,
-                        and fixed to <code>2rem</code> from the top of the
-                        window. To center a modal both vertically and
-                        horizontally use the <code>center</code> prop.
+                        By default modal windows will be centered horizontally, and fixed to <code>2rem</code> from the
+                        top of the window. To center a modal both vertically and horizontally use the{' '}
+                        <code>center</code> prop.
                     </p>
                 </Modal>
 
-                <button
-                    className="btn btn-primary"
-                    onClick={() => setCurrentModal('centered')}
-                >
+                <button className="btn btn-primary" onClick={() => setCurrentModal('centered')}>
                     Show Centered Modal
                 </button>
-                <Modal
-                    visible={currentModal === 'centered'}
-                    onClose={() => setCurrentModal(null)}
-                    center
-                >
+                <Modal visible={currentModal === 'centered'} onClose={() => setCurrentModal(null)} center>
                     <h1>Centered Modal</h1>
                     <p>
-                        This modal will always be centered both vertically and
-                        horizontally in the window. <strong>WARNING:</strong>{' '}
-                        This could cause content to get cut off on certain
-                        screen heights.
+                        This modal will always be centered both vertically and horizontally in the window.{' '}
+                        <strong>WARNING:</strong> This could cause content to get cut off on certain screen heights.
                     </p>
                 </Modal>
             </section>
@@ -243,8 +253,7 @@ const ComponentsPage = () => {
             <section id="forms" className="mb-5">
                 <h2>Forms</h2>
                 <p>
-                    Forms should be built with{' '}
-                    <a href="https://jaredpalmer.com/formik/">Formik</a>.
+                    Forms should be built with <a href="https://jaredpalmer.com/formik/">Formik</a>.
                 </p>
                 <p>Form markup is derrived from Bootstrap.</p>
                 <hr />
@@ -253,11 +262,7 @@ const ComponentsPage = () => {
                 <hr />
                 <Input label="Text Input" placeholder="Placeholder Text" />
 
-                <Input
-                    id="input_prepend"
-                    label="Prepend Label"
-                    prependLabel={true}
-                />
+                <Input id="input_prepend" label="Prepend Label" prependLabel={true} />
 
                 <Input
                     id="input_append"
@@ -265,24 +270,11 @@ const ComponentsPage = () => {
                     append={<button className="btn btn-primary">Submit</button>}
                 />
 
-                <Input
-                    id="input_error"
-                    label="With Error"
-                    errors="This is an error message."
-                    touched={true}
-                />
+                <Input id="input_error" label="With Error" errors="This is an error message." touched={true} />
 
-                <Input
-                    id="input_search"
-                    label="Search"
-                    type="search"
-                />
+                <Input id="input_search" label="Search" type="search" />
 
-                <Input
-                    id="input_file"
-                    label="File Upload"
-                    type="file"
-                />
+                <Input id="input_file" label="File Upload" type="file" />
 
                 <h3>Select</h3>
                 <hr />
@@ -295,11 +287,7 @@ const ComponentsPage = () => {
                         <option value="5">Option 5</option>
                     </Select>
 
-                    <Select
-                        id="select_multiple"
-                        label="Multiple Select"
-                        multiple
-                    >
+                    <Select id="select_multiple" label="Multiple Select" multiple>
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
                         <option value="3">Option 3</option>
@@ -316,85 +304,78 @@ const ComponentsPage = () => {
                 <hr />
                 <Checkbox label="Checkbox" id="checkbox_1" />
 
-                <Checkbox
-                    label="With Errors"
-                    id="error_checkbox"
-                    errors="Checkbox error message"
-                    touched={true}
-                />
+                <Checkbox label="With Errors" id="error_checkbox" errors="Checkbox error message" touched={true} />
 
                 <h3>Formik Example</h3>
                 <hr />
-                    <form onSubmit={handleSubmit} noValidate>
-                        <Input
-                            id="name"
-                            label="name"
-                            value={values.name}
-                            error={errors.name}
-                            touched={touched.name}
+                <form onSubmit={handleSubmit} noValidate>
+                    <Input
+                        id="name"
+                        label="name"
+                        value={values.name}
+                        error={errors.name}
+                        touched={touched.name}
+                        onChange={handleChange}
+                    />
+                    <Checkbox
+                        id="signup"
+                        label="Sign up for news"
+                        value={values.signup}
+                        error={errors.signup}
+                        touched={touched.signup}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Select
+                        id="fav_fruit"
+                        label="Favorite Fruit"
+                        value={values.fav_fruit}
+                        error={errors.fav_fruit}
+                        touched={touched.fav_fruit}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select a fruit</option>
+                        {fruits.map((item) => (
+                            <option key={item} value={item}>
+                                {item}
+                            </option>
+                        ))}
+                    </Select>
+                    <div className="label">What best describes you? (check all that apply)</div>
+                    <fieldset>
+                        <Checkbox
+                            label="Designer"
+                            name="jobType"
+                            value="designer"
+                            checked={values.jobType.includes('designer')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
                         />
                         <Checkbox
-                            id="signup"
-                            label="Sign up for news"
-                            value={values.signup}
-                            error={errors.signup}
-                            touched={touched.signup}
+                            label="Developer"
+                            name="jobType"
+                            value="developer"
+                            checked={values.jobType.includes('developer')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
-                            required
                         />
-                        <Select
-                            id="fav_fruit"
-                            label="Favorite Fruit"
-                            value={values.fav_fruit}
-                            error={errors.fav_fruit}
-                            touched={touched.fav_fruit}
+                        <Checkbox
+                            label="Product Manager"
+                            name="jobType"
+                            value="product"
+                            checked={values.jobType.includes('product')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
-                        >
-                            <option value="">Select a fruit</option>
-                            {fruits.map(item => (
-                                <option key={item} value={item}>
-                                    {item}
-                                </option>
-                            ))}
-                        </Select>
-                        <div className="label">
-                            What best describes you? (check all that apply)
-                        </div>
-                        <fieldset>
-                            <Checkbox
-                                label="Designer"
-                                name="jobType"
-                                value="designer"
-                                checked={values.jobType.includes('designer')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                            <Checkbox
-                                label="Developer"
-                                name="jobType"
-                                value="developer"
-                                checked={values.jobType.includes('developer')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                            <Checkbox
-                                label="Product Manager"
-                                name="jobType"
-                                value="product"
-                                checked={values.jobType.includes('product')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                        </fieldset>
-                        <button className="btn btn-primary" type="submit">
-                            Submit
-                        </button>
-                    </form>
-                    <DisplayFormikState {...{errors, values, touched}} />
+                        />
+                    </fieldset>
+                    <button className="btn btn-primary" type="submit">
+                        Submit
+                    </button>
+                </form>
+                <DisplayFormikState {...{ errors, values, touched }} />
             </section>
         </>
     );
