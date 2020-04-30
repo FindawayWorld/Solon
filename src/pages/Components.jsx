@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
 
-import {titleCase} from '../utils';
+import { titleCase } from '../utils';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
@@ -12,11 +12,17 @@ import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import FormattedCurrency from '../components/FormattedCurrency';
 
-import {useFormik} from 'formik';
-import {object, string, boolean, array} from 'yup';
-import {brandColors} from './Content';
+import { useFormik } from 'formik';
+import { object, string, boolean, array } from 'yup';
+import { brandColors } from './Content';
 
-import {  Menu,  MenuList,  MenuButton,  MenuItem,  MenuLink} from "@reach/menu-button";
+import {
+    Menu,
+    MenuList,
+    MenuButton,
+    MenuItem,
+    MenuLink,
+} from '@reach/menu-button';
 import FormattedPlural from '../components/FormattedPlural';
 import Loading from '../components/Loading';
 import DisplayFormikState from '../components/DisplayFormikState';
@@ -24,13 +30,7 @@ import DisplayFormikState from '../components/DisplayFormikState';
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
-    const {
-        handleSubmit,
-        handleChange,
-        values,
-        errors,
-        touched
-    } = useFormik({
+    const { handleSubmit, handleChange, values, errors, touched } = useFormik({
         initialValues: {
             name: 'Test Name',
             signup: false,
@@ -39,16 +39,13 @@ const ComponentsPage = () => {
         },
         validationSchema: object().shape({
             name: string().required(),
-            signup: boolean().oneOf(
-                [true],
-                'Please sign up for news'
-            ),
+            signup: boolean().oneOf([true], 'Please sign up for news'),
             fav_fruit: string().required('Please choose a fruit'),
             jobType: array(),
         }),
-        onSubmit: values => {
+        onSubmit: (values) => {
             alert(JSON.stringify(values, null, 4));
-        }
+        },
     });
 
     return (
@@ -56,9 +53,27 @@ const ComponentsPage = () => {
             <section id="Buttons" className="mb-5">
                 <h2>Buttons</h2>
                 <hr />
-
                 <p>
-                    {brandColors.map(color => (
+                    Button styles are based on the defined{' '}
+                    <a href="/content">color</a> variables.
+                </p>
+
+                <h3>Solid Buttons</h3>
+
+                <p className="mb-1">
+                    Solid button <code>:hover</code> style is as follows.
+                </p>
+                <ul className="mt-0">
+                    <li>Background color: 15% darker than original color</li>
+                    <li>Border color: 20% darker than original color</li>
+                    <li>
+                        Text color: either black or white depending on the hover
+                        color.
+                    </li>
+                </ul>
+
+                <p className="mb-8">
+                    {brandColors.map((color) => (
                         <button
                             key={`btn-${color}`}
                             className={classnames('btn mr-1', `btn-${color}`)}
@@ -68,18 +83,39 @@ const ComponentsPage = () => {
                     ))}
                     <button className="btn btn-link">Link</button>
                 </p>
+
+                <h3>Outline Buttons</h3>
+                <p className="mb-1">
+                    Outline button <code>:hover</code> style is as follows.
+                </p>
+                <ul className="mt-0">
+                    <li>Background color: the original color</li>
+                    <li>Border color: the original color</li>
+                    <li>
+                        Text color: either black or white depending on the hover
+                        color.
+                    </li>
+                </ul>
                 <p>
-                    {brandColors.map(color => (
-                        <button
-                            key={`btn-outline-${color}`}
-                            className={classnames(
-                                'btn mr-1',
-                                `btn-outline-${color}`
-                            )}
-                        >
-                            {titleCase(color)}
-                        </button>
-                    ))}
+                    <small>
+                        NOTE: The <code>$light</code> color outline button is
+                        available but unreadable, it's advised to avoid using.
+                    </small>
+                </p>
+                <p>
+                    {brandColors
+                        .filter((color) => color !== 'light')
+                        .map((color) => (
+                            <button
+                                key={`btn-outline-${color}`}
+                                className={classnames(
+                                    'btn mr-1',
+                                    `btn-outline-${color}`
+                                )}
+                            >
+                                {titleCase(color)}
+                            </button>
+                        ))}
                 </p>
 
                 <h3>Button Tags</h3>
@@ -121,31 +157,74 @@ const ComponentsPage = () => {
                 <h3>Button Sizes</h3>
 
                 <p>
-                    <button className="btn btn-primary btn-lg mr-3">Large</button>
+                    <button className="btn btn-primary btn-lg mr-3">
+                        Large
+                    </button>
                     <button className="btn btn-primary mr-3">Normal</button>
                     <button className="btn btn-primary btn-sm">Small</button>
                 </p>
 
                 <h3>Reach-UI MenuButton</h3>
                 <Menu>
-                    <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
+                    <MenuButton className="btn btn-primary mr-1">
+                        Actions
+                    </MenuButton>
                     <MenuList className="dropdown-menu">
-                        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
-                        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
-                        <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
-                        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-                        <MenuLink as={Link} to="/content">Go to Content Page</MenuLink>
+                        <MenuItem onSelect={() => alert('Download')}>
+                            Download
+                        </MenuItem>
+                        <MenuItem onSelect={() => alert('Copy')}>
+                            Create a Copy
+                        </MenuItem>
+                        <MenuItem onSelect={() => alert('Mark as Draft')}>
+                            Mark as Draft
+                        </MenuItem>
+                        <MenuItem onSelect={() => alert('Delete')}>
+                            Delete
+                        </MenuItem>
+                        <MenuLink as={Link} to="/content">
+                            Go to Content Page
+                        </MenuLink>
                     </MenuList>
                 </Menu>
+
+                <h3>Button Groups</h3>
+                <div className="btn-group mb-4">
+                    <button className="btn btn-primary active">First</button>
+                    <button className="btn btn-primary">Second</button>
+                    <button className="btn btn-primary">Third</button>
+                </div>
+
+                <div className="btn-group d-flex">
+                    <button className="btn btn-outline-primary">First</button>
+                    <button className="btn btn-outline-primary active">
+                        Second
+                    </button>
+                    <button className="btn btn-outline-primary">Third</button>
+                </div>
             </section>
 
             <section className="mb-5">
                 <h2>Pagination</h2>
                 <hr />
 
-                <Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
-                <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
-                <Pagination as={Link} toProp="to"
+                <Pagination
+                    as={Link}
+                    toProp="to"
+                    numPages={100}
+                    perPage={10}
+                    currentPage={1}
+                />
+                <Pagination
+                    as={Link}
+                    toProp="to"
+                    numPages={1000}
+                    perPage={20}
+                    currentPage={60}
+                />
+                <Pagination
+                    as={Link}
+                    toProp="to"
                     numPages={1000}
                     perPage={20}
                     currentPage={60}
@@ -163,33 +242,60 @@ const ComponentsPage = () => {
 
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Currency</h2>
-                <hr/>
-                <p>Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop and return a <code>String</code>.</p>
-                <p>This uses the <code>window.Intl.NumberFormat</code> function, you may need to include a <a href="https://polyfill.io">polyfill</a>.</p>
+                <hr />
+                <p>
+                    Format any numerical <code>value</code> as a currency based
+                    on the given <code>currency</code> prop and return a{' '}
+                    <code>String</code>.
+                </p>
+                <p>
+                    This uses the <code>window.Intl.NumberFormat</code>{' '}
+                    function, you may need to include a{' '}
+                    <a href="https://polyfill.io">polyfill</a>.
+                </p>
 
-                <p><FormattedCurrency value={10.56} currency="USD" /></p>
-                <p><FormattedCurrency value="230.99" currency="EUR" /></p>
-                <p><FormattedCurrency value={16.75} currency="JPY" /></p>
-                <p><FormattedCurrency value={123456.789} curency="CAD" /></p>
+                <p>
+                    <FormattedCurrency value={10.56} currency="USD" />
+                </p>
+                <p>
+                    <FormattedCurrency value="230.99" currency="EUR" />
+                </p>
+                <p>
+                    <FormattedCurrency value={16.75} currency="JPY" />
+                </p>
+                <p>
+                    <FormattedCurrency value={123456.789} curency="CAD" />
+                </p>
             </section>
 
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Plural</h2>
-                <hr/>
-                <p>Return a plural string based on a given <code>value</code>.</p>
+                <hr />
+                <p>
+                    Return a plural string based on a given <code>value</code>.
+                </p>
 
-                <p>10 <FormattedPlural value={10} one="Car" many="Cars" /></p>
-                <p>1 <FormattedPlural value={1} one="Bike" many="Bikes" /></p>
-                <p>0 <FormattedPlural value={0} one="Scooter" many="Scooters" /></p>
+                <p>
+                    10 <FormattedPlural value={10} one="Car" many="Cars" />
+                </p>
+                <p>
+                    1 <FormattedPlural value={1} one="Bike" many="Bikes" />
+                </p>
+                <p>
+                    0{' '}
+                    <FormattedPlural value={0} one="Scooter" many="Scooters" />
+                </p>
             </section>
 
             <section>
                 <h2>Loading Animation</h2>
-                <hr/>
+                <hr />
 
                 <Loading />
 
-                <p>Inline Loading <Loading inline /></p>
+                <p>
+                    Inline Loading <Loading inline />
+                </p>
 
                 <p className="bg-dark txt-white p-3">
                     Inverted <Loading invert />
@@ -272,17 +378,9 @@ const ComponentsPage = () => {
                     touched={true}
                 />
 
-                <Input
-                    id="input_search"
-                    label="Search"
-                    type="search"
-                />
+                <Input id="input_search" label="Search" type="search" />
 
-                <Input
-                    id="input_file"
-                    label="File Upload"
-                    type="file"
-                />
+                <Input id="input_file" label="File Upload" type="file" />
 
                 <h3>Select</h3>
                 <hr />
@@ -325,76 +423,76 @@ const ComponentsPage = () => {
 
                 <h3>Formik Example</h3>
                 <hr />
-                    <form onSubmit={handleSubmit} noValidate>
-                        <Input
-                            id="name"
-                            label="name"
-                            value={values.name}
-                            error={errors.name}
-                            touched={touched.name}
+                <form onSubmit={handleSubmit} noValidate>
+                    <Input
+                        id="name"
+                        label="name"
+                        value={values.name}
+                        error={errors.name}
+                        touched={touched.name}
+                        onChange={handleChange}
+                    />
+                    <Checkbox
+                        id="signup"
+                        label="Sign up for news"
+                        value={values.signup}
+                        error={errors.signup}
+                        touched={touched.signup}
+                        onChange={handleChange}
+                        required
+                    />
+                    <Select
+                        id="fav_fruit"
+                        label="Favorite Fruit"
+                        value={values.fav_fruit}
+                        error={errors.fav_fruit}
+                        touched={touched.fav_fruit}
+                        onChange={handleChange}
+                    >
+                        <option value="">Select a fruit</option>
+                        {fruits.map((item) => (
+                            <option key={item} value={item}>
+                                {item}
+                            </option>
+                        ))}
+                    </Select>
+                    <div className="label">
+                        What best describes you? (check all that apply)
+                    </div>
+                    <fieldset>
+                        <Checkbox
+                            label="Designer"
+                            name="jobType"
+                            value="designer"
+                            checked={values.jobType.includes('designer')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
                         />
                         <Checkbox
-                            id="signup"
-                            label="Sign up for news"
-                            value={values.signup}
-                            error={errors.signup}
-                            touched={touched.signup}
+                            label="Developer"
+                            name="jobType"
+                            value="developer"
+                            checked={values.jobType.includes('developer')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
-                            required
                         />
-                        <Select
-                            id="fav_fruit"
-                            label="Favorite Fruit"
-                            value={values.fav_fruit}
-                            error={errors.fav_fruit}
-                            touched={touched.fav_fruit}
+                        <Checkbox
+                            label="Product Manager"
+                            name="jobType"
+                            value="product"
+                            checked={values.jobType.includes('product')}
+                            error={errors.jobType}
+                            touched={touched.jobType}
                             onChange={handleChange}
-                        >
-                            <option value="">Select a fruit</option>
-                            {fruits.map(item => (
-                                <option key={item} value={item}>
-                                    {item}
-                                </option>
-                            ))}
-                        </Select>
-                        <div className="label">
-                            What best describes you? (check all that apply)
-                        </div>
-                        <fieldset>
-                            <Checkbox
-                                label="Designer"
-                                name="jobType"
-                                value="designer"
-                                checked={values.jobType.includes('designer')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                            <Checkbox
-                                label="Developer"
-                                name="jobType"
-                                value="developer"
-                                checked={values.jobType.includes('developer')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                            <Checkbox
-                                label="Product Manager"
-                                name="jobType"
-                                value="product"
-                                checked={values.jobType.includes('product')}
-                                error={errors.jobType}
-                                touched={touched.jobType}
-                                onChange={handleChange}
-                            />
-                        </fieldset>
-                        <button className="btn btn-primary" type="submit">
-                            Submit
-                        </button>
-                    </form>
-                    <DisplayFormikState {...{errors, values, touched}} />
+                        />
+                    </fieldset>
+                    <button className="btn btn-primary" type="submit">
+                        Submit
+                    </button>
+                </form>
+                <DisplayFormikState {...{ errors, values, touched }} />
             </section>
         </>
     );
