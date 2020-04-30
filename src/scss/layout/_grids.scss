@@ -1,8 +1,7 @@
 $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
-$displays: none, inline, inline-block, block, table, table-row, table-cell, flex,
-    inline-flex !default;
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 
 $spacers: map-merge(
     (
@@ -23,7 +22,7 @@ $spacers: map-merge(
         40: $spacer * 10,
         48: $spacer * 12,
         56: $spacer * 14,
-        64: $spacer * 16,
+        64: $spacer * 16
     ),
     $spacers
 );

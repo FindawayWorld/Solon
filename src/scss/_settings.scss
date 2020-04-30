@@ -68,7 +68,7 @@ $colors: map-merge(
         'white': $white,
         'silver': $silver,
         'gray': $gray,
-        'black': $black,
+        'black': $black
     ),
     $colors
 );
@@ -92,7 +92,7 @@ $themeColors: map-merge(
         'warning': $warning,
         'info': $teal,
         'light': $light,
-        'dark': $dark,
+        'dark': $dark
     ),
     $themeColors
 );
