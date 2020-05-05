@@ -1,0 +1,71 @@
+@mixin make-flash(
+    $background,
+    $border: scale-color($background, $lightness: -20%),
+    $color: color-contrast($background)
+) {
+    border-color: $border;
+    background: $background;
+    color: $color !important;
+
+    a {
+        color: $color;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin make-flash-outline($color) {
+    border-color: $color;
+    background: $white;
+    color: $color !important;
+
+    a {
+        color: $color;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.flash {
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border-radius: $border-radius;
+    border: solid 1px $border-color;
+    position: relative;
+
+    &.fixed {
+        padding: 0.75rem 1rem;
+    }
+
+    .close {
+        position: absolute;
+        font-size: 1.4rem;
+        line-height: 1;
+        text-decoration: none;
+        opacity: 0.75;
+        right: 0.75rem;
+        top: 50%;
+        margin-top: -0.85rem;
+        transition: all 250ms ease-in-out;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+@each $color, $value in $themeColors {
+    .flash-#{$color} {
+        @include make-flash($value);
+    }
+
+    // Omit 'warning' and 'light' styles because
+    // they are too light for outline styles
+    @if $color != warning and $color != light {
+        .flash-outline-#{$color} {
+            @include make-flash-outline($value);
+        }
+    }
+}

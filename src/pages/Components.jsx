@@ -163,6 +163,36 @@ const ComponentsPage = () => {
                 <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
             </section>
 
+            <section className="mb-5">
+                <h2>Flashes (alerts)</h2>
+                <hr />
+                {brandColors.map((color) => (
+                    <div key={`flash-${color}`} className={classnames('flash mb-4', `flash-${color}`)}>
+                        {titleCase(color)} <a href="#demo">anchor link</a>
+                        <a href="#close" className="close">
+                            &times;
+                        </a>
+                    </div>
+                ))}
+
+                <div className="flash flash-primary">Primary, no close.</div>
+
+                <h3>Outline Flashes</h3>
+                <p>
+                    <code>light</code> and <code>warning</code> omitted due to poor visibility.
+                </p>
+                {brandColors
+                    .filter((color) => !['light', 'warning'].includes(color))
+                    .map((color) => (
+                        <div
+                            key={`flash-outline-${color}`}
+                            className={classnames('flash fixed mb-4', ` flash-outline-${color}`)}
+                        >
+                            {titleCase(color)} <a href="#demo">anchor link</a>
+                        </div>
+                    ))}
+            </section>
+
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Currency</h2>
                 <hr />
@@ -308,9 +338,8 @@ const ComponentsPage = () => {
 
                 <h3>Error Messages</h3>
                 <p>
-                    There are a few different styles for error messages, however form components will implement their
-                    own appropriate error messages. These can be used to update existing messages, or implement
-                    standalone error messages.
+                    Form components will implement their own appropriate error message style. These classes can be used
+                    to augment existing messages, or implement standalone error messages.
                 </p>
                 <div class="form-error mb-4">
                     <span>
