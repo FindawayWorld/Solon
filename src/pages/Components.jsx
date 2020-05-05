@@ -270,7 +270,7 @@ const ComponentsPage = () => {
                     append={<button className="btn btn-primary">Submit</button>}
                 />
 
-                <Input id="input_error" label="With Error" errors="This is an error message." touched={true} />
+                <Input id="input_error" label="With Error" error="This is an error message." touched={true} />
 
                 <Input id="input_search" label="Search" type="search" />
 
@@ -304,7 +304,26 @@ const ComponentsPage = () => {
                 <hr />
                 <Checkbox label="Checkbox" id="checkbox_1" />
 
-                <Checkbox label="With Errors" id="error_checkbox" errors="Checkbox error message" touched={true} />
+                <Checkbox label="With Errors" id="error_checkbox" error="Checkbox error message" touched={true} />
+
+                <h3>Error Messages</h3>
+                <p>
+                    There are a few different styles for error messages, however form components will implement their
+                    own appropriate error messages. These can be used to update existing messages, or implement
+                    standalone error messages.
+                </p>
+                <div class="form-error mb-4">
+                    <span>
+                        <code>.form-error</code> error messages, will sit below the form input and appear "attached" to
+                        the form input.
+                    </span>
+                </div>
+                <div class="form-error standalone mb-8">
+                    <span>
+                        <code>.form-error.standalone</code> error messages, is self contained and sits below the form
+                        input.
+                    </span>
+                </div>
 
                 <h3>Formik Example</h3>
                 <hr />
