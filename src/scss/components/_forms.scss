@@ -35,10 +35,6 @@ label {
     display: block;
     margin-bottom: $line-height / 4;
 
-    // &.hidden {
-    //     @include visuallyhidden;
-    // }
-
     &.collapse {
         margin-bottom: 0;
     }
@@ -94,8 +90,8 @@ label {
     }
 
     .input-group-prepend {
-        margin-right: -3px;
-        z-index: 1;
+        margin-right: -1px;
+        // z-index: 1;
 
         .input-group-text {
             border-top-right-radius: 0;
@@ -108,8 +104,8 @@ label {
     }
 
     .input-group-append {
-        margin-left: -3px;
-        z-index: 1;
+        margin-left: -1px;
+        // z-index: 1;
 
         .btn {
             position: relative;
@@ -131,6 +127,7 @@ label {
 
     .input-group-control {
         position: relative;
+        z-index: 2;
         flex: 1 1 auto;
         width: 1%;
         margin-bottom: 0;
@@ -172,6 +169,10 @@ label {
         border-color: $gray;
         outline: none;
     }
+
+    // &:focus {
+    //     box-shadow: 0 0 0 0.2rem #007bff40;
+    // }
 
     &.input-flat {
         border-color: $white;
@@ -327,35 +328,6 @@ svg.input-icon {
     left: 0;
     text-align: center;
     margin: 0;
-}
-
-.input-box {
-    position: relative;
-
-    &.inline {
-        display: inline-block;
-    }
-
-    &.has-icon-right {
-        .input-icon {
-            right: 0;
-            left: auto;
-        }
-        input {
-            padding-right: 34px;
-        }
-    }
-
-    &.has-icon-left {
-        .input-icon {
-            right: auto;
-            left: 10px;
-            top: 8px;
-        }
-        input {
-            padding-left: 34px;
-        }
-    }
 }
 
 input[type='number'] {

@@ -364,6 +364,19 @@ class GWColorLib {
                 background: ${color} !important;
                 color: ${this.colorContrast(color)} !important;
             }
+            a {
+                color: ${color};
+            }
+
+            a.demo-cta {
+                border-color: ${color};
+            }
+            a.demo-reverse-cta:hover {
+                border-color: ${color};
+            }
+            a.fancy-cta svg {
+                color: ${color};
+            }
         `;
     };
 
