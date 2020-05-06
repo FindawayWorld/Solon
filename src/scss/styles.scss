@@ -1,122 +1,19 @@
-@import 'settings',
-        'functions';
+@import 'functions', 'settings';
 
-@import 'base/base',
-        'base/typography';
+@import 'base/base', 'base/typography';
 
 @import 'layout/grids';
 
-@import 'components/forms',
-        'components/buttons',
-        'components/links',
-        'components/lists',
-        'components/tables';
+@import 'components/flashes', 'components/forms', 'components/buttons', 'components/links', 'components/lists',
+    'components/tables';
 
-@import 'mods/header',
-        'mods/footer',
-        'mods/loading',
-        'mods/menu-button',
-        'mods/modal',
-        'mods/pagination',
-        'mods/contact-widget';
+@import 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal', 'mods/pagination', 'mods/contact-widget';
 
 .img-center {
     display: block;
     margin: 0 auto;
     max-width: 100%;
 }
-
-.indicator-list {
-    line-height: 1.2;
-    li {
-        line-height: 1.2;
-        margin-bottom: .75rem;
-    }
-}
-
-.indicator {
-    border-left: solid 3px transparent;
-    padding-left: .5rem;
-}
-
-.indicator-success {
-    border-color: #8EC648;
-}
-
-.indicator-danger {
-    border-color: #DE1A22;
-}
-
-.address, .address p {
-    line-height: 1.5;
-}
-
-.slider {
-    max-width: rem(960);
-    margin: 0 auto;
-
-    position: relative;
-
-    button {
-        cursor: pointer;
-        padding: 0;
-        background: none;
-        border: none;
-        line-height: 1;
-        font-size: 4rem;
-        vertical-align: middle;
-        position: absolute;
-        top: 50%;
-        margin-top: -32px;
-        display: block;
-        color: $font-color;
-        svg {
-            display: block;
-        }
-    }
-
-    .prev {
-        left: 0;
-        right: auto;
-    }
-
-    .next {
-        right: 0;
-        left: auto;
-    }
-
-    @media #{$small} {
-        .prev {
-            left: -2rem;
-            right: auto;
-        }
-
-        .next {
-            right: -2rem;
-            left: auto;
-        }
-    }
-
-    @media #{$medium} {
-        .prev {
-            left: -4rem;
-            right: auto;
-        }
-
-        .next {
-            right: -4rem;
-            left: auto;
-        }
-    }
-}
-
-.slider .slide {
-    img {
-        display: block;
-        margin: 0 auto;
-    }
-}
-
 
 // Style Guide Styles
 
@@ -130,6 +27,7 @@
 @each $color, $value in $themeColors {
     .bg-#{$color} {
         background-color: $value;
+        color: color-contrast($value) !important;
     }
     .txt-#{$color} {
         color: $value;
@@ -145,11 +43,19 @@
     }
 }
 
-.box, .box-first, .box-large, .box-nested, .box-row {
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
     padding: 1rem;
 }
 
-.box, .box-first, .box-large, .box-nested, .box-row {
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
     position: relative;
     box-sizing: border-box;
     min-height: 1rem;
@@ -179,7 +85,7 @@
 }
 
 code {
-    font-size: .875rem;
+    font-size: 0.875rem;
     color: $fuchsia;
     word-break: break-word;
 }
