@@ -1,12 +1,12 @@
-$backgroundColor: #F36221;
-$secondaryColor: #292631;
+$contactWidget-backgroundColor: #F36221;
+$contactWidget-secondaryColor: #292631;
 $ButtonOneBorder:#F57C46;
-$fontColor: #ffffff;
+$contactWidget-fontColor: #ffffff;
 .contactWidgetContainer{
-    background-color: $backgroundColor;
-    font-size: 14px;
+    background-color: $contactWidget-backgroundColor;
+    font-size: 0.875em;
     border-radius: 2px;
-    width:300px;
+    width:320px;
     position:fixed;
     bottom:0; 
     right:50px;
@@ -14,7 +14,6 @@ $fontColor: #ffffff;
     transition-duration:2.5s;
     transition-delay: .2s; 
     &.hide{
-        -webkit-transform: translateY(93.65%);
         transform: translateY(93.65%);
     }
     svg{
@@ -22,52 +21,51 @@ $fontColor: #ffffff;
         transition-duration: 2.5s;
         transition-delay: .2s;
         &.hide{
-            -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
         }
     }
+    .form-control{
+        font-size:.875em;
+    }
     label,legend{
-        color:$fontColor;
+        color:$contactWidget-fontColor;
         border-radius: 2px;
-        font-size: 14px;
+        font-size: 0.875em;
     }
     .notesLabel{
-        font-size: 12px;
+        font-size: 0.75em;
     }
     label.required:before{
-        color:$fontColor !important;
+        color:$contactWidget-fontColor !important;
     }
     .button-one{
         width:100%;
-        background-color: $backgroundColor;
-        border:1px solid $backgroundColor;
+        background-color: $contactWidget-backgroundColor;
+        border:1px solid $contactWidget-backgroundColor;
         border-bottom: 1px solid $ButtonOneBorder;
         text-align: left;
-        color:$fontColor;
-        font-size: 14px;
+        color:$contactWidget-fontColor;
+        font-size: 0.875em;
         font-weight: bold;
     }
     .button-two{
-        color: $fontColor;
-        font-size:16px;
+        color: $contactWidget-fontColor;
+        font-size:1em;
         width:100%;
-        background-color: $secondaryColor;
+        background-color: $contactWidget-secondaryColor;
         border:none;
         font-weight: bolder;
-    }
-    .custom-select{
-        background: url("../../svg/chevron-down.svg") no-repeat right 0.75rem center/20px $white;
     }
 }
 .successMessageModal{
     .modal-inner{
-        background-color: $backgroundColor;
-        color:$fontColor;
-        font-size: 20px;
+        background-color: $contactWidget-backgroundColor;
+        color:$contactWidget-fontColor;
+        font-size: 1.25em;
         font-weight: bold;
         letter-spacing: .5px;
     }
     .modal-close{
-        color: $secondaryColor;
+        color: $contactWidget-secondaryColor;
     }
 } 

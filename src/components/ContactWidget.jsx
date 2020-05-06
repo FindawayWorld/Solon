@@ -8,8 +8,33 @@ import axios from 'axios';
 import { FaChevronDown } from 'react-icons/fa';
 import { useState } from 'react';
 import Modal from './Modal';
-import fiftyStates from '../utils/fiftyStatesAbbrev';
 
+const handleSend = (values,setIsOpen,setIsSuccessMessageOpen) => {
+    axios({
+        method: 'POST',
+        url: `${process.env.REACT_APP_MRCONTACT_ENDPOINT}${values.id}`,
+        dataType: 'json',
+        headers: { 'content-type': 'application/json' },
+        data: JSON.stringify({
+            subject: 'New message via Contact Widget',
+            email: values.email,
+            organization_name: values.orgName,
+            your_name: values.name,
+            phone: values.phone,
+            organization_type: values.orgType,
+            additional_notes: values.notes,
+            location: `${values.city}, ${values.state}`,
+        }),
+    }).then(
+        function success(response) {
+            setIsOpen(false);
+            setIsSuccessMessageOpen(true);
+        },
+        function fail(status) {
+            alert(`${status}:Something has gone wrong`);
+        }
+    );
+}
 const ContactWidget = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isSuccessMessageOpen, setIsSuccessMessageOpen] = useState(false);
@@ -27,7 +52,7 @@ const ContactWidget = (props) => {
                     }}
                 >
                     Request More Information
-                    <span className="ml-6 span">
+                    <span className="ml-5 span">
                         <FaChevronDown
                             className={classnames('', { hide: !isOpen })}
                             size={14}
@@ -36,7 +61,6 @@ const ContactWidget = (props) => {
                 </button>
                 <Formik
                     initialValues={{
-                        id: props.id,
                         email: '',
                         orgType: '',
                         name: '',
@@ -45,7 +69,6 @@ const ContactWidget = (props) => {
                         phone: '',
                         city: '',
                         state: '',
-                        key: 'contactWidgetFormik',
                     }}
                     validate={(values) => {
                         const errors = {};
@@ -61,45 +84,9 @@ const ContactWidget = (props) => {
                         return errors;
                     }}
                     onSubmit={(values, { setSubmitting }) => {
+                        values.id=props.id;
                         setTimeout(() => {
-                            let mrContactEndpoint;
-                            if (
-                                process.env.NODE_ENV === 'development' ||
-                                process.env.NODE_ENV === 'test'
-                            ) {
-                                mrContactEndpoint =
-                                    process.env
-                                        .REACT_APP_MRCONTACT_DEV_ENDPOINT;
-                            }
-                            if (process.env.NODE_ENV === 'production') {
-                                mrContactEndpoint =
-                                    process.env
-                                        .REACT_APP_MRCONTACT_PROD_ENDPOINT;
-                            }
-                            axios({
-                                method: 'POST',
-                                url: `${mrContactEndpoint}${values.id}`,
-                                dataType: 'json',
-                                headers: { 'content-type': 'application/json' },
-                                data: JSON.stringify({
-                                    subject: 'New message via Contact Widget',
-                                    email: values.email,
-                                    organization_name: values.orgName,
-                                    your_name: values.name,
-                                    phone: values.phone,
-                                    organization_type: values.orgType,
-                                    additional_notes: values.notes,
-                                    location: `${values.city}, ${values.state}`,
-                                }),
-                            }).then(
-                                function success(response) {
-                                    setIsOpen(false);
-                                    setIsSuccessMessageOpen(true);
-                                },
-                                function fail(status) {
-                                    alert(`${status}:Something has gone wrong`);
-                                }
-                            );
+                            handleSend(values, setIsOpen,setIsSuccessMessageOpen)
                             setSubmitting(false);
                         }, 100);
                     }}
@@ -110,7 +97,6 @@ const ContactWidget = (props) => {
                         handleChange,
                         handleSubmit,
                         isSubmitting,
-                        /* and other goodies */
                     }) => (
                         <form
                             id={props.id}
@@ -195,22 +181,15 @@ const ContactWidget = (props) => {
                                     />
                                 </div>
                                 <div className="col-xs-4">
-                                    <Select
+                                    <Input 
                                         id="state"
                                         type="text"
                                         label="State"
                                         labelClass="mb-1"
                                         value={values.state}
                                         error={errors.state}
-                                        onChange={handleChange}
-                                    >
-                                        <option value="">--</option>
-                                        {fiftyStates.map((state, idx) => (
-                                            <option value={state} key={idx}>
-                                                {state}
-                                            </option>
-                                        ))}
-                                    </Select>
+                                        placeholder="State"
+                                        onChange={handleChange}/>
                                 </div>
                             </div>
                             <TextArea
