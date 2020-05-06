@@ -294,6 +294,8 @@ const ComponentsPage = () => {
 
                 <Input id="input_prepend" label="Prepend Label" prependLabel={true} />
 
+                <Input id="input_prepend_append" label="Prepend and Append" prepend="Prepend" append="Append" />
+
                 <Input
                     id="input_append"
                     label="Appended Component"
