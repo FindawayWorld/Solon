@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import classnames from 'classnames';
+
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
 const FontTester = (props) => {
@@ -25,23 +27,36 @@ const FontTester = (props) => {
             <div className="row col-xs-8 col-sm-6 mx-auto ">
                 <p className="col-xs-12 col-sm-4 mt-6">Line Height: {lineHeight}</p>
                 <div className="row col-xs-12 col-sm-2 mb-6">
-                    <button className="btn mx-auto" onClick={() => setPxLineHeight(lineHeight + .25)}>
+                    <button className="btn mx-auto" onClick={() => setPxLineHeight(lineHeight + 0.25)}>
                         <FaArrowUp size={16} />
                     </button>
-                    <button className="mx-auto btn" onClick={() => setPxLineHeight(lineHeight - .25)}>
+                    <button className="mx-auto btn" onClick={() => setPxLineHeight(lineHeight - 0.25)}>
                         <FaArrowDown size={16} />
                     </button>
                 </div>
             </div>
             <div className="row col-xs-8 col-sm-6 mx-auto">
                 {' '}
-                <p className="col-xs-12 col-sm-4 mt-6">FontWeight: {weight} </p>
-                <div className="row col-xs-12 col-sm-2 mb-4">
-                    <button className="btn mx-auto" onClick={() => setWeight('bold')}>
-                        <FaArrowUp size={16} />
+                <p className="col-xs-12 col-sm-4 mt-2">Font Weight:</p>
+                <div className="row col-xs-12 col-sm-4 mb-4">
+                    <button
+                        className={classnames('btn', {
+                            'btn-primary': weight === 'normal',
+                            'btn-secondary': weight === 'bold'
+                        })}
+                        onClick={() => setWeight('normal')}
+                    >
+                        normal
                     </button>
-                    <button className="mx-auto btn" onClick={() => setWeight('normal')}>
-                        <FaArrowDown size={16} />
+                    <button
+                        className={classnames('btn ml-2', {
+                            'btn-primary': weight === 'bold',
+                            'btn-secondary': weight === 'normal'
+                        })}
+                        onClick={() => setWeight('bold')}
+                        style={{ fontWeight: 'bold' }}
+                    >
+                        bold
                     </button>
                 </div>
             </div>
@@ -64,7 +79,15 @@ const FontTester = (props) => {
             </div>
 
             <div className="p-6 m-6 txt-center">
-                <h2 style={{ fontSize: `${pxSize}px`, lineHeight: lineHeight, fontFamily: 'Verdana', minWidth: '100%',fontWeight:weight }}>
+                <h2
+                    style={{
+                        fontSize: `${pxSize}px`,
+                        lineHeight: lineHeight,
+                        fontFamily: 'Verdana',
+                        minWidth: '100%',
+                        fontWeight: weight
+                    }}
+                >
                     {text}
                 </h2>
             </div>
