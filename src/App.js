@@ -8,6 +8,7 @@ import UtilsPage from './pages/Utils';
 import HomePage from './pages/Home';
 import JSPage from './pages/Javascript';
 import ColorTester from './pages/ColorTester';
+import FontTester from './pages/FontTester';
 
 import { FiExternalLink } from 'react-icons/fi';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
@@ -67,6 +68,11 @@ function App() {
                             </NavLink>
                         </li>
                         <li>
+                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/font-tester">
+                                Font Tester
+                            </NavLink>
+                        </li>
+                        <li>
                             <a
                                 href="https://github.com/FindawayWorld/gateway"
                                 target="_blank"
@@ -98,6 +104,9 @@ function App() {
                     </Route>
                     <Route path="/color-tester">
                         <ColorTester />
+                    </Route>
+                    <Route path="/font-tester">
+                        <FontTester />
                     </Route>
                 </Switch>
             </div>
