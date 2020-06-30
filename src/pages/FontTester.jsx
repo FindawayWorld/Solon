@@ -8,7 +8,6 @@ const FontTester = () => {
     const [lineHeight, setPxLineHeight] = useState(1);
     const [text, setText] = useState('');
     const [weight, setWeight] = useState('normal');
-    const [fontFamily, setFontFamily] = useState('RASourceSansPro');
     const [classNames, setClassNames] = useState('');
 
     return (
@@ -82,27 +81,6 @@ const FontTester = () => {
                     </button>
                 </div>
             </article>
-            <article className="row col-xs-12 mt-2">
-                <label htmlFor="fontfamily">Font Family:</label>
-                <select
-                    name="fontfamily"
-                    className="ml-5 py-2"
-                    style={{ fontFamily: fontFamily }}
-                    onChange={(e) => setFontFamily(e.target.value)}
-                >
-                    <option value="RASourceSansPro">Source Sans Pro Regular</option>
-                    <option value="RASourceSansProLight">Source Sans Pro Light</option>
-                    <option value="RASourceSansProSemiBold">Source Sans Pro SemiBold</option>
-                    <option value="RASourceSansProBold">Source Sans Pro Bold</option>
-                    <option value="Magorian">Magorian</option>
-                    <option value="acumin-pro, sans-serif">Acumin Pro, sans-serif</option>
-                    <option value="Open Sans, sans-serif">Open Sans, sans-serif</option>
-                    <option value="HCoGotham">Gotham Bold</option>
-                    <option value="HCoGothamBook">Gotham Book</option>
-                    <option value="quincyBold">Quincy Bold</option>
-                    <option value="crayonregular">character-regular</option>
-                </select>
-            </article>
             <article className="my-6">
                 <h4>Test Margin &amp; Padding</h4>
                 <label htmlFor="classNames">
@@ -126,7 +104,6 @@ const FontTester = () => {
                             style={{
                                 fontSize: `${pxSize}px`,
                                 lineHeight: lineHeight,
-                                fontFamily: fontFamily,
                                 minWidth: '100%',
                                 fontWeight: weight,
                                 margin: 0
