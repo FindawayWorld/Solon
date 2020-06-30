@@ -121,7 +121,7 @@ const FontTester = (props) => {
                 />
             </article>
             <article className="my-6">
-                <h2 className="txt-center">Text Mockup</h2>
+                <h2>Text Mockup</h2>
                 <div
                     className=""
                     style={{ border: '1px solid black', width: '100%', maxWidth: '650px', height: 'fit-content' }}
