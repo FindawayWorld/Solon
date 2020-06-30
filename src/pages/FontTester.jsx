@@ -14,13 +14,24 @@ const FontTester = (props) => {
     return (
         <section className="container">
             <h1 className="my-6">Font Tester</h1>
-            <p>Use this page to test how text will display.</p>
+            <p>Use this page to test how text will be displayed.</p>
             <hr />
+            <article className="my-6">
+                <label htmlFor="txt">Text:</label>
+                <textarea
+                    className="py-2 mx-auto"
+                    defaultValue={text}
+                    name="txt"
+                    placeholder="ex: Hello World!"
+                    style={{ width: '100%', maxWidth: '675px' }}
+                    onChange={(e) => setText(e.target.value)}
+                />
+            </article>
             <article className="row col-xs-12 my-6" style={{ height: 'fit-content' }}>
                 {' '}
-                <p>FontSize: {pxSize}px </p>
+                <p style={{ width: '150px' }}>Font Size: {pxSize}px </p>
                 <button
-                    className="btn p-0 m-0 pr-2 ml-4"
+                    className="btn p-0 m-0 pr-2"
                     style={{ height: 'fit-content' }}
                     onClick={() => setPxSize(pxSize + 1)}
                 >
@@ -31,9 +42,9 @@ const FontTester = (props) => {
                 </button>
             </article>
             <article className="col-xs-12 row my-6" style={{ height: 'fit-content' }}>
-                <p>LineHeight: {lineHeight}</p>
+                <p style={{ width: '150px' }}>Line Height: {lineHeight}</p>
                 <button
-                    className="btn p-0 m-0 pr-2  ml-6"
+                    className="btn p-0 m-0 pr-2"
                     onClick={() => setPxLineHeight(lineHeight + 0.25)}
                     style={{ height: 'fit-content' }}
                 >
@@ -73,9 +84,11 @@ const FontTester = (props) => {
                     </button>
                 </div>
             </article>
-            <article className="col-xs-12 mt-2">
+            <article className="row col-xs-12 mt-2">
+                <label htmlFor="fontfamily">Font Family:</label>
                 <select
-                    className="py-2"
+                    name="fontfamily"
+                    className="ml-5 py-2"
                     style={{ fontFamily: fontFamily }}
                     onChange={(e) => setFontFamily(e.target.value)}
                 >
@@ -92,19 +105,8 @@ const FontTester = (props) => {
                     <option value="crayonregular">character-regular</option>
                 </select>
             </article>
-            <article className="col-xs-12 my-6">
-                <label htmlFor="txt">Add text:</label>
-                <textarea
-                    className="py-2 mx-auto"
-                    defaultValue={text}
-                    name="txt"
-                    placeholder="ex: Hello World!"
-                    style={{ width: '100%', maxWidth: '675px' }}
-                    onChange={(e) => setText(e.target.value)}
-                />
-            </article>
 
-            <article className="col-xs-12 my-6">
+            <article className="my-6">
                 <h4>Test Margin &amp; Padding</h4>
                 <label htmlFor="classNames">Ranging from 0-6</label>
                 <label htmlFor="classNames">
@@ -120,7 +122,7 @@ const FontTester = (props) => {
                     onChange={(e) => setClassNames(e.target.value)}
                 />
             </article>
-            <article className="col-xs-12 my-6">
+            <article className="my-6">
                 <h2>Text Mockup</h2>
                 <div
                     className=""
