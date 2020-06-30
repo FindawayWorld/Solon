@@ -28,7 +28,6 @@ const FontTester = () => {
                 />
             </article>
             <article className="row col-xs-12 my-6" style={{ height: 'fit-content' }}>
-                {' '}
                 <p style={{ width: '150px' }}>Font Size: {pxSize}px </p>
                 <button
                     className="btn p-0 m-0 pr-2"
@@ -60,7 +59,6 @@ const FontTester = () => {
             </article>
 
             <article className="col-xs-12 row my-6">
-                {' '}
                 <p className="mt-2 mr-6">Font Weight:</p>
                 <div className="row mb-4">
                     <button
