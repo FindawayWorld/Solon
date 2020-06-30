@@ -107,7 +107,6 @@ const FontTester = () => {
             </article>
             <article className="my-6">
                 <h4>Test Margin &amp; Padding</h4>
-                <label htmlFor="classNames">Ranging from 0-6</label>
                 <label htmlFor="classNames">
                     See <a href="/#/utils">Utils</a> Margin or Padding Examples
                 </label>
