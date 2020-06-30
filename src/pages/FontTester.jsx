@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 
-const FontTester = (props) => {
+const FontTester = () => {
     const [pxSize, setPxSize] = useState(26);
     const [lineHeight, setPxLineHeight] = useState(1);
     const [text, setText] = useState('');
@@ -105,7 +105,6 @@ const FontTester = (props) => {
                     <option value="crayonregular">character-regular</option>
                 </select>
             </article>
-
             <article className="my-6">
                 <h4>Test Margin &amp; Padding</h4>
                 <label htmlFor="classNames">Ranging from 0-6</label>
@@ -124,10 +123,7 @@ const FontTester = (props) => {
             </article>
             <article className="my-6">
                 <h2>Text Mockup</h2>
-                <div
-                    className=""
-                    style={{ border: '1px solid black', width: '100%', maxWidth: '650px', height: 'fit-content' }}
-                >
+                <div style={{ border: '1px solid black', width: '100%', height: 'fit-content' }}>
                     <div className={classNames} style={{ backgroundColor: '#0074d9', color: 'white' }}>
                         <p
                             style={{
