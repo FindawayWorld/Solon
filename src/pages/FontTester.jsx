@@ -12,15 +12,15 @@ const FontTester = (props) => {
     const [classNames, setClassNames] = useState('');
 
     return (
-        <section>
+        <section className="container">
             <h1 className="my-6">Font Tester</h1>
             <p>Use this page to test how text will display.</p>
             <hr />
-            <article className="row col-xs-12 col-md-7 my-6" style={{ height: 'fit-content' }}>
+            <article className="row col-xs-12 my-6" style={{ height: 'fit-content' }}>
                 {' '}
-                <p className="col-xs-8 col-sm-3">FontSize: {pxSize}px </p>
+                <p>FontSize: {pxSize}px </p>
                 <button
-                    className="btn p-0 m-0 pr-2"
+                    className="btn p-0 m-0 pr-2 ml-4"
                     style={{ height: 'fit-content' }}
                     onClick={() => setPxSize(pxSize + 1)}
                 >
@@ -30,10 +30,10 @@ const FontTester = (props) => {
                     <FaArrowDown size={18} color={'#0074d9'} />
                 </button>
             </article>
-            <article className="row col-xs-12 col-md-7 my-6" style={{ height: 'fit-content' }}>
-                <p className="col-xs-8 col-sm-3">LineHeight: {lineHeight}</p>
+            <article className="col-xs-12 row my-6" style={{ height: 'fit-content' }}>
+                <p>LineHeight: {lineHeight}</p>
                 <button
-                    className="btn p-0 m-0 pr-2"
+                    className="btn p-0 m-0 pr-2  ml-6"
                     onClick={() => setPxLineHeight(lineHeight + 0.25)}
                     style={{ height: 'fit-content' }}
                 >
@@ -48,10 +48,10 @@ const FontTester = (props) => {
                 </button>
             </article>
 
-            <article className="row col-xs-12 col-md-7 my-6">
+            <article className="col-xs-12 row my-6">
                 {' '}
-                <p className="col-xs-6 col-sm-3 mt-2">Font Weight:</p>
-                <div className="row col-xs-6 col-sm-4 mb-4">
+                <p className="mt-2 mr-6">Font Weight:</p>
+                <div className="row mb-4">
                     <button
                         className={classnames('btn', {
                             'btn-primary': weight === 'normal',
@@ -73,7 +73,7 @@ const FontTester = (props) => {
                     </button>
                 </div>
             </article>
-            <article className="col-xs-12 col-sm-4 mt-2">
+            <article className="col-xs-12 mt-2">
                 <select
                     className="py-2"
                     style={{ fontFamily: fontFamily }}
@@ -104,7 +104,7 @@ const FontTester = (props) => {
                 />
             </article>
 
-            <article className="my-6">
+            <article className="col-xs-12 my-6">
                 <h4>Test Margin &amp; Padding</h4>
                 <label htmlFor="classNames">Ranging from 0-6</label>
                 <label htmlFor="classNames">
@@ -120,7 +120,7 @@ const FontTester = (props) => {
                     onChange={(e) => setClassNames(e.target.value)}
                 />
             </article>
-            <article className="my-6">
+            <article className="col-xs-12 my-6">
                 <h2>Text Mockup</h2>
                 <div
                     className=""
