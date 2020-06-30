@@ -35,6 +35,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "sandbox": {
+    "srcDir": "public/"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

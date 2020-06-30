@@ -1,0 +1,25 @@
+/*
+Font: 		Quincy CF
+Style: 		Bold
+URL: 		https://www.youworkforthem.com/font/T5527/quincy-cf
+Foundry: 	Connary Fagen
+Foundry: 	https://www.youworkforthem.com/designer/479/connary-fagen
+Copyright:	Copyright © 2018 by Connary Fagen. All rights reserved.
+Version: 	17
+Created:	April 30, 2020
+License: 	https://www.youworkforthem.com/font-license
+License: 	The WebFont(s) listed in this document must follow the YouWorkForThem
+			WebFont license rules. All other parties are strictly restricted
+			from using the WebFonts(s) listed without a purchased license.
+			All details above must always remain unaltered and visible in your CSS.
+*/
+
+@font-face {
+    font-family: 'QuincyCF';
+    src: url('quincy-cf-bold.eot');
+    src: url('quincy-cf-bold.eot?#iefix') format('embedded-opentype'), url('quincy-cf-bold.woff2') format('woff2'),
+        url('quincy-cf-bold.woff') format('woff'), url('quincy-cf-bold.ttf') format('truetype'),
+        url('quincy-cf-bold.svg#youworkforthem') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}

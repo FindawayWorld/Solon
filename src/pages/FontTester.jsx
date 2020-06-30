@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
@@ -7,38 +6,52 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 const FontTester = (props) => {
     const [pxSize, setPxSize] = useState(26);
     const [lineHeight, setPxLineHeight] = useState(1);
-    const [text, setText] = useState('Test Text Here');
+    const [text, setText] = useState('');
     const [weight, setWeight] = useState('normal');
+    const [fontFamily, setFontFamily] = useState('RASourceSansPro');
+    const [classNames, setClassNames] = useState('');
 
     return (
-        <div>
-            <div className="row col-xs-8 col-sm-6 mx-auto">
+        <section>
+            <h1 className="my-6">Font Tester</h1>
+            <p>Use this page to test how text will display.</p>
+            <hr />
+            <article className="row col-xs-12 col-md-7 my-6" style={{ height: 'fit-content' }}>
                 {' '}
-                <p className="col-xs-12 col-sm-4 mt-6">FontSize: {pxSize}px </p>
-                <div className="row col-xs-12 col-sm-2 mb-4">
-                    <button className="btn mx-auto" onClick={() => setPxSize(pxSize + 1)}>
-                        <FaArrowUp size={16} />
-                    </button>
-                    <button className="mx-auto btn" onClick={() => setPxSize(pxSize - 1)}>
-                        <FaArrowDown size={16} />
-                    </button>
-                </div>
-            </div>
-            <div className="row col-xs-8 col-sm-6 mx-auto ">
-                <p className="col-xs-12 col-sm-4 mt-6">Line Height: {lineHeight}</p>
-                <div className="row col-xs-12 col-sm-2 mb-6">
-                    <button className="btn mx-auto" onClick={() => setPxLineHeight(lineHeight + 0.25)}>
-                        <FaArrowUp size={16} />
-                    </button>
-                    <button className="mx-auto btn" onClick={() => setPxLineHeight(lineHeight - 0.25)}>
-                        <FaArrowDown size={16} />
-                    </button>
-                </div>
-            </div>
-            <div className="row col-xs-8 col-sm-6 mx-auto">
+                <p className="col-xs-8 col-sm-3">FontSize: {pxSize}px </p>
+                <button
+                    className="btn p-0 m-0 pr-2"
+                    style={{ height: 'fit-content' }}
+                    onClick={() => setPxSize(pxSize + 1)}
+                >
+                    <FaArrowUp size={18} color={'#0074d9'} />
+                </button>
+                <button className="btn p-0 m-0" onClick={() => setPxSize(pxSize - 1)} style={{ height: 'fit-content' }}>
+                    <FaArrowDown size={18} color={'#0074d9'} />
+                </button>
+            </article>
+            <article className="row col-xs-12 col-md-7 my-6" style={{ height: 'fit-content' }}>
+                <p className="col-xs-8 col-sm-3">LineHeight: {lineHeight}</p>
+                <button
+                    className="btn p-0 m-0 pr-2"
+                    onClick={() => setPxLineHeight(lineHeight + 0.25)}
+                    style={{ height: 'fit-content' }}
+                >
+                    <FaArrowUp size={18} color={'#0074d9'} />
+                </button>
+                <button
+                    className="btn p-0 m-0"
+                    onClick={() => setPxLineHeight(lineHeight - 0.25)}
+                    style={{ height: 'fit-content' }}
+                >
+                    <FaArrowDown size={18} color={'#0074d9'} />
+                </button>
+            </article>
+
+            <article className="row col-xs-12 col-md-7 my-6">
                 {' '}
-                <p className="col-xs-12 col-sm-4 mt-2">Font Weight:</p>
-                <div className="row col-xs-12 col-sm-4 mb-4">
+                <p className="col-xs-6 col-sm-3 mt-2">Font Weight:</p>
+                <div className="row col-xs-6 col-sm-4 mb-4">
                     <button
                         className={classnames('btn', {
                             'btn-primary': weight === 'normal',
@@ -59,39 +72,77 @@ const FontTester = (props) => {
                         bold
                     </button>
                 </div>
-            </div>
-            <div className="col-xs-12 txt-center">
+            </article>
+            <article className="col-xs-12 col-sm-4 mt-2">
+                <select
+                    className="py-2"
+                    style={{ fontFamily: fontFamily }}
+                    onChange={(e) => setFontFamily(e.target.value)}
+                >
+                    <option value="RASourceSansPro">Source Sans Pro Regular</option>
+                    <option value="RASourceSansProLight">Source Sans Pro Light</option>
+                    <option value="RASourceSansProSemiBold">Source Sans Pro SemiBold</option>
+                    <option value="RASourceSansProBold">Source Sans Pro Bold</option>
+                    <option value="Magorian">Magorian</option>
+                    <option value="acumin-pro, sans-serif">Acumin Pro, sans-serif</option>
+                    <option value="Open Sans, sans-serif">Open Sans, sans-serif</option>
+                    <option value="HCoGotham">Gotham Bold</option>
+                    <option value="HCoGothamBook">Gotham Book</option>
+                    <option value="quincyBold">Quincy Bold</option>
+                    <option value="crayonregular">character-regular</option>
+                </select>
+            </article>
+            <article className="col-xs-12 my-6">
+                <label htmlFor="txt">Add text:</label>
                 <textarea
                     className="py-2 mx-auto"
                     defaultValue={text}
-                    style={{ width: '50%' }}
                     name="txt"
+                    placeholder="ex: Hello World!"
+                    style={{ width: '100%', maxWidth: '675px' }}
                     onChange={(e) => setText(e.target.value)}
                 />
-            </div>
-            <div className="col-xs-8 col-sm-12 mt-2 txt-center">
-                <select className="py-2">
-                    <option value="SourceSansPro">Source Sans Pro</option>
-                    <option value="AcuminPro">Acumin Pro</option>
-                    <option value="Gotha">Gotham</option>
-                    <option value="OpenSans">Open Sans</option>
-                </select>
-            </div>
+            </article>
 
-            <div className="p-6 m-6 txt-center">
-                <h2
-                    style={{
-                        fontSize: `${pxSize}px`,
-                        lineHeight: lineHeight,
-                        fontFamily: 'Verdana',
-                        minWidth: '100%',
-                        fontWeight: weight
-                    }}
+            <article className="my-6">
+                <h4>Test Margin &amp; Padding</h4>
+                <label htmlFor="classNames">Ranging from 0-6</label>
+                <label htmlFor="classNames">
+                    See <a href="/#/utils">Utils</a> Margin or Padding Examples
+                </label>
+                <label htmlFor="classNames">m=margin p=padding t=top l=left r=right b=bottom</label>
+                <input
+                    className="m-3 p-2 mx-auto"
+                    defaultValue={classNames}
+                    style={{ width: '50%' }}
+                    name="classNames"
+                    placeholder="ex: mt-4 mb-0 pt-4 pb-0 m-5"
+                    onChange={(e) => setClassNames(e.target.value)}
+                />
+            </article>
+            <article className="my-6">
+                <h2 className="txt-center">Text Mockup</h2>
+                <div
+                    className=""
+                    style={{ border: '1px solid black', width: '100%', maxWidth: '650px', height: 'fit-content' }}
                 >
-                    {text}
-                </h2>
-            </div>
-        </div>
+                    <div className={classNames} style={{ backgroundColor: '#0074d9', color: 'white' }}>
+                        <p
+                            style={{
+                                fontSize: `${pxSize}px`,
+                                lineHeight: lineHeight,
+                                fontFamily: fontFamily,
+                                minWidth: '100%',
+                                fontWeight: weight,
+                                margin: 0
+                            }}
+                        >
+                            {text}
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </section>
     );
 };
 
