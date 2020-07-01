@@ -2,8 +2,8 @@ name: PR
 
 on:
   pull_request:
-    branches:
-      - master
+    branches: [master]
+    types: [opened, closed, synchronize, reopened]
 
 jobs:
   build:
@@ -17,10 +17,12 @@ jobs:
           node-version: '12.x'
 
       - name: Get yarn cache directory path
+        if: github.event.pull_request.action != 'closed'
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - uses: actions/cache@v2
+        if: github.event.pull_request.action != 'closed'
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -29,15 +31,27 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Yarn Install and Build
+        if: github.event.pull_request.action != 'closed'
         run: |
           yarn install --ignore-optional
           yarn build
 
       - name: Deploy S3 Website
+        if: github.event.pull_request.action != 'closed'
         uses: danburtenshaw/s3-website-pr-action@v2
         with:
-          bucket-prefix: "sandbox"
+          bucket-prefix: "gateway"
           folder-to-copy: "./build"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Delete
+        if: github.event.pull_request.action == 'closed'
+        uses: danburtenshaw/s3-website-pr-action@v2
+        with:
+          bucket-prefix: "gateway"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
