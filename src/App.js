@@ -110,7 +110,7 @@ function App() {
                     </Route>
                 </Switch>
 
-                <footer>&copy; 2020 Findaway.</footer>
+                <footer>&copy; 2020 Findaway. React {React.version}</footer>
             </div>
         </Router>
     );
