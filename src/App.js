@@ -109,6 +109,8 @@ function App() {
                         <FontTester />
                     </Route>
                 </Switch>
+
+                <footer>&copy; 2020 Findaway.</footer>
             </div>
         </Router>
     );
