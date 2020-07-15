@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.action != 'closed'
     steps:
       - uses: actions/checkout@v2
         
@@ -17,12 +18,10 @@ jobs:
           node-version: '12.x'
 
       - name: Get yarn cache directory path
-        if: github.event.pull_request.action != 'closed'
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - uses: actions/cache@v2
-        if: github.event.pull_request.action != 'closed'
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -31,13 +30,11 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Yarn Install and Build
-        if: github.event.pull_request.action != 'closed'
         run: |
           yarn install --ignore-optional
           yarn build
 
       - name: Deploy S3 Website
-        if: github.event.pull_request.action != 'closed'
         uses: danburtenshaw/s3-website-pr-action@v2
         with:
           bucket-prefix: "gateway"
@@ -46,9 +43,11 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+  delete:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.action == 'closed'
+    steps:     
       - name: Delete
-        if: github.event.pull_request.action == 'closed'
         uses: danburtenshaw/s3-website-pr-action@v2
         with:
           bucket-prefix: "gateway"
