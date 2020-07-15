@@ -3,7 +3,7 @@ name: PR
 on:
   pull_request:
     branches: [master]
-    types: [opened, closed, synchronize, reopened]
+    types: [opened, closed, synchronize, reopened, edited]
 
 jobs:
   build:
