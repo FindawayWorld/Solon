@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import TextArea from '../components/form/TextArea';
@@ -28,7 +29,19 @@ const FontTester = () => {
             <div className="row bottom-md">
                 <div className="col-xs-12 col-md-2">
                     <Input
-                        label="Font Size (rem)"
+                        label={
+                            <>
+                                Font Size (
+                                <a
+                                    href="https://snook.ca/archives/html_and_css/font-size-with-rem"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    rem
+                                </a>
+                                )
+                            </>
+                        }
                         type="number"
                         step={0.1}
                         min={1.0}
@@ -38,7 +51,19 @@ const FontTester = () => {
                 </div>
                 <div className="col-xs-12 col-md-2">
                     <Input
-                        label="Line Height"
+                        label={
+                            <>
+                                Line Height (
+                                <a
+                                    href="https://allthingssmitty.com/2017/01/30/nope-nope-nope-line-height-is-unitless/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    unitless
+                                </a>
+                                )
+                            </>
+                        }
                         type="number"
                         step={0.1}
                         min={1.0}
@@ -62,7 +87,7 @@ const FontTester = () => {
                         onChange={(e) => setClassNames(e.target.value)}
                         help={
                             <>
-                                See <a href="/utils">Utils</a> Margin or Padding Examples
+                                See <Link to="/utils">Utils</Link> Margin or Padding Examples
                             </>
                         }
                     />
