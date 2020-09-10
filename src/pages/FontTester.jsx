@@ -34,7 +34,7 @@ const FontTester = () => {
                             <>
                                 Font Size (
                                 <a
-                                    href="https://snook.ca/archives/html_and_css/font-size-with-rem"
+                                    href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#ems_and_rems"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
