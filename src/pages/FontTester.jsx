@@ -15,9 +15,11 @@ const FontTester = () => {
 
     return (
         <section className="container">
-            <h1 className="my-6">Font Tester</h1>
+            <h1>Font Tester</h1>
             <p>Use this page to test how text will be displayed.</p>
+
             <hr />
+
             <TextArea
                 label="Text"
                 value={text}
