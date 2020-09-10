@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { HashRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
 
 import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';

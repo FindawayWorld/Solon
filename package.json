@@ -2,7 +2,6 @@
   "name": "gateway",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://findawayworld.github.io/gateway",
   "license": "MIT",
   "dependencies": {
     "@reach/auto-id": "^0.7.2",
@@ -25,8 +24,6 @@
     "yup": "^0.29.3"
   },
   "scripts": {
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
