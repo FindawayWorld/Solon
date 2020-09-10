@@ -38,7 +38,7 @@ function App() {
                 <div className="container">
                     <h1 className="branding">
                         <NavLink activeClass="active" activeWhenExact to="/">
-                            <GatewayLogo height="1.5em" width="auto" /> Gateway
+                            <GatewayLogo height="1.5em" width="1.011em" /> Gateway
                         </NavLink>
                     </h1>
                     <ul className="list-inline">

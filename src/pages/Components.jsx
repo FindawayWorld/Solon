@@ -343,6 +343,11 @@ const ComponentsPage = () => {
 
                 <Input id="input_file" label="File Upload" type="file" />
 
+                <Input
+                    label="No ID"
+                    placeholder="This is an input without an ID prop. Gets an AutoID from @reach/auto-id"
+                />
+
                 <h3>Select</h3>
                 <hr />
                 <div>
@@ -378,13 +383,13 @@ const ComponentsPage = () => {
                     Form components will implement their own appropriate error message style. These classes can be used
                     to augment existing messages, or implement standalone error messages.
                 </p>
-                <div class="form-error mb-4">
+                <div className="form-error mb-4">
                     <span>
                         <code>.form-error</code> error messages, will sit below the form input and appear "attached" to
                         the form input.
                     </span>
                 </div>
-                <div class="form-error standalone mb-8">
+                <div className="form-error standalone mb-8">
                     <span>
                         <code>.form-error.standalone</code> error messages, is self contained and sits below the form
                         input.
