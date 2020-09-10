@@ -1,16 +1,26 @@
 body {
     color: #303030;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-family: $font-family;
     font-size: 16px;
     font-size: $font-size-base;
     line-height: 1.5;
     font-style: normal;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     margin-top: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -63,7 +73,7 @@ samp {
 }
 
 small {
-    font-size: .875rem;
+    font-size: 0.875rem;
 }
 
 sub,
@@ -92,8 +102,8 @@ p > svg,
 li > svg {
     vertical-align: middle;
     display: inline-block;
-    margin-right: .5rem;
-    margin-left: .5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 .txt-center {

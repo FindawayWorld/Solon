@@ -9,6 +9,8 @@ $small: 'only screen and (min-width: 576px)';
 $small2x: 'only screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2)';
 $retina: 'only screen and (-webkit-min-device-pixel-ratio: 2)';
 
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
 $light-weight: 300;
 $line-height: 1.5;
 
