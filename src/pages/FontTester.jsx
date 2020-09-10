@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import TextArea from '../components/form/TextArea';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
