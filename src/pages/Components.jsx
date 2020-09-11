@@ -318,7 +318,7 @@ const ComponentsPage = () => {
                 <h2>Modal</h2>
                 <hr />
 
-                <button className="btn btn-primary mb-3" onClick={() => setCurrentModal('a')}>
+                <button className="btn btn-primary mr-4" onClick={() => setCurrentModal('a')}>
                     Show Modal
                 </button>
                 <Modal visible={currentModal === 'a'} onClose={() => setCurrentModal(null)}>
