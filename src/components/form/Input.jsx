@@ -34,21 +34,31 @@ const Input = ({
     error = null,
     touched = false,
     step = undefined,
-    onBlur,
-    onChange,
+    onBlur = () => {},
+    onChange = () => {},
     onFocus = () => {},
     onKeyUp = () => {},
     onKeyDown = () => {},
     onKeyPress = () => {}
 }) => {
     let isRequired = required || showRequired;
-    let handleChange = onChange;
-    let handleBlur = onBlur;
     id = useId(id);
 
     if (hidden) {
         return null;
     }
+
+    const handleChange = (e) => {
+        let isClean = restricted.reduce((acc, value) => {
+            return acc && !e.target.value.includes(value);
+        }, true);
+
+        if (!isClean) {
+            return false;
+        }
+
+        onChange(e);
+    };
 
     return (
         <div className={classnames('form-group position-relative', { 'mb-0': collapse }, className)}>
@@ -77,7 +87,7 @@ const Input = ({
                 </>
             )}
 
-            <div className={classnames({ 'input-group': prepend || prependLabel || append })}>
+            <div className={classnames({ 'input-group': prepend || prependLabel || append, error: touched && error })}>
                 {prepend && (
                     <div className="input-group-prepend">
                         {React.isValidElement(prepend) ? prepend : <span className="input-group-text">{prepend}</span>}
@@ -116,7 +126,7 @@ const Input = ({
                     autoComplete={autoComplete}
                     readOnly={readOnly}
                     onFocus={onFocus}
-                    onBlur={handleBlur}
+                    onBlur={onBlur}
                     onChange={handleChange}
                     onKeyUp={onKeyUp}
                     onKeyDown={onKeyDown}

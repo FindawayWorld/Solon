@@ -170,3 +170,18 @@
 .btn-group > .btn:focus {
     z-index: 1;
 }
+
+button.close {
+    background: transparent;
+    border-color: transparent;
+    height: auto;
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #444648;
+    opacity: 0.8;
+    margin-right: 0;
+    margin-left: 0.5em;
+    padding: 0;
+}

@@ -1,39 +1,46 @@
 import React, { useState } from 'react';
-import Input from './FormikInput';
+import classnames from 'classnames';
+import Input from './Input';
 
-const ListInputBox = ({
-        required = false,
-        showRequired = false,
-        id = 'ListInput1',
-        label = false,
-        labelHelp = null,
-        readOnly = false,
-        placeholder = '',
-        validators = [],
-        value = [],
-        errors = null,
-        touched = true,
-        help = null,
-        children = () => {},
-        onChange = () => {},
-        onFocus = () => {},
-        onBlur = () => {}
-    }) => {
+export const ListInputBox = ({
+    required = false,
+    showRequired = false,
+    id = 'ListInput1',
+    label = false,
+    labelHelp = null,
+    readOnly = false,
+    placeholder = '',
+    restricted = [],
+    value = [],
+    error = null,
+    touched = true,
+    help = null,
+    charLimit = false,
+    children = () => {},
+    onChange = () => {},
+    onFocus = () => {},
+    onBlur = () => {}
+}) => {
     const [stagedValue, setStagedValue] = useState('');
+    const [charsRemaining, setCharsRemaining] = useState(charLimit ? charLimit - value.join(';').length : null);
 
     const addItem = (callback) => {
         let newState = stagedValue ? [...value, stagedValue] : value;
         setStagedValue('');
-        onChange(id, newState);
-    }
+        onChange(newState);
+    };
 
     const removeItem = (itemIndex) => {
         var newList = value.filter((v, i) => i !== itemIndex);
-        onChange(id, newList);
+        onChange(newList);
         onBlur();
-    }
+    };
 
     const handleChange = (event) => {
+        let newCombinedVal = [...value, event.target.value];
+        let charsRemaining = charLimit - newCombinedVal.join(';').length;
+        console.log(newCombinedVal, newCombinedVal.join(';'));
+        setCharsRemaining(charsRemaining);
         setStagedValue(event.target.value);
     };
 
@@ -46,10 +53,15 @@ const ListInputBox = ({
         isEnter && addItem();
         return !isEnter;
     };
+
+    React.useEffect(() => {
+        setCharsRemaining(charLimit ? charLimit - value.join(';').length : null);
+    }, [value, charLimit]);
+
     return (
-        <div className="relative list-input-box">
-            <div>
-                {!readOnly && <div className="list-input-form">
+        <div className="list-input-box">
+            {!readOnly && (
+                <div className="list-input-form">
                     <Input
                         label={label}
                         labelHelp={labelHelp}
@@ -58,7 +70,17 @@ const ListInputBox = ({
                         id={id}
                         name={id}
                         value={stagedValue}
-                        append={<button type="button" className="btn btn-sm btn-secondary" disabled={readOnly} onClick={addItem}>Add</button>}
+                        append={
+                            <button
+                                type="button"
+                                className="btn btn-sm btn-secondary"
+                                disabled={readOnly}
+                                onClick={addItem}
+                            >
+                                Add
+                            </button>
+                        }
+                        restricted={restricted}
                         placeholder={placeholder}
                         required={required}
                         showRequired={showRequired}
@@ -67,19 +89,42 @@ const ListInputBox = ({
                         onFocus={onFocus}
                         onBlur={onBlur}
                         onKeyPress={handleEnter}
-                        errors={errors}
+                        error={error}
                         touched={touched}
+                        collapse
                     />
-                </div>}
+                </div>
+            )}
 
-                {children({
-                    items: value,
-                    readOnly,
-                    removeItem
-                })}
-            </div>
+            {charLimit && (
+                <div>
+                    <small className={classnames({ 'form-error': charsRemaining < 0 })}>
+                        {charsRemaining} characters remaining
+                    </small>
+                </div>
+            )}
+
+            {children({
+                items: value,
+                readOnly,
+                removeItem
+            })}
         </div>
     );
-}
+};
 
-export default ListInputBox;
+export const ListInputItem = ({ children = [], index = null, readOnly = false, onRemove = () => {} }) => {
+    const onClickClose = () => {
+        onRemove(index);
+    };
+    return (
+        <li className="list-group-item">
+            {!readOnly && (
+                <button type="button" className="btn close" onClick={onClickClose}>
+                    &times;
+                </button>
+            )}
+            {children}
+        </li>
+    );
+};

@@ -11,6 +11,7 @@ import Checkbox from '../components/form/Checkbox';
 import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
 import FormattedCurrency from '../components/FormattedCurrency';
+import { ListInputBox, ListInputItem } from '../components/form/ListInputBox';
 
 import { useFormik } from 'formik';
 import { object, string, boolean, array } from 'yup';
@@ -26,18 +27,21 @@ import { Breadcrumbs, BreadcrumbItem } from '../components/Breadcrumbs';
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
-    const { handleSubmit, handleChange, values, errors, touched } = useFormik({
+    let [kwds, setKwds] = useState(['test']);
+    const { handleSubmit, handleChange, setFieldValue, values, errors, touched } = useFormik({
         initialValues: {
             name: 'Test Name',
             signup: false,
             fav_fruit: 'avocado',
-            jobType: []
+            jobType: [],
+            keywords: []
         },
         validationSchema: object().shape({
             name: string().required(),
             signup: boolean().oneOf([true], 'Please sign up for news'),
             fav_fruit: string().required('Please choose a fruit'),
-            jobType: array()
+            jobType: array(),
+            keywords: array().required()
         }),
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 4));
@@ -405,6 +409,33 @@ const ComponentsPage = () => {
 
                 <Checkbox label="With Errors" id="error_checkbox" error="Checkbox error message" touched={true} />
 
+                <h3>List Input Box</h3>
+                <hr />
+                <ListInputBox
+                    id="keywords"
+                    label="Keywords"
+                    restricted={[';', '%', '$']}
+                    placeholder=""
+                    value={kwds}
+                    onChange={(values) => setKwds(values)}
+                    charLimit={956}
+                    guidance="Add these one at a time"
+                >
+                    {({ items }) => (
+                        <ul className="list-flex-inline">
+                            {items.map((item, index) => (
+                                <ListInputItem
+                                    index={index}
+                                    key={`${item}_${index}`}
+                                    onRemove={() => setKwds(items.filter((i) => i !== item))}
+                                >
+                                    {item}
+                                </ListInputItem>
+                            ))}
+                        </ul>
+                    )}
+                </ListInputBox>
+
                 <h3>Error Messages</h3>
                 <p>
                     Form components will implement their own appropriate error message style. These classes can be used
@@ -488,6 +519,39 @@ const ComponentsPage = () => {
                             onChange={handleChange}
                         />
                     </fieldset>
+
+                    <ListInputBox
+                        id="keywords"
+                        label="Keywords"
+                        restricted={[';', '%', '$']}
+                        placeholder=""
+                        value={values.keywords}
+                        charLimit={956}
+                        guidance="Add these one at a time"
+                        error={errors.keywords}
+                        touched={errors.keywords}
+                        onChange={(values) => setFieldValue('keywords', values)}
+                        required
+                    >
+                        {({ items }) => (
+                            <ul className="list-flex-inline">
+                                {items.map((item, index) => (
+                                    <ListInputItem
+                                        index={index}
+                                        key={`${item}_${index}`}
+                                        onRemove={() =>
+                                            setFieldValue(
+                                                'keywords',
+                                                values.keywords.filter((i) => i !== item)
+                                            )
+                                        }
+                                    >
+                                        {item}
+                                    </ListInputItem>
+                                ))}
+                            </ul>
+                        )}
+                    </ListInputBox>
                     <button className="btn btn-primary" type="submit">
                         Submit
                     </button>
