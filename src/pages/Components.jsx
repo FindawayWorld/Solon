@@ -21,6 +21,7 @@ import FormattedPlural from '../components/FormattedPlural';
 import Loading from '../components/Loading';
 import DisplayFormikState from '../components/DisplayFormikState';
 import { FaStar } from 'react-icons/fa';
+import { Breadcrumbs, BreadcrumbItem } from '../components/Breadcrumbs';
 
 const ComponentsPage = () => {
     const [currentModal, setCurrentModal] = useState(null);
@@ -162,6 +163,32 @@ const ComponentsPage = () => {
                 <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
                 <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
                 <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
+            </section>
+
+            <section className="mb-5">
+                <h2>Breadcrumbs</h2>
+                <hr />
+
+                <Breadcrumbs>
+                    <BreadcrumbItem as={Link} to="/utils">
+                        Components
+                    </BreadcrumbItem>
+                    <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
+                </Breadcrumbs>
+
+                <Breadcrumbs>
+                    <BreadcrumbItem as={Link} to="/utils">
+                        Title Management
+                    </BreadcrumbItem>
+                    <BreadcrumbItem current>You're Never Weird on the Internet (Almost) [94189]</BreadcrumbItem>
+                </Breadcrumbs>
+
+                <Breadcrumbs>
+                    <BreadcrumbItem href="#a">Page A</BreadcrumbItem>
+                    <BreadcrumbItem href="#b">Page B</BreadcrumbItem>
+                    <BreadcrumbItem href="#c">Page C</BreadcrumbItem>
+                    <BreadcrumbItem current>Page D</BreadcrumbItem>
+                </Breadcrumbs>
             </section>
 
             <section className="mb-5">
