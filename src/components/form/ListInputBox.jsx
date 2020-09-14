@@ -39,7 +39,6 @@ export const ListInputBox = ({
     const handleChange = (event) => {
         let newCombinedVal = [...value, event.target.value];
         let charsRemaining = charLimit - newCombinedVal.join(';').length;
-        console.log(newCombinedVal, newCombinedVal.join(';'));
         setCharsRemaining(charsRemaining);
         setStagedValue(event.target.value);
     };
@@ -60,6 +59,7 @@ export const ListInputBox = ({
 
     return (
         <div className="list-input-box">
+            {readOnly && <label>{label}</label>}
             {!readOnly && (
                 <div className="list-input-form">
                     <Input
@@ -96,7 +96,7 @@ export const ListInputBox = ({
                 </div>
             )}
 
-            {charLimit && (
+            {charLimit && !readOnly && (
                 <div>
                     <small className={classnames({ 'form-error': charsRemaining < 0 })}>
                         {charsRemaining} characters remaining

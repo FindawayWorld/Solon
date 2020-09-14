@@ -412,7 +412,7 @@ const ComponentsPage = () => {
                 <h3>List Input Box</h3>
                 <hr />
                 <ListInputBox
-                    id="keywords"
+                    id="keywords1"
                     label="Keywords"
                     restricted={[';', '%', '$']}
                     placeholder=""
@@ -421,13 +421,35 @@ const ComponentsPage = () => {
                     charLimit={956}
                     guidance="Add these one at a time"
                 >
-                    {({ items }) => (
+                    {({ items, removeItem }) => (
+                        <ul className="list-flex-inline">
+                            {items.map((item, index) => (
+                                <ListInputItem index={index} key={`${item}_${index}`} onRemove={removeItem}>
+                                    {item}
+                                </ListInputItem>
+                            ))}
+                        </ul>
+                    )}
+                </ListInputBox>
+                <ListInputBox
+                    id="keywords2"
+                    label="Keywords Read Only"
+                    restricted={[';', '%', '$']}
+                    placeholder=""
+                    value={kwds}
+                    onChange={(values) => setKwds(values)}
+                    charLimit={956}
+                    guidance="Add these one at a time"
+                    readOnly
+                >
+                    {({ items, removeItem, readOnly }) => (
                         <ul className="list-flex-inline">
                             {items.map((item, index) => (
                                 <ListInputItem
                                     index={index}
                                     key={`${item}_${index}`}
-                                    onRemove={() => setKwds(items.filter((i) => i !== item))}
+                                    readOnly={readOnly}
+                                    onRemove={removeItem}
                                 >
                                     {item}
                                 </ListInputItem>
@@ -533,19 +555,10 @@ const ComponentsPage = () => {
                         onChange={(values) => setFieldValue('keywords', values)}
                         required
                     >
-                        {({ items }) => (
+                        {({ items, removeItem }) => (
                             <ul className="list-flex-inline">
                                 {items.map((item, index) => (
-                                    <ListInputItem
-                                        index={index}
-                                        key={`${item}_${index}`}
-                                        onRemove={() =>
-                                            setFieldValue(
-                                                'keywords',
-                                                values.keywords.filter((i) => i !== item)
-                                            )
-                                        }
-                                    >
+                                    <ListInputItem index={index} key={`${item}_${index}`} onRemove={removeItem}>
                                         {item}
                                     </ListInputItem>
                                 ))}
