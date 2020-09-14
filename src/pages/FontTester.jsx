@@ -14,7 +14,7 @@ const FontTester = () => {
     const [classNames, setClassNames] = useState('');
 
     return (
-        <section className="container">
+        <section>
             <h1>Font Tester</h1>
             <p>Use this page to test how text will be displayed.</p>
 

@@ -15,7 +15,7 @@ const ColorTester = () => {
     }, [activeColor, colorLib]);
 
     return (
-        <div className="container">
+        <div>
             <style>{styles}</style>
 
             <h1>Color Tester</h1>

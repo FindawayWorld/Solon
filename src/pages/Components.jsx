@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React from 'react';
 
-import { titleCase } from '../utils';
-
-import { Link } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
 import Checkbox from '../components/form/Checkbox';
-import Pagination from '../components/Pagination';
 import Modal from '../components/Modal';
-import FormattedCurrency from '../components/FormattedCurrency';
 import { ListInputBox, ListInputItem } from '../components/form/ListInputBox';
 
 import { useFormik } from 'formik';
 import { object, string, boolean, array } from 'yup';
-import { brandColors } from './Content';
 
-import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 import FormattedPlural from '../components/FormattedPlural';
 import Loading from '../components/Loading';
 import DisplayFormikState from '../components/DisplayFormikState';
-import { FaStar } from 'react-icons/fa';
-import { Breadcrumbs, BreadcrumbItem } from '../components/Breadcrumbs';
+
+import ButtonsPage from './Components/ButtonsPage';
+
+import PaginationPage from './Components/PaginationPage';
+import BreadcrumbsPage from './Components/BreadcrumbsPage';
+import FlashesPage from './Components/FlashesPage';
+import FormattedCurrencyPage from './Components/FormattedCurrencyPage';
 
 const ComponentsPage = () => {
-    const [currentModal, setCurrentModal] = useState(null);
+    const [currentModal, setCurrentModal] = React.useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
-    let [kwds, setKwds] = useState(['test']);
+    let [kwds, setKwds] = React.useState(['test']);
+
     const { handleSubmit, handleChange, setFieldValue, values, errors, touched } = useFormik({
         initialValues: {
             name: 'Test Name',
@@ -48,243 +47,8 @@ const ComponentsPage = () => {
         }
     });
 
-    return (
+    let old = (
         <>
-            <section id="Buttons" className="mb-5">
-                <h2>Buttons</h2>
-                <hr />
-                <p>
-                    Button styles are based on the defined <a href="/content">color</a> variables.
-                </p>
-
-                <h3>Solid Buttons</h3>
-
-                <p className="mb-1">
-                    Solid button <code>:hover</code> style is as follows.
-                </p>
-                <ul className="mt-0">
-                    <li>Background color: shades the original color by 15%</li>
-                    <li>Border color: shades the original color by 20%</li>
-                    <li>Text color: either black or white depending on the hover color.</li>
-                </ul>
-
-                <p className="mb-8">
-                    {brandColors.map((color) => (
-                        <button key={`btn-${color}`} className={classnames('btn mr-1', `btn-${color}`)}>
-                            {titleCase(color)}
-                        </button>
-                    ))}
-                    <button className="btn btn-link">Link</button>
-                </p>
-
-                <h3>Outline Buttons</h3>
-                <p className="mb-1">
-                    Outline button <code>:hover</code> style is as follows.
-                </p>
-                <ul className="mt-0">
-                    <li>Background color: the original color</li>
-                    <li>Border color: the original color</li>
-                    <li>Text color: either black or white depending on the hover color.</li>
-                </ul>
-                <p>
-                    <small>
-                        NOTE: The <code>$light</code> color outline button is available but unreadable, it's advised to
-                        avoid using.
-                    </small>
-                </p>
-                <p>
-                    {brandColors
-                        .filter((color) => color !== 'light')
-                        .map((color) => (
-                            <button
-                                key={`btn-outline-${color}`}
-                                className={classnames('btn mr-1', `btn-outline-${color}`)}
-                            >
-                                {titleCase(color)}
-                            </button>
-                        ))}
-                </p>
-
-                <h3>Button Tags</h3>
-                <p>
-                    The .btn classes are designed to be used with the <code>&lt;button&gt;</code> element. However, you
-                    can also use these classes on <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though
-                    some browsers may apply a slightly different rendering).
-                </p>
-                <p>
-                    <a className="btn btn-primary mr-1" href="#demo" role="button">
-                        Link/Anchor
-                    </a>
-                    <button className="btn btn-primary mr-1" type="submit">
-                        Button
-                    </button>
-                    <input className="btn btn-primary mr-1" type="button" value="Input" />
-                    <input className="btn btn-primary mr-1" type="submit" value="Submit" />
-                    <input className="btn btn-primary mr-1" type="reset" value="Reset" />
-                </p>
-
-                <h3>Button Sizes</h3>
-
-                <p>
-                    <button className="btn btn-primary btn-lg mr-3">Large</button>
-                    <button className="btn btn-primary mr-3">Normal</button>
-                    <button className="btn btn-primary btn-sm">Small</button>
-                </p>
-
-                <h3>Reach-UI MenuButton</h3>
-                <Menu>
-                    <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
-                    <MenuList className="dropdown-menu">
-                        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
-                        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
-                        <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
-                        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-                        <MenuLink as={Link} to="/content">
-                            Go to Content Page
-                        </MenuLink>
-                    </MenuList>
-                </Menu>
-
-                <h3>Button Groups</h3>
-                <div className="btn-group mb-4">
-                    <button className="btn btn-primary active">First</button>
-                    <button className="btn btn-primary">Second</button>
-                    <button className="btn btn-primary">Third</button>
-                </div>
-
-                <div className="btn-group d-flex">
-                    <button className="btn btn-outline-primary">First</button>
-                    <button className="btn btn-outline-primary active">Second</button>
-                    <button className="btn btn-outline-primary">Third</button>
-                </div>
-            </section>
-
-            <section className="mb-5">
-                <h2>Pagination</h2>
-                <hr />
-
-                <Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
-                <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
-                <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
-                <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
-            </section>
-
-            <section className="mb-5">
-                <h2>Breadcrumbs</h2>
-                <hr />
-
-                <Breadcrumbs>
-                    <BreadcrumbItem as={Link} to="/utils">
-                        Components
-                    </BreadcrumbItem>
-                    <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
-                </Breadcrumbs>
-
-                <Breadcrumbs>
-                    <BreadcrumbItem as={Link} to="/utils">
-                        Title Management
-                    </BreadcrumbItem>
-                    <BreadcrumbItem current>You're Never Weird on the Internet (Almost) [94189]</BreadcrumbItem>
-                </Breadcrumbs>
-
-                <Breadcrumbs>
-                    <BreadcrumbItem href="#a">Page A</BreadcrumbItem>
-                    <BreadcrumbItem href="#b">Page B</BreadcrumbItem>
-                    <BreadcrumbItem href="#c">Page C</BreadcrumbItem>
-                    <BreadcrumbItem current>Page D</BreadcrumbItem>
-                </Breadcrumbs>
-            </section>
-
-            <section className="mb-5">
-                <h2>Flashes (alerts)</h2>
-                <hr />
-                {brandColors.map((color) => (
-                    <div key={`flash-${color}`} className={classnames('flash mb-4', `flash-${color}`)}>
-                        {titleCase(color)} <a href="#demo">anchor link</a>
-                        <a href="#close" className="close">
-                            &times;
-                        </a>
-                    </div>
-                ))}
-
-                <div className="flash flash-primary">Primary, no close.</div>
-
-                <h3>Outline Flashes</h3>
-                <p>
-                    <code>light</code> and <code>warning</code> omitted due to poor visibility.
-                </p>
-                {brandColors
-                    .filter((color) => !['light', 'warning'].includes(color))
-                    .map((color) => (
-                        <div
-                            key={`flash-outline-${color}`}
-                            className={classnames('flash fixed mb-4', ` flash-outline-${color}`)}
-                        >
-                            {titleCase(color)} <a href="#demo">anchor link</a>
-                        </div>
-                    ))}
-            </section>
-
-            <section className="mb-5">
-                <h2>Badges</h2>
-                <hr />
-                <div className="mb-4">
-                    {brandColors.map((color) => (
-                        <div key={`badge-${color}`} className={classnames('badge mr-4', `badge-${color}`)}>
-                            {titleCase(color)}
-                        </div>
-                    ))}
-
-                    <div className="badge badge-primary mr-4">
-                        Primary, with <a href="#demo">anchor link</a>
-                    </div>
-                    <div className="badge badge-primary">
-                        With Icon <FaStar />
-                    </div>
-                </div>
-
-                <h3>Outline Badges</h3>
-                <p>
-                    <code>light</code> and <code>warning</code> omitted due to poor visibility.
-                </p>
-                {brandColors
-                    .filter((color) => !['light', 'warning'].includes(color))
-                    .map((color) => (
-                        <div
-                            key={`badge-outline-${color}`}
-                            className={classnames('badge fixed mr-4', ` badge-outline-${color}`)}
-                        >
-                            {titleCase(color)}
-                        </div>
-                    ))}
-            </section>
-
-            <section id="formatted-currency" className="mb-5">
-                <h2>Formatted Currency</h2>
-                <hr />
-                <p>
-                    Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop
-                    and return a <code>String</code>.
-                </p>
-                <p>
-                    This uses the <code>window.Intl.NumberFormat</code> function, you may need to include a{' '}
-                    <a href="https://polyfill.io">polyfill</a>.
-                </p>
-
-                <p>
-                    <FormattedCurrency value={10.56} currency="USD" />
-                </p>
-                <p>
-                    <FormattedCurrency value="230.99" currency="EUR" />
-                </p>
-                <p>
-                    <FormattedCurrency value={16.75} currency="JPY" />
-                </p>
-                <p>
-                    <FormattedCurrency value={123456.789} curency="CAD" />
-                </p>
-            </section>
-
             <section id="formatted-currency" className="mb-5">
                 <h2>Formatted Plural</h2>
                 <hr />
@@ -572,6 +336,29 @@ const ComponentsPage = () => {
                 <DisplayFormikState {...{ errors, values, touched }} />
             </section>
         </>
+    );
+
+    return (
+        <Switch>
+            <Route path="/components/breadcrumbs" default>
+                <BreadcrumbsPage />
+            </Route>
+            <Route path="/components/buttons">
+                <ButtonsPage />
+            </Route>
+            <Route path="/components/flashes">
+                <FlashesPage />
+            </Route>
+            <Route path="/components/formatted-currency">
+                <FormattedCurrencyPage />
+            </Route>
+            <Route path="/components/pagination">
+                <PaginationPage />
+            </Route>
+            <Route path="/components/old">{old}</Route>
+
+            <Redirect from="/" to="/components/breadcrumbs" />
+        </Switch>
     );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, Link, useRouteMatch, useLocation } from 'react-router-dom';
 
 import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';
@@ -10,10 +10,20 @@ import JSPage from './pages/Javascript';
 import ColorTester from './pages/ColorTester';
 import FontTester from './pages/FontTester';
 
-import { FiExternalLink } from 'react-icons/fi';
+import {
+    FaFileAlt,
+    FaHeart,
+    FaPalette,
+    FaPuzzlePiece,
+    FaTools,
+    FaJsSquare,
+    FaFont,
+    FaGithub,
+    FaChevronLeft
+} from 'react-icons/fa';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
 
-const NavLink = ({ to, children, className, activeClass, activeWhenExact = true }) => {
+export const NavLink = ({ to, children, className, activeClass, activeWhenExact = true }) => {
     let match = useRouteMatch({
         path: to,
         exact: activeWhenExact
@@ -31,87 +41,148 @@ const NavLink = ({ to, children, className, activeClass, activeWhenExact = true 
     );
 };
 
-function App() {
+const App = () => {
+    const [collapseSidebar, setCollapseSidebar] = React.useState(false);
+    const location = useLocation();
     return (
-        <Router>
-            <div className="site-header">
-                <div className="container">
-                    <h1 className="branding">
-                        <NavLink activeClass="active" activeWhenExact to="/">
-                            <GatewayLogo height="1.5em" width="1.011em" /> Gateway
-                        </NavLink>
-                    </h1>
-                    <ul className="list-inline">
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/content">
-                                Content
+        <div className="site-row">
+            <nav
+                className={classnames('sidebar', {
+                    'sidebar-slim': collapseSidebar
+                })}
+            >
+                <div className="sidebar-wrapper py-8">
+                    <NavLink className="logo" activeClass="active" activeWhenExact to="/">
+                        <GatewayLogo height="1.5em" width="1.011em" /> <span>Gateway</span>
+                    </NavLink>
+                    <ul className="nav flex-column">
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" to="/content">
+                                <FaFileAlt />
+                                <span>Content</span>
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/components">
-                                Components
+                        <li
+                            className={classnames('nav-item', {
+                                active: location.pathname.includes('/components')
+                            })}
+                        >
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact={false} to="/components">
+                                <FaPuzzlePiece />
+                                <span>Components</span>
+                            </NavLink>
+                            <ul className="nav">
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" activeClass="active" to="/components/breadcrumbs">
+                                        Breadcrumbs
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" activeClass="active" to="/components/buttons">
+                                        Buttons
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" activeClass="active" to="/components/flashes">
+                                        Flashes (alerts)
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink
+                                        className="nav-link"
+                                        activeClass="active"
+                                        to="/components/formatted-currency"
+                                    >
+                                        Formatted Currency
+                                    </NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" activeClass="active" to="/components/pagination">
+                                        Pagination
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" to="/utils">
+                                <FaTools />
+                                <span>Utils</span>
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/utils">
-                                Utils
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/javascript">
+                                <FaJsSquare />
+                                <span>Javascript</span>
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/javascript">
-                                Javascript
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/color-tester">
+                                <FaPalette />
+                                <span>Color Tester</span>
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/color-tester">
-                                Color Tester
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/font-tester">
+                                <FaFont />
+                                <span>Font Tester</span>
                             </NavLink>
                         </li>
-                        <li>
-                            <NavLink className="reverse-cta" activeClass="active" activeWhenExact to="/font-tester">
-                                Font Tester
-                            </NavLink>
-                        </li>
-                        <li>
+                    </ul>
+
+                    <hr />
+
+                    <ul className="nav">
+                        <li className="nav-item">
                             <a
+                                className="nav-link"
                                 href="https://github.com/FindawayWorld/gateway"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Github <FiExternalLink width=".875em" height=".875em" />
+                                <FaGithub /> <span>Github</span>
                             </a>
                         </li>
                     </ul>
+                    <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
+                        <FaChevronLeft />
+                    </button>
                 </div>
+            </nav>
+            <div className="main-wrapper px-6 py-8">
+                <main className="page" role="main">
+                    <Switch>
+                        <Route exact path="/">
+                            <HomePage />
+                        </Route>
+                        <Route path="/components">
+                            <ComponentsPage />
+                        </Route>
+                        <Route path="/content">
+                            <ContentPage />
+                        </Route>
+                        <Route path="/utils">
+                            <UtilsPage />
+                        </Route>
+                        <Route path="/javascript">
+                            <JSPage />
+                        </Route>
+                        <Route path="/color-tester">
+                            <ColorTester />
+                        </Route>
+                        <Route path="/font-tester">
+                            <FontTester />
+                        </Route>
+                    </Switch>
+                </main>
+                <footer className={classnames('site-footer')}>
+                    <small>
+                        Built with <FaHeart style={{ color: 'red' }} /> by <a href="https://findaway.com">Findaway</a>,
+                        in CLE.
+                    </small>
+                </footer>
             </div>
-
-            <div className="container">
-                <Switch>
-                    <Route exact path="/">
-                        <HomePage />
-                    </Route>
-                    <Route path="/components">
-                        <ComponentsPage />
-                    </Route>
-                    <Route path="/content">
-                        <ContentPage />
-                    </Route>
-                    <Route path="/utils">
-                        <UtilsPage />
-                    </Route>
-                    <Route path="/javascript">
-                        <JSPage />
-                    </Route>
-                    <Route path="/color-tester">
-                        <ColorTester />
-                    </Route>
-                    <Route path="/font-tester">
-                        <FontTester />
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+        </div>
     );
-}
+};
 
 export default App;
