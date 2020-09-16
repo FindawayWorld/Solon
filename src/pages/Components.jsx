@@ -315,10 +315,16 @@ const ComponentsPage = () => {
             </section>
 
             <section id="modal" className="mb-5">
-                <h2>Modal</h2>
+                <h2 className="mb-0">Modal</h2>
+                <p>
+                    Built on{' '}
+                    <a href="https://reach.tech/dialog" target="_blank" rel="noreferrer noopener">
+                        Reach-UI Dialog
+                    </a>
+                </p>
                 <hr />
 
-                <button className="btn btn-primary mb-3" onClick={() => setCurrentModal('a')}>
+                <button className="btn btn-primary mr-4" onClick={() => setCurrentModal('a')}>
                     Show Modal
                 </button>
                 <Modal visible={currentModal === 'a'} onClose={() => setCurrentModal(null)}>

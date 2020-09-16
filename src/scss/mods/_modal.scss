@@ -3,117 +3,74 @@
 $modal-padding: 3em;
 $modal-background: $white;
 $modal-close-color: $gray;
-$modal-image-height: 135px;
-$modal-image-width: $modal-image-height;
 
-.modal {
-    &.modal-open {
+/* This code is subject to LICENSE in root of this repository */
 
-        .modal-window {
-            opacity: 1;
-            visibility: visible;
-            overflow-y: scroll;
-        }
+/* Used to detect in JavaScript if apps have loaded styles or not. */
+:root {
+    --reach-dialog: 1;
+}
 
-        .modal-window .modal-inner {
-            top: 0;
-        }
-    }
+[data-reach-dialog-overlay] {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    z-index: 199;
+}
 
-    .modal-window { // overlay
-        transition: opacity .25s ease;
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: $black;
-        background: rgba(0,0,0, .50);
-        opacity: 0;
-        text-align: left;
-        visibility: hidden;
-        z-index: 199;
+[data-reach-dialog-content] {
+    transition: opacity 0.25s ease-in-out;
+    border-radius: $border-radius;
+    background: $modal-background;
+    margin: auto;
+    position: relative;
+    overflow: auto;
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    outline: none;
 
-        .modal-bg {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            cursor: pointer;
-        }
-    }
-
-    &.modal-centered .modal-window {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .modal-close {
-        cursor: pointer;
-        position: absolute;
-        top: 0.5rem;
-        right: 1rem;
-        font-size: 1.5rem;
-        color: $gray;
-        opacity: .5;
-        transition: opacity 300ms ease-in-out;
-        padding: 0;
-        background: none;
-        border: none;
-        appearance: none;
-        line-height: 1;
-
-        &:hover {
-            opacity: 1;
-            text-decoration: none;
-        }
-    }
-
-    .modal-inner {
-        transition: opacity .25s ease-in-out;
-        border-radius: $border-radius;
-        background: $modal-background;
-        margin: auto;
-        position: relative;
-        overflow: auto;
+    @media #{$small} {
         width: 90%;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding: 2rem;
+    }
 
-        @media #{$small} {
-            width: 90%;
-        }
-
-        @media #{$medium} {
-            width: rem(960);
-        }
+    @media #{$medium} {
+        width: rem(960);
     }
 }
 
-.modal-inner.pop-modal {
+.modal-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-close {
+    cursor: pointer;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: $gray;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
     padding: 0;
-    overflow:hidden;
-    .image-wrapper {
-        overflow: hidden;
-        img {
-            width: auto;
-            height: 100%;
-            max-width: none;
-        }
-    }
-}
+    background: none;
+    border: none;
+    appearance: none;
+    line-height: 1;
+    outline: none;
 
-.upsell-modal {
-    h3 {
-        text-align: center;
-    }
-    p {
-        margin: 0 auto 1rem;
-        max-width: 75%;
-        text-align: center;
+    &:hover,
+    &:active,
+    &:focus {
+        opacity: 1;
+        text-decoration: none;
     }
 }
