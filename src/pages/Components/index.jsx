@@ -1,18 +1,18 @@
 import React from 'react';
 
-import { componentsNav } from '../App';
+import { componentsNav } from '../../App';
 
 import { Link, Route, Switch } from 'react-router-dom';
 
-import ButtonsPage from './Components/ButtonsPage';
-import PaginationPage from './Components/PaginationPage';
-import BreadcrumbsPage from './Components/BreadcrumbsPage';
-import FlashesPage from './Components/FlashesPage';
-import FormattedCurrencyPage from './Components/FormattedCurrencyPage';
-import FormattedPluralPage from './Components/FormattedPluralPage';
-import LoadingPage from './Components/LoadingPage';
-import ModalPage from './Components/ModalPage';
-import FormsPage from './Components/FormsPage';
+import ButtonsPage from './ButtonsPage';
+import PaginationPage from './PaginationPage';
+import BreadcrumbsPage from './BreadcrumbsPage';
+import FlashesPage from './FlashesPage';
+import FormattedCurrencyPage from './FormattedCurrencyPage';
+import FormattedPluralPage from './FormattedPluralPage';
+import LoadingPage from './LoadingPage';
+import ModalPage from './ModalPage';
+import FormsPage from './FormsPage';
 
 const ComponentsPage = () => {
     return (
@@ -50,7 +50,7 @@ const ComponentsPage = () => {
                 <hr />
                 <ul className="list-flat">
                     {componentsNav.map((page) => (
-                        <li className="nav-item">
+                        <li key={page[0]} className="nav-item">
                             <Link to={page[0]}>{page[1]}</Link>
                         </li>
                     ))}

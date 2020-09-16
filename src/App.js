@@ -85,7 +85,7 @@ const App = () => {
                             </NavLink>
                             <ul className="nav">
                                 {componentsNav.map((page) => (
-                                    <li className="nav-item">
+                                    <li key={page[0]} className="nav-item">
                                         <NavLink className="nav-link" activeClass="active" to={page[0]}>
                                             {page[1]}
                                         </NavLink>
