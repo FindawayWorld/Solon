@@ -17,7 +17,7 @@ import FormsPage from './FormsPage';
 const ComponentsPage = () => {
     return (
         <Switch>
-            <Route path="/components/breadcrumbs" default>
+            <Route path="/components/breadcrumbs">
                 <BreadcrumbsPage />
             </Route>
             <Route path="/components/buttons">

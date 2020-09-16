@@ -23,6 +23,16 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
 
+export const ScrollToTop = () => {
+    const { pathname } = useLocation();
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+};
+
 export const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
     let match = useRouteMatch({
         path: to,
@@ -142,24 +152,31 @@ const App = () => {
                 <main className="page" role="main">
                     <Switch>
                         <Route exact path="/">
+                            <ScrollToTop />
                             <HomePage />
                         </Route>
                         <Route path="/components">
+                            <ScrollToTop />
                             <ComponentsPage />
                         </Route>
                         <Route path="/content">
+                            <ScrollToTop />
                             <ContentPage />
                         </Route>
                         <Route path="/utils">
+                            <ScrollToTop />
                             <UtilsPage />
                         </Route>
                         <Route path="/javascript">
+                            <ScrollToTop />
                             <JSPage />
                         </Route>
                         <Route path="/color-tester">
+                            <ScrollToTop />
                             <ColorTester />
                         </Route>
                         <Route path="/font-tester">
+                            <ScrollToTop />
                             <FontTester />
                         </Route>
                     </Switch>
