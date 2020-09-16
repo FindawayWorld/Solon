@@ -15,8 +15,6 @@ import ModalPage from './Components/ModalPage';
 import FormsPage from './Components/FormsPage';
 
 const ComponentsPage = () => {
-    let old = <></>;
-
     return (
         <Switch>
             <Route path="/components/breadcrumbs" default>
