@@ -58,12 +58,11 @@ img {
 
 .site-row {
     box-sizing: border-box;
-    display: flex;
-    flex: 0 1 auto;
-    flex-wrap: wrap;
-    flex-direction: column;
 
-    @media #{$medium} {
+    @media #{$large} {
         flex-direction: row;
+        display: flex;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
     }
 }

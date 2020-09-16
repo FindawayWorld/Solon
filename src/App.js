@@ -23,7 +23,7 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
 
-export const NavLink = ({ to, children, className, activeClass, activeWhenExact = true }) => {
+export const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
     let match = useRouteMatch({
         path: to,
         exact: activeWhenExact
@@ -35,15 +35,26 @@ export const NavLink = ({ to, children, className, activeClass, activeWhenExact 
                 [activeClass]: match
             })}
             to={to}
-        >
-            {children}
-        </Link>
+            {...props}
+        />
     );
 };
+
+export const componentsNav = [
+    ['/components/breadcrumbs', 'Breadcrumbs'],
+    ['/components/buttons', 'Buttons'],
+    ['/components/flashes', 'Flashes (alerts)'],
+    ['/components/formatted-currency', 'Formatted Currency'],
+    ['/components/formatted-plural', 'Formatted Plural'],
+    ['/components/loading', 'Loading'],
+    ['/components/modal', 'Modal'],
+    ['/components/pagination', 'Pagination']
+];
 
 const App = () => {
     const [collapseSidebar, setCollapseSidebar] = React.useState(false);
     const location = useLocation();
+
     return (
         <div className="site-row">
             <nav
@@ -72,35 +83,13 @@ const App = () => {
                                 <span>Components</span>
                             </NavLink>
                             <ul className="nav">
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" activeClass="active" to="/components/breadcrumbs">
-                                        Breadcrumbs
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" activeClass="active" to="/components/buttons">
-                                        Buttons
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" activeClass="active" to="/components/flashes">
-                                        Flashes (alerts)
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink
-                                        className="nav-link"
-                                        activeClass="active"
-                                        to="/components/formatted-currency"
-                                    >
-                                        Formatted Currency
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" activeClass="active" to="/components/pagination">
-                                        Pagination
-                                    </NavLink>
-                                </li>
+                                {componentsNav.map((page) => (
+                                    <li className="nav-item">
+                                        <NavLink className="nav-link" activeClass="active" to={page[0]}>
+                                            {page[1]}
+                                        </NavLink>
+                                    </li>
+                                ))}
                             </ul>
                         </li>
                         <li className="nav-item">
@@ -148,7 +137,7 @@ const App = () => {
                     </button>
                 </div>
             </nav>
-            <div className="main-wrapper px-6 py-8">
+            <div className="main-wrapper px-12 py-8">
                 <main className="page" role="main">
                     <Switch>
                         <Route exact path="/">

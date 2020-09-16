@@ -1,18 +1,15 @@
 import React from 'react';
 
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Input from '../components/form/Input';
 import Select from '../components/form/Select';
 import TextArea from '../components/form/TextArea';
 import Checkbox from '../components/form/Checkbox';
-import Modal from '../components/Modal';
 import { ListInputBox, ListInputItem } from '../components/form/ListInputBox';
 
 import { useFormik } from 'formik';
 import { object, string, boolean, array } from 'yup';
 
-import FormattedPlural from '../components/FormattedPlural';
-import Loading from '../components/Loading';
 import DisplayFormikState from '../components/DisplayFormikState';
 
 import ButtonsPage from './Components/ButtonsPage';
@@ -21,9 +18,12 @@ import PaginationPage from './Components/PaginationPage';
 import BreadcrumbsPage from './Components/BreadcrumbsPage';
 import FlashesPage from './Components/FlashesPage';
 import FormattedCurrencyPage from './Components/FormattedCurrencyPage';
+import { componentsNav } from '../App';
+import FormattedPluralPage from './Components/FormattedPluralPage';
+import LoadingPage from './Components/LoadingPage';
+import ModalPage from './Components/ModalPage';
 
 const ComponentsPage = () => {
-    const [currentModal, setCurrentModal] = React.useState(null);
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
     let [kwds, setKwds] = React.useState(['test']);
 
@@ -49,67 +49,6 @@ const ComponentsPage = () => {
 
     let old = (
         <>
-            <section id="formatted-currency" className="mb-5">
-                <h2>Formatted Plural</h2>
-                <hr />
-                <p>
-                    Return a plural string based on a given <code>value</code>.
-                </p>
-
-                <p>
-                    10 <FormattedPlural value={10} one="Car" many="Cars" />
-                </p>
-                <p>
-                    1 <FormattedPlural value={1} one="Bike" many="Bikes" />
-                </p>
-                <p>
-                    0 <FormattedPlural value={0} one="Scooter" many="Scooters" />
-                </p>
-            </section>
-
-            <section>
-                <h2>Loading Animation</h2>
-                <hr />
-
-                <Loading />
-
-                <p>
-                    Inline Loading <Loading inline />
-                </p>
-
-                <p className="bg-dark txt-white p-3">
-                    Inverted <Loading invert />
-                </p>
-            </section>
-
-            <section id="modal" className="mb-5">
-                <h2>Modal</h2>
-                <hr />
-
-                <button className="btn btn-primary mb-3" onClick={() => setCurrentModal('a')}>
-                    Show Modal
-                </button>
-                <Modal visible={currentModal === 'a'} onClose={() => setCurrentModal(null)}>
-                    <h1>Modal</h1>
-                    <p>
-                        By default modal windows will be centered horizontally, and fixed to <code>2rem</code> from the
-                        top of the window. To center a modal both vertically and horizontally use the{' '}
-                        <code>center</code> prop.
-                    </p>
-                </Modal>
-
-                <button className="btn btn-primary" onClick={() => setCurrentModal('centered')}>
-                    Show Centered Modal
-                </button>
-                <Modal visible={currentModal === 'centered'} onClose={() => setCurrentModal(null)} center>
-                    <h1>Centered Modal</h1>
-                    <p>
-                        This modal will always be centered both vertically and horizontally in the window.{' '}
-                        <strong>WARNING:</strong> This could cause content to get cut off on certain screen heights.
-                    </p>
-                </Modal>
-            </section>
-
             <section id="forms" className="mb-5">
                 <h2>Forms</h2>
                 <p>
@@ -352,12 +291,31 @@ const ComponentsPage = () => {
             <Route path="/components/formatted-currency">
                 <FormattedCurrencyPage />
             </Route>
+            <Route path="/components/formatted-plural">
+                <FormattedPluralPage />
+            </Route>
             <Route path="/components/pagination">
                 <PaginationPage />
             </Route>
+            <Route path="/components/loading">
+                <LoadingPage />
+            </Route>
+            <Route path="/components/modal">
+                <ModalPage />
+            </Route>
             <Route path="/components/old">{old}</Route>
 
-            <Redirect from="/" to="/components/breadcrumbs" />
+            <Route path="/">
+                <h2>Components</h2>
+                <hr />
+                <ul className="list-flat">
+                    {componentsNav.map((page) => (
+                        <li className="nav-item">
+                            <Link to={page[0]}>{page[1]}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </Route>
         </Switch>
     );
 };

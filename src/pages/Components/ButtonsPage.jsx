@@ -34,7 +34,7 @@ const ButtonsPage = () => {
 
             <p className="mb-8">
                 {brandColors.map((color) => (
-                    <button key={`btn-${color}`} className={classnames('btn mr-1', `btn-${color}`)}>
+                    <button key={`btn-${color}`} className={classnames('btn mr-1 mb-1', `btn-${color}`)}>
                         {titleCase(color)}
                     </button>
                 ))}
@@ -60,7 +60,10 @@ const ButtonsPage = () => {
                 {brandColors
                     .filter((color) => color !== 'light')
                     .map((color) => (
-                        <button key={`btn-outline-${color}`} className={classnames('btn mr-1', `btn-outline-${color}`)}>
+                        <button
+                            key={`btn-outline-${color}`}
+                            className={classnames('btn mr-1 mb-1', `btn-outline-${color}`)}
+                        >
                             {titleCase(color)}
                         </button>
                     ))}
@@ -73,15 +76,15 @@ const ButtonsPage = () => {
                 browsers may apply a slightly different rendering).
             </p>
             <p>
-                <a className="btn btn-primary mr-1" href="#demo" role="button">
+                <a className="btn btn-primary mr-1 mb-1" href="#demo" role="button">
                     Link/Anchor
                 </a>
-                <button className="btn btn-primary mr-1" type="submit">
+                <button className="btn btn-primary mr-1 mb-1" type="submit">
                     Button
                 </button>
-                <input className="btn btn-primary mr-1" type="button" value="Input" />
-                <input className="btn btn-primary mr-1" type="submit" value="Submit" />
-                <input className="btn btn-primary mr-1" type="reset" value="Reset" />
+                <input className="btn btn-primary mr-1 mb-1" type="button" value="Input" />
+                <input className="btn btn-primary mr-1 mb-1" type="submit" value="Submit" />
+                <input className="btn btn-primary mr-1 mb-1" type="reset" value="Reset" />
             </p>
 
             <h3>Button Sizes</h3>
