@@ -7,6 +7,18 @@ body {
     font-style: normal;
 }
 
+$select-bg: rgba($primary, 0.5);
+$select-color: color-contrast($select-bg);
+
+::-moz-selection {
+    color: $select-color;
+    background: $select-bg;
+}
+::selection {
+    color: $select-color;
+    background: $select-bg;
+}
+
 h1,
 h2,
 h3,
