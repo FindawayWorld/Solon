@@ -2,11 +2,13 @@ import React from 'react';
 
 const HomePage = () => (
     <>
-        <p>Gateway is Findaway's boilerplate for React sites/applications.</p>
-        <p className="mb-12">
-            By default this repository contains CSS (SCSS), React Components, and utilities to help any project get
-            up-and-running quickly with consistency to all other projects.
-        </p>
+        <div className="mb-12">
+            <h1>Findaway's boilerplate for React sites/applications.</h1>
+            <p className="lead">
+                By default this repository contains CSS (SCSS), React Components, and utilities to help any project get
+                up-and-running quickly with consistency to all other projects.
+            </p>
+        </div>
 
         <section className="mb-12">
             <h2>
