@@ -44,6 +44,7 @@ export const componentsNav = [
     ['/components/breadcrumbs', 'Breadcrumbs'],
     ['/components/buttons', 'Buttons'],
     ['/components/flashes', 'Flashes (alerts)'],
+    ['/components/forms', 'Forms'],
     ['/components/formatted-currency', 'Formatted Currency'],
     ['/components/formatted-plural', 'Formatted Plural'],
     ['/components/loading', 'Loading'],
