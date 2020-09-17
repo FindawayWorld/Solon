@@ -7,8 +7,9 @@ html {
     -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-html, body {
-    background-color:$white;
+html,
+body {
+    background-color: $white;
 }
 
 body {
@@ -45,4 +46,23 @@ img {
 }
 .rounded-pill {
     border-radius: rem(1000) !important;
+}
+
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+.site-row {
+    box-sizing: border-box;
+
+    @media #{$large} {
+        flex-direction: row;
+        display: flex;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+    }
 }
