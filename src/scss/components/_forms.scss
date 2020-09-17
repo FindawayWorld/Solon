@@ -474,27 +474,12 @@ label.error,
     &.standalone {
         border-radius: $border-radius;
     }
+
+    code {
+        background-color: rgba(0, 0, 0, 0.4);
+        border: none;
+    }
 }
-
-// .ghost-input {
-//     display: inline-block;
-//     // margin-bottom: 1rem;
-//     padding: 6px 12px;
-//     border: 1px solid transparent;
-//     border-radius: $border-radius;
-//     box-shadow: none;
-//     box-sizing: border-box;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//     overflow: hidden;
-//     vertical-align: middle;
-
-//     &:hover {
-//         border-color: $border-color;
-//         background-color: $light;
-//         cursor: pointer;
-//     }
-// }
 
 .list-input-box {
     margin-bottom: 1rem;

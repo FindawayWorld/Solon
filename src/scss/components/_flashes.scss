@@ -58,6 +58,11 @@
             opacity: 1;
         }
     }
+
+    code {
+        background-color: rgba(0, 0, 0, 0.4);
+        border: none;
+    }
 }
 
 @each $color, $value in $themeColors {

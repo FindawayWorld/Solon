@@ -34,6 +34,21 @@ const BreadcrumbsPage = () => {
                 <BreadcrumbItem href="#c">Page C</BreadcrumbItem>
                 <BreadcrumbItem current>Page D</BreadcrumbItem>
             </Breadcrumbs>
+
+            <pre>
+                <code>
+                    {`<Breadcrumbs>
+    // Use with react-router-dom Link component
+    <BreadcrumbItem as={Link} to="#a">Page A</BreadcrumbItem>
+
+    <BreadcrumbItem href="#b">Page B</BreadcrumbItem>
+    <BreadcrumbItem href="#c">Page C</BreadcrumbItem>
+
+    // Set current page
+    <BreadcrumbItem current>Page D</BreadcrumbItem>
+</Breadcrumbs>`}
+                </code>
+            </pre>
         </section>
     );
 };

@@ -173,7 +173,7 @@ const FormsPage = () => {
 
             <h3>Formik Example</h3>
             <hr />
-            <form onSubmit={handleSubmit} noValidate>
+            <form className="mb-4" onSubmit={handleSubmit} noValidate>
                 <Input
                     id="name"
                     label="name"
