@@ -450,7 +450,6 @@ label.error,
 }
 
 .invalid-feedback {
-    // display: none;
     width: 100%;
     margin-top: 0.25rem;
     font-size: 80%;
@@ -477,6 +476,7 @@ label.error,
 
     code {
         background-color: rgba(0, 0, 0, 0.4);
+        color: color-contrast(rgba(0, 0, 0, 0.4));
         border: none;
     }
 }
