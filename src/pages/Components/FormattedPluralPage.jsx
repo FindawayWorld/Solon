@@ -27,6 +27,12 @@ const FormattedPluralPage = () => {
             <p>
                 0 <FormattedPlural value={0} one="Scooter" many="Scooters" />
             </p>
+
+            <pre>
+                <code>{`<FormattedPlural value={10} one="Car" many="Cars" />
+<FormattedPlural value={1} one="Bike" many="Bikes" />
+<FormattedPlural value={0} one="Scooter" many="Scooters" />`}</code>
+            </pre>
         </section>
     );
 };

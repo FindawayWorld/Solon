@@ -19,6 +19,13 @@ const PaginationPage = () => {
             <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
             <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
             <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
+
+            <pre>
+                <code>{`<Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
+<Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
+<Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
+<Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />`}</code>
+            </pre>
         </section>
     );
 };
