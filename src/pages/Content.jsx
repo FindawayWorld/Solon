@@ -1,5 +1,5 @@
 import React from 'react';
-import {FiArrowRight} from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 
 export const colors = [
     'aqua',
@@ -20,16 +20,7 @@ export const colors = [
     'gray',
     'black'
 ];
-export const brandColors = [
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark'
-];
+export const brandColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
 
 const ContentPage = () => {
     return (
@@ -46,7 +37,7 @@ const ContentPage = () => {
                 </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
-                        {colors.map(color => (
+                        {colors.map((color) => (
                             <div key={`colors-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
@@ -60,7 +51,7 @@ const ContentPage = () => {
                 <h3>Brand Colors</h3>
                 <div className="swatch-list">
                     <div className="row">
-                        {brandColors.map(color => (
+                        {brandColors.map((color) => (
                             <div key={`brand-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
@@ -90,24 +81,32 @@ const ContentPage = () => {
                 <hr />
 
                 <p>
-                    Findaway is a global leader in digital content delivery.
-                    With the invention of Playaway Preloaded Products, they
-                    transformed the way that audiobooks, eBooks, videos and
-                    learning tools are circulated in 40,000 libraries, schools,
-                    and military installations.
+                    Findaway is a global leader in digital content delivery. With the invention of Playaway Preloaded
+                    Products, they transformed the way that audiobooks, eBooks, videos and learning tools are circulated
+                    in 40,000 libraries, schools, and military installations.
                 </p>
 
                 <p>
-                    Findaway also revolutionized digital audiobook delivery with
-                    AudioEngine, which is quickly becoming the industry’s
-                    largest B2B audiobook delivery platform that enables brands
-                    to deliver one of the world’s largest collections of digital
-                    audiobooks within their own experience.
+                    Findaway also revolutionized digital audiobook delivery with AudioEngine, which is quickly becoming
+                    the industry’s largest B2B audiobook delivery platform that enables brands to deliver one of the
+                    world’s largest collections of digital audiobooks within their own experience.
                 </p>
 
-                <p>
-                    To learn more about Findaway and the Findawayers who make it
-                    all happen, visit www.findaway.com
+                <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
+            </section>
+
+            <section id="text-alignment" className="mb-5">
+                <h2>Text Alignment</h2>
+                <hr />
+
+                <p className="txt-left">
+                    Text aligned left (default) <code>.txt-left</code>
+                </p>
+                <p className="txt-right">
+                    Text aligned right <code>.txt-right</code>
+                </p>
+                <p className="txt-center">
+                    Text aligned center <code>.txt-center</code>
                 </p>
             </section>
 
@@ -116,11 +115,9 @@ const ContentPage = () => {
                 <hr />
                 <div>
                     <p className="lead">
-                        Findaway is a global leader in digital content delivery.
-                        With the invention of Playaway Preloaded Products, they
-                        transformed the way that audiobooks, eBooks, videos and
-                        learning tools are circulated in 40,000 libraries,
-                        schools, and military installations.
+                        Findaway is a global leader in digital content delivery. With the invention of Playaway
+                        Preloaded Products, they transformed the way that audiobooks, eBooks, videos and learning tools
+                        are circulated in 40,000 libraries, schools, and military installations.
                     </p>
                 </div>
             </section>
@@ -145,8 +142,7 @@ const ContentPage = () => {
                     </li>
                     <li>
                         <a href="#link" className="fancy-cta">
-                            Fancy CTA w/ SVG{' '}
-                            <FiArrowRight width="1em" height="1em" />
+                            Fancy CTA w/ SVG <FiArrowRight width="1em" height="1em" />
                         </a>
                     </li>
                 </ul>
@@ -221,8 +217,8 @@ const ContentPage = () => {
                 <h2>Icons</h2>
                 <hr />
                 <p>
-                    Use <a href="https://react-icons.netlify.com/#/">React Icons</a>{' '}
-                    for all your icon needs. Unless provided from creative.
+                    Use <a href="https://react-icons.netlify.com/#/">React Icons</a> for all your icon needs. Unless
+                    provided from creative.
                 </p>
             </section>
 
@@ -314,7 +310,6 @@ const ContentPage = () => {
                         </tr>
                     </tbody>
                 </table>
-
             </section>
         </>
     );

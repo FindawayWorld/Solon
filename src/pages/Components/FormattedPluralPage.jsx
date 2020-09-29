@@ -13,10 +13,10 @@ const FormattedPluralPage = () => {
                 <BreadcrumbItem current>Formatted Plural</BreadcrumbItem>
             </Breadcrumbs>
             <h2>Formatted Plural</h2>
-            <hr />
             <p>
                 Return a plural string based on a given <code>value</code>.
             </p>
+            <hr />
 
             <p>
                 10 <FormattedPlural value={10} one="Car" many="Cars" />
