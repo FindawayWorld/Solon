@@ -13,11 +13,12 @@ const FormattedCurrencyPage = () => {
                 <BreadcrumbItem current>Formatted Currency</BreadcrumbItem>
             </Breadcrumbs>
             <h2>Formatted Currency</h2>
-            <hr />
             <p>
                 Format any numerical <code>value</code> as a currency based on the given <code>currency</code> prop and
                 return a <code>String</code>.
             </p>
+            <hr />
+
             <p className="flash flash-warning">
                 <strong>WARNING:</strong> This component uses the <code>window.Intl.NumberFormat</code> function, you
                 may need to include a <a href="https://polyfill.io">polyfill</a>.

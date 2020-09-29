@@ -22,6 +22,7 @@ import {
     FaChevronLeft
 } from 'react-icons/fa';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
+import { sorts } from './utils';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -61,6 +62,18 @@ export const componentsNav = [
     ['/components/modal', 'Modal'],
     ['/components/pagination', 'Pagination']
 ];
+
+componentsNav.sort((a, b) => sorts.asc(a[1], b[1]));
+
+export const utilsNav = [
+    ['/utils/breakpoints', 'Breakpoints'],
+    ['/utils/spacing', 'Spacing'],
+    ['/utils/colors', 'Colors'],
+    ['/utils/grids', 'Grids'],
+    ['/utils/border-radius', 'Border Radius']
+];
+
+utilsNav.sort((a, b) => sorts.asc(a[1], b[1]));
 
 const App = () => {
     const [collapseSidebar, setCollapseSidebar] = React.useState(false);
@@ -103,11 +116,24 @@ const App = () => {
                                 ))}
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" to="/utils">
+                        <li
+                            className={classnames('nav-item', {
+                                active: location.pathname.includes('/utils')
+                            })}
+                        >
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact={false} to="/utils">
                                 <FaTools />
                                 <span>Utils</span>
                             </NavLink>
+                            <ul className="nav">
+                                {utilsNav.map((page) => (
+                                    <li key={page[0]} className="nav-item">
+                                        <NavLink className="nav-link" activeClass="active" to={page[0]}>
+                                            {page[1]}
+                                        </NavLink>
+                                    </li>
+                                ))}
+                            </ul>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClass="active" activeWhenExact to="/javascript">
