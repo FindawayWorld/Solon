@@ -16,6 +16,11 @@ const ModalPage = () => {
             <h2>Modal</h2>
             <hr />
 
+            <p>
+                <strong>Required assets:</strong> <code>scss/mods/_modal.scss</code>, <code>scss/_settings.scss</code>,
+                and <code>scss/_functions.scss</code>
+            </p>
+
             <p>Display a "Modal" dialog.</p>
 
             <button className="btn btn-primary mr-4" onClick={() => setCurrentModal('a')}>

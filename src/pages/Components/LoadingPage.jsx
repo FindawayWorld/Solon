@@ -15,6 +15,11 @@ const LoadingPage = () => {
             <h2>Loading Animation</h2>
             <hr />
 
+            <p>
+                <strong>Required assets:</strong> <code>scss/mods/_loading.scss</code>, <code>scss/_settings.scss</code>
+                , and <code>scss/_functions.scss</code>
+            </p>
+
             <Loading />
 
             <p>

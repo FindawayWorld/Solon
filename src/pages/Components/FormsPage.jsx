@@ -50,6 +50,11 @@ const FormsPage = () => {
             <p>Form markup is derrived from Bootstrap.</p>
             <hr />
 
+            <p>
+                <strong>Required assets:</strong> <code>scss/components/_forms.scss</code>,{' '}
+                <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
+            </p>
+
             <h3>Input and Label</h3>
             <hr />
             <Input label="Text Input" placeholder="Placeholder Text" />

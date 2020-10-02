@@ -15,6 +15,11 @@ const PaginationPage = () => {
             <h2>Pagination</h2>
             <hr />
 
+            <p>
+                <strong>Required assets:</strong> <code>scss/mods/_pagination.scss</code>,{' '}
+                <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
+            </p>
+
             <Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
             <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
             <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />

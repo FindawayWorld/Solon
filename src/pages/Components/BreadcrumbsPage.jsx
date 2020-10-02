@@ -14,6 +14,11 @@ const BreadcrumbsPage = () => (
         <h2>Breadcrumbs</h2>
         <hr />
 
+        <p>
+            <strong>Required assets:</strong> <code>scss/mods/_breadcrumbs.scss</code>, <code>scss/_settings.scss</code>
+            , and <code>scss/_functions.scss</code>
+        </p>
+
         <Breadcrumbs>
             <BreadcrumbItem as={Link} to="/utils">
                 Components

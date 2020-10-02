@@ -52,6 +52,7 @@ export const NavLink = ({ to, className, activeClass, activeWhenExact = true, ..
 };
 
 export const componentsNav = [
+    ['/components/badges', 'Badges'],
     ['/components/breadcrumbs', 'Breadcrumbs'],
     ['/components/buttons', 'Buttons'],
     ['/components/flashes', 'Flashes (alerts)'],

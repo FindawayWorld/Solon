@@ -8,6 +8,10 @@ const BadgesPage = () => (
     <section className="mb-5">
         <h2>Badges</h2>
         <hr />
+        <p>
+            <strong>Required assets:</strong> <code>scss/components/_badges.scss</code>,{' '}
+            <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
+        </p>
         <div className="mb-4">
             {brandColors.map((color) => (
                 <div key={`badge-${color}`} className={classnames('badge mr-4', `badge-${color}`)}>
