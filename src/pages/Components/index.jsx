@@ -13,10 +13,14 @@ import FormattedPluralPage from './FormattedPluralPage';
 import LoadingPage from './LoadingPage';
 import ModalPage from './ModalPage';
 import FormsPage from './FormsPage';
+import BadgesPage from './BadgesPage';
 
 const ComponentsPage = () => {
     return (
         <Switch>
+            <Route path="/components/badges">
+                <BadgesPage />
+            </Route>
             <Route path="/components/breadcrumbs">
                 <BreadcrumbsPage />
             </Route>

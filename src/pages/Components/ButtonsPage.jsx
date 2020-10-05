@@ -20,6 +20,10 @@ const ButtonsPage = () => {
             <p>
                 Button styles are based on the defined <a href="/content">color</a> variables.
             </p>
+            <p>
+                <strong>Required assets:</strong> <code>scss/components/_buttons.scss</code>,{' '}
+                <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
+            </p>
 
             <h3>Solid Buttons</h3>
 

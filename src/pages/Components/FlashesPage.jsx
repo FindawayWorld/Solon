@@ -17,6 +17,10 @@ const FlashesPage = () => {
             <div className="mb-4">
                 <h2>Flashes (alerts)</h2>
                 <hr />
+                <p>
+                    <strong>Required assets:</strong> <code>scss/components/_flashes.scss</code>,{' '}
+                    <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
+                </p>
                 {brandColors.map((color) => (
                     <div key={`flash-${color}`} className={classnames('flash mb-4', `flash-${color}`)}>
                         {titleCase(color)} <a href="#demo">anchor link</a>
