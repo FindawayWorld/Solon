@@ -1,0 +1,97 @@
+/* Tutorial --colors */
+$brand--red--light: #b45139;
+$brand--red--dark: lighten($brand--red--light, 10%);
+$brand--blue--light: #4376a3;
+$brand--blue--dark: lighten($brand--blue--light, 18%);
+$bg--red: lighten($brand--red--light, 40%);
+$bg--blue: lighten($brand--blue--light, 40%);
+$bg--light: #f5f4f3;
+$bg--dark--top: #333848;
+$bg--dark--top: #272b38;
+$bg--dark--bottom: #212631;
+$bg--dark: linear-gradient(180deg, $bg--dark--top 0%, $bg--dark--bottom 100%);
+$bg--card--light: lighten($bg--light, 1%);
+$bg--card--dark: desaturate(lighten($bg--dark--top, 5%), 5%);
+$card-border--light: 0px solid transparent;
+$card-border--dark: 1px solid lighten($bg--card--dark, 12%);
+$text--imp--light: #242d30;
+$text--imp--dark: #e8e4e0;
+$text--light: lighten($text--imp--light, 12%);
+$text--dark: #cac3bc;
+$text--2--light: $text--imp--light;
+$text--2--dark: $text--imp--dark;
+$text--3--light: lighten($text--light, 20%);
+$text--3--dark: darken($text--dark, 20%);
+$border--light: darken($bg--card--light, 10%);
+$border--dark: lighten($bg--card--dark, 10%);
+$hover--light: transparentize($brand--blue--light, 0.9);
+$hover--dark: fuchsia;
+$hover--yellow: yellow;
+$cornflower--light: cornflowerblue;
+$cornflower--dark: rgb(10, 90, 238);
+
+/* Tutorial variables to use as args instead of strings for t($var) invocation */
+$bg: 'bg';
+$card-bg: 'card-bg';
+$text: 'text';
+$text-secondary: 'text-secondary';
+$link: 'link';
+$hover: 'hover';
+$logo: 'logo';
+$brand-blue: 'brand-blue';
+$brand-red: 'brand-red';
+$border: 'border';
+$my-test: 'my-test';
+$cornflower: 'cornflower';
+
+/* Tutorial Themes */
+$themes: (
+    default: (
+        bg: $bg--light,
+        card-bg: $bg--card--light,
+        text: $text--light,
+        text-secondary: $text--2--light,
+        link: $brand--blue--light,
+        hover: $hover--light,
+        border: $border--light,
+        brand-red: $brand--red--light,
+        my-test: $hover--yellow,
+        cornflower: $cornflower--light
+    ),
+    dark: (
+        bg: linear-gradient($bg--dark--top, $bg--dark--bottom),
+        card-bg: $bg--card--dark,
+        text: $text--dark,
+        text-secondary: $text--2--dark,
+        link: $brand--blue--dark,
+        hover: $hover--dark,
+        border: $border--dark,
+        brand-red: $brand--red--dark,
+        my-test: $hover--dark,
+        cornflower: $cornflower--dark
+    )
+);
+
+/* Tutorial Mixin */
+@mixin themed() {
+    @each $theme, $map in $themes {
+        .theme--#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value
+                    )
+                ) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function t($key) {
+    @return map-get($theme-map, $key);
+}

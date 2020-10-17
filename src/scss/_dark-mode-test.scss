@@ -1,0 +1,31 @@
+.my-test-class {
+    @include themed() {
+        color: t($text);
+        background: t($bg);
+    }
+
+    code {
+        @include themed() {
+            color: t($brand-red);
+            background: t($bg);
+            &:hover {
+                outline: 2px solid t($hover);
+            }
+        }
+    }
+}
+
+.my-color-test {
+    @include themed() {
+        background: t($my-test);
+        color: t($text);
+    }
+}
+
+.my-cornflower-test {
+    font-weight: 900;
+    background: cornsilk;
+    @include themed() {
+        color: t($cornflower);
+    }
+}

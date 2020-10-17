@@ -19,7 +19,9 @@ import {
     FaJsSquare,
     FaFont,
     FaGithub,
-    FaChevronLeft
+    FaChevronLeft,
+    FaSun,
+    FaMoon
 } from 'react-icons/fa';
 import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
 import { sorts } from './utils';
@@ -78,10 +80,16 @@ utilsNav.sort((a, b) => sorts.asc(a[1], b[1]));
 
 const App = () => {
     const [collapseSidebar, setCollapseSidebar] = React.useState(false);
+    const [themeMode, setThemeMode] = React.useState('theme--default');
     const location = useLocation();
 
+    const changeTheme = (e) => {
+        e.preventDefault();
+        setThemeMode((t) => (t === 'theme--default' ? 'theme--dark' : 'theme--default'));
+    };
+
     return (
-        <div className="site-row">
+        <div className={'site-row theme ' + themeMode}>
             <nav
                 className={classnames('sidebar', {
                     'sidebar-slim': collapseSidebar
@@ -92,6 +100,14 @@ const App = () => {
                         <GatewayLogo height="1.5em" width="1.011em" /> <span>Gateway</span>
                     </NavLink>
                     <ul className="nav flex-column">
+                        <li className="nav-item">
+                            <button onClick={changeTheme} className="btn btn-link nav-link">
+                                {themeMode === 'theme--default' && <FaSun />}
+                                {themeMode === 'theme--dark' && <FaMoon />}
+                                <span>Click To Toggle Theme</span>
+                            </button>
+                        </li>
+
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClass="active" to="/content">
                                 <FaFileAlt />

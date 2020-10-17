@@ -26,6 +26,15 @@ const ContentPage = () => {
     return (
         <>
             <section id="colors" className="mb-5">
+                <div className="my-test-class">
+                    <h1>Testing Dark Mode</h1>
+                    <p>Dark mode is toggled in the side navigation.</p>
+                    <p>
+                        Theme gets applied in <code>App.js</code> at the outermost div, alongside <code>site-row</code>{' '}
+                    </p>
+                    <p className="my-color-test">my-color-test</p>
+                    <p className="my-cornflower-test">my-color-test</p>
+                </div>
                 <h2>Colors</h2>
                 <hr />
 

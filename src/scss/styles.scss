@@ -1,4 +1,4 @@
-@import 'functions', 'settings';
+@import 'functions', 'dark-mode-tutorial', 'settings';
 
 @import 'base/base', 'base/typography';
 
@@ -8,7 +8,7 @@
     'components/lists', 'components/tables';
 
 @import 'mods/breadcrumbs', 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal',
-    'mods/pagination', 'mods/sidebar';
+    'mods/pagination', 'mods/sidebar', 'dark-mode-test';
 
 .img-center {
     display: block;
