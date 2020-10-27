@@ -163,7 +163,7 @@ $spacers: map-merge(
         }
     }
 
-    // Some special margin utils
+    // Responsive auto margins
     .m#{$infix}-auto {
         margin: auto !important;
     }
@@ -188,6 +188,7 @@ $spacers: map-merge(
         margin-left: auto !important;
     }
 
+    // Responsive overflow
     .overflow#{$infix}-x-auto {
         overflow-x: auto !important;
     }
@@ -205,6 +206,17 @@ $spacers: map-merge(
     }
     .overflow#{$infix}-y-visible {
         overflow-y: visible !important;
+    }
+
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
     }
 }
 
