@@ -98,6 +98,10 @@ const ContentPage = () => {
             <section id="text-alignment" className="mb-5">
                 <h2>Text Alignment</h2>
                 <hr />
+                <p>
+                    Text alignment can be changed based on responsive breakpoints using{' '}
+                    <code>{`txt-<breakpoint>-<left|right|center>`}</code>
+                </p>
 
                 <p className="txt-left">
                     Text aligned left (default) <code>.txt-left</code>
@@ -108,6 +112,17 @@ const ContentPage = () => {
                 <p className="txt-center">
                     Text aligned center <code>.txt-center</code>
                 </p>
+            </section>
+
+            <section id="text-alignment" className="mb-5">
+                <h2>Vertical Alignment</h2>
+                <hr />
+                {['top', 'middle', 'bottom', 'baseline'].map((al) => (
+                    <p className="px-2 bg-gray">
+                        <span style={{ lineHeight: '3rem' }}>Text aligned {al}</span>{' '}
+                        <span className={`align-${al}`}>.align-{al}</span>
+                    </p>
+                ))}
             </section>
 
             <section id="lead-text" className="mb-5">
