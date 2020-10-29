@@ -11,6 +11,7 @@ import { object, string, boolean, array } from 'yup';
 import DisplayFormikState from '../../components/DisplayFormikState';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { Link } from 'react-router-dom';
+import ReactSelect from '../../components/form/ReactSelect';
 
 const FormsPage = () => {
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
@@ -35,6 +36,8 @@ const FormsPage = () => {
             alert(JSON.stringify(values, null, 4));
         }
     });
+    let selectOpts = Array.from({ length: 50 }).map((v, i) => ({ label: `Option ${i}`, value: i }));
+    let [rsValues, setRsValues] = React.useState(selectOpts);
     return (
         <section id="forms" className="mb-5">
             <Breadcrumbs>
@@ -99,6 +102,24 @@ const FormsPage = () => {
                     <option value="5">Option 5</option>
                 </Select>
             </div>
+
+            <h3>
+                ReactSelect <span className="badge badge-info align-middle">BETA</span>
+            </h3>
+            <hr />
+            <p>
+                This component is still a <span className="badge badge-info">BETA</span> implementation. Contribute any
+                fixes/additions/improvements back to the Framework.
+            </p>
+            <ReactSelect label="React Select" id="rs-1" options={selectOpts} />
+            <ReactSelect
+                label="React Select multiple"
+                id="rs-1"
+                isMulti={true}
+                value={rsValues}
+                options={selectOpts}
+                onChange={(v) => setRsValues(v)}
+            />
 
             <h3>Text Area</h3>
             <hr />
