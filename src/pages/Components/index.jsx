@@ -14,6 +14,7 @@ import LoadingPage from './LoadingPage';
 import ModalPage from './ModalPage';
 import FormsPage from './FormsPage';
 import BadgesPage from './BadgesPage';
+import NotificationsPage from './NotificationsPage';
 
 const ComponentsPage = () => {
     return (
@@ -29,6 +30,9 @@ const ComponentsPage = () => {
             </Route>
             <Route path="/components/flashes">
                 <FlashesPage />
+            </Route>
+            <Route path="/components/notifications">
+                <NotificationsPage />
             </Route>
             <Route path="/components/formatted-currency">
                 <FormattedCurrencyPage />
