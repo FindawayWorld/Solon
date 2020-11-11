@@ -11,12 +11,13 @@ const Modal = ({
     label = undefined,
     onClose = () => {},
     children = [],
-    showClose = true
+    showClose = true,
+    disableOverlayClick = false
 }) => {
     return (
         <DialogOverlay
             isOpen={visible}
-            onDismiss={onClose}
+            onDismiss={disableOverlayClick ? () => {} : onClose}
             className={classnames({
                 'modal-centered': center
             })}
