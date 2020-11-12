@@ -89,7 +89,7 @@ const App = () => {
             >
                 <div className="sidebar-wrapper py-8">
                     <NavLink className="logo" activeClass="active" activeWhenExact to="/">
-                        <GatewayLogo height="1.5em" width="1.011em" /> <span>Gateway</span>
+                        <GatewayLogo height="1.5em" width="1.011em" /> <span>Solon</span>
                     </NavLink>
                     <ul className="nav flex-column">
                         <li className="nav-item">
@@ -162,7 +162,7 @@ const App = () => {
                         <li className="nav-item">
                             <a
                                 className="nav-link"
-                                href="https://github.com/FindawayWorld/gateway"
+                                href="https://github.com/FindawayWorld/Solon"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

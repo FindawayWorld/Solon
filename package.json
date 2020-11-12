@@ -1,6 +1,6 @@
 {
-  "name": "gateway",
-  "version": "0.1.0",
+  "name": "solon",
+  "version": "1.0.0",
   "private": true,
   "license": "MIT",
   "dependencies": {

@@ -1,49 +1,49 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy gateway-ui.findaway.com
+name: Deploy solon.findaway.com
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-            - name: Use Node.js
-              uses: actions/setup-node@v1
-              with:
-                  node-version: '12.x'
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
 
-            - name: Get yarn cache directory path
-              id: yarn-cache-dir-path
-              run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-            - uses: actions/cache@v2
-              id: yarn-cache
-              with:
-                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-yarn-
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-            - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v1
-              with:
-                  aws-access-key-id: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
-                  aws-secret-access-key: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
-                  aws-region: us-east-1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
-            - name: Install Deps
-              run: yarn install --ignore-optional
+      - name: Install Deps
+        run: yarn install --ignore-optional
 
-            - name: Build For Production
-              run: yarn build
+      - name: Build For Production
+        run: yarn build
 
-            - name: Deploy index.html
-              run: aws s3 sync ./build s3://gateway-ui.findaway.com --cache-control="max-age=1" --acl="public-read" --exclude='*' --include='index.html'
-            - name: Deploy Rest
-              run: aws s3 sync ./build s3://gateway-ui.findaway.com --exclude='index.html' --include='*' --cache-control="max-age=86400" --acl="public-read"
+      - name: Deploy index.html
+        run: aws s3 sync ./build s3://solon.findaway.com --cache-control="max-age=1" --acl="public-read" --exclude='*' --include='index.html'
+      - name: Deploy Rest
+        run: aws s3 sync ./build s3://solon.findaway.com --exclude='index.html' --include='*' --cache-control="max-age=86400" --acl="public-read"

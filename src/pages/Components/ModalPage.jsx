@@ -21,6 +21,13 @@ const ModalPage = () => {
                 and <code>scss/_functions.scss</code>
             </p>
 
+            <p>
+                Built on top of{' '}
+                <a href="https://reach.tech/dialog/" target="_blank" rel="noopener noreferrer">
+                    @reach/dialog
+                </a>
+            </p>
+
             <p>Display a "Modal" dialog.</p>
 
             <button className="btn btn-primary mr-4" onClick={() => setCurrentModal('a')}>
