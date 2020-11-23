@@ -24,28 +24,3 @@ export const demangle = (title = '') => {
     });
     return fragments.join(': ');
 };
-
-export const sorts = {
-    asc(a, b) {
-        let at = typeof a === 'string' ? a.toLowerCase() : a;
-        let bt = typeof b === 'string' ? b.toLowerCase() : b;
-        if (at < bt) {
-            return -1;
-        } else if (at > bt) {
-            return 1;
-        } else {
-            return 0;
-        }
-    },
-    desc(a, b) {
-        let at = typeof a === 'string' ? a.toLowerCase() : a;
-        let bt = typeof b === 'string' ? b.toLowerCase() : b;
-        if (at > bt) {
-            return -1;
-        } else if (at < bt) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-};

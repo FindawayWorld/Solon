@@ -21,8 +21,9 @@ import {
     FaGithub,
     FaChevronLeft
 } from 'react-icons/fa';
-import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
-import { sorts } from './utils';
+import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
+import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
+import { asc } from './utils/sorts';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -64,7 +65,7 @@ export const componentsNav = [
     ['/components/pagination', 'Pagination']
 ];
 
-componentsNav.sort((a, b) => sorts.asc(a[1], b[1]));
+componentsNav.sort((a, b) => asc(a[1], b[1]));
 
 export const utilsNav = [
     ['/utils/breakpoints', 'Breakpoints'],
@@ -74,7 +75,7 @@ export const utilsNav = [
     ['/utils/border-radius', 'Border Radius']
 ];
 
-utilsNav.sort((a, b) => sorts.asc(a[1], b[1]));
+utilsNav.sort((a, b) => asc(a[1], b[1]));
 
 const App = () => {
     const [collapseSidebar, setCollapseSidebar] = React.useState(false);
@@ -89,7 +90,8 @@ const App = () => {
             >
                 <div className="sidebar-wrapper py-8">
                     <NavLink className="logo" activeClass="active" activeWhenExact to="/">
-                        <GatewayLogo height="1.5em" width="1.011em" /> <span>Solon</span>
+                        {collapseSidebar && <SolonIcon width={50} />}
+                        {!collapseSidebar && <SolonLogo width={200} />}
                     </NavLink>
                     <ul className="nav flex-column">
                         <li className="nav-item">

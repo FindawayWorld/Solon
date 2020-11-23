@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { sorts } from '../../utils';
+import { asc } from '../../utils/sorts';
 
 import { Switch, Route } from 'react-router-dom';
 import SpacingPage from './SpacingPage';
@@ -53,7 +53,7 @@ const UtilsPage = () => (
             <hr />
             <ul className="list-flat">
                 {utilsNav
-                    .sort((a, b) => sorts.asc(a[1], b[1]))
+                    .sort((a, b) => asc(a[1], b[1]))
                     .map((page) => (
                         <li key={page[0]} className="nav-item">
                             <Link to={page[0]}>{page[1]}</Link>
