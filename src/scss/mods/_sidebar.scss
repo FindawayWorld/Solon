@@ -11,13 +11,8 @@ $sidebar-bg-active: $silver;
     align-items: center;
     color: $font-color;
     font-size: 2rem;
-    margin-bottom: 2rem;
-
-    padding-left: calc(1.25rem + 5px);
 
     svg {
-        margin-right: 0.5rem;
-        width: auto !important;
         height: auto !important;
     }
 
@@ -27,6 +22,14 @@ $sidebar-bg-active: $silver;
         text-decoration: underline;
         text-decoration-color: $blue;
         border-bottom: none;
+    }
+
+    .small-logo {
+        display: none;
+    }
+    .full-logo {
+        display: block;
+        width: rem(150);
     }
 }
 
@@ -44,12 +47,98 @@ $sidebar-bg-active: $silver;
 
     width: 100%;
 
-    svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: text-bottom;
-        flex: none;
+    .nav-item {
+        white-space: nowrap;
+        overflow: hidden;
+        span {
+            white-space: nowrap;
+        }
+
+        &.active {
+            background-color: $sidebar-bg-active;
+            > .nav {
+                display: block;
+            }
+            > .nav .nav-link {
+                border-color: $sidebar-bg-active;
+            }
+        }
+
+        > .nav {
+            display: none;
+            margin-bottom: 0;
+            .nav-link {
+                font-size: 0.875rem;
+                padding-left: rem(40);
+                height: rem(35);
+                svg {
+                    display: none;
+                }
+                &.active {
+                    border-color: $sidebar-bg-active;
+                    svg {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-link {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-weight: 400;
+        color: $font-color;
+        height: 42px;
+        border-left: solid 5px transparent;
+        padding-left: rem(20);
+        transition: none;
+
+        svg {
+            margin-right: rem(8);
+            color: #999;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            vertical-align: text-bottom;
+            flex: none;
+        }
+
+        &.active {
+            border-color: $primary;
+            background-color: $sidebar-bg-active;
+            color: $primary;
+            font-weight: 500;
+        }
+    }
+
+    .nav-link:hover svg,
+    .sidebar .active svg {
+        color: inherit;
+    }
+}
+
+.sidebar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+
+    @media #{$large} {
+        display: block;
+        padding-top: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        padding-left: calc(1.25rem + 5px);
+        margin-bottom: 2rem;
+
+        .sidebar-slim & {
+            padding-left: 0;
+            text-align: center;
+        }
     }
 }
 
@@ -65,6 +154,8 @@ $sidebar-bg-active: $silver;
         position: sticky;
         top: 0;
         height: 100vh;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }
 
@@ -83,75 +174,6 @@ $sidebar-bg-active: $silver;
     border: none;
 }
 
-.sidebar .nav-item {
-    white-space: nowrap;
-    overflow: hidden;
-    span {
-        white-space: nowrap;
-    }
-    &.active {
-        background-color: $sidebar-bg-active;
-        > .nav {
-            display: block;
-        }
-    }
-
-    > .nav {
-        display: none;
-    }
-}
-
-.sidebar .nav-link {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-weight: 400;
-    color: $font-color;
-    height: 42px;
-    border-left: solid 5px transparent;
-    padding-left: rem(20);
-    transition: none;
-
-    svg {
-        margin-right: rem(8);
-        color: #999;
-    }
-
-    &.active {
-        border-color: $primary;
-        background-color: $sidebar-bg-active;
-        color: $primary;
-        font-weight: 500;
-    }
-}
-
-.sidebar .nav-link:hover svg,
-.sidebar .active svg {
-    color: inherit;
-}
-
-.sidebar .nav-item > .nav {
-    margin-bottom: 0;
-    .nav-link {
-        font-size: 0.875rem;
-        padding-left: rem(40);
-        height: rem(35);
-        svg {
-            display: none;
-        }
-        &.active {
-            border-color: $sidebar-bg-active;
-            svg {
-                display: inline-block;
-            }
-        }
-    }
-}
-
-.sidebar .nav-item.active > .nav .nav-link {
-    border-color: $sidebar-bg-active;
-}
-
 .sidebar-slim {
     .sidebar-wrapper {
         display: flex;
@@ -166,13 +188,14 @@ $sidebar-bg-active: $silver;
         margin-bottom: 0;
         align-items: center;
     }
-
+    .small-logo {
+        display: none;
+    }
+    .full-logo {
+        display: block;
+    }
     .logo {
         margin-bottom: 0;
-    }
-    .logo svg {
-        width: rem(24);
-        display: block;
     }
 
     .fw-logo {
@@ -205,19 +228,15 @@ $sidebar-bg-active: $silver;
 @media #{$large} {
     .sidebar-slim {
         width: auto;
-        .logo {
-            padding: 0;
-            margin-bottom: 2rem;
-            span {
-                display: none;
-            }
+        .small-logo {
+            display: block;
+        }
+        .full-logo {
+            display: none;
         }
         .logo {
+            padding: 0;
             justify-content: center;
-
-            svg {
-                margin: 0;
-            }
         }
         hr {
             display: block;
@@ -257,13 +276,10 @@ $sidebar-bg-active: $silver;
     background-color: $white;
     border: solid 2px $font-color;
     color: $font-color;
-    $height: (28); //16 + 4 + 8
-    $half: ($height) / 2;
-    position: absolute;
-    top: rem(56 - $half);
-    right: 1rem;
+
     padding: 0.25rem;
     border-radius: 200px;
+
     display: flex;
     justify-content: center;
     align-content: center;
@@ -281,6 +297,9 @@ $sidebar-bg-active: $silver;
     }
 
     @media #{$large} {
+        $height: (28); //16 + 4 + 8
+        $half: ($height) / 2;
+        position: absolute;
         right: rem($half * -1);
         top: rem(85);
 
