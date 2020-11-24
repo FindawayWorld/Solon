@@ -35,23 +35,6 @@ export const ScrollToTop = () => {
     return null;
 };
 
-export const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
-    let match = useRouteMatch({
-        path: to,
-        exact: activeWhenExact
-    });
-
-    return (
-        <Link
-            className={classnames(className, {
-                [activeClass]: match
-            })}
-            to={to}
-            {...props}
-        />
-    );
-};
-
 export const componentsNav = [
     ['/components/badges', 'Badges'],
     ['/components/breadcrumbs', 'Breadcrumbs'],
@@ -78,8 +61,31 @@ export const utilsNav = [
 utilsNav.sort((a, b) => asc(a[1], b[1]));
 
 const App = () => {
-    const [collapseSidebar, setCollapseSidebar] = React.useState(false);
+    const medium = window.matchMedia('(max-width: 768px)');
+    const [collapseSidebar, setCollapseSidebar] = React.useState(medium.matches);
     const location = useLocation();
+
+    const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
+        let match = useRouteMatch({
+            path: to,
+            exact: activeWhenExact
+        });
+
+        return (
+            <Link
+                className={classnames(className, {
+                    [activeClass]: match
+                })}
+                to={to}
+                onClick={() => {
+                    if (medium.matches) {
+                        setCollapseSidebar(true);
+                    }
+                }}
+                {...props}
+            />
+        );
+    };
 
     return (
         <div className="site-row">
@@ -88,11 +94,17 @@ const App = () => {
                     'sidebar-slim': collapseSidebar
                 })}
             >
-                <div className="sidebar-wrapper py-8">
-                    <NavLink className="logo" activeClass="active" activeWhenExact to="/">
-                        {collapseSidebar && <SolonIcon width={50} />}
-                        {!collapseSidebar && <SolonLogo width={200} />}
-                    </NavLink>
+                <div className="sidebar-wrapper">
+                    <div className="sidebar-header">
+                        <NavLink className="logo" activeClass="active" activeWhenExact to="/">
+                            <SolonIcon width={50} className="small-logo" />
+                            <SolonLogo className="full-logo" />
+                        </NavLink>
+                        <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
+                            <FaChevronLeft />
+                        </button>
+                    </div>
+
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClass="active" to="/content">
@@ -172,12 +184,9 @@ const App = () => {
                             </a>
                         </li>
                     </ul>
-                    <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
-                        <FaChevronLeft />
-                    </button>
                 </div>
             </nav>
-            <div className="main-wrapper px-12 py-8">
+            <div className="main-wrapper px-4 px-md-12 py-8">
                 <main className="page" role="main">
                     <Switch>
                         <Route exact path="/">
