@@ -3,9 +3,17 @@ import { titleCase } from '../../utils';
 import classnames from 'classnames';
 import { brandColors } from '../Content';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { Breadcrumbs, BreadcrumbItem } from '../../components/Breadcrumbs';
 
 const BadgesPage = () => (
     <section className="mb-5">
+        <Breadcrumbs>
+            <BreadcrumbItem as={Link} to="/components">
+                Components
+            </BreadcrumbItem>
+            <BreadcrumbItem current>Badges</BreadcrumbItem>
+        </Breadcrumbs>
         <h2>Badges</h2>
         <hr />
         <p>
