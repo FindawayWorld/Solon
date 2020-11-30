@@ -67,12 +67,12 @@ const ContentPage = () => {
                 <h2>Headings</h2>
                 <hr />
                 <div>
-                    <h1>Header 1</h1>
-                    <h2>Header 2</h2>
-                    <h3>Header 3</h3>
-                    <h4>Header 4</h4>
-                    <h5>Header 5</h5>
-                    <h6>Header 6</h6>
+                    <h1>Header 1 (16 * 2.5 = 40px)</h1>
+                    <h2>Header 2 (16 * 2 = 32px)</h2>
+                    <h3>Header 3 (16 * 1.75 = 28px)</h3>
+                    <h4>Header 4 (16 * 1.5 = 24px)</h4>
+                    <h5>Header 5 (16 * 1.25 = 20px)</h5>
+                    <h6>Header 6 (16px)</h6>
                 </div>
             </section>
 
