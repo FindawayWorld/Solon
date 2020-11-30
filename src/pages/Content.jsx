@@ -63,26 +63,12 @@ const ContentPage = () => {
                 </div>
             </section>
 
-            <section id="headings" className="mb-5">
-                <h2>Headings</h2>
-                <hr />
-                <div>
-                    <h1>Header 1 (16 * 2.5 = 40px)</h1>
-                    <h2>Header 2 (16 * 2 = 32px)</h2>
-                    <h3>Header 3 (16 * 1.75 = 28px)</h3>
-                    <h4>Header 4 (16 * 1.5 = 24px)</h4>
-                    <h5>Header 5 (16 * 1.25 = 20px)</h5>
-                    <h6>Header 6 (16px)</h6>
-                </div>
-            </section>
-
-            <section id="body-copy" className="mb-5">
-                <h2>Body copy</h2>
+            <section>
+                <h2>Native font stack</h2>
                 <hr />
 
                 <p>
-                    Paragraph/Body Copy is 16px (1rem) and uses a “native font stack” for optimum text rendering on
-                    every device and OS. .{' '}
+                    Solon uses a “native font stack” for optimum text rendering on every device and OS. .{' '}
                     <pre>
                         <code>
                             {`// Safari for macOS and iOS (San Francisco)
@@ -112,6 +98,23 @@ sans-serif,
                         Smashing Magazine article
                     </a>
                 </p>
+            </section>
+
+            <section id="headings" className="mb-5">
+                <h2>Headings</h2>
+                <hr />
+                <div>
+                    <h1>Header 1 (16 * 2.5 = 40px)</h1>
+                    <h2>Header 2 (16 * 2 = 32px)</h2>
+                    <h3>Header 3 (16 * 1.75 = 28px)</h3>
+                    <h4>Header 4 (16 * 1.5 = 24px)</h4>
+                    <h5>Header 5 (16 * 1.25 = 20px)</h5>
+                    <h6>Header 6 (16px)</h6>
+                </div>
+            </section>
+
+            <section id="body-copy" className="mb-5">
+                <h2>Body copy</h2>
                 <hr />
                 <p>
                     Findaway is a global leader in digital content delivery. With the invention of Playaway Preloaded
