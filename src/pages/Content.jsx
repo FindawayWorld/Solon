@@ -81,6 +81,39 @@ const ContentPage = () => {
                 <hr />
 
                 <p>
+                    Paragraph/Body Copy is 16px (1rem) and uses a “native font stack” for optimum text rendering on
+                    every device and OS. .{' '}
+                    <pre>
+                        <code>
+                            {`// Safari for macOS and iOS (San Francisco)
+-apple-system,
+// Chrome < 56 for macOS (San Francisco)
+BlinkMacSystemFont,
+// Windows
+"Segoe UI",
+// Android
+Roboto,
+// Basic web fallback
+"Helvetica Neue", Arial,
+// Linux
+"Noto Sans",
+// Sans serif fallback
+sans-serif,
+// Emoji fonts
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;`}
+                        </code>
+                    </pre>
+                    Read more about native font stacks in this{' '}
+                    <a
+                        href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Smashing Magazine article
+                    </a>
+                </p>
+                <hr />
+                <p>
                     Findaway is a global leader in digital content delivery. With the invention of Playaway Preloaded
                     Products, they transformed the way that audiobooks, eBooks, videos and learning tools are circulated
                     in 40,000 libraries, schools, and military installations.
