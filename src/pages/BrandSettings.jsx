@@ -6,8 +6,8 @@ const BrandSettings = () => {
             <h1>Brand Settings</h1>
 
             <p>
-                SCSS variables can be overridden using the `_brand_settings.scss` file. There you can override any
-                global variables found in `_settings.scss`, or add new variables.
+                SCSS variables can be overridden using the <code>_brand_settings.scss</code> file. There you can
+                override any global variables found in <code>_settings.scss</code>, or add new variables.
             </p>
 
             <p>Below are some examples for existing brands/sites.</p>
