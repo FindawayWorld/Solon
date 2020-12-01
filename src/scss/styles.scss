@@ -1,3 +1,5 @@
+@import 'brand_settings';
+
 @import 'functions', 'settings';
 
 @import 'base/base', 'base/typography';
@@ -111,4 +113,14 @@ pre > code {
     display: block;
     padding: 1rem 1.5rem;
     white-space: pre;
+}
+
+.rsh {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    > code {
+        background: none;
+        border: none;
+        padding: 0;
+    }
 }

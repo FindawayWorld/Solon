@@ -103,14 +103,14 @@ const FormsPage = () => {
                 </Select>
             </div>
 
-            <h3>
-                ReactSelect <span className="badge badge-info align-middle">BETA</span>
-            </h3>
+            <h3>ReactSelect</h3>
             <hr />
-            <p>
-                This component is still a <span className="badge badge-info">BETA</span> implementation. Contribute any
-                fixes/additions/improvements back to the Framework.
-            </p>
+            <div className="flash flash-warning mb-4">
+                <p>
+                    This component is still a <code>beta</code> implementation. Contribute any
+                    fixes/additions/improvements back to the Framework.
+                </p>
+            </div>
             <ReactSelect label="React Select" id="rs-1" options={selectOpts} />
             <ReactSelect
                 label="React Select multiple"

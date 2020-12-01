@@ -19,11 +19,13 @@ import {
     FaJsSquare,
     FaFont,
     FaGithub,
-    FaChevronLeft
+    FaChevronLeft,
+    FaCog
 } from 'react-icons/fa';
 import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
 import { asc } from './utils/sorts';
+import BrandSettings from './pages/BrandSettings';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -168,6 +170,12 @@ const App = () => {
                                 <span>Font Tester</span>
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/brand-settings">
+                                <FaCog />
+                                <span>Brand Settings</span>
+                            </NavLink>
+                        </li>
                     </ul>
 
                     <hr />
@@ -216,6 +224,10 @@ const App = () => {
                         <Route path="/font-tester">
                             <ScrollToTop />
                             <FontTester />
+                        </Route>
+                        <Route path="/brand-settings">
+                            <ScrollToTop />
+                            <BrandSettings />
                         </Route>
                     </Switch>
                 </main>

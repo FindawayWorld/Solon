@@ -9,10 +9,27 @@ $small: 'only screen and (min-width: 576px)';
 $small2x: 'only screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2)';
 $retina: 'only screen and (-webkit-min-device-pixel-ratio: 2)';
 
-$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
-$light-weight: 300;
-$line-height: 1.5;
+$font-family: // Safari for macOS and iOS (San Francisco)
+    -apple-system,
+    // Chrome < 56 for macOS (San Francisco)
+    BlinkMacSystemFont,
+    // Windows
+    'Segoe UI',
+    // Android
+    Roboto,
+    // Basic web fallback
+    'Helvetica Neue',
+    Arial,
+    // Linux
+    'Noto Sans',
+    // Sans serif fallback
+    sans-serif,
+    // Emoji fonts
+    'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+
+$light-weight: 300 !default;
+$line-height: 1.5 !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg: $font-size-base * 1.25 !default;
@@ -25,30 +42,30 @@ $h4-font-size: $font-size-base * 1.5 !default;
 $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
-$border-radius: rem(3);
+$border-radius: rem(3) !default;
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
-$aqua: #7fdbff;
-$blue: #0074d9;
-$navy: #001f3f;
-$teal: #289c9c;
-$green: #239930;
-$olive: #3d9970;
-$lime: #01ff70;
-$yellow: #e6c600;
-$orange: #ff851b;
-$red: #e80d00;
-$fuchsia: #f012be;
-$purple: #b10dc9;
-$maroon: #85144b;
-$white: #ffffff;
-$silver: #dddddd;
-$gray: #808080;
-$black: #111111;
+$aqua: #7fdbff !default;
+$blue: #0074d9 !default;
+$navy: #001f3f !default;
+$teal: #289c9c !default;
+$green: #239930 !default;
+$olive: #3d9970 !default;
+$lime: #01ff70 !default;
+$yellow: #e6c600 !default;
+$orange: #ff851b !default;
+$red: #e80d00 !default;
+$fuchsia: #f012be !default;
+$purple: #b10dc9 !default;
+$maroon: #85144b !default;
+$white: #ffffff !default;
+$silver: #dddddd !default;
+$gray: #808080 !default;
+$black: #111111 !default;
 
-$font-color: $black;
-$border-color: $silver;
+$font-color: $black !default;
+$border-color: $silver !default;
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -75,13 +92,13 @@ $colors: map-merge(
     $colors
 );
 
-$primary: $blue;
-$secondary: $gray;
+$primary: $blue !default;
+$secondary: $gray !default;
 $success: $green !default;
 $danger: $red !default;
 $warning: #ffdc00 !default;
-$light: #f8f9fa;
-$dark: #343a40;
+$light: #f8f9fa !default;
+$dark: #343a40 !default;
 
 $themeColors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
