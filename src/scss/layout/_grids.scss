@@ -402,3 +402,11 @@ $spacers: map-merge(
     @include gridCol('xl');
     @include margins('-xl');
 }
+
+@media #{$xxlarge} {
+    .container {
+        max-width: rem(1320);
+    }
+    @include gridCol('xxl');
+    @include margins('-xxl');
+}

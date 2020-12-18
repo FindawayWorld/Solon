@@ -20,7 +20,7 @@ export const colors = [
     'gray',
     'black'
 ];
-export const brandColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
+export const brandColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'muted'];
 
 const ContentPage = () => {
     return (

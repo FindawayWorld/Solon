@@ -40,6 +40,16 @@ const BreakpointsPage = () => (
             <tbody>
                 <tr>
                     <td>
+                        <code>$xxlarge</code>
+                    </td>
+                    <td>
+                        <code>xxl</code>
+                    </td>
+                    <td>1400px</td>
+                    <td>1320px</td>
+                </tr>
+                <tr>
+                    <td>
                         <code>$xlarge</code>
                     </td>
                     <td>
@@ -98,6 +108,12 @@ const BreakpointsPage = () => (
                         <code>$retina</code>
                     </td>
                     <td>∞</td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>$xxlarge2x</code>
+                    </td>
+                    <td>1400px</td>
                 </tr>
                 <tr>
                     <td>

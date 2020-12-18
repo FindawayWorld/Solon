@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 const GridsPage = () => (
     <section id="grids" className="mb-5">
@@ -22,6 +23,94 @@ const GridsPage = () => (
             </small>
         </p>
         <hr />
+
+        <section className="page-section mb-8">
+            <h3>Containers</h3>
+            <p>
+                Containers are used to contain, pad, and (sometimes) center the content within them. While containers
+                can be nested, most layouts do not require a nested container.
+            </p>
+
+            <div className="flash flash-warning mb-4">
+                <p>
+                    <FiAlertTriangle />
+                    Containers are required when using our default grid system.
+                </p>
+                <p>
+                    <FiAlertTriangle className="align-middle" />
+                    You might need to collapse the sidebar to see the container's max-width at each breakpoint.
+                </p>
+            </div>
+
+            <div className="container bg-blue py-4 mb-4">
+                <code>.container</code>
+            </div>
+            <div className="container-fluid bg-blue py-4 mb-6">
+                <code>.container-fluid</code>
+            </div>
+
+            <table className="table full-width">
+                <thead>
+                    <tr>
+                        <td className="border-dark"></td>
+                        <th scope="col">
+                            Extra small
+                            <br />
+                            <span className="txt-normal">&lt;576px</span>
+                        </th>
+                        <th scope="col">
+                            Small
+                            <br />
+                            <span className="txt-normal">≥576px</span>
+                        </th>
+                        <th scope="col">
+                            Medium
+                            <br />
+                            <span className="txt-normal">≥768px</span>
+                        </th>
+                        <th scope="col">
+                            Large
+                            <br />
+                            <span className="txt-normal">≥992px</span>
+                        </th>
+                        <th scope="col">
+                            X-Large
+                            <br />
+                            <span className="txt-normal">≥1200px</span>
+                        </th>
+                        <th scope="col">
+                            XX-Large
+                            <br />
+                            <span className="txt-normal">≥1400px</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" className="txt-normal">
+                            <code>.container</code>
+                        </th>
+                        <td className="txt-muted">100%</td>
+                        <td>540px</td>
+                        <td>720px</td>
+                        <td>960px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" className="txt-normal">
+                            <code>.container-fluid</code>
+                        </th>
+                        <td className="txt-muted">100%</td>
+                        <td className="txt-muted">100%</td>
+                        <td className="txt-muted">100%</td>
+                        <td className="txt-muted">100%</td>
+                        <td className="txt-muted">100%</td>
+                        <td className="txt-muted">100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
         <section className="page-section">
             <h3>Simple Syntax</h3>

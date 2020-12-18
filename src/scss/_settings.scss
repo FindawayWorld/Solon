@@ -1,4 +1,5 @@
-// $xxlarge: 'only screen and (min-width: 102.4em)';
+$xxlarge: 'only screen and (min-width: 1400px)';
+$xxlarge2x: 'only screen and (min-width: 1400px) and (-webkit-min-device-pixel-ratio: 2)';
 $xlarge: 'only screen and (min-width: 1200px)';
 $xlarge2x: 'only screen and (min-width: 1200px) and (-webkit-min-device-pixel-ratio: 2)';
 $large: 'only screen and (min-width: 992px)';
@@ -99,6 +100,7 @@ $danger: $red !default;
 $warning: #ffdc00 !default;
 $light: #f8f9fa !default;
 $dark: #343a40 !default;
+$muted: #6c757d !default;
 
 $themeColors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -111,7 +113,8 @@ $themeColors: map-merge(
         'warning': $warning,
         'info': $teal,
         'light': $light,
-        'dark': $dark
+        'dark': $dark,
+        'muted': $muted
     ),
     $themeColors
 );
