@@ -36,4 +36,6 @@ export const desc = (a, b) => {
     }
 };
 
-export default { asc, desc };
+const sorts = { asc, desc };
+
+export default sorts;
