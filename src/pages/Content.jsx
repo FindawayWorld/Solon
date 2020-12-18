@@ -161,6 +161,18 @@ sans-serif,
                 ))}
             </section>
 
+            <section id="text-weight" className="mb-5">
+                <h2>Font Weight</h2>
+                <hr />
+                <p>
+                    Font weight can be applied using <code>{`fw-<light|normal|bold>`}</code>
+                </p>
+
+                <p className="fw-light">Light</p>
+                <p className="fw-normal">Normal</p>
+                <p className="fw-bold">Bold</p>
+            </section>
+
             <section id="lead-text" className="mb-5">
                 <h2>Lead text</h2>
                 <hr />

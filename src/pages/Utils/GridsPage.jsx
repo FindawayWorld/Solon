@@ -56,38 +56,38 @@ const GridsPage = () => (
                         <th scope="col">
                             Extra small
                             <br />
-                            <span className="txt-normal">&lt;576px</span>
+                            <span className="fw-normal">&lt;576px</span>
                         </th>
                         <th scope="col">
                             Small
                             <br />
-                            <span className="txt-normal">≥576px</span>
+                            <span className="fw-normal">≥576px</span>
                         </th>
                         <th scope="col">
                             Medium
                             <br />
-                            <span className="txt-normal">≥768px</span>
+                            <span className="fw-normal">≥768px</span>
                         </th>
                         <th scope="col">
                             Large
                             <br />
-                            <span className="txt-normal">≥992px</span>
+                            <span className="fw-normal">≥992px</span>
                         </th>
                         <th scope="col">
                             X-Large
                             <br />
-                            <span className="txt-normal">≥1200px</span>
+                            <span className="fw-normal">≥1200px</span>
                         </th>
                         <th scope="col">
                             XX-Large
                             <br />
-                            <span className="txt-normal">≥1400px</span>
+                            <span className="fw-normal">≥1400px</span>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row" className="txt-normal">
+                        <th scope="row" className="fw-normal">
                             <code>.container</code>
                         </th>
                         <td className="txt-muted">100%</td>
@@ -98,7 +98,7 @@ const GridsPage = () => (
                         <td>1320px</td>
                     </tr>
                     <tr>
-                        <th scope="row" className="txt-normal">
+                        <th scope="row" className="fw-normal">
                             <code>.container-fluid</code>
                         </th>
                         <td className="txt-muted">100%</td>
