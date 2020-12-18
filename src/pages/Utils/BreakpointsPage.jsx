@@ -32,6 +32,9 @@ const BreakpointsPage = () => (
                     <th>SCSS Variable</th>
                     <th>Class Prefix</th>
                     <th>Min-Width</th>
+                    <th>
+                        <code>.container</code> Max-Width
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +46,7 @@ const BreakpointsPage = () => (
                         <code>xl</code>
                     </td>
                     <td>1200px</td>
+                    <td>1140px</td>
                 </tr>
 
                 <tr>
@@ -52,7 +56,8 @@ const BreakpointsPage = () => (
                     <td>
                         <code>lg</code>
                     </td>
-                    <td>992x</td>
+                    <td>992px</td>
+                    <td>960px</td>
                 </tr>
 
                 <tr>
@@ -63,6 +68,7 @@ const BreakpointsPage = () => (
                         <code>md</code>
                     </td>
                     <td>768px</td>
+                    <td>720px</td>
                 </tr>
 
                 <tr>
@@ -73,6 +79,7 @@ const BreakpointsPage = () => (
                         <code>sm</code>
                     </td>
                     <td>576px</td>
+                    <td>540px</td>
                 </tr>
             </tbody>
         </table>
