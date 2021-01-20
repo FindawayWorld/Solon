@@ -31,7 +31,7 @@ const TextArea = ({
     readOnly = false,
     children = null,
 
-    errors = false,
+    error = false,
     touched = false,
 
     onChange = () => {},
@@ -78,7 +78,7 @@ const TextArea = ({
                 }
                 <textarea
                     className={classnames('form-control', {
-                        'error': errors,
+                        'error': error && touched,
                         'mb-0': collapse,
                         'input-group-control': (prepend || prependLabel) || append,
                         'input-group-control-prepend': (prepend || prependLabel),
@@ -113,9 +113,9 @@ const TextArea = ({
                 {help && !readOnly &&
                     <small className="form-text text-muted">{help}</small>
                 }
-                {errors && touched &&
+                {error && touched &&
                     <div className="form-error">
-                        <span>{errors}</span>
+                        <span>{error}</span>
                     </div>
                 }
             </div>
