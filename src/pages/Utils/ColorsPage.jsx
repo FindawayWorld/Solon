@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { brandColors } from '../Content';
+import { brandColors, colors } from '../Content';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
@@ -32,6 +32,14 @@ const ColorsPage = () => (
                     })}
                 >{`.txt-${color}`}</p>
             ))}
+            {colors.map((color) => (
+                <p
+                    key={`txt-${color}`}
+                    className={classnames(`txt-${color}`, {
+                        'bg-dark': ['white', 'light'].includes(color)
+                    })}
+                >{`.txt-${color}`}</p>
+            ))}
         </div>
 
         <h3>Background color</h3>
@@ -43,6 +51,9 @@ const ColorsPage = () => (
 
         <div>
             {brandColors.map((color) => {
+                return <p key={`bg-${color}`} className={classnames('p-3 mb-2', `bg-${color}`)}>{`.bg-${color}`}</p>;
+            })}
+            {colors.map((color) => {
                 return <p key={`bg-${color}`} className={classnames('p-3 mb-2', `bg-${color}`)}>{`.bg-${color}`}</p>;
             })}
             <p className="p-3 mb-2 bg-primary txt-dark">

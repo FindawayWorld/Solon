@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 import { titleCase } from '../../utils';
-import { brandColors } from '../Content';
+import { brandColors, colors } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
 const ButtonsPage = () => {
@@ -38,11 +38,31 @@ const ButtonsPage = () => {
 
             <p className="mb-8">
                 {brandColors.map((color) => (
-                    <button key={`btn-${color}`} className={classnames('btn mr-1 mb-1', `btn-${color}`)}>
-                        {titleCase(color)}
-                    </button>
+                    <div
+                        className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                            'bg-dark p-2': color === 'light'
+                        })}
+                    >
+                        <button key={`btn-${color}`} className={classnames('btn', `btn-${color}`)}>
+                            {titleCase(color)}
+                        </button>
+                    </div>
                 ))}
                 <button className="btn btn-link">Link</button>
+            </p>
+
+            <p className="mb-8">
+                {colors.map((color) => (
+                    <div
+                        className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                            'bg-dark p-2': color === 'white'
+                        })}
+                    >
+                        <button key={`btn-${color}`} className={classnames('btn', `btn-${color}`)}>
+                            {titleCase(color)}
+                        </button>
+                    </div>
+                ))}
             </p>
 
             <h3>Outline Buttons</h3>
@@ -61,16 +81,30 @@ const ButtonsPage = () => {
                 </small>
             </p>
             <p>
-                {brandColors
-                    .filter((color) => color !== 'light')
-                    .map((color) => (
-                        <button
-                            key={`btn-outline-${color}`}
-                            className={classnames('btn mr-1 mb-1', `btn-outline-${color}`)}
-                        >
+                {brandColors.map((color) => (
+                    <div
+                        className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                            'bg-dark p-2': color === 'light'
+                        })}
+                    >
+                        <button key={`btn-outline-${color}`} className={classnames('btn', `btn-outline-${color}`)}>
                             {titleCase(color)}
                         </button>
-                    ))}
+                    </div>
+                ))}
+            </p>
+            <p>
+                {colors.map((color) => (
+                    <div
+                        className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                            'bg-dark p-2': ['white', 'silver'].includes(color)
+                        })}
+                    >
+                        <button key={`btn-outline-${color}`} className={classnames('btn', `btn-outline-${color}`)}>
+                            {titleCase(color)}
+                        </button>
+                    </div>
+                ))}
             </p>
 
             <h3>Button Tags</h3>
