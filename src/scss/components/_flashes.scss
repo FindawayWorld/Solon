@@ -66,7 +66,7 @@
     }
 }
 
-@each $color, $value in $themeColors {
+@each $color, $value in map-merge($themeColors, $colors) {
     .flash-#{$color} {
         @include make-flash($value);
     }
