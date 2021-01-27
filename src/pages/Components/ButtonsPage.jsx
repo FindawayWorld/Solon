@@ -149,7 +149,7 @@ const ButtonsPage = () => {
             </Menu>
 
             <h3>Status Button</h3>
-            <p>Display an ephemiral status.</p>
+            <p>Display an ephemeral status.</p>
             <p>
                 <StatusButton label="Normal State" />
             </p>
