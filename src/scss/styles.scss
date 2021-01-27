@@ -1,10 +1,8 @@
-@import 'settings',
-        'functions';
+@import 'brand_settings';
 
-@import 'base/base',
-        'base/typography';
+@import 'functions', 'settings';
 
-@import 'layout/grids';
+@import 'base/base', 'base/typography';
 
 @import 'components/card',
         'components/forms',
@@ -12,14 +10,13 @@
         'components/links',
         'components/lists',
         'components/tables';
+@import 'layout/grids';
 
-@import 'mods/header',
-        'mods/footer',
-        'mods/loading',
-        'mods/menu-button',
-        'mods/modal',
-        'mods/pagination';
+@import 'components/badges', 'components/flashes', 'components/forms', 'components/buttons', 'components/links',
+    'components/lists', 'components/tables';
 
+@import 'mods/breadcrumbs', 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal',
+    'mods/pagination', 'mods/sidebar';
 
 .img-center {
     display: block;
@@ -131,29 +128,33 @@
     margin: 0 auto;
 }
 
-@each $color, $value in $themeColors {
+@each $color, $value in map-merge($themeColors, $colors) {
     .bg-#{$color} {
         background-color: $value;
+        color: color-contrast($value) !important;
+        code {
+            background: none;
+            border-color: inherit;
+        }
     }
     .txt-#{$color} {
-        color: $value;
+        color: $value !important;
     }
 }
 
-@each $color, $value in $colors {
-    .bg-#{$color} {
-        background-color: $value;
-    }
-    .txt-#{$color} {
-        color: $value;
-    }
-}
-
-.box, .box-first, .box-large, .box-nested, .box-row {
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
     padding: 1rem;
 }
 
-.box, .box-first, .box-large, .box-nested, .box-row {
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
     position: relative;
     box-sizing: border-box;
     min-height: 1rem;
@@ -182,8 +183,31 @@
     margin-bottom: 1rem;
 }
 
+pre {
+    font-size: 0.875rem;
+}
+
 code {
-    font-size: .875rem;
-    color: $fuchsia;
-    word-break: break-word;
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.2rem;
+    font-size: 90%;
+    white-space: nowrap;
+    background: $light;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+}
+pre > code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+}
+
+.rsh {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    > code {
+        background: none;
+        border: none;
+        padding: 0;
+    }
 }

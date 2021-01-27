@@ -1,4 +1,5 @@
-ul, ol {
+ul,
+ol {
     margin-top: 0;
     margin-bottom: 1rem;
 
@@ -34,13 +35,13 @@ dd {
 }
 
 .list-inline {
-    list-style:none;
-    padding:0;
-    margin-left:-1rem;
+    list-style: none;
+    padding: 0;
+    margin-left: -1rem;
 
     > li {
         line-height: 1.5;
-        display:inline-block;
+        display: inline-block;
         margin-left: 1rem;
         margin-bottom: 0;
     }
@@ -52,11 +53,45 @@ dd {
     display: flex;
     flex-direction: column;
     list-style: none;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
 
     @media #{$small} {
         flex-direction: row;
+    }
+}
+/* Error-Handling & Validation */
+.form-inline,
+.list-group {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// .form-inline .form-control {
+//     width: 75%;
+// }
+
+.list-group-item {
+    background: transparent;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    color: $font-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0.1em 0.5em;
+    margin-top: 7px;
+    margin-right: 7px;
+    line-height: 1.5;
+
+    .close {
+        order: 2;
+        position: relative;
+        top: 0;
     }
 }

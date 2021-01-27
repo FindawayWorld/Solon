@@ -1,6 +1,4 @@
-#
-
-# Gateway
+<img src="src/svg/solon_logo.svg" width="200" />
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
@@ -28,11 +26,11 @@ We need a good way to consistently create new projects with all the stuff we usu
 
 ## Bugs :bug:
 
-If there is a bug or feature request, file an [issue](https://github.com/FindawayWorld/gateway/issues).
+If there is a bug or feature request, file an [issue](https://github.com/FindawayWorld/Solon/issues).
 
 ## License :scroll:
 
-- Licensed under [MIT License](https://github.com/FindawayWorld/gateway/blob/master/LICENSE)
+-   Licensed under [MIT License](https://github.com/FindawayWorld/Solon/blob/master/LICENSE)
 
 ## Code of Conduct :smile:
 

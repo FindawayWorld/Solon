@@ -1,67 +1,48 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-
-// Test to deterimine if we have a hidden scrollbar (MacOS, mobile/touch);
-export const testForHiddenScrollbar = () => {
-    let elem = document.createElement('div');
-    elem.style.cssText = 'width: 100px; height: 100px; overflow: scroll;top: -9999999rem; left: -999999rem; position:absolute;';
-    document.body.appendChild(elem);
-    const result = elem.offsetWidth === elem.clientWidth;
-    document.body.removeChild(elem);
-    return result;
-};
-
-// Public API
-export const bodyScrollToggle = {
-    // Disable scrolling
-    // http://stackoverflow.com/a/3968772/59160
-    disable: () => {
-        if (typeof window === 'undefined') return;
-        window.document.body.style.overflow = 'hidden';
-        // if we have a visible scrollbar add 15px padding to prevent content jumping.
-        window.document.body.style.paddingRight = `${testForHiddenScrollbar() ? 0 : 15}px`;
-    },
-    // Re-enable scrolling
-    enable: () => {
-        if (typeof window === 'undefined') return;
-        window.document.body.style.overflow = '';
-        window.document.body.style.paddingRight = '';
-    }
-};
-
-
+import { DialogOverlay, DialogContent } from '@reach/dialog';
+import VisuallyHidden from '@reach/visually-hidden';
 
 const Modal = ({
     center = false,
     visible = false,
     innerClassName = '',
+    label = undefined,
     onClose = () => {},
     children = [],
-    showClose = true
+    showClose = true,
+    disableOverlayClick = false
 }) => {
-    useEffect(() => {
-        if (visible) {
-            bodyScrollToggle.disable();
-        } else {
-            bodyScrollToggle.enable();
-        }
-        return () => {
-            bodyScrollToggle.enable();
-        }
-    }, [visible]);
     return (
-        <div className={classnames('modal', {
-            'modal-centered': center,
-            'modal-open': visible
-        })}>
-            <div className="modal-window">
-                <div className={classnames('modal-inner', innerClassName)}>
-                    {showClose && <button className="modal-close" onClick={onClose}>&times;</button>}
-                    {visible && children}
-                </div>
-            </div>
-        </div>
+        <DialogOverlay
+            isOpen={visible}
+            onDismiss={disableOverlayClick ? () => {} : onClose}
+            className={classnames({
+                'modal-centered': center
+            })}
+        >
+            <DialogContent className={classnames('modal-inner', innerClassName)} aria-label={label}>
+                {showClose && (
+                    <button className="modal-close" onClick={onClose}>
+                        <VisuallyHidden>Close</VisuallyHidden>
+                        <span aria-hidden>&times;</span>
+                    </button>
+                )}
+                {children}
+            </DialogContent>
+        </DialogOverlay>
     );
+};
+
+Modal.propTypes = {
+    visible: PropTypes.bool.isRequired,
+    label: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    children: PropTypes.node.isRequired,
+    showClose: PropTypes.bool,
+    innerClassName: PropTypes.string,
+    center: PropTypes.bool
 };
 
 export default Modal;

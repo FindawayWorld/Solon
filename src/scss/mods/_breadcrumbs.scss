@@ -1,0 +1,39 @@
+// Breadcrumbs
+$breadcrumb-font-size: 0.875rem !default;
+$breadcrumb-padding-y: 0 !default;
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-item-padding-x: 0.5rem !default;
+$breadcrumb-margin-bottom: 1rem !default;
+$breadcrumb-bg: $silver !default;
+$breadcrumb-divider-color: $gray !default;
+$breadcrumb-active-color: $gray !default;
+$breadcrumb-divider: quote('/') !default;
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+    margin-bottom: $breadcrumb-margin-bottom;
+    font-size: $breadcrumb-font-size;
+    list-style: none;
+    border-radius: $border-radius;
+}
+
+.breadcrumb-item {
+    display: flex;
+
+    + .breadcrumb-item {
+        padding-left: $breadcrumb-item-padding-x;
+
+        &::before {
+            display: inline-block; // Suppress underlining of the separator
+            padding-right: $breadcrumb-item-padding-x;
+            color: $breadcrumb-divider-color;
+            content: escape-svg($breadcrumb-divider);
+        }
+    }
+
+    &.active {
+        color: $breadcrumb-active-color;
+    }
+}

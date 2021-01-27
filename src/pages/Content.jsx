@@ -21,16 +21,7 @@ export const colors = [
     'gray',
     'black'
 ];
-export const brandColors = [
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark'
-];
+export const brandColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'muted'];
 
 const ContentPage = () => {
     return (
@@ -47,7 +38,7 @@ const ContentPage = () => {
                 </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
-                        {colors.map(color => (
+                        {colors.map((color) => (
                             <div key={`colors-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
@@ -61,7 +52,7 @@ const ContentPage = () => {
                 <h3>Brand Colors</h3>
                 <div className="swatch-list">
                     <div className="row">
-                        {brandColors.map(color => (
+                        {brandColors.map((color) => (
                             <div key={`brand-${color}`} className="col-xs-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
@@ -73,43 +64,114 @@ const ContentPage = () => {
                 </div>
             </section>
 
+            <section>
+                <h2>Native font stack</h2>
+                <hr />
+
+                <p>
+                    Solon uses a “native font stack” for optimum text rendering on every device and OS. .{' '}
+                    <pre>
+                        <code>
+                            {`// Safari for macOS and iOS (San Francisco)
+-apple-system,
+// Chrome < 56 for macOS (San Francisco)
+BlinkMacSystemFont,
+// Windows
+"Segoe UI",
+// Android
+Roboto,
+// Basic web fallback
+"Helvetica Neue", Arial,
+// Linux
+"Noto Sans",
+// Sans serif fallback
+sans-serif,
+// Emoji fonts
+"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;`}
+                        </code>
+                    </pre>
+                    Read more about native font stacks in this{' '}
+                    <a
+                        href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Smashing Magazine article
+                    </a>
+                </p>
+            </section>
+
             <section id="headings" className="mb-5">
                 <h2>Headings</h2>
                 <hr />
                 <div>
-                    <h1>Header 1</h1>
-                    <h2>Header 2</h2>
-                    <h3>Header 3</h3>
-                    <h4>Header 4</h4>
-                    <h5>Header 5</h5>
-                    <h6>Header 6</h6>
+                    <h1>Header 1 (16 * 2.5 = 40px)</h1>
+                    <h2>Header 2 (16 * 2 = 32px)</h2>
+                    <h3>Header 3 (16 * 1.75 = 28px)</h3>
+                    <h4>Header 4 (16 * 1.5 = 24px)</h4>
+                    <h5>Header 5 (16 * 1.25 = 20px)</h5>
+                    <h6>Header 6 (16px)</h6>
                 </div>
             </section>
 
             <section id="body-copy" className="mb-5">
                 <h2>Body copy</h2>
                 <hr />
-
                 <p>
-                    Findaway is a global leader in digital content delivery.
-                    With the invention of Playaway Preloaded Products, they
-                    transformed the way that audiobooks, eBooks, videos and
-                    learning tools are circulated in 40,000 libraries, schools,
-                    and military installations.
+                    Findaway is a global leader in digital content delivery. With the invention of Playaway Preloaded
+                    Products, they transformed the way that audiobooks, eBooks, videos and learning tools are circulated
+                    in 40,000 libraries, schools, and military installations.
                 </p>
 
                 <p>
-                    Findaway also revolutionized digital audiobook delivery with
-                    AudioEngine, which is quickly becoming the industry’s
-                    largest B2B audiobook delivery platform that enables brands
-                    to deliver one of the world’s largest collections of digital
-                    audiobooks within their own experience.
+                    Findaway also revolutionized digital audiobook delivery with AudioEngine, which is quickly becoming
+                    the industry’s largest B2B audiobook delivery platform that enables brands to deliver one of the
+                    world’s largest collections of digital audiobooks within their own experience.
                 </p>
 
+                <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
+            </section>
+
+            <section id="text-alignment" className="mb-5">
+                <h2>Text Alignment</h2>
+                <hr />
                 <p>
-                    To learn more about Findaway and the Findawayers who make it
-                    all happen, visit www.findaway.com
+                    Text alignment can be changed based on responsive breakpoints using{' '}
+                    <code>{`txt-<breakpoint>-<left|right|center>`}</code>
                 </p>
+
+                <p className="txt-left">
+                    Text aligned left (default) <code>.txt-left</code>
+                </p>
+                <p className="txt-right">
+                    Text aligned right <code>.txt-right</code>
+                </p>
+                <p className="txt-center">
+                    Text aligned center <code>.txt-center</code>
+                </p>
+            </section>
+
+            <section id="text-alignment" className="mb-5">
+                <h2>Vertical Alignment</h2>
+                <hr />
+                {['top', 'middle', 'bottom', 'baseline'].map((al) => (
+                    <p className="px-2 bg-gray">
+                        <span style={{ lineHeight: '3rem' }}>Text aligned {al}</span>{' '}
+                        <span className={`align-${al}`}>.align-{al}</span>
+                    </p>
+                ))}
+            </section>
+
+            <section id="text-weight" className="mb-5">
+                <h2>Font Weight</h2>
+                <hr />
+                <p>
+                    Font weight can be applied using <code>{`fw-<light|normal|bold>`}</code>
+                </p>
+
+                <p className="fw-light">Light</p>
+                <p className="fw-normal">Normal</p>
+                <p className="fw-bold">Bold</p>
             </section>
 
             <section id="lead-text" className="mb-5">
@@ -117,11 +179,9 @@ const ContentPage = () => {
                 <hr />
                 <div>
                     <p className="lead">
-                        Findaway is a global leader in digital content delivery.
-                        With the invention of Playaway Preloaded Products, they
-                        transformed the way that audiobooks, eBooks, videos and
-                        learning tools are circulated in 40,000 libraries,
-                        schools, and military installations.
+                        Findaway is a global leader in digital content delivery. With the invention of Playaway
+                        Preloaded Products, they transformed the way that audiobooks, eBooks, videos and learning tools
+                        are circulated in 40,000 libraries, schools, and military installations.
                     </p>
                 </div>
             </section>
@@ -146,8 +206,7 @@ const ContentPage = () => {
                     </li>
                     <li>
                         <a href="#link" className="fancy-cta">
-                            Fancy CTA w/ SVG{' '}
-                            <FiArrowRight width="1em" height="1em" />
+                            Fancy CTA w/ SVG <FiArrowRight width="1em" height="1em" />
                         </a>
                     </li>
                 </ul>
@@ -222,8 +281,8 @@ const ContentPage = () => {
                 <h2>Icons</h2>
                 <hr />
                 <p>
-                    Use <a href="https://react-icons.netlify.com/#/">React Icons</a>{' '}
-                    for all your icon needs. Unless provided from creative.
+                    Use <a href="https://react-icons.netlify.com/#/">React Icons</a> for all your icon needs. Unless
+                    provided from creative.
                 </p>
             </section>
 
@@ -315,7 +374,6 @@ const ContentPage = () => {
                         </tr>
                     </tbody>
                 </table>
-
             </section>
         </Layout>
     );

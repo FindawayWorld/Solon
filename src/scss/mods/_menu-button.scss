@@ -4,31 +4,37 @@
 
 /* Used to detect in JavaScript if apps have loaded styles or not. */
 :root {
-  --reach-menu-button: 1;
+    --reach-menu-button: 1;
 }
 
 [data-reach-menu] {
-  display: block;
-  position: absolute;
+    display: block;
+    position: absolute;
+    z-index: 1;
+}
+
+[data-reach-menu][hidden],
+[data-reach-menu-popover][hidden] {
+    display: none;
 }
 
 [data-reach-menu-list],
 [data-reach-menu-items] {
-  display: block;
-  white-space: nowrap;
-  border: solid rem(1) $border-color;
-  background: $white;
-  border-radius: $border-radius;
-  outline: none;
-  padding: 1rem 0;
-  font-size: 85%;
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+    display: block;
+    white-space: nowrap;
+    border: solid rem(1) $border-color;
+    background: $white;
+    border-radius: $border-radius;
+    outline: none;
+    padding: 1rem 0;
+    font-size: 85%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 [data-reach-menu-item] {
-  display: block;
-  user-select: none;
+    display: block;
+    user-select: none;
 }
 
 /*
@@ -36,27 +42,26 @@
  so to target all items we can use `data-reach-menu-item`
 */
 [data-reach-menu-item] {
+    /* reach-menu-item */
+    cursor: pointer;
 
-  /* reach-menu-item */
-  cursor: pointer;
+    /* a */
+    display: block;
+    color: inherit;
+    font: inherit;
+    text-decoration: initial;
 
-  /* a */
-  display: block;
-  color: inherit;
-  font: inherit;
-  text-decoration: initial;
-
-  /* both */
-  padding: 5px 20px;
+    /* both */
+    padding: 5px 20px;
 }
 
 /* pseudo pseudo selector */
 [data-reach-menu-item][data-selected] {
-  background: shade($light, 3%);
-  outline: none;
+    background: shade($light, 3%);
+    outline: none;
 }
 
 [data-reach-menu] {
-  display: block;
-  position: absolute;
+    display: block;
+    position: absolute;
 }

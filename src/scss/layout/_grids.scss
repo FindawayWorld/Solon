@@ -1,21 +1,48 @@
-
 $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 
 $spacers: map-merge(
-  (
-    0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
-    3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3),
-    6: ($spacer * 4.5),
-    7: ($spacer * 6)
-  ),
-  $spacers
+    (
+        // 0px
+        0: 0,
+        //  4px
+        1: $spacer * 0.25,
+        // 8px
+        2: $spacer * 0.5,
+        // 12px
+        3: $spacer * 0.75,
+        // 16px
+        4: $spacer * 1,
+        // 20px
+        5: $spacer * 1.25,
+        // 24px
+        6: $spacer * 1.5,
+        // 32px
+        8: $spacer * 2,
+        // 40px
+        10: $spacer * 2.5,
+        // 48px
+        12: $spacer * 3,
+        // 64px
+        16: $spacer * 4,
+        // 80px
+        20: $spacer * 5,
+        // 96px
+        24: $spacer * 6,
+        // 128px
+        32: $spacer * 8,
+        // 160px
+        40: $spacer * 10,
+        // 192px
+        48: $spacer * 12,
+        // 224px
+        56: $spacer * 14,
+        // 256px
+        64: $spacer * 16
+    ),
+    $spacers
 );
 
 .row {
@@ -72,12 +99,9 @@ $spacers: map-merge(
     flex-direction: row-reverse;
 }
 
-@mixin margins ($infix) {
-    @each $prop,
-    $abbrev in (margin: m, padding: p) {
-
-        @each $size,
-        $length in $spacers {
+@mixin margins($infix) {
+    @each $prop, $abbrev in (margin: m, padding: p) {
+        @each $size, $length in $spacers {
             .#{$abbrev}#{$infix}-#{$size} {
                 #{$prop}: $length !important;
             }
@@ -105,12 +129,13 @@ $spacers: map-merge(
     }
 
     @each $value in $displays {
-      .d#{$infix}-#{$value} { display: $value !important; }
+        .d#{$infix}-#{$value} {
+            display: $value !important;
+        }
     }
 
     // Negative margins (e.g., where `.mb-n1` is negative version of `.mb-1`)
-    @each $size,
-    $length in $spacers {
+    @each $size, $length in $spacers {
         @if $size !=0 {
             .m#{$infix}-n#{$size} {
                 margin: -$length !important;
@@ -138,7 +163,7 @@ $spacers: map-merge(
         }
     }
 
-    // Some special margin utils
+    // Responsive auto margins
     .m#{$infix}-auto {
         margin: auto !important;
     }
@@ -163,6 +188,7 @@ $spacers: map-merge(
         margin-left: auto !important;
     }
 
+    // Responsive overflow
     .overflow#{$infix}-x-auto {
         overflow-x: auto !important;
     }
@@ -181,9 +207,20 @@ $spacers: map-merge(
     .overflow#{$infix}-y-visible {
         overflow-y: visible !important;
     }
+
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
+    }
 }
 
-@mixin gridCol ($size) {
+@mixin gridCol($size) {
     .col-#{$size},
     .col-#{$size}-1,
     .col-#{$size}-2,
@@ -242,7 +279,7 @@ $spacers: map-merge(
     .col-#{$size}-centered:last-child {
         margin-left: auto;
         margin-right: auto;
-        float:none;
+        float: none;
     }
 
     .start-#{$size} {
@@ -299,12 +336,14 @@ $spacers: map-merge(
 }
 
 @media #{$small} {
-
     .no-sm {
         display: none;
     }
 
-    .no-xs, .no-md, .no-lg, .no-xl {
+    .no-xs,
+    .no-md,
+    .no-lg,
+    .no-xl {
         display: block;
     }
 
@@ -317,12 +356,14 @@ $spacers: map-merge(
 }
 
 @media #{$medium} {
-
     .no-md {
         display: none;
     }
 
-    .no-xs, .no-sm, .no-lg, .no-xl {
+    .no-xs,
+    .no-sm,
+    .no-lg,
+    .no-xl {
         display: block;
     }
 
@@ -335,12 +376,14 @@ $spacers: map-merge(
 }
 
 @media #{$large} {
-
     .no-lg {
         display: none;
     }
 
-    .no-xs, .no-sm, .no-md, .no-xl {
+    .no-xs,
+    .no-sm,
+    .no-md,
+    .no-xl {
         display: block;
     }
 
@@ -353,10 +396,17 @@ $spacers: map-merge(
 }
 
 @media #{$xlarge} {
-
     .container {
         max-width: rem(1140);
     }
     @include gridCol('xl');
     @include margins('-xl');
+}
+
+@media #{$xxlarge} {
+    .container {
+        max-width: rem(1320);
+    }
+    @include gridCol('xxl');
+    @include margins('-xxl');
 }

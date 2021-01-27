@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 import Amplify from 'aws-amplify';
 
 import './scss/styles.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 
+<<<<<<< HEAD
 import App from './App';
 import { HashRouter as Router } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
@@ -28,3 +30,11 @@ const AppWrapper = () => (
 );
 
 ReactDOM.render(<AppWrapper />, document.getElementById('root'));
+=======
+ReactDOM.render(
+    <Router>
+        <App />
+    </Router>,
+    document.getElementById('root')
+);
+>>>>>>> 4d2fb651ac1a4a5de1d41a0a7bf5e3fc50283d49

@@ -1,0 +1,53 @@
+@mixin make-badge($background, $color: color-contrast($background)) {
+    background: $background;
+    color: $color !important;
+
+    a {
+        color: $color;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin make-badge-outline($color) {
+    border-color: $color;
+    background: $white;
+    color: $color !important;
+
+    a {
+        color: $color;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    display: inline-block;
+    border-radius: $border-radius;
+    line-height: 1;
+    vertical-align: middle;
+    svg {
+        vertical-align: top;
+    }
+}
+
+@each $color, $value in map-merge($themeColors, $colors) {
+    .badge-#{$color} {
+        @include make-badge($value);
+    }
+
+    // Omit 'warning' and 'light' styles because
+    // they are too light for outline styles
+    @if $color != warning and $color != light {
+        .badge-outline-#{$color} {
+            border: solid 1px;
+            @include make-badge-outline($value);
+        }
+    }
+}
