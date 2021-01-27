@@ -115,7 +115,7 @@
     }
 }
 
-@each $color, $value in $themeColors {
+@each $color, $value in map-merge($themeColors, $colors) {
     .btn-#{$color} {
         @include make-button($value, $value);
     }

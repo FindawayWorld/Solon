@@ -66,14 +66,14 @@
     }
 }
 
-@each $color, $value in $themeColors {
+@each $color, $value in map-merge($themeColors, $colors) {
     .flash-#{$color} {
         @include make-flash($value);
     }
 
     // Omit 'warning' and 'light' styles because
     // they are too light for outline styles
-    @if $color != warning and $color != light {
+    @if $color != 'white' and $color != 'silver' and $color != warning and $color != light {
         .flash-outline-#{$color} {
             @include make-flash-outline($value);
         }

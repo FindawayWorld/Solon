@@ -37,7 +37,7 @@
     }
 }
 
-@each $color, $value in $themeColors {
+@each $color, $value in map-merge($themeColors, $colors) {
     .badge-#{$color} {
         @include make-badge($value);
     }
