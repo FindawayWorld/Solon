@@ -6,7 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import SpacingPage from './SpacingPage';
 import BreakpointsPage from './BreakpointsPage';
 import ColorsPage from './ColorsPage';
-import { utilsNav } from '../../App';
+import Layout, { utilsNav } from '../../components/Layout';
 import GridsPage from './GridsPage';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
@@ -32,36 +32,38 @@ const BorderRadiusPage = () => (
 );
 
 const UtilsPage = () => (
-    <Switch>
-        <Route path="/utils/colors">
-            <ColorsPage />
-        </Route>
-        <Route path="/utils/spacing">
-            <SpacingPage />
-        </Route>
-        <Route path="/utils/breakpoints">
-            <BreakpointsPage />
-        </Route>
-        <Route path="/utils/grids">
-            <GridsPage />
-        </Route>
-        <Route path="/utils/border-radius">
-            <BorderRadiusPage />
-        </Route>
-        <Route path="/utils" exact>
-            <h2>Utils</h2>
-            <hr />
-            <ul className="list-flat">
-                {utilsNav
-                    .sort((a, b) => asc(a[1], b[1]))
-                    .map((page) => (
-                        <li key={page[0]} className="nav-item">
-                            <Link to={page[0]}>{page[1]}</Link>
-                        </li>
-                    ))}
-            </ul>
-        </Route>
-    </Switch>
+    <Layout>
+        <Switch>
+            <Route path="/utils/colors">
+                <ColorsPage />
+            </Route>
+            <Route path="/utils/spacing">
+                <SpacingPage />
+            </Route>
+            <Route path="/utils/breakpoints">
+                <BreakpointsPage />
+            </Route>
+            <Route path="/utils/grids">
+                <GridsPage />
+            </Route>
+            <Route path="/utils/border-radius">
+                <BorderRadiusPage />
+            </Route>
+            <Route path="/utils" exact>
+                <h2>Utils</h2>
+                <hr />
+                <ul className="list-flat">
+                    {utilsNav
+                        .sort((a, b) => asc(a[1], b[1]))
+                        .map((page) => (
+                            <li key={page[0]} className="nav-item">
+                                <Link to={page[0]}>{page[1]}</Link>
+                            </li>
+                        ))}
+                </ul>
+            </Route>
+        </Switch>
+    </Layout>
 );
 
 export default UtilsPage;

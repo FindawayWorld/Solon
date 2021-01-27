@@ -1,8 +1,9 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const BrandSettings = () => {
     return (
-        <>
+        <Layout>
             <h1>Brand Settings</h1>
 
             <p>
@@ -67,7 +68,7 @@ $border-color: #BCC9D4;
 
 $primary: $blue;`}</code>
             </pre>
-        </>
+        </Layout>
     );
 };
 

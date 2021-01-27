@@ -3,6 +3,7 @@ import GWColorLib from '../utils/GWColorLib';
 import Input from '../components/form/Input';
 import { useState, useEffect } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import Layout from '../components/Layout';
 
 const ColorTester = () => {
     const colorLib = React.useMemo(() => new GWColorLib(), []);
@@ -15,7 +16,7 @@ const ColorTester = () => {
     }, [activeColor, colorLib]);
 
     return (
-        <div>
+        <Layout>
             <style>{styles}</style>
 
             <h1>Color Tester</h1>
@@ -79,7 +80,7 @@ const ColorTester = () => {
                 <div className="txt-demo">Demo colored text</div>
                 <div className="bg-demo">Demo background</div>
             </div>
-        </div>
+        </Layout>
     );
 };
 

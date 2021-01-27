@@ -6,20 +6,26 @@ import Loading from '../../components/Loading';
 import { Auth } from 'aws-amplify';
 import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
+import StatusButton from '../../components/StatusButton';
 
 const AccountIndex = () => {
     const { state, dispatch } = useContext(AuthContext);
+    const [saveState, setSaveState] = React.useState(null);
     const handleSave = async (values) => {
         try {
             const user = await Auth.currentAuthenticatedUser();
-            const result = await Auth.updateUserAttributes(user, values);
-            console.log(result);
+            await Auth.updateUserAttributes(user, values);
+            setSaveState('disabled');
             dispatch({
                 type: appActions.REFRESH_USER,
                 payload: {
                     updatedUserAttributes: (await Auth.currentAuthenticatedUser({ bypassCache: true })).attributes
                 }
             });
+            setSaveState('success');
+            setTimeout(() => {
+                setSaveState(null);
+            }, 3000);
         } catch (e) {
             console.error(e);
         }
@@ -63,9 +69,7 @@ const AccountIndex = () => {
                         />
                         <Input id="email" label="Email" defaultValue={state.user?.attributes.email} disabled />
                         <Input id="username" label="Username" defaultValue={state.user?.username} disabled />
-                        <button type="submit" className="btn btn-primary">
-                            Save
-                        </button>
+                        <StatusButton type="submit" label="Save" successLabel="Saved!" successState={saveState} />
                     </form>
                 </>
             )}
