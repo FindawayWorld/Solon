@@ -5,6 +5,7 @@ import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-butt
 import { titleCase } from '../../utils';
 import { brandColors, colors } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import StatusButton from '../../components/StatusButton';
 
 const ButtonsPage = () => {
     return (
@@ -146,6 +147,21 @@ const ButtonsPage = () => {
                     </MenuLink>
                 </MenuList>
             </Menu>
+
+            <h3>Status Button</h3>
+            <p>Display an ephemiral status.</p>
+            <p>
+                <StatusButton label="Normal State" />
+            </p>
+            <p>
+                <StatusButton label="Success State" successLabel="Success State" successState="success" />
+            </p>
+            <p>
+                <StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />
+            </p>
+            <p>
+                <StatusButton label="Normal State" successLabel="Success State" successState="error" />
+            </p>
 
             <h3>Button Groups</h3>
             <div className="btn-group mb-4">
