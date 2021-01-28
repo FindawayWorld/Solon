@@ -6,7 +6,6 @@ const Select = ({
     labelHelp = null,
     id = 'input',
     name = null,
-    defaultValue = undefined,
     value = undefined,
     required = false,
     showRequired = false,
@@ -82,14 +81,11 @@ const Select = ({
                         'input-group-control-prepend': prepend || prependLabel,
                         'input-group-control-append': append
                     })}
-                    defaultValue={defaultValue}
-                    value={value}
                     name={name || id}
                     id={id}
                     required={required}
                     multiple={multiple}
                     autoComplete={autoComplete}
-                    readOnly={readOnly}
                     disabled={disabled}
                     onFocus={onFocus}
                     onBlur={handleBlur}
