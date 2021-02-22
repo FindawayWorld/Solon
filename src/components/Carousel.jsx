@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import '../scss/mods/_carousel.scss';
-import CarouselImage0 from '../images/coverArt/CD345304.jpeg';
-import CarouselImage1 from '../images/coverArt/CD348889.jpeg';
-import CarouselImage2 from '../images/coverArt/CD354937.jpeg';
-import CarouselImage3 from '../images/coverArt/CD356113.jpeg';
-import CarouselImage4 from '../images/coverArt/CD360052.jpeg';
 
 const Slide = (props) => <img src={props.src} alt={props.alt} />;
 
-const Carousel = ({ automaticCarousel = false, duration = 5000 }) => {
-    let images = [
-        { src: CarouselImage0, alt: 'They Did Bad Things' },
-        { src: CarouselImage1, alt: 'They Conscious Creative' },
-        { src: CarouselImage2, alt: 'Lessons from the Navy' },
-        { src: CarouselImage3, alt: 'Ellies Voice' },
-        { src: CarouselImage4, alt: 'Men Like Gods' }
-    ];
+const Carousel = ({ images = [], automaticCarousel = false, duration = 5000 }) => {
     const [slide, setSlide] = useState(0);
     const [slidesLength] = useState(images.length);
     const findIndexValue = (index, count, arrayLength) => {
