@@ -30,15 +30,21 @@ const CarouselPage = () => {
                 <strong>Required assets:</strong> <code>scss/components/_carousel.scss</code>,
                 <code>components/carousel.jsx</code>.
             </p>
+            <p>
+                <strong>* Currently set up to display 5 images.</strong>
+            </p>
             <div className="mt-6">
                 <h3>Prop automaticCarousel = false</h3>
                 <p className="mb-0">The prev/next buttons are displayed for a manual carousel.</p>
-                <Carousel automaticCarousel={false} images={images}/>
+                <Carousel automaticCarousel={false} images={images} />
             </div>
             <div className="mt-6">
                 <h3>Prop automaticCarousel = true</h3>
-                <p className="mb-0">A timer is set in the UseEffect and the carousel is automatic. Duration is by default 5000 but can be passed into Carousel.</p>
-                <Carousel automaticCarousel={true} images={images}/>
+                <p className="mb-0">
+                    A timer is set in the UseEffect and the carousel is automatic. Duration is by default 5000 but can
+                    be passed into Carousel.
+                </p>
+                <Carousel automaticCarousel={true} images={images} />
             </div>
         </section>
     );

@@ -30,6 +30,9 @@ const Carousel = ({ images = [], automaticCarousel = false, duration = 5000 }) =
         }
     };
     useEffect(() => {
+        if (slidesLength < 5) {
+            console.error('Must pass in at least 5 images to Carousel.jsx.');
+        }
         if (automaticCarousel) {
             let timer = setTimeout(() => {
                 if (slide === slidesLength - 1) {
@@ -43,6 +46,9 @@ const Carousel = ({ images = [], automaticCarousel = false, duration = 5000 }) =
             };
         }
     }, [slide, slidesLength, automaticCarousel, duration]);
+    
+    if (slidesLength < 5) return null;
+
     return (
         <div className="carousel px-md-12 py-12">
             {slidesLength > 0 && (
