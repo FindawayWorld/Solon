@@ -31,7 +31,7 @@ const Carousel = ({ automaticCarousel = false, duration = 5000 }) => {
         if (slide === 0) {
             setSlide(slidesLength - 1);
         } else {
-            setSlide(0);
+            setSlide(slide - 1);
         }
     };
     const nextSlide = () => {
