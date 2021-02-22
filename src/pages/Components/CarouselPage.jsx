@@ -20,12 +20,12 @@ const CarouselPage = () => {
             </p>
             <div className="mt-6">
                 <h3>Prop automaticCarousel = false</h3>
-                <p className="mb-0">The prev/next buttons is displayed for a manual carousel.</p>
+                <p className="mb-0">The prev/next buttons are displayed for a manual carousel.</p>
                 <Carousel automaticCarousel={false} />
             </div>
             <div className="mt-6">
                 <h3>Prop automaticCarousel = true</h3>
-                <p className="mb-0">A timer is set in the UseEffect and the carousel is automatic.</p>
+                <p className="mb-0">A timer is set in the UseEffect and the carousel is automatic. Duration is by default 5000 but can be passed into Carousel.</p>
                 <Carousel automaticCarousel={true} />
             </div>
         </section>

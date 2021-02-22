@@ -8,7 +8,7 @@ import CarouselImage4 from '../images/coverArt/CD360052.jpeg';
 
 const Slide = (props) => <img src={props.src} alt={props.alt} />;
 
-const Carousel = ({ automaticCarousel }) => {
+const Carousel = ({ automaticCarousel = false, duration = 5000 }) => {
     let images = [
         { src: CarouselImage0, alt: 'They Did Bad Things' },
         { src: CarouselImage1, alt: 'They Conscious Creative' },
@@ -49,12 +49,12 @@ const Carousel = ({ automaticCarousel }) => {
                 } else {
                     setSlide(slide + 1);
                 }
-            }, 5000);
+            }, duration);
             return function cleanup() {
                 clearTimeout(timer);
             };
         }
-    }, [slide, slidesLength, automaticCarousel]);
+    }, [slide, slidesLength, automaticCarousel, duration]);
     return (
         <div className="carousel px-md-12 py-12">
             {slidesLength > 0 && (
