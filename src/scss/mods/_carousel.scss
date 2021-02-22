@@ -1,0 +1,110 @@
+//remove import
+@import '../settings';
+
+.carousel {
+    overflow: hidden;
+
+    .slider {
+        flex-wrap: nowrap;
+    }
+
+    .slide img {
+        border-radius: $border-radius;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    .slide-sm {
+        display: none;
+
+        @media #{$medium} {
+            display: flex;
+            height: 100px;
+            margin-top: -10px;
+
+            img {
+                height: 100px;
+            }
+        }
+
+        @media #{$large} {
+            height: 125px;
+
+            img {
+                height: 125px;
+            }
+        }
+    }
+
+    .slide-md {
+        height: 100px;
+
+        img {
+            height: 100px;
+        }
+
+
+        @media #{$small} {
+
+            height: 150px;
+
+            img {
+                height: 150px;
+            }
+        }
+
+        @media #{$medium} {
+            margin-top: -15px;
+
+        }
+
+        @media #{$large} {
+            height: 175px;
+
+            img {
+                height: 175px;
+            }
+        }
+    }
+
+
+    .slide-md.first {
+        @media #{$maxSmall} {
+            width: 50px;
+
+            img {
+                margin-left: -50px;
+            }
+        }
+    }
+
+    .slide-md.second {
+        @media #{$maxSmall} {
+            margin-right: -50px;
+        }
+    }
+
+    .slide-lg {
+        height: 150px;
+
+        img {
+            height: 150px;
+        }
+
+        @media #{$small} {
+            height: 200px;
+
+            img {
+                height: 200px;
+            }
+
+        }
+
+        @media #{$large} {
+            height: 250px;
+
+            img {
+                height: 250px;
+            }
+        }
+    }
+}

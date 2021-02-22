@@ -47,7 +47,8 @@ export const componentsNav = [
     ['/components/formatted-plural', 'Formatted Plural'],
     ['/components/loading', 'Loading'],
     ['/components/modal', 'Modal'],
-    ['/components/pagination', 'Pagination']
+    ['/components/pagination', 'Pagination'],
+    ['/components/carousel', 'Carousel']
 ];
 
 componentsNav.sort((a, b) => asc(a[1], b[1]));

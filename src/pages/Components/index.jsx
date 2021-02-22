@@ -14,6 +14,7 @@ import LoadingPage from './LoadingPage';
 import ModalPage from './ModalPage';
 import FormsPage from './FormsPage';
 import BadgesPage from './BadgesPage';
+import CarouselPage from './CarouselPage';
 
 const ComponentsPage = () => {
     return (
@@ -47,6 +48,9 @@ const ComponentsPage = () => {
             </Route>
             <Route path="/components/forms">
                 <FormsPage />
+            </Route>
+            <Route path="/components/carousel">
+                <CarouselPage />
             </Route>
 
             <Route path="/">
