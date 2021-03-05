@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import classnames from 'classnames';
 
 export const colors = [
     'aqua',
@@ -209,6 +210,18 @@ sans-serif,
                         </a>
                     </li>
                 </ul>
+                <p>
+                    {[...brandColors, ...colors].map((color) => (
+                        <a
+                            href="#links"
+                            className={classnames(`link-${color} d-inline-block mr-4`, {
+                                'bg-dark p-2 ': color === 'light' || color === 'white' || color === 'silver'
+                            })}
+                        >
+                            Link {color}
+                        </a>
+                    ))}
+                </p>
             </section>
 
             <section id="lists" className="mb-5">
