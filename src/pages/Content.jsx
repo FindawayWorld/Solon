@@ -174,6 +174,22 @@ sans-serif,
                 <p className="fw-bold">Bold</p>
             </section>
 
+            <section id="font-style" className="mb-5">
+                <h2>Font Style</h2>
+                <hr />
+
+                <p>
+                    Font style can be applied using <code>italic</code> or <code>not-italic</code>
+                </p>
+
+                <p>
+                    <span className="italic">italic</span> adds italic styles
+                </p>
+                <p className="italic">
+                    <span className="not-italic">not-italic</span> removes italic styles
+                </p>
+            </section>
+
             <section id="lead-text" className="mb-5">
                 <h2>Lead text</h2>
                 <hr />
