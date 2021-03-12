@@ -13,7 +13,7 @@ jobs:
       - name: Delete
         uses: danburtenshaw/s3-website-pr-action@v2
         with:
-          bucket-prefix: "<PROJECT NAME>"
+          bucket-prefix: "solon"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
@@ -49,7 +49,7 @@ jobs:
       - name: Deploy S3 Website
         uses: danburtenshaw/s3-website-pr-action@v2
         with:
-          bucket-prefix: "gateway"
+          bucket-prefix: "solon"
           folder-to-copy: "./build"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
