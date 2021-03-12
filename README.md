@@ -1,4 +1,4 @@
-<img src="src/svg/solon_logo.svg" width="200" />
+<img src="src/svg/solon_logo.svg" width="300" />
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
