@@ -72,6 +72,17 @@ const FormsPage = () => {
                 append={<button className="btn btn-primary">Submit</button>}
             />
 
+            <Input
+                id="input_append_button-group"
+                label="Appended Button Group"
+                append={
+                    <div className="btn-group mb-4">
+                        <button className="btn btn-primary active">Save</button>
+                        <button className="btn btn-outline-secondary">Cancel</button>
+                    </div>
+                }
+            />
+
             <Input id="input_error" label="With Error" error="This is an error message." touched={true} />
 
             <Input id="input_search" label="Search" type="search" />
