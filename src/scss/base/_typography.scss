@@ -1,9 +1,10 @@
+$line-height: 1.5;
 body {
     color: #303030;
     font-family: $font-family;
     font-size: 16px;
     font-size: $font-size-base;
-    line-height: 1.5;
+    line-height: $line-height;
     font-style: normal;
 }
 
@@ -108,7 +109,7 @@ sup {
 
 .lead {
     font-size: rem(24);
-    line-height: rem(38);
+    line-height: rem(40);
     font-weight: $light-weight;
 }
 
@@ -176,11 +177,11 @@ li > svg {
     line-height: 1 !important;
 }
 .lh-sm {
-    line-height: 1.25 !important;
+    line-height: $line-height - 0.25 !important;
 }
 .lh-base {
-    line-height: 1.5 !important;
+    line-height: $line-height !important;
 }
 .lh-lg {
-    line-height: 2 !important;
+    line-height: $line-height + 0.5 !important;
 }
