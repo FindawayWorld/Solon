@@ -44,6 +44,15 @@ $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
 $border-radius: rem(3) !default;
+// scss-docs-start border-variables
+$border-width: 1px !default;
+$border-widths: (
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px
+) !default;
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////

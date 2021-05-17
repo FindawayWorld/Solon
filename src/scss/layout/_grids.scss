@@ -2,6 +2,12 @@ $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$positions: (
+    left: l,
+    right: r,
+    top: t,
+    bottom: b
+) !default;
 
 $spacers: map-merge(
     (
@@ -99,6 +105,79 @@ $spacers: map-merge(
     flex-direction: row-reverse;
 }
 
+@mixin borders($infix) {
+    @each $pos, $abbrev in $positions {
+        @each $name, $size in $border-widths {
+            .border#{$infix}-#{$name} {
+                border-width: $size !important;
+            }
+        }
+        .border#{$infix} {
+            border: solid $border-width $border-color;
+        }
+        .border#{$infix}-#{$abbrev} {
+            border-#{$pos}: $border-color solid $border-width;
+        }
+    }
+}
+
+@mixin text($infix) {
+    // Responsive font sizes
+    @each $size, $length in $spacers {
+        @if $size >= 3 {
+            .txt#{$infix}-#{$size} {
+                font-size: $length !important;
+            }
+        }
+    }
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
+    }
+}
+
+@mixin utils($infix) {
+    // Responsive overflow
+    .overflow#{$infix}-x-auto {
+        overflow-x: auto !important;
+    }
+    .overflow#{$infix}-y-auto {
+        overflow-y: auto !important;
+    }
+    .overflow#{$infix}-x-hidden {
+        overflow-x: hidden !important;
+    }
+    .overflow#{$infix}-y-hidden {
+        overflow-y: hidden !important;
+    }
+    .overflow#{$infix}-x-visible {
+        overflow-x: visible !important;
+    }
+    .overflow#{$infix}-y-visible {
+        overflow-y: visible !important;
+    }
+
+    @each $value in $displays {
+        .d#{$infix}-#{$value} {
+            display: $value !important;
+        }
+    }
+
+    // Responsive Border Radius
+    .rounded#{$infix} {
+        border-radius: $border-radius !important;
+    }
+    .rounded#{$infix}-pill {
+        border-radius: rem(1000) !important;
+    }
+}
+
 @mixin margins($infix) {
     @each $prop, $abbrev in (margin: m, padding: p) {
         @each $size, $length in $spacers {
@@ -125,12 +204,6 @@ $spacers: map-merge(
             .#{$abbrev}x#{$infix}-#{$size} {
                 #{$prop}-left: $length !important;
             }
-        }
-    }
-
-    @each $value in $displays {
-        .d#{$infix}-#{$value} {
-            display: $value !important;
         }
     }
 
@@ -187,73 +260,42 @@ $spacers: map-merge(
     .mx#{$infix}-auto {
         margin-left: auto !important;
     }
-
-    // Responsive overflow
-    .overflow#{$infix}-x-auto {
-        overflow-x: auto !important;
-    }
-    .overflow#{$infix}-y-auto {
-        overflow-y: auto !important;
-    }
-    .overflow#{$infix}-x-hidden {
-        overflow-x: hidden !important;
-    }
-    .overflow#{$infix}-y-hidden {
-        overflow-y: hidden !important;
-    }
-    .overflow#{$infix}-x-visible {
-        overflow-x: visible !important;
-    }
-    .overflow#{$infix}-y-visible {
-        overflow-y: visible !important;
-    }
-
-    // Responsive text alignment
-    .txt#{$infix}-right {
-        text-align: right !important;
-    }
-    .txt#{$infix}-left {
-        text-align: left !important;
-    }
-    .txt#{$infix}-center {
-        text-align: center !important;
-    }
 }
 
 @mixin gridCol($size) {
-    .col-#{$size},
-    .col-#{$size}-1,
-    .col-#{$size}-2,
-    .col-#{$size}-3,
-    .col-#{$size}-4,
-    .col-#{$size}-5,
-    .col-#{$size}-6,
-    .col-#{$size}-7,
-    .col-#{$size}-8,
-    .col-#{$size}-9,
-    .col-#{$size}-10,
-    .col-#{$size}-11,
-    .col-#{$size}-12,
-    .col-#{$size}-offset-0,
-    .col-#{$size}-offset-1,
-    .col-#{$size}-offset-2,
-    .col-#{$size}-offset-3,
-    .col-#{$size}-offset-4,
-    .col-#{$size}-offset-5,
-    .col-#{$size}-offset-6,
-    .col-#{$size}-offset-7,
-    .col-#{$size}-offset-8,
-    .col-#{$size}-offset-9,
-    .col-#{$size}-offset-10,
-    .col-#{$size}-offset-11,
-    .col-#{$size}-offset-12 {
+    .col#{$size},
+    .col#{$size}-1,
+    .col#{$size}-2,
+    .col#{$size}-3,
+    .col#{$size}-4,
+    .col#{$size}-5,
+    .col#{$size}-6,
+    .col#{$size}-7,
+    .col#{$size}-8,
+    .col#{$size}-9,
+    .col#{$size}-10,
+    .col#{$size}-11,
+    .col#{$size}-12,
+    .col#{$size}-offset-0,
+    .col#{$size}-offset-1,
+    .col#{$size}-offset-2,
+    .col#{$size}-offset-3,
+    .col#{$size}-offset-4,
+    .col#{$size}-offset-5,
+    .col#{$size}-offset-6,
+    .col#{$size}-offset-7,
+    .col#{$size}-offset-8,
+    .col#{$size}-offset-9,
+    .col#{$size}-offset-10,
+    .col#{$size}-offset-11,
+    .col#{$size}-offset-12 {
         box-sizing: border-box;
         flex: 0 0 auto;
         padding-right: $spacer / 2;
         padding-left: $spacer / 2;
     }
 
-    .col-#{$size} {
+    .col#{$size} {
         flex-grow: 1;
         flex-basis: 0;
         max-width: 100%;
@@ -261,77 +303,85 @@ $spacers: map-merge(
 
     @for $i from 1 through $col_count {
         $width: 100% / ($col_count / $i);
-        .col-#{$size}-#{$i} {
+        .col#{$size}-#{$i} {
             flex-basis: $width;
             max-width: $width;
         }
 
-        .col-#{$size}-offset-#{$i} {
+        .col#{$size}-offset-#{$i} {
             margin-left: $width;
         }
     }
 
-    .col-#{$size}-auto {
+    .col#{$size}-auto {
         flex-basis: auto;
     }
 
-    .col-#{$size}-centered,
-    .col-#{$size}-centered:last-child {
+    .col#{$size}-centered,
+    .col#{$size}-centered:last-child {
         margin-left: auto;
         margin-right: auto;
         float: none;
     }
 
-    .start-#{$size} {
+    .start#{$size} {
         justify-content: flex-start;
         text-align: start;
     }
 
-    .center-#{$size} {
+    .center#{$size} {
         justify-content: center;
         text-align: center;
     }
 
-    .end-#{$size} {
+    .end#{$size} {
         justify-content: flex-end;
         text-align: end;
     }
 
-    .top-#{$size} {
+    .top#{$size} {
         align-items: flex-start;
     }
 
-    .middle-#{$size} {
+    .middle#{$size} {
         align-items: center;
     }
 
-    .bottom-#{$size} {
+    .bottom#{$size} {
         align-items: flex-end;
     }
 
-    .around-#{$size} {
+    .around#{$size} {
         justify-content: space-around;
     }
 
-    .between-#{$size} {
+    .between#{$size} {
         justify-content: space-between;
     }
 
-    .first-#{$size} {
+    .first#{$size} {
         order: -1;
     }
 
-    .last-#{$size} {
+    .last#{$size} {
         order: 1;
+    }
+    .wrap#{$size} {
+        flex-wrap: wrap;
     }
 }
 
-@include margins('');
+@mixin doAll($infix) {
+    @include margins($infix);
+    @include borders($infix);
+    @include gridCol($infix);
+    @include text($infix);
+    @include utils($infix);
+}
 
-@include gridCol('xs');
-@include margins('-xs');
+@include doAll('');
 
-.no-xs {
+.no {
     display: none;
 }
 
@@ -340,7 +390,7 @@ $spacers: map-merge(
         display: none;
     }
 
-    .no-xs,
+    .no,
     .no-md,
     .no-lg,
     .no-xl {
@@ -351,8 +401,7 @@ $spacers: map-merge(
         max-width: rem(540);
     }
 
-    @include gridCol('sm');
-    @include margins('-sm');
+    @include doAll('');
 }
 
 @media #{$medium} {
@@ -360,7 +409,7 @@ $spacers: map-merge(
         display: none;
     }
 
-    .no-xs,
+    .no,
     .no-sm,
     .no-lg,
     .no-xl {
@@ -371,8 +420,7 @@ $spacers: map-merge(
         max-width: rem(720);
     }
 
-    @include gridCol('md');
-    @include margins('-md');
+    @include doAll('-md');
 }
 
 @media #{$large} {
@@ -380,7 +428,7 @@ $spacers: map-merge(
         display: none;
     }
 
-    .no-xs,
+    .no,
     .no-sm,
     .no-md,
     .no-xl {
@@ -391,22 +439,19 @@ $spacers: map-merge(
         max-width: rem(960);
     }
 
-    @include gridCol('lg');
-    @include margins('-lg');
+    @include doAll('-lg');
 }
 
 @media #{$xlarge} {
     .container {
         max-width: rem(1140);
     }
-    @include gridCol('xl');
-    @include margins('-xl');
+    @include doAll('-xl');
 }
 
 @media #{$xxlarge} {
     .container {
         max-width: rem(1320);
     }
-    @include gridCol('xxl');
-    @include margins('-xxl');
+    @include doAll('-xxl');
 }

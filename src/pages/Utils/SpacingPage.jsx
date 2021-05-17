@@ -159,7 +159,7 @@ const SpacingPage = () => (
         <h3>Margin Examples</h3>
 
         <div className="row mb-5">
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Top</strong> <code>.mt-#</code>
                 </p>
@@ -167,7 +167,7 @@ const SpacingPage = () => (
                     <div className="box-nested mt-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Right</strong> <code>.mr-#</code>
                 </p>
@@ -175,7 +175,7 @@ const SpacingPage = () => (
                     <div className="box-nested mr-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Bottom</strong> <code>.mb-#</code>
                 </p>
@@ -183,7 +183,7 @@ const SpacingPage = () => (
                     <div className="box-nested mb-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Left</strong> <code>.ml-#</code>
                 </p>
@@ -191,7 +191,7 @@ const SpacingPage = () => (
                     <div className="box-nested ml-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>All</strong> <code>.m-#</code>
                 </p>
@@ -199,7 +199,7 @@ const SpacingPage = () => (
                     <div className="box-nested m-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Top/Bottom (y axis)</strong> <code>.my-#</code>
                 </p>
@@ -207,7 +207,7 @@ const SpacingPage = () => (
                     <div className="box-nested my-3"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Right/Left (x axis)</strong> <code>.mx-#</code>
                 </p>
@@ -220,7 +220,7 @@ const SpacingPage = () => (
         <h3>Padding Examples</h3>
 
         <div className="row">
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Top</strong> <code>.pt-#</code>
                 </p>
@@ -228,7 +228,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Right</strong> <code>.pr-#</code>
                 </p>
@@ -236,7 +236,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Bottom</strong> <code>.pb-#</code>
                 </p>
@@ -244,7 +244,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Left</strong> <code>.pl-#</code>
                 </p>
@@ -252,7 +252,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>All</strong> <code>.p-#</code>
                 </p>
@@ -260,7 +260,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Top/Bottom (y axis)</strong> <code>.py-#</code>
                 </p>
@@ -268,7 +268,7 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
-            <div className="col-xs-12 col-md-4 col-lg-2">
+            <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Right/Left (x axis)</strong> <code>.px-#</code>
                 </p>

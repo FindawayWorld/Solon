@@ -41,13 +41,6 @@ img {
     border-style: none;
 }
 
-.rounded {
-    border-radius: $border-radius !important;
-}
-.rounded-pill {
-    border-radius: rem(1000) !important;
-}
-
 .main-wrapper {
     flex: 1;
     display: flex;

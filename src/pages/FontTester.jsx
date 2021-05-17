@@ -28,7 +28,7 @@ const FontTester = () => {
             />
 
             <div className="row bottom-md">
-                <div className="col-xs-12 col-md-2">
+                <div className="col-12 col-md-2">
                     <Input
                         label={
                             <>
@@ -50,7 +50,7 @@ const FontTester = () => {
                         onChange={(e) => setPxSize(e.target.value)}
                     />
                 </div>
-                <div className="col-xs-12 col-md-2">
+                <div className="col-12 col-md-2">
                     <Input
                         label={
                             <>
@@ -72,14 +72,14 @@ const FontTester = () => {
                         onChange={(e) => setPxLineHeight(e.target.value)}
                     />
                 </div>
-                <div className="col-xs-12 col-md-4">
+                <div className="col-12 col-md-4">
                     <Select id="weight" label="Font Weight" value={weight} onChange={(e) => setWeight(e.target.value)}>
                         <option value="300">Light (300)</option>
                         <option value="normal">Normal (400)</option>
                         <option value="bold">Bold (700)</option>
                     </Select>
                 </div>
-                <div className="col-xs-12 col-md-4">
+                <div className="col-12 col-md-4">
                     <Input
                         label="Test Margin &amp; Padding"
                         id="classnames"

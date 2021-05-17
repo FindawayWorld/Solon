@@ -145,8 +145,21 @@ li > svg {
     font-weight: 300 !important;
 }
 
-.overflow-x-hidden {
-    overflow-x: hidden;
+// Whitespace
+.text-normal {
+    white-space: normal;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+.text-pre {
+    white-space: pre;
+}
+.text-pre-line {
+    white-space: pre-line;
+}
+.text-pre-wrap {
+    white-space: pre-wrap;
 }
 
 // Vertical Align

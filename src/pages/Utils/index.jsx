@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { asc } from '../../utils/sorts';
 
@@ -9,6 +10,7 @@ import ColorsPage from './ColorsPage';
 import { utilsNav } from '../../App';
 import GridsPage from './GridsPage';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import { brandColors, colors } from '../Content';
 
 const BorderRadiusPage = () => (
     <section id="border-radius" className="mb-5">
@@ -16,8 +18,76 @@ const BorderRadiusPage = () => (
             <BreadcrumbItem as={Link} to="/utils">
                 Utils
             </BreadcrumbItem>
-            <BreadcrumbItem current>Border Radius</BreadcrumbItem>
+            <BreadcrumbItem current>Borders</BreadcrumbItem>
         </Breadcrumbs>
+        <h2>Borders</h2>
+        <p>
+            Classes to add borders to sides of containers. Can be used with Breakpoints{' '}
+            <code>{`.border-{breakpoint}-{side}`}</code>
+        </p>
+        <p>
+            <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
+            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+        </p>
+        <p>
+            <code>{`{side}`}</code> one of the pre-defined sides. <code>{`{t}op`}</code> <code>{`{r}ight`}</code>{' '}
+            <code>{`{b}ottom`}</code> <code>{`{l}eft`}</code>. No <code>{`{side}`}</code> is all sides.
+        </p>
+        <div class="borders mb-6">
+            <span class="swatch bg-light mr-4 border">.border</span>
+            <span class="swatch bg-light mr-4 border-t">.border-t</span>
+            <span class="swatch bg-light mr-4 border-r">.border-r</span>
+            <span class="swatch bg-light mr-4 border-b">.border-b</span>
+            <span class="swatch bg-light mr-4 border-l">.border-l</span>
+        </div>
+
+        <h2>Border Colors</h2>
+        <p>
+            Change the border color. Can be used with Breakpoints <code>{`.border-{breakpoint}-{color}`}</code>
+        </p>
+        <p>
+            <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
+            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+        </p>
+        <p>
+            <code>{`{color}`}</code> one of the pre-defined <Link to="/content#colors">colors</Link>
+        </p>
+        <div className="mb-6">
+            {[...brandColors, ...colors].map((color) => (
+                <div
+                    className={classnames(`d-inline-block p-4`, {
+                        'bg-dark rounded': ['white', 'light'].includes(color)
+                    })}
+                >
+                    <div
+                        key={`border-${color}`}
+                        className={classnames(`d-block border-b border-2 border-${color}`, {
+                            'bg-dark': ['white', 'light'].includes(color)
+                        })}
+                    >{`.border-${color}`}</div>
+                </div>
+            ))}
+        </div>
+
+        <h2>Border Sizes</h2>
+        <p>
+            Classes to set border width. Can be used with Breakpoints <code>{`.border-{breakpoint}-{size}`}</code>
+        </p>
+        <p>
+            <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
+            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+        </p>
+        <p>
+            <code>{`{size}`}</code> one of the pre-defined sizes, 1-5(px).
+        </p>
+        <div className="mb-6">
+            <span class="swatch bg-light mr-4 border border-1">border-1</span>
+            <span class="swatch bg-light mr-4 border border-2">border-2</span>
+            <span class="swatch bg-light mr-4 border border-3">border-3</span>
+            <span class="swatch bg-light mr-4 border border-4">border-4</span>
+            <span class="swatch bg-light mr-4 border border-5">border-5</span>
+        </div>
+
         <h2>Border Radius</h2>
         <p>Classes to add pre-defined border radius to an element.</p>
         <hr />
@@ -45,7 +115,7 @@ const UtilsPage = () => (
         <Route path="/utils/grids">
             <GridsPage />
         </Route>
-        <Route path="/utils/border-radius">
+        <Route path="/utils/borders">
             <BorderRadiusPage />
         </Route>
         <Route path="/utils" exact>

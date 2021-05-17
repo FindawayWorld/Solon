@@ -126,10 +126,10 @@ const GridsPage = () => (
             </p>
             <pre>
                 <code>{`<div className="row">
-    <div className="col-xs-12">100%</div>
-    <div className="col-xs-6">50%</div>
-    <div className="col-xs-4">33.333%</div>
-    <div className="col-xs-3">25%</div>
+    <div className="col-12">100%</div>
+    <div className="col-6">50%</div>
+    <div className="col-4">33.333%</div>
+    <div className="col-3">25%</div>
 </div>`}</code>
             </pre>
         </section>
@@ -142,29 +142,29 @@ const GridsPage = () => (
             </p>
 
             <div className="row">
-                <div className="col-xs-12 col-sm-3 col-md-2 col-lg-1">
+                <div className="col-12 col-sm-3 col-md-2 col-lg-1">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-6 col-sm-6 col-md-8 col-lg-10">
+                <div className="col-6 col-sm-6 col-md-8 col-lg-10">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-6 col-sm-3 col-md-2 col-lg-1">
-                    <div className="box-row"></div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-xs-12 col-sm-3 col-md-2 col-lg-1">
-                    <div className="box-row"></div>
-                </div>
-                <div className="col-xs-12 col-sm-9 col-md-10 col-lg-11">
+                <div className="col-6 col-sm-3 col-md-2 col-lg-1">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-10 col-sm-6 col-md-8 col-lg-10">
+                <div className="col-12 col-sm-3 col-md-2 col-lg-1">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-2 col-sm-6 col-md-4 col-lg-2">
+                <div className="col-12 col-sm-9 col-md-10 col-lg-11">
+                    <div className="box-row"></div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-10 col-sm-6 col-md-8 col-lg-10">
+                    <div className="box-row"></div>
+                </div>
+                <div className="col-2 col-sm-6 col-md-4 col-lg-2">
                     <div className="box-row"></div>
                 </div>
             </div>
@@ -175,55 +175,55 @@ const GridsPage = () => (
             <p className="mb-3">Percent based widths allow fluid resizing of columns and rows.</p>
 
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-1">
+                <div className="col-1">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-11">
-                    <div className="box-row"></div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-xs-2">
-                    <div className="box-row"></div>
-                </div>
-                <div className="col-xs-10">
+                <div className="col-11">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-3">
+                <div className="col-2">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-9">
-                    <div className="box-row"></div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-xs-4">
-                    <div className="box-row"></div>
-                </div>
-                <div className="col-xs-8">
+                <div className="col-10">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-5">
+                <div className="col-3">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-7">
+                <div className="col-9">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-6">
+                <div className="col-4">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs-6">
+                <div className="col-8">
+                    <div className="box-row"></div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-5">
+                    <div className="box-row"></div>
+                </div>
+                <div className="col-7">
+                    <div className="box-row"></div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-6">
+                    <div className="box-row"></div>
+                </div>
+                <div className="col-6">
                     <div className="box-row"></div>
                 </div>
             </div>
@@ -236,57 +236,57 @@ const GridsPage = () => (
             </p>
 
             <div className="row">
-                <div className="col-xs-offset-11 col-xs-1">
+                <div className="col-offset-11 col-1">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-10 col-xs-2">
+                <div className="col-offset-10 col-2">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-9 col-xs-3">
+                <div className="col-offset-9 col-3">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-8 col-xs-4">
+                <div className="col-offset-8 col-4">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-7 col-xs-5">
+                <div className="col-offset-7 col-5">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-6 col-xs-6">
+                <div className="col-offset-6 col-6">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-5 col-xs-7">
+                <div className="col-offset-5 col-7">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-4 col-xs-8">
+                <div className="col-offset-4 col-8">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-3 col-xs-9">
+                <div className="col-offset-3 col-9">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-2 col-xs-10">
+                <div className="col-offset-2 col-10">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs-offset-1 col-xs-11">
+                <div className="col-offset-1 col-11">
                     <div className="box-row"></div>
                 </div>
             </div>
@@ -299,21 +299,21 @@ const GridsPage = () => (
                 <code>{`.col-{breakpoint}`}</code>
             </p>
             <div className="row">
-                <div className="col-xs">
+                <div className="col">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs">
+                <div className="col">
                     <div className="box-row"></div>
                 </div>
             </div>
             <div className="row">
-                <div className="col-xs">
+                <div className="col">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs">
+                <div className="col">
                     <div className="box-row"></div>
                 </div>
-                <div className="col-xs">
+                <div className="col">
                     <div className="box-row"></div>
                 </div>
             </div>
@@ -323,25 +323,25 @@ const GridsPage = () => (
             <h3 className="mb-1">Nested Grids</h3>
             <p className="mb-3">Nest grids inside grids inside grids.</p>
             <div className="row">
-                <div className="col-xs-7">
+                <div className="col-7">
                     <div className="box box-container">
                         <div className="row">
-                            <div className="col-xs-9">
+                            <div className="col-9">
                                 <div className="box-first box-container">
                                     <div className="row">
-                                        <div className="col-xs-4">
+                                        <div className="col-4">
                                             <div className="box-nested"></div>
                                         </div>
-                                        <div className="col-xs-8">
+                                        <div className="col-8">
                                             <div className="box-nested"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-xs-3">
+                            <div className="col-3">
                                 <div className="box-first box-container">
                                     <div className="row">
-                                        <div className="col-xs">
+                                        <div className="col">
                                             <div className="box-nested"></div>
                                         </div>
                                     </div>
@@ -350,16 +350,16 @@ const GridsPage = () => (
                         </div>
                     </div>
                 </div>
-                <div className="col-xs-5">
+                <div className="col-5">
                     <div className="box box-container">
                         <div className="row">
-                            <div className="col-xs-12">
+                            <div className="col-12">
                                 <div className="box-first box-container">
                                     <div className="row">
-                                        <div className="col-xs-6">
+                                        <div className="col-6">
                                             <div className="box-nested"></div>
                                         </div>
-                                        <div className="col-xs-6">
+                                        <div className="col-6">
                                             <div className="box-nested"></div>
                                         </div>
                                     </div>
@@ -382,10 +382,10 @@ const GridsPage = () => (
                 <code>{`.start-{breakpoint}`}</code>
             </p>
             <div className="row mb-3">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row start-xs">
-                            <div className="col-xs-6">
+                        <div className="row start">
+                            <div className="col-6">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -397,10 +397,10 @@ const GridsPage = () => (
                 <code>{`.center-{breakpoint}`}</code>
             </p>
             <div className="row mb-3">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row center-xs">
-                            <div className="col-xs-6">
+                        <div className="row center">
+                            <div className="col-6">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -412,10 +412,10 @@ const GridsPage = () => (
                 <code>{`.end-{breakpoint}`}</code>
             </p>
             <div className="row mb-3">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row end-xs">
-                            <div className="col-xs-6">
+                        <div className="row end">
+                            <div className="col-6">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -428,10 +428,10 @@ const GridsPage = () => (
                 viewport sizes.
             </p>
             <div className="row mb-3">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row center-xs end-sm start-lg">
-                            <div className="col-xs-6">
+                        <div className="row center end-sm start-lg">
+                            <div className="col-6">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -442,11 +442,11 @@ const GridsPage = () => (
             <p>
                 <code>{`.top-{breakpoint}`}</code>
             </p>
-            <div className="row top-xs mb-3">
-                <div className="col-xs-6">
+            <div className="row top mb-3">
+                <div className="col-6">
                     <div className="box-large"></div>
                 </div>
-                <div className="col-xs-6">
+                <div className="col-6">
                     <div className="box"></div>
                 </div>
             </div>
@@ -454,11 +454,11 @@ const GridsPage = () => (
             <p>
                 <code>{`.middle-{breakpoint}`}</code>
             </p>
-            <div className="row middle-xs mb-3">
-                <div className="col-xs-6">
+            <div className="row middle mb-3">
+                <div className="col-6">
                     <div className="box-large"></div>
                 </div>
-                <div className="col-xs-6">
+                <div className="col-6">
                     <div className="box"></div>
                 </div>
             </div>
@@ -466,11 +466,11 @@ const GridsPage = () => (
             <p>
                 <code>{`.bottom-{breakpoint}`}</code>
             </p>
-            <div className="row bottom-xs mb-3">
-                <div className="col-xs-6">
+            <div className="row bottom mb-3">
+                <div className="col-6">
                     <div className="box-large"></div>
                 </div>
-                <div className="col-xs-6">
+                <div className="col-6">
                     <div className="box"></div>
                 </div>
             </div>
@@ -484,16 +484,16 @@ const GridsPage = () => (
                 <code>{`.around-{breakpoint}`}</code>
             </p>
             <div className="row mb-3">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row around-xs">
-                            <div className="col-xs-2">
+                        <div className="row around">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -505,16 +505,16 @@ const GridsPage = () => (
                 <code>{`.between-{breakpoint}`}</code>
             </p>
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
-                        <div className="row between-xs">
-                            <div className="col-xs-2">
+                        <div className="row between">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested"></div>
                             </div>
                         </div>
@@ -531,25 +531,25 @@ const GridsPage = () => (
                 <code>{`.first-{breakpoint}`}</code>
             </p>
             <div className="row mb-4">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
                         <div className="row">
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">1</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">2</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">3</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">4</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">5</div>
                             </div>
-                            <div className="col-xs-2 first-xs">
+                            <div className="col-2 first">
                                 <div className="box-nested">6</div>
                             </div>
                         </div>
@@ -561,25 +561,25 @@ const GridsPage = () => (
                 <code>{`.last-{breakpoint}`}</code>
             </p>
             <div className="row mb-4">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
                         <div className="row">
-                            <div className="col-xs-2 last-xs">
+                            <div className="col-2 last">
                                 <div className="box-nested">1</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">2</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">3</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">4</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">5</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-first">6</div>
                             </div>
                         </div>
@@ -595,25 +595,25 @@ const GridsPage = () => (
                 <code>.row.reverse</code>
             </p>
             <div className="row">
-                <div className="col-xs-12">
+                <div className="col-12">
                     <div className="box box-container">
                         <div className="row reverse">
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">1</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">2</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">3</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">4</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">5</div>
                             </div>
-                            <div className="col-xs-2">
+                            <div className="col-2">
                                 <div className="box-nested">6</div>
                             </div>
                         </div>
