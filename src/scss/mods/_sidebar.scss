@@ -127,7 +127,7 @@ $sidebar-bg-active: $silver;
     width: 100%;
     padding: 1rem;
 
-    @media #{$large} {
+    @include breakpoint('lg') {
         display: block;
         padding-top: 0;
         padding-right: 0;
@@ -142,7 +142,7 @@ $sidebar-bg-active: $silver;
     }
 }
 
-@media #{$large} {
+@include breakpoint('lg') {
     .sidebar {
         width: rem(300);
 
@@ -225,7 +225,7 @@ $sidebar-bg-active: $silver;
     }
 }
 
-@media #{$large} {
+@include breakpoint('lg') {
     .sidebar-slim {
         width: auto;
         .small-logo {
@@ -296,7 +296,7 @@ $sidebar-bg-active: $silver;
         transform: rotate(-90deg);
     }
 
-    @media #{$large} {
+    @include breakpoint('lg') {
         $height: (28); //16 + 4 + 8
         $half: ($height) / 2;
         position: absolute;

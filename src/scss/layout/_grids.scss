@@ -246,7 +246,7 @@
 }
 
 @each $breakpoint in map-keys($standard-breakpoints) {
-    @include breakpoint-media($breakpoint) {
+    @include breakpoint($breakpoint) {
         $infix: get-breakpoint-infix($breakpoint);
         $container-width: map-get($container-widths, $breakpoint);
 

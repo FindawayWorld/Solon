@@ -52,7 +52,7 @@ img {
 .site-row {
     box-sizing: border-box;
 
-    @media #{$large} {
+    @include breakpoint('lg') {
         flex-direction: row;
         display: flex;
         flex: 0 1 auto;
