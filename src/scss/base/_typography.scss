@@ -197,3 +197,32 @@ li > svg {
 .lh-lg {
     line-height: $line-height + 0.5 !important;
 }
+
+@mixin text($infix: '') {
+    // Responsive font sizes
+    @each $size, $length in $spacers {
+        @if $size >= 3 {
+            .txt#{$infix}-#{$size} {
+                font-size: $length !important;
+            }
+        }
+    }
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
+    }
+}
+
+@include text();
+@each $breakpoint in map-keys($standard-breakpoints) {
+    @include breakpoint-media($breakpoint) {
+        $infix: get-breakpoint-infix($breakpoint);
+        @include text($infix);
+    }
+}

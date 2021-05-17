@@ -1,0 +1,62 @@
+@mixin utils($infix: '') {
+    // Responsive overflow
+    .overflow#{$infix}-x-auto {
+        overflow-x: auto !important;
+    }
+    .overflow#{$infix}-y-auto {
+        overflow-y: auto !important;
+    }
+    .overflow#{$infix}-x-hidden {
+        overflow-x: hidden !important;
+    }
+    .overflow#{$infix}-y-hidden {
+        overflow-y: hidden !important;
+    }
+    .overflow#{$infix}-x-visible {
+        overflow-x: visible !important;
+    }
+    .overflow#{$infix}-y-visible {
+        overflow-y: visible !important;
+    }
+
+    @each $value in $displays {
+        .d#{$infix}-#{$value} {
+            display: $value !important;
+        }
+    }
+
+    // Responsive Border Radius
+    .rounded#{$infix} {
+        border-radius: $border-radius !important;
+    }
+    .rounded#{$infix}-pill {
+        border-radius: rem(1000) !important;
+    }
+}
+
+@mixin borders($infix: '') {
+    @each $pos, $abbrev in $positions {
+        @each $name, $size in $border-widths {
+            .border#{$infix}-#{$name} {
+                border-width: $size !important;
+            }
+        }
+        .border#{$infix} {
+            border: solid $border-width $border-color;
+        }
+        .border#{$infix}-#{$abbrev} {
+            border-#{$pos}: $border-color solid $border-width;
+        }
+    }
+}
+
+@include borders();
+@include utils();
+
+@each $breakpoint in map-keys($standard-breakpoints) {
+    @include breakpoint-media($breakpoint) {
+        $infix: get-breakpoint-infix($breakpoint);
+        @include borders($infix);
+        @include utils($infix);
+    }
+}

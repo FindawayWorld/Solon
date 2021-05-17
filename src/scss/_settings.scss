@@ -10,6 +10,23 @@ $small: 'only screen and (min-width: 576px)';
 $small2x: 'only screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2)';
 $retina: 'only screen and (-webkit-min-device-pixel-ratio: 2)';
 
+$standard-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+$container-widths: (
+    sm: 540,
+    md: 720,
+    lg: 960,
+    xl: 1140,
+    xxl: 1320
+) !default;
+
 $font-family: // Safari for macOS and iOS (San Francisco)
     -apple-system,
     // Chrome < 56 for macOS (San Francisco)
@@ -126,4 +143,57 @@ $themeColors: map-merge(
         'muted': $muted
     ),
     $themeColors
+);
+
+$col_count: 12;
+$spacer: 1rem !default;
+$spacers: () !default;
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$positions: (
+    left: l,
+    right: r,
+    top: t,
+    bottom: b
+) !default;
+
+$spacers: map-merge(
+    (
+        // 0px
+        0: 0,
+        //  4px
+        1: $spacer * 0.25,
+        // 8px
+        2: $spacer * 0.5,
+        // 12px
+        3: $spacer * 0.75,
+        // 16px
+        4: $spacer * 1,
+        // 20px
+        5: $spacer * 1.25,
+        // 24px
+        6: $spacer * 1.5,
+        // 32px
+        8: $spacer * 2,
+        // 40px
+        10: $spacer * 2.5,
+        // 48px
+        12: $spacer * 3,
+        // 64px
+        16: $spacer * 4,
+        // 80px
+        20: $spacer * 5,
+        // 96px
+        24: $spacer * 6,
+        // 128px
+        32: $spacer * 8,
+        // 160px
+        40: $spacer * 10,
+        // 192px
+        48: $spacer * 12,
+        // 224px
+        56: $spacer * 14,
+        // 256px
+        64: $spacer * 16
+    ),
+    $spacers
 );

@@ -1,6 +1,20 @@
 @function rem($px) {
     @return ($px / 16) * 1rem;
 }
+
+@mixin breakpoint-media($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @if ($width != 0) {
+        @content;
+    } @else {
+        @content;
+    }
+}
+
+@function get-breakpoint-infix($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @return if($width != 0, '-#{$breakpoint}', '');
+}
 @function shade($color, $percent) {
     @return mix(#000, $color, $percent);
 }
