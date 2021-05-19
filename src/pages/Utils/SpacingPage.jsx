@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import { spacers } from '../Content';
 
 const SpacingPage = () => (
     <section id="spacing-utils">
@@ -122,30 +123,11 @@ const SpacingPage = () => (
                 </tr>
             </thead>
             <tbody>
-                {[
-                    [0, 0],
-                    [1, 0.25],
-                    [2, 0.5],
-                    [3, 0.75],
-                    [4, 1],
-                    [5, 1.25],
-                    [6, 1.5],
-                    [8, 2],
-                    [10, 2.5],
-                    [12, 3],
-                    [16, 4],
-                    [20, 5],
-                    [24, 6],
-                    [32, 8],
-                    [40, 10],
-                    [48, 12],
-                    [56, 14],
-                    [64, 16]
-                ].map((int) => (
+                {Object.keys(spacers).map((key) => (
                     <tr>
-                        <td>{int[0]}</td>
-                        <td>{int[1] * 16}px</td>
-                        <td>{int[1]}rem</td>
+                        <td>{key}</td>
+                        <td>{spacers[key] * 16}px</td>
+                        <td>{spacers[key]}rem</td>
                     </tr>
                 ))}
                 <tr>

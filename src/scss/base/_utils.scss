@@ -35,23 +35,33 @@
 }
 
 @mixin borders($infix: '') {
-    @each $pos, $abbrev in $positions {
-        @each $name, $size in $border-widths {
-            .border#{$infix}-#{$name} {
-                border-width: $size !important;
-            }
-        }
-        .border#{$infix} {
-            border: solid $border-width $border-color;
-        }
-        .border#{$infix}-#{$abbrev} {
-            border-#{$pos}: $border-color solid $border-width;
+    $defaultBorder: $border-color solid $border-width;
+    .border#{$infix} {
+        border: $defaultBorder;
+    }
+    .border#{$infix}-t,
+    .border#{$infix}-y {
+        border-top: $defaultBorder;
+    }
+    .border#{$infix}-r,
+    .border#{$infix}-x {
+        border-right: $defaultBorder;
+    }
+    .border#{$infix}-b,
+    .border#{$infix}-y {
+        border-bottom: $defaultBorder;
+    }
+    .border#{$infix}-l,
+    .border#{$infix}-x {
+        border-left: $defaultBorder;
+    }
+
+    @each $name, $size in $border-widths {
+        .border#{$infix}-#{$name} {
+            border-width: $size !important;
         }
     }
 }
-
-@include borders();
-@include utils();
 
 @each $breakpoint in map-keys($standard-breakpoints) {
     @include breakpoint($breakpoint) {

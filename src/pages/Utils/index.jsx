@@ -30,15 +30,39 @@ const BorderRadiusPage = () => (
             <Link to="/utils/breakpoints">responsive breakpoints</Link>
         </p>
         <p>
-            <code>{`{side}`}</code> one of the pre-defined sides. <code>{`{t}op`}</code> <code>{`{r}ight`}</code>{' '}
-            <code>{`{b}ottom`}</code> <code>{`{l}eft`}</code>. No <code>{`{side}`}</code> is all sides.
+            <code>{`{side}`}</code> one of the pre-defined sides.
         </p>
+        <ul>
+            <li>
+                <code>{`{t}op`}</code>
+            </li>
+            <li>
+                <code>{`{r}ight`}</code>
+            </li>
+            <li>
+                <code>{`{b}ottom`}</code>
+            </li>
+            <li>
+                <code>{`{l}eft`}</code>
+            </li>
+            <li>
+                <code>{`{x}`}</code> left and right
+            </li>
+            <li>
+                <code>{`{y}`}</code> top and bottom
+            </li>
+            <li>
+                No <code>{`{side}`}</code> is all sides
+            </li>
+        </ul>
         <div class="borders mb-6">
             <span class="swatch bg-light mr-4 border">.border</span>
             <span class="swatch bg-light mr-4 border-t">.border-t</span>
             <span class="swatch bg-light mr-4 border-r">.border-r</span>
             <span class="swatch bg-light mr-4 border-b">.border-b</span>
             <span class="swatch bg-light mr-4 border-l">.border-l</span>
+            <span class="swatch bg-light mr-4 border-x">.border-x</span>
+            <span class="swatch bg-light mr-4 border-y">.border-y</span>
         </div>
 
         <h2>Border Colors</h2>
