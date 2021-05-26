@@ -22,8 +22,7 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as SolonLogo } from '../svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from '../svg/solon_icon.svg';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authLogout } from '../slices/authSlice';
 
 export const componentsNav = [

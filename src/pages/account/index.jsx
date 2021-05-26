@@ -6,8 +6,7 @@ import { Auth } from 'aws-amplify';
 import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
 import StatusButton from '../../components/StatusButton';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authRefreshUser } from '../../slices/authSlice';
 
 const AccountIndex = () => {

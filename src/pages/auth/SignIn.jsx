@@ -8,8 +8,7 @@ import Input from '../../components/form/Input';
 import AuthLayout from '../../components/AuthLayout';
 
 // utils
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authLoginSuccess } from '../../slices/authSlice';
 
 const signInSchema = object().shape({
