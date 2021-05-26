@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { AuthContext, appActions } from '../../context/AuthContext';
+import React from 'react';
 import Layout from '../../components/Layout';
 import Input from '../../components/form/Input';
 import Loading from '../../components/Loading';
@@ -7,21 +6,24 @@ import { Auth } from 'aws-amplify';
 import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
 import StatusButton from '../../components/StatusButton';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { authRefreshUser } from '../../slices/authSlice';
 
 const AccountIndex = () => {
-    const { state, dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.auth);
     const [saveState, setSaveState] = React.useState(null);
     const handleSave = async (values) => {
         try {
             const user = await Auth.currentAuthenticatedUser();
             await Auth.updateUserAttributes(user, values);
             setSaveState('disabled');
-            dispatch({
-                type: appActions.REFRESH_USER,
-                payload: {
+            dispatch(
+                authRefreshUser({
                     updatedUserAttributes: (await Auth.currentAuthenticatedUser({ bypassCache: true })).attributes
-                }
-            });
+                })
+            );
             setSaveState('success');
             setTimeout(() => {
                 setSaveState(null);

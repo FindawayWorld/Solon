@@ -13,7 +13,7 @@ import PasswordHelper from '../../components/PasswordHelper';
 import ChangePasswordConfirm from './ChangePasswordConfirm';
 import AuthLayout from '../../components/AuthLayout';
 
-import { passwordSchema } from '../../context/AuthContext';
+import { passwordSchema } from '../../slices/authSlice';
 
 const forgotPasswordVerificationSchema = object().shape({
     verificationCode: string().required('required'),

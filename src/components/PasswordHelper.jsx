@@ -1,5 +1,5 @@
 import React from 'react';
-import { passwordSchema } from '../context/AuthContext';
+import { passwordSchema } from '../slices/authSlice';
 
 const PasswordHelper = ({ password = '' }) => {
     let valid = passwordSchema.validate(password, { list: true });

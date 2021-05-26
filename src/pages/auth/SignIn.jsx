@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { string, object } from 'yup';
@@ -8,7 +8,9 @@ import Input from '../../components/form/Input';
 import AuthLayout from '../../components/AuthLayout';
 
 // utils
-import { AuthContext, appActions } from '../../context/AuthContext';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { authLoginSuccess } from '../../slices/authSlice';
 
 const signInSchema = object().shape({
     email: string().email().lowercase().required('Email is required'),
@@ -16,7 +18,8 @@ const signInSchema = object().shape({
 });
 
 const SignIn = (props) => {
-    const { state, dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.auth);
     const location = useLocation();
 
     const [newPasswordChallenge, setNewPasswordChallenge] = useState(false);
@@ -49,10 +52,7 @@ const SignIn = (props) => {
 
                 case 'NEW_PASSWORD_REQUIRED':
                     setNewPasswordChallenge(true);
-                    dispatch({
-                        type: appActions.FIRST_LOGIN_SUCCESS,
-                        payload: { user }
-                    });
+                    dispatch(authLoginSuccess({ user }));
                     break;
 
                 case 'MFA_SETUP':
@@ -63,7 +63,7 @@ const SignIn = (props) => {
                     break;
 
                 default:
-                    dispatch({ type: appActions.LOGIN_SUCCESS, payload: { user } });
+                    dispatch(authLoginSuccess({ user }));
             }
         } catch (err) {
             switch (err.code) {

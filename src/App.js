@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 
-import { AuthContext, appActions } from './context/AuthContext';
 import { Auth } from 'aws-amplify';
 
 import ComponentsPage from './pages/Components';
@@ -21,6 +20,8 @@ import AccountIndex from './pages/account';
 import Register from './pages/auth/Register';
 
 import BrandSettings from './pages/BrandSettings';
+import { useDispatch } from 'react-redux';
+import { authLoginFailure, authLoginStart, authLoginSuccess } from './slices/authSlice';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -33,15 +34,15 @@ export const ScrollToTop = () => {
 };
 
 const App = () => {
-    const { dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch();
     useEffect(() => {
         async function persistLogin() {
-            dispatch({ type: appActions.PERSIST_LOGIN_START });
+            dispatch(authLoginStart());
             try {
                 const user = await Auth.currentAuthenticatedUser({ bypassCache: true });
-                dispatch({ type: appActions.PERSIST_LOGIN_SUCCESS, payload: { user } });
+                dispatch(authLoginSuccess({ user }));
             } catch (error) {
-                dispatch({ type: appActions.PERSIST_LOGIN_FAIL, payload: { error } });
+                dispatch(authLoginFailure({ error }));
             }
         }
         persistLogin();

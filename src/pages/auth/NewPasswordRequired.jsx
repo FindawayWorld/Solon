@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
 import { string, object } from 'yup';
@@ -7,10 +7,11 @@ import { Auth } from 'aws-amplify';
 import ChangePasswordConfirm from '../auth/ChangePasswordConfirm';
 import Input from '../../components/form/Input';
 // utils
-import { AuthContext, appActions } from '../../context/AuthContext';
 
-import { passwordSchema } from '../../context/AuthContext';
 import AuthLayout from '../../components/AuthLayout';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { authCompleteNewPasswordSuccess, authCompleteNewPasswordTimeout, passwordSchema } from '../../slices/authSlice';
 
 const newPasswordRequiredSchema = object().shape({
     newPassword: string()
@@ -28,7 +29,8 @@ const newPasswordRequiredSchema = object().shape({
 });
 
 const NewPasswordRequired = (props) => {
-    const { state, dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const state = useSelector((state) => state.auth);
     const [invalidPasswordError, setInvalidPasswordError] = useState(null);
     const [isPasswordChangeSuccess, setIsPasswordChangeSuccess] = useState(false);
 
@@ -39,12 +41,12 @@ const NewPasswordRequired = (props) => {
             setSubmitting(false);
             resetForm();
             setIsPasswordChangeSuccess(true);
-            dispatch({ type: appActions.COMPLETE_NEW_PASSWORD_SUCCESS });
+            dispatch(authCompleteNewPasswordSuccess());
         } catch (error) {
             if (error?.message === 'Invalid session for the user, session is expired.') {
                 setInvalidPasswordError(error);
                 setSubmitting(false);
-                dispatch({ type: appActions.COMPLETE_NEW_PASSWORD_TIMEOUT });
+                dispatch(authCompleteNewPasswordTimeout());
                 return;
             }
 

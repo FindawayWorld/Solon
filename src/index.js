@@ -9,7 +9,8 @@ import './scss/styles.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
-import { AuthProvider } from './context/AuthContext';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 Amplify.configure({
     Auth: {
@@ -21,9 +22,9 @@ Amplify.configure({
 
 const AppWrapper = () => (
     <Router>
-        <AuthProvider>
+        <Provider store={store}>
             <App />
-        </AuthProvider>
+        </Provider>
     </Router>
 );
 

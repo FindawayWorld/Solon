@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Auth } from 'aws-amplify';
 import classnames from 'classnames';
 import { asc } from '../utils/sorts';
 
 import NavLink from './NavLink';
 import { Link, useLocation } from 'react-router-dom';
-import { AuthContext, appActions } from '../context/AuthContext';
 
 import {
     FaFileAlt,
@@ -23,6 +22,9 @@ import {
 } from 'react-icons/fa';
 import { ReactComponent as SolonLogo } from '../svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from '../svg/solon_icon.svg';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { authLogout } from '../slices/authSlice';
 
 export const componentsNav = [
     ['/components/badges', 'Badges'],
@@ -51,14 +53,15 @@ utilsNav.sort((a, b) => asc(a[1], b[1]));
 
 const Layout = ({ children }) => {
     const medium = window.matchMedia('(max-width: 768px)');
-    const { state: authState, dispatch } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const authState = useSelector((state) => state.auth);
     const [collapseSidebar, setCollapseSidebar] = React.useState(medium.matches);
     const location = useLocation();
 
     const handleLogOut = () => {
         try {
             Auth.signOut();
-            dispatch({ type: appActions.LOGOUT });
+            dispatch(authLogout());
         } catch (error) {
             console.log('\n', '\n', `Navbar, log-out error = `, error, '\n', '\n');
         }
