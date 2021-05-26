@@ -12,6 +12,7 @@ import DisplayFormikState from '../../components/DisplayFormikState';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import ReactSelect from '../../components/form/ReactSelect';
+import ToggleSwitch from '../../components/form/ToggleSwitch';
 
 const FormsPage = () => {
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
@@ -38,6 +39,7 @@ const FormsPage = () => {
     });
     let selectOpts = Array.from({ length: 50 }).map((v, i) => ({ label: `Option ${i}`, value: i }));
     let [rsValues, setRsValues] = React.useState(selectOpts);
+    let [toggleValue, setToggleValue] = React.useState(false);
     return (
         <section id="forms" className="mb-5">
             <Breadcrumbs>
@@ -141,6 +143,16 @@ const FormsPage = () => {
             <Checkbox label="Checkbox" id="checkbox_1" />
 
             <Checkbox label="With Errors" id="error_checkbox" error="Checkbox error message" touched={true} />
+
+            <h3>Toggle Switch</h3>
+            <hr />
+            <div>
+                <ToggleSwitch checked={toggleValue} onChange={(e) => setToggleValue(e.target.checked)} label="Normal" />
+                <ToggleSwitch checked label="Always Checked" />
+                <ToggleSwitch label="Disabled" disabled />
+                <span>No Label</span>
+                <ToggleSwitch />
+            </div>
 
             <h3>List Input Box</h3>
             <hr />
