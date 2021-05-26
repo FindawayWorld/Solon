@@ -28,7 +28,8 @@ const StatusButton = ({
         <button
             className={classnames('btn', {
                 'btn-primary': successState !== 'error' && successState !== 'success',
-                'btn-success': successState === 'success'
+                'btn-success': successState === 'success',
+                'btn-danger': successState === 'error'
             })}
             type={type}
             disabled={disabled || successState === 'disabled'}

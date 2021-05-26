@@ -1,6 +1,7 @@
 import React from 'react';
-import {FiArrowRight} from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import Layout from '../components/Layout';
+import classnames from 'classnames';
 
 export const colors = [
     'aqua',
@@ -174,16 +175,93 @@ sans-serif,
                 <p className="fw-bold">Bold</p>
             </section>
 
+            <section id="font-style" className="mb-5">
+                <h2>Font Style</h2>
+                <hr />
+
+                <p>
+                    Font style can be applied using <code>italic</code> or <code>not-italic</code>
+                </p>
+
+                <p>
+                    <span className="italic">italic</span> adds italic styles
+                </p>
+                <p className="italic">
+                    <span className="not-italic">not-italic</span> removes italic styles
+                </p>
+            </section>
+
+            <section id="line-height" className="mb-5">
+                <h2>Line Height</h2>
+                <hr />
+                <p>
+                    <code>.lh-1</code>
+                </p>
+                <p class="lh-1">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
+                    accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
+                    Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
+                    maiores nesciunt facilis, earum suscipit nam praesentium amet doloremque incidunt deserunt
+                    exercitationem, nulla voluptatibus ea voluptatum error nemo fugiat. Quisquam. Iure ratione nam
+                    perspiciatis dolor? Iste doloremque, laudantium architecto enim eos facilis sit impedit ducimus
+                    pariatur consectetur eum atque tempore sunt laborum sapiente hic minus reiciendis? Doloremque iste
+                    qui iusto.
+                </p>
+                <p>
+                    <code>.lh-sm</code> 1.25
+                </p>
+                <p class="lh-sm">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
+                    accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
+                    Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
+                    maiores nesciunt facilis, earum suscipit nam praesentium amet doloremque incidunt deserunt
+                    exercitationem, nulla voluptatibus ea voluptatum error nemo fugiat. Quisquam. Iure ratione nam
+                    perspiciatis dolor? Iste doloremque, laudantium architecto enim eos facilis sit impedit ducimus
+                    pariatur consectetur eum atque tempore sunt laborum sapiente hic minus reiciendis? Doloremque iste
+                    qui iusto.
+                </p>
+
+                <p>
+                    <code>.lh-base</code> 1.5
+                </p>
+                <p class="lh-base">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
+                    accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
+                    Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
+                    maiores nesciunt facilis, earum suscipit nam praesentium amet doloremque incidunt deserunt
+                    exercitationem, nulla voluptatibus ea voluptatum error nemo fugiat. Quisquam. Iure ratione nam
+                    perspiciatis dolor? Iste doloremque, laudantium architecto enim eos facilis sit impedit ducimus
+                    pariatur consectetur eum atque tempore sunt laborum sapiente hic minus reiciendis? Doloremque iste
+                    qui iusto.
+                </p>
+
+                <p>
+                    <code>.lh-lg</code> 2
+                </p>
+                <p class="lh-lg">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
+                    accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
+                    Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
+                    maiores nesciunt facilis, earum suscipit nam praesentium amet doloremque incidunt deserunt
+                    exercitationem, nulla voluptatibus ea voluptatum error nemo fugiat. Quisquam. Iure ratione nam
+                    perspiciatis dolor? Iste doloremque, laudantium architecto enim eos facilis sit impedit ducimus
+                    pariatur consectetur eum atque tempore sunt laborum sapiente hic minus reiciendis? Doloremque iste
+                    qui iusto.
+                </p>
+            </section>
+
             <section id="lead-text" className="mb-5">
                 <h2>Lead text</h2>
                 <hr />
-                <div>
-                    <p className="lead">
-                        Findaway is a global leader in digital content delivery. With the invention of Playaway
-                        Preloaded Products, they transformed the way that audiobooks, eBooks, videos and learning tools
-                        are circulated in 40,000 libraries, schools, and military installations.
-                    </p>
-                </div>
+                <p className="flash flash-light">
+                    <strong>Font Size:</strong> 1.5rem (24px). <strong>Line Height:</strong> 2.5rem (40px).{' '}
+                    <strong>Font Weight:</strong> Light (300)
+                </p>
+                <p className="lead">
+                    Findaway is a global leader in digital content delivery. With the invention of Playaway Preloaded
+                    Products, they transformed the way that audiobooks, eBooks, videos and learning tools are circulated
+                    in 40,000 libraries, schools, and military installations.
+                </p>
             </section>
 
             <section id="links" className="mb-5">
@@ -210,6 +288,18 @@ sans-serif,
                         </a>
                     </li>
                 </ul>
+                <p>
+                    {[...brandColors, ...colors].map((color) => (
+                        <a
+                            href="#links"
+                            className={classnames(`link-${color} d-inline-block mr-4`, {
+                                'bg-dark p-2 ': color === 'light' || color === 'white' || color === 'silver'
+                            })}
+                        >
+                            Link {color}
+                        </a>
+                    ))}
+                </p>
             </section>
 
             <section id="lists" className="mb-5">

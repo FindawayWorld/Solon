@@ -3,7 +3,7 @@ body {
     font-family: $font-family;
     font-size: 16px;
     font-size: $font-size-base;
-    line-height: 1.5;
+    line-height: $line-height;
     font-style: normal;
 }
 
@@ -108,7 +108,7 @@ sup {
 
 .lead {
     font-size: rem(24);
-    line-height: rem(38);
+    line-height: rem(40);
     font-weight: $light-weight;
 }
 
@@ -120,6 +120,7 @@ li > svg {
     margin-left: 0.5rem;
 }
 
+// Text align
 .txt-center {
     text-align: center !important;
 }
@@ -132,6 +133,7 @@ li > svg {
     text-align: left !important;
 }
 
+// Font Weight
 .fw-normal {
     font-weight: 400 !important;
 }
@@ -147,6 +149,7 @@ li > svg {
     overflow-x: hidden;
 }
 
+// Vertical Align
 .align-middle {
     vertical-align: middle !important;
 }
@@ -158,4 +161,26 @@ li > svg {
 }
 .align-bottom {
     vertical-align: bottom !important;
+}
+
+// Font style
+.italic {
+    font-style: italic !important;
+}
+.not-italic {
+    font-style: normal !important;
+}
+
+// Line Height Helpers
+.lh-1 {
+    line-height: 1 !important;
+}
+.lh-sm {
+    line-height: $line-height - 0.25 !important;
+}
+.lh-base {
+    line-height: $line-height !important;
+}
+.lh-lg {
+    line-height: $line-height + 0.5 !important;
 }
