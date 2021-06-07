@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /*
    * Sidebar
    */
@@ -298,7 +300,7 @@ $sidebar-bg-active: $silver;
 
     @media #{$large} {
         $height: (28); //16 + 4 + 8
-        $half: ($height) / 2;
+        $half: math.div($height, 2);
         position: absolute;
         right: rem($half * -1);
         top: rem(85);
