@@ -1494,6 +1494,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@findaway/prettier-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@findaway/prettier-config/-/prettier-config-1.0.0.tgz#d9ef6dc752ea7d474e018cdf730a2281b4e1824f"
+  integrity sha512-hTie8dmnpeGGvoFbCs7/bjhditwvuTjdGYWWU1vplNvjT1UpBt1JVuj0AkPPgkawpTmMFmeRMqOG4ZR7sf2ujg==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"

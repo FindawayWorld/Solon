@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
+  "prettier": "@findaway/prettier-config",
   "dependencies": {
     "@reach/auto-id": "^0.12.1",
     "@reach/dialog": "^0.12.1",
@@ -46,5 +47,8 @@
       "ie 11",
       "ie 10"
     ]
+  },
+  "devDependencies": {
+    "@findaway/prettier-config": "^1.0.0"
   }
 }
