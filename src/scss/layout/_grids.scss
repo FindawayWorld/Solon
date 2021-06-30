@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
@@ -51,8 +53,8 @@ $spacers: map-merge(
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: ($spacer / 2) * -1;
-    margin-left: ($spacer / 2) * -1;
+    margin-right: math.div($spacer, 2) * -1;
+    margin-left: math.div($spacer, 2) * -1;
 }
 
 .container-fluid,
@@ -91,8 +93,8 @@ $spacers: map-merge(
 }
 
 .col {
-    padding-right: $spacer / 2;
-    padding-left: $spacer / 2;
+    padding-right: math.div($spacer, 2);
+    padding-left: math.div($spacer, 2);
 }
 
 .row.reverse {
@@ -249,8 +251,8 @@ $spacers: map-merge(
     .col-#{$size}-offset-12 {
         box-sizing: border-box;
         flex: 0 0 auto;
-        padding-right: $spacer / 2;
-        padding-left: $spacer / 2;
+        padding-right: math.div($spacer, 2);
+        padding-left: math.div($spacer, 2);
     }
 
     .col-#{$size} {
@@ -260,7 +262,7 @@ $spacers: map-merge(
     }
 
     @for $i from 1 through $col_count {
-        $width: 100% / ($col_count / $i);
+        $width: math.div(100%, math.div($col_count, $i));
         .col-#{$size}-#{$i} {
             flex-basis: $width;
             max-width: $width;
