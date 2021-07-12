@@ -179,7 +179,7 @@
 
     @for $i from 1 through $col_count {
         $width: math.div(100%, math.div($col_count, $i));
-        .col-#{$size}-#{$i} {
+        .col#{$size}-#{$i} {
             flex-basis: $width;
             max-width: $width;
         }
