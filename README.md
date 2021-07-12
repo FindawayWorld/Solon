@@ -35,3 +35,7 @@ If there is a bug or feature request, file an [issue](https://github.com/Findawa
 ## Code of Conduct :smile:
 
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+
+## Favicons
+
+Favicons for Solon were created using https://realfavicongenerator.net. All sites/apps based on Solon should generate their own icons/manifests using that tool.
