@@ -54,7 +54,7 @@ dd {
     flex-wrap: wrap;
     gap: 0.5rem;
 
-    @media #{$small} {
+    @include breakpoint('sm') {
         flex-direction: row;
     }
 }

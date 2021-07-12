@@ -3,6 +3,34 @@
 @function rem($px) {
     @return math.div($px, 16) * 1rem;
 }
+
+@mixin breakpoint($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @if ($width != 0) {
+        @media only screen and (min-width: #{$width}) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+@mixin breakpoint-retina($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @if ($width != 0) {
+        @media only screen and (min-width: #{$width}) and (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    } @else {
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    }
+}
+
+@function get-breakpoint-infix($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @return if($width != 0, '-#{$breakpoint}', '');
+}
 @function shade($color, $percent) {
     @return mix(#000, $color, $percent);
 }
