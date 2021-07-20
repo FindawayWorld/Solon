@@ -1,5 +1,35 @@
+@use "sass:math";
+
 @function rem($px) {
-    @return ($px / 16) * 1rem;
+    @return math.div($px, 16) * 1rem;
+}
+
+@mixin breakpoint($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @if ($width != 0) {
+        @media only screen and (min-width: #{$width}) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+@mixin breakpoint-retina($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @if ($width != 0) {
+        @media only screen and (min-width: #{$width}) and (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    } @else {
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            @content;
+        }
+    }
+}
+
+@function get-breakpoint-infix($breakpoint, $allBreakpoints: $standard-breakpoints) {
+    $width: map-get($allBreakpoints, $breakpoint);
+    @return if($width != 0, '-#{$breakpoint}', '');
 }
 @function shade($color, $percent) {
     @return mix(#000, $color, $percent);
@@ -13,7 +43,7 @@
     $g: green($color);
     $b: blue($color);
 
-    $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+    $yiq: math.div(($r * 299) + ($g * 587) + ($b * 114), 1000);
 
     @return if($yiq >= 200, $dark, $light);
 }
@@ -48,7 +78,7 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
     $l1: luminance($background);
     $l2: luminance(opaque($background, $color-contrast-light));
 
-    $contrast: if($l1 > $l2, ($l1 + 0.05) / ($l2 + 0.05), ($l2 + 0.05) / ($l1 + 0.05));
+    $contrast: if($l1 > $l2, math.div($l1 + 0.05, $l2 + 0.05), math.div($l2 + 0.05, $l1 + 0.05));
 
     @return if($contrast < $min-contrast-ratio, $color-contrast-dark, $color-contrast-light);
 }
@@ -64,7 +94,7 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
     );
 
     @each $name, $value in $rgb {
-        $value: if($value / 255 < 0.03928, $value / 255 / 12.92, nth($_luminance-list, $value + 1));
+        $value: if(math.div($value, 255) < 0.03928, math.div(math.div($value, 255), 12.92), nth($_luminance-list, $value + 1));
         $rgb: map-merge(
             $rgb,
             (

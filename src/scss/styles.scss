@@ -2,7 +2,7 @@
 
 @import 'functions', 'settings';
 
-@import 'base/base', 'base/typography';
+@import 'base/base', 'base/typography', 'base/utils';
 
 @import 'components/card',
         'components/forms',
@@ -122,6 +122,7 @@
 // Style Guide Styles
 
 .swatch {
+    display: inline-block;
     max-width: 100%;
     width: rem(100);
     height: rem(100);
@@ -129,6 +130,9 @@
 }
 
 @each $color, $value in map-merge($themeColors, $colors) {
+    .border-#{$color} {
+        border-color: $value;
+    }
     .bg-#{$color} {
         background-color: $value;
         color: color-contrast($value) !important;

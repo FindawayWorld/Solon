@@ -40,27 +40,33 @@ h6,
     line-height: 1.2;
 }
 
-h1 {
+h1,
+.h1 {
     font-size: $h1-font-size;
 }
 
-h2 {
+h2,
+.h2 {
     font-size: $h2-font-size;
 }
 
-h3 {
+h3,
+.h3 {
     font-size: $h3-font-size;
 }
 
-h4 {
+h4,
+.h4 {
     font-size: $h4-font-size;
 }
 
-h5 {
+h5,
+.h5 {
     font-size: $h5-font-size;
 }
 
-h6 {
+h6,
+.h6 {
     font-size: $h6-font-size;
 }
 
@@ -106,6 +112,11 @@ sup {
     top: -0.5em;
 }
 
+blockquote {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
 .lead {
     font-size: rem(24);
     line-height: rem(40);
@@ -145,8 +156,21 @@ li > svg {
     font-weight: 300 !important;
 }
 
-.overflow-x-hidden {
-    overflow-x: hidden;
+// Whitespace
+.text-normal {
+    white-space: normal;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+.text-pre {
+    white-space: pre;
+}
+.text-pre-line {
+    white-space: pre-line;
+}
+.text-pre-wrap {
+    white-space: pre-wrap;
 }
 
 // Vertical Align
@@ -183,4 +207,38 @@ li > svg {
 }
 .lh-lg {
     line-height: $line-height + 0.5 !important;
+}
+
+@mixin text($infix: '') {
+    // Responsive font sizes
+    @each $size, $length in $spacers {
+        @if $size >= 3 {
+            .txt#{$infix}-#{$size} {
+                font-size: $length !important;
+            }
+        }
+    }
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
+    }
+    .txt#{$infix}-truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@include text();
+@each $breakpoint in map-keys($standard-breakpoints) {
+    @include breakpoint($breakpoint) {
+        $infix: get-breakpoint-infix($breakpoint);
+        @include text($infix);
+    }
 }

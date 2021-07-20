@@ -1,49 +1,4 @@
-$col_count: 12;
-$spacer: 1rem !default;
-$spacers: () !default;
-$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
-
-$spacers: map-merge(
-    (
-        // 0px
-        0: 0,
-        //  4px
-        1: $spacer * 0.25,
-        // 8px
-        2: $spacer * 0.5,
-        // 12px
-        3: $spacer * 0.75,
-        // 16px
-        4: $spacer * 1,
-        // 20px
-        5: $spacer * 1.25,
-        // 24px
-        6: $spacer * 1.5,
-        // 32px
-        8: $spacer * 2,
-        // 40px
-        10: $spacer * 2.5,
-        // 48px
-        12: $spacer * 3,
-        // 64px
-        16: $spacer * 4,
-        // 80px
-        20: $spacer * 5,
-        // 96px
-        24: $spacer * 6,
-        // 128px
-        32: $spacer * 8,
-        // 160px
-        40: $spacer * 10,
-        // 192px
-        48: $spacer * 12,
-        // 224px
-        56: $spacer * 14,
-        // 256px
-        64: $spacer * 16
-    ),
-    $spacers
-);
+@use "sass:math";
 
 .row {
     box-sizing: border-box;
@@ -51,8 +6,8 @@ $spacers: map-merge(
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: ($spacer / 2) * -1;
-    margin-left: ($spacer / 2) * -1;
+    margin-right: math.div($spacer, 2) * -1;
+    margin-left: math.div($spacer, 2) * -1;
 }
 
 .container-fluid,
@@ -91,15 +46,15 @@ $spacers: map-merge(
 }
 
 .col {
-    padding-right: $spacer / 2;
-    padding-left: $spacer / 2;
+    padding-right: math.div($spacer, 2);
+    padding-left: math.div($spacer, 2);
 }
 
 .row.reverse {
     flex-direction: row-reverse;
 }
 
-@mixin margins($infix) {
+@mixin margins($infix: '') {
     @each $prop, $abbrev in (margin: m, padding: p) {
         @each $size, $length in $spacers {
             .#{$abbrev}#{$infix}-#{$size} {
@@ -125,12 +80,6 @@ $spacers: map-merge(
             .#{$abbrev}x#{$infix}-#{$size} {
                 #{$prop}-left: $length !important;
             }
-        }
-    }
-
-    @each $value in $displays {
-        .d#{$infix}-#{$value} {
-            display: $value !important;
         }
     }
 
@@ -187,226 +136,129 @@ $spacers: map-merge(
     .mx#{$infix}-auto {
         margin-left: auto !important;
     }
-
-    // Responsive overflow
-    .overflow#{$infix}-x-auto {
-        overflow-x: auto !important;
-    }
-    .overflow#{$infix}-y-auto {
-        overflow-y: auto !important;
-    }
-    .overflow#{$infix}-x-hidden {
-        overflow-x: hidden !important;
-    }
-    .overflow#{$infix}-y-hidden {
-        overflow-y: hidden !important;
-    }
-    .overflow#{$infix}-x-visible {
-        overflow-x: visible !important;
-    }
-    .overflow#{$infix}-y-visible {
-        overflow-y: visible !important;
-    }
-
-    // Responsive text alignment
-    .txt#{$infix}-right {
-        text-align: right !important;
-    }
-    .txt#{$infix}-left {
-        text-align: left !important;
-    }
-    .txt#{$infix}-center {
-        text-align: center !important;
-    }
 }
 
-@mixin gridCol($size) {
-    .col-#{$size},
-    .col-#{$size}-1,
-    .col-#{$size}-2,
-    .col-#{$size}-3,
-    .col-#{$size}-4,
-    .col-#{$size}-5,
-    .col-#{$size}-6,
-    .col-#{$size}-7,
-    .col-#{$size}-8,
-    .col-#{$size}-9,
-    .col-#{$size}-10,
-    .col-#{$size}-11,
-    .col-#{$size}-12,
-    .col-#{$size}-offset-0,
-    .col-#{$size}-offset-1,
-    .col-#{$size}-offset-2,
-    .col-#{$size}-offset-3,
-    .col-#{$size}-offset-4,
-    .col-#{$size}-offset-5,
-    .col-#{$size}-offset-6,
-    .col-#{$size}-offset-7,
-    .col-#{$size}-offset-8,
-    .col-#{$size}-offset-9,
-    .col-#{$size}-offset-10,
-    .col-#{$size}-offset-11,
-    .col-#{$size}-offset-12 {
+@mixin gridCol($size: '') {
+    .col#{$size},
+    .col#{$size}-1,
+    .col#{$size}-2,
+    .col#{$size}-3,
+    .col#{$size}-4,
+    .col#{$size}-5,
+    .col#{$size}-6,
+    .col#{$size}-7,
+    .col#{$size}-8,
+    .col#{$size}-9,
+    .col#{$size}-10,
+    .col#{$size}-11,
+    .col#{$size}-12,
+    .col#{$size}-offset-0,
+    .col#{$size}-offset-1,
+    .col#{$size}-offset-2,
+    .col#{$size}-offset-3,
+    .col#{$size}-offset-4,
+    .col#{$size}-offset-5,
+    .col#{$size}-offset-6,
+    .col#{$size}-offset-7,
+    .col#{$size}-offset-8,
+    .col#{$size}-offset-9,
+    .col#{$size}-offset-10,
+    .col#{$size}-offset-11,
+    .col#{$size}-offset-12 {
         box-sizing: border-box;
         flex: 0 0 auto;
-        padding-right: $spacer / 2;
-        padding-left: $spacer / 2;
+        padding-right: math.div($spacer, 2);
+        padding-left: math.div($spacer, 2);
     }
 
-    .col-#{$size} {
+    .col#{$size} {
         flex-grow: 1;
         flex-basis: 0;
         max-width: 100%;
     }
 
     @for $i from 1 through $col_count {
-        $width: 100% / ($col_count / $i);
-        .col-#{$size}-#{$i} {
+        $width: math.div(100%, math.div($col_count, $i));
+        .col#{$size}-#{$i} {
             flex-basis: $width;
             max-width: $width;
         }
 
-        .col-#{$size}-offset-#{$i} {
+        .col#{$size}-offset-#{$i} {
             margin-left: $width;
         }
     }
 
-    .col-#{$size}-auto {
+    .col#{$size}-auto {
         flex-basis: auto;
     }
 
-    .col-#{$size}-centered,
-    .col-#{$size}-centered:last-child {
+    .col#{$size}-centered,
+    .col#{$size}-centered:last-child {
         margin-left: auto;
         margin-right: auto;
         float: none;
     }
 
-    .start-#{$size} {
+    .start#{$size} {
         justify-content: flex-start;
         text-align: start;
     }
 
-    .center-#{$size} {
+    .center#{$size} {
         justify-content: center;
         text-align: center;
     }
 
-    .end-#{$size} {
+    .end#{$size} {
         justify-content: flex-end;
         text-align: end;
     }
 
-    .top-#{$size} {
+    .top#{$size} {
         align-items: flex-start;
     }
 
-    .middle-#{$size} {
+    .middle#{$size} {
         align-items: center;
     }
 
-    .bottom-#{$size} {
+    .bottom#{$size} {
         align-items: flex-end;
     }
 
-    .around-#{$size} {
+    .around#{$size} {
         justify-content: space-around;
     }
 
-    .between-#{$size} {
+    .between#{$size} {
         justify-content: space-between;
     }
 
-    .first-#{$size} {
+    .first#{$size} {
         order: -1;
     }
 
-    .last-#{$size} {
+    .last#{$size} {
         order: 1;
     }
+    .wrap#{$size} {
+        flex-wrap: wrap;
+    }
 }
 
-@include margins('');
+@each $breakpoint in map-keys($standard-breakpoints) {
+    @include breakpoint($breakpoint) {
+        $infix: get-breakpoint-infix($breakpoint);
+        $container-width: map-get($container-widths, $breakpoint);
 
-@include gridCol('xs');
-@include margins('-xs');
+        @if $container-width {
+            .container {
+                max-width: rem($container-width);
+            }
+        }
 
-.no-xs {
-    display: none;
-}
-
-@media #{$small} {
-    .no-sm {
-        display: none;
+        @include margins($infix);
+        @include gridCol($infix);
     }
-
-    .no-xs,
-    .no-md,
-    .no-lg,
-    .no-xl {
-        display: block;
-    }
-
-    .container {
-        max-width: rem(540);
-    }
-
-    @include gridCol('sm');
-    @include margins('-sm');
-}
-
-@media #{$medium} {
-    .no-md {
-        display: none;
-    }
-
-    .no-xs,
-    .no-sm,
-    .no-lg,
-    .no-xl {
-        display: block;
-    }
-
-    .container {
-        max-width: rem(720);
-    }
-
-    @include gridCol('md');
-    @include margins('-md');
-}
-
-@media #{$large} {
-    .no-lg {
-        display: none;
-    }
-
-    .no-xs,
-    .no-sm,
-    .no-md,
-    .no-xl {
-        display: block;
-    }
-
-    .container {
-        max-width: rem(960);
-    }
-
-    @include gridCol('lg');
-    @include margins('-lg');
-}
-
-@media #{$xlarge} {
-    .container {
-        max-width: rem(1140);
-    }
-    @include gridCol('xl');
-    @include margins('-xl');
-}
-
-@media #{$xxlarge} {
-    .container {
-        max-width: rem(1320);
-    }
-    @include gridCol('xxl');
-    @include margins('-xxl');
 }

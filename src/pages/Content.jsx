@@ -3,6 +3,46 @@ import { FiArrowRight } from 'react-icons/fi';
 import Layout from '../components/Layout';
 import classnames from 'classnames';
 
+const spacer = 1;
+export const spacers = {
+    // 0px
+    0: 0,
+    //  4px
+    1: spacer * 0.25,
+    // 8px
+    2: spacer * 0.5,
+    // 12px
+    3: spacer * 0.75,
+    // 16px
+    4: spacer * 1,
+    // 20px
+    5: spacer * 1.25,
+    // 24px
+    6: spacer * 1.5,
+    // 32px
+    8: spacer * 2,
+    // 40px
+    10: spacer * 2.5,
+    // 48px
+    12: spacer * 3,
+    // 64px
+    16: spacer * 4,
+    // 80px
+    20: spacer * 5,
+    // 96px
+    24: spacer * 6,
+    // 128px
+    32: spacer * 8,
+    // 160px
+    40: spacer * 10,
+    // 192px
+    48: spacer * 12,
+    // 224px
+    56: spacer * 14,
+    // 256px
+    64: spacer * 16
+};
+
 export const colors = [
     'aqua',
     'blue',
@@ -40,7 +80,7 @@ const ContentPage = () => {
                 <div className="swatch-list mb-3">
                     <div className="row">
                         {colors.map((color) => (
-                            <div key={`colors-${color}`} className="col-xs-6 col-md-2 txt-center">
+                            <div key={`colors-${color}`} className="col-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
                                     <code>${color}</code>
@@ -54,7 +94,7 @@ const ContentPage = () => {
                 <div className="swatch-list">
                     <div className="row">
                         {brandColors.map((color) => (
-                            <div key={`brand-${color}`} className="col-xs-6 col-md-2 txt-center">
+                            <div key={`brand-${color}`} className="col-6 col-md-2 txt-center">
                                 <div className={`swatch bg-${color}`}></div>
                                 <p>
                                     <code>${color}</code>
@@ -262,6 +302,20 @@ sans-serif,
                     Products, they transformed the way that audiobooks, eBooks, videos and learning tools are circulated
                     in 40,000 libraries, schools, and military installations.
                 </p>
+            </section>
+
+            <section id="font-size" className="mb-5">
+                <h2>Font Sizes</h2>
+                <hr />
+                <div className="bg-light p-6 rounded overflow-x-auto">
+                    {Object.keys(spacers)
+                        .filter((key) => key >= 3)
+                        .map((key) => (
+                            <p className={`txt-${key} text-nowrap`}>
+                                Text {spacers[key]}rem ({spacers[key] * 16}px)
+                            </p>
+                        ))}
+                </div>
             </section>
 
             <section id="links" className="mb-5">
