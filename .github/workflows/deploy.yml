@@ -43,6 +43,9 @@ jobs:
       - name: Build For Production
         run: yarn build
 
+      - name: Build static CSS
+        run: yarn build:css
+
       - name: Deploy index.html
         run: aws s3 sync ./build s3://solon.findaway.com --cache-control="max-age=1" --acl="public-read" --exclude='*' --include='index.html'
       - name: Deploy Rest
