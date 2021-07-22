@@ -20,7 +20,7 @@ const BreadcrumbsPage = () => (
         </p>
 
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} to="/components">
                 Components
             </BreadcrumbItem>
             <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
