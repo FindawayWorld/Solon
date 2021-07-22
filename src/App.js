@@ -26,6 +26,7 @@ import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
 import { asc } from './utils/sorts';
 import BrandSettings from './pages/BrandSettings';
+import useDisabledLinks from './hooks/useDisabledLinks';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -66,6 +67,7 @@ const App = () => {
     const medium = window.matchMedia('(max-width: 768px)');
     const [collapseSidebar, setCollapseSidebar] = React.useState(medium.matches);
     const location = useLocation();
+    useDisabledLinks();
 
     const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
         let match = useRouteMatch({

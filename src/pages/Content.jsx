@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const spacer = 1;
 export const spacers = {
@@ -108,11 +109,10 @@ const ContentPage = () => {
                 <h2>Native font stack</h2>
                 <hr />
 
-                <p>
-                    Solon uses a “native font stack” for optimum text rendering on every device and OS. .{' '}
-                    <pre>
-                        <code>
-                            {`// Safari for macOS and iOS (San Francisco)
+                <p>Solon uses a “native font stack” for optimum text rendering on every device and OS. . </p>
+                <pre>
+                    <code>
+                        {`// Safari for macOS and iOS (San Francisco)
 -apple-system,
 // Chrome < 56 for macOS (San Francisco)
 BlinkMacSystemFont,
@@ -128,8 +128,9 @@ Roboto,
 sans-serif,
 // Emoji fonts
 "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;`}
-                        </code>
-                    </pre>
+                    </code>
+                </pre>
+                <p>
                     Read more about native font stacks in this{' '}
                     <a
                         href="https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/"
@@ -195,7 +196,7 @@ sans-serif,
                 <h2>Vertical Alignment</h2>
                 <hr />
                 {['top', 'middle', 'bottom', 'baseline'].map((al) => (
-                    <p className="px-2 bg-gray">
+                    <p key={`align-${al}`} className="px-2 bg-gray">
                         <span style={{ lineHeight: '3rem' }}>Text aligned {al}</span>{' '}
                         <span className={`align-${al}`}>.align-{al}</span>
                     </p>
@@ -236,7 +237,7 @@ sans-serif,
                 <p>
                     <code>.lh-1</code>
                 </p>
-                <p class="lh-1">
+                <p className="lh-1">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
                     accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
                     Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
@@ -249,7 +250,7 @@ sans-serif,
                 <p>
                     <code>.lh-sm</code> 1.25
                 </p>
-                <p class="lh-sm">
+                <p className="lh-sm">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
                     accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
                     Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
@@ -263,7 +264,7 @@ sans-serif,
                 <p>
                     <code>.lh-base</code> 1.5
                 </p>
-                <p class="lh-base">
+                <p className="lh-base">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
                     accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
                     Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
@@ -277,7 +278,7 @@ sans-serif,
                 <p>
                     <code>.lh-lg</code> 2
                 </p>
-                <p class="lh-lg">
+                <p className="lh-lg">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos impedit non id quo quas expedita dolor,
                     accusantium perspiciatis doloribus aliquam nostrum provident quidem natus voluptatibus asperiores?
                     Quo cum dicta incidunt? Nostrum perferendis atque tempora dolorum magni beatae dignissimos odio eius
@@ -310,7 +311,7 @@ sans-serif,
                     {Object.keys(spacers)
                         .filter((key) => key >= 3)
                         .map((key) => (
-                            <p className={`txt-${key} text-nowrap`}>
+                            <p key={`txt-${key}`} className={`txt-${key} text-nowrap`}>
                                 Text {spacers[key]}rem ({spacers[key] * 16}px)
                             </p>
                         ))}
@@ -323,25 +324,30 @@ sans-serif,
 
                 <ul className="list-flat">
                     <li>
-                        <a href="#link">Standard</a>
+                        <a href="#links:standard">Standard</a>
                     </li>
                     <li>
-                        <a href="https://findaway.com" disabled="disabled">
+                        <a href="https://findaway.com" disabled>
                             Disabled
                         </a>
                     </li>
                     <li>
-                        <a href="#link" className="cta">
+                        <Link to="/components" disabled>
+                            Link Disabled
+                        </Link>
+                    </li>
+                    <li>
+                        <a href="#links:cta" className="cta">
                             Call To Action
                         </a>
                     </li>
                     <li>
-                        <a href="#link" className="reverse-cta">
+                        <a href="#links:revCta" className="reverse-cta">
                             Reverse CTA
                         </a>
                     </li>
                     <li>
-                        <a href="#link" className="fancy-cta">
+                        <a href="#links:fancyCta" className="fancy-cta">
                             Fancy CTA w/ SVG <FiArrowRight width="1em" height="1em" />
                         </a>
                     </li>
@@ -349,6 +355,7 @@ sans-serif,
                 <p>
                     {[...brandColors, ...colors].map((color) => (
                         <a
+                            key={`link-${color}`}
                             href="#links"
                             className={classnames(`link-${color} d-inline-block mr-4`, {
                                 'bg-dark p-2 ': color === 'light' || color === 'white' || color === 'silver'
