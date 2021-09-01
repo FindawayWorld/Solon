@@ -2,6 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import DescriptionList from '../components/DescriptionList';
 
 const spacer = 1;
 export const spacers = {
@@ -394,6 +395,38 @@ sans-serif,
                     <li>dolor sit amet</li>
                     <li>adipisicing elit</li>
                 </ol>
+
+                <h3 id="description-list" className="mb-0">
+                    Description{' '}
+                    <small>
+                        <code>dl or DescriptionList</code>
+                    </small>
+                </h3>
+                <p className="mt-2">
+                    A description list is useful for displaying a glossary, metadata, and other key-value pairs.
+                </p>
+                <DescriptionList
+                    labelValuePairs={[
+                        ['Authors', 'Stephen King'],
+                        [
+                            'Narrators',
+                            <ul className="comma-delimited">
+                                <li>Morgan Freeman</li>
+                                <li>James Earl Jones</li>
+                            </ul>
+                        ],
+                        ['Page Count', 297],
+                        [
+                            'Release Date',
+                            <>
+                                <span>2021-09-01</span>
+                                <br />
+                                <a href="#description-list">Learn more about release date</a>
+                            </>
+                        ]
+                    ]}
+                />
+                <DescriptionList labelValuePairs={['label', 'value']} />
 
                 <h3 className="mb-0">
                     Inline{' '}
