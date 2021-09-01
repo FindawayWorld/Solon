@@ -28,12 +28,7 @@ const DescriptionList = ({
     }
 
     return (
-        <dl
-            id={id || undefined}
-            className={classnames('list-description', listClass)}
-            data-testid="list-description"
-            aria-label="description list"
-        >
+        <dl id={id || undefined} className={classnames('list-description', listClass)} data-testid="list-description">
             {arr.map(([label, value], idx) => (
                 <LabelValuePair key={idx} label={label} value={value} className={itemClass} />
             ))}
