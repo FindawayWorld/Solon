@@ -407,7 +407,7 @@ sans-serif,
                 </p>
                 <DescriptionList
                     labelValuePairs={[
-                        ['Authors', 'Stephen King'],
+                        ['Author', 'Stephen King'],
                         [
                             'Narrators',
                             <ul className="comma-delimited">
