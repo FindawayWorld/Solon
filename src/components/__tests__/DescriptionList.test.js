@@ -45,6 +45,22 @@ test('renders description list with a custom id', async () => {
     expect(list).toHaveAttribute('id', 'custom-id');
 });
 
+test('renders description list with a custom list class', async () => {
+    render(<DescriptionList id="custom-id" listClass="custom-list-class" labelValuePairs={[['label', 'value']]} />);
+
+    const list = screen.getByTestId('list-description');
+
+    expect(list).toHaveClass('custom-list-class');
+});
+
+test('renders description list with a custom list item class', async () => {
+    render(<DescriptionList id="custom-id" itemClass="custom-item-class" labelValuePairs={[['label', 'value']]} />);
+
+    const listItem = screen.getByTestId('label-value-pair');
+
+    expect(listItem).toHaveClass('custom-item-class');
+});
+
 test('component is accessible', async () => {
     render(<DescriptionList labelValuePairs={[['label', 'value']]} />);
 
