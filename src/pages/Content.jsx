@@ -462,6 +462,24 @@ sans-serif,
                         <a href="#link">adipisicing elit</a>
                     </li>
                 </ul>
+
+                <h3 className="mt-4 mb-0">
+                    Comma Delimited{' '}
+                    <small>
+                        <code>.comma-delimited</code>
+                    </small>
+                </h3>
+                <ul className="comma-delimited">
+                    <li>
+                        <a href="#link">lorem ipsum</a>
+                    </li>
+                    <li>
+                        <a href="#link">dolor sit amet</a>
+                    </li>
+                    <li>
+                        <a href="#link">adipisicing elit</a>
+                    </li>
+                </ul>
             </section>
 
             <section id="icons" className="mb-5">
