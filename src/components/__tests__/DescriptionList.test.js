@@ -70,15 +70,3 @@ test('renders description list with a custom list item class', async () => {
 
     expect(listItem).toHaveClass('custom-item-class');
 });
-
-test('component is accessible', async () => {
-    render(<DescriptionList labelValuePairs={[['label', 'value']]} />);
-
-    const pair = screen.getByTestId('label-value-pair');
-
-    // i wanted to use jest-dom's toHaveAccessibleDescription and toHaveAccesibleName matchers here
-    // wasn't able to get them to work
-    // expect(pair).toHaveAccessibleName();
-    // expect(pair).toHaveAccessibleDescription()
-    expect(pair).toHaveAttribute('role', 'group');
-});
