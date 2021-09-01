@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export const LabelValuePair = ({ label = null, value = null, itemClass = '' }) => (
-    <div className={classnames('label-value-pair', itemClass)} data-testid="label-value-pair" role="group">
+export const LabelValuePair = ({ label = null, value = null, className = '' }) => (
+    <div className={classnames('label-value-pair', className)} data-testid="label-value-pair" role="group">
         <dt data-testid="term">{label}</dt>
         <dd data-testid="description">{value}</dd>
     </div>
@@ -31,7 +31,7 @@ const DescriptionList = ({
             aria-label="description list"
         >
             {arr.map(([label, value], idx) => (
-                <LabelValuePair key={idx} label={label} value={value} itemClass={itemClass} />
+                <LabelValuePair key={idx} label={label} value={value} className={itemClass} />
             ))}
         </dl>
     );
