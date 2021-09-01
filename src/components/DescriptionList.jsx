@@ -17,6 +17,10 @@ const DescriptionList = ({
     listClass = '',
     itemClass = ''
 }) => {
+    if (!Array.isArray(labelValuePairs)) {
+        return null;
+    }
+
     const arr = labelValuePairs.filter((pair) => Array.isArray(pair) && pair.length === 2); // each pair must be an array of 2 elements
 
     if (!arr.length) {

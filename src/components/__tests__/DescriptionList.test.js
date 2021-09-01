@@ -13,6 +13,16 @@ test('handles improperly shaped labelValuePairs array', async () => {
     expect(getElement).toThrow();
 });
 
+test('handles labelValuePairs prop that is not an array', async () => {
+    render(<DescriptionList labelValuePairs={'string'} />);
+
+    const getElement = () => {
+        screen.getByTestId('list-description');
+    };
+
+    expect(getElement).toThrow();
+});
+
 test('renders a properly shaped description list (dl)', async () => {
     render(<DescriptionList labelValuePairs={[['label', 'value']]} />);
 
