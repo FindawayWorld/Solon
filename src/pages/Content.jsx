@@ -426,7 +426,6 @@ sans-serif,
                         ]
                     ]}
                 />
-                <DescriptionList labelValuePairs={['label', 'value']} />
 
                 <h3 className="mb-0">
                     Inline{' '}
