@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { LabelValuePair } from '../DescriptionList';
+import LabelValuePair from '../LabelValuePair';
 
 test('handle null label', async () => {
     render(<LabelValuePair label={null} />);

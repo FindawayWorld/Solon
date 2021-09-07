@@ -2,7 +2,7 @@ import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
-import DescriptionList from '../components/DescriptionList';
+import DescriptionList from '../components/DescriptionList/index';
 
 const spacer = 1;
 export const spacers = {

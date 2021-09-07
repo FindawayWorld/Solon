@@ -14,22 +14,6 @@ ol {
 
 ul {
     list-style-type: disc;
-
-    &.comma-delimited {
-        list-style: none;
-        display: inline;
-        padding: 0;
-        margin: 0;
-
-        li {
-            display: inline;
-            line-height: initial;
-
-            &:not(:last-child):after {
-                content: ', ';
-            }
-        }
-    }
 }
 
 ol {
@@ -131,5 +115,21 @@ dd {
         order: 2;
         position: relative;
         top: 0;
+    }
+}
+
+.comma-delimited {
+    list-style: none;
+    display: inline;
+    padding: 0;
+    margin: 0;
+
+    li {
+        display: inline;
+        line-height: initial;
+
+        &:not(:last-child):after {
+            content: ', ';
+        }
     }
 }

@@ -1,27 +1,19 @@
 import React from 'react';
 import classnames from 'classnames';
-
-export const LabelValuePair = ({ label = null, value = null, className = '' }) => {
-    if (label == null || value == null) {
-        return null;
-    }
-    return (
-        <div className={classnames('label-value-pair', className)} data-testid="label-value-pair" role="group">
-            <dt data-testid="term">{label}</dt>
-            <dd data-testid="description">{value}</dd>
-        </div>
-    );
-};
+import { useId } from '@reach/auto-id';
+import LabelValuePair from './LabelValuePair';
 
 const DescriptionList = ({
     // accepts an array of arrays where for each array,
     // array[0] = label
     // array[1] = value
     labelValuePairs = [],
-    id = '',
+    id = undefined,
     listClass = '',
     itemClass = ''
 }) => {
+    id = useId(id);
+
     if (!Array.isArray(labelValuePairs)) {
         return null;
     }
@@ -33,9 +25,14 @@ const DescriptionList = ({
     }
 
     return (
-        <dl id={id || undefined} className={classnames('list-description', listClass)} data-testid="list-description">
+        <dl id={id} className={classnames('list-description', listClass)} data-testid="list-description">
             {arr.map(([label, value], idx) => (
-                <LabelValuePair key={idx} label={label} value={value} className={itemClass} />
+                <LabelValuePair
+                    key={`${label.toLowerCase()}_${idx}`}
+                    label={label}
+                    value={value}
+                    className={itemClass}
+                />
             ))}
         </dl>
     );
