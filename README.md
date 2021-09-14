@@ -39,3 +39,5 @@ Please note that this project is released with a Contributor Code of Conduct. By
 ## Favicons
 
 Favicons for Solon were created using https://realfavicongenerator.net. All sites/apps based on Solon should generate their own icons/manifests using that tool.
+
+Force Sandbox
