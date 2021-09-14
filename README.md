@@ -40,4 +40,6 @@ Please note that this project is released with a Contributor Code of Conduct. By
 
 Favicons for Solon were created using https://realfavicongenerator.net. All sites/apps based on Solon should generate their own icons/manifests using that tool.
 
-Force Sandbox
+## Sandboxes
+
+If you would like GitHub to automatically create a sandbox when you open a PR, include `[SANDBOX]` in the title of your PR. E.g. `Update CSS for Input component [SANDBOX]`
