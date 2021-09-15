@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "sass src/scss/styles.scss build/solon.css"
   },
