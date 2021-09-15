@@ -40,6 +40,9 @@ jobs:
       - name: Install Deps
         run: yarn install --ignore-optional
 
+      - name: Run Tests
+        run: yarn test
+
       - name: Build For Production
         run: yarn build
 
