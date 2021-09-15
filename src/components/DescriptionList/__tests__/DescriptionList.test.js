@@ -1,7 +1,9 @@
 import React from 'react';
+import TestRenderer from 'react-test-renderer';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DescriptionList from '../index';
+import LabelValuePair from '../LabelValuePair';
 
 test('handles improperly shaped labelValuePairs array', async () => {
     render(<DescriptionList labelValuePairs={['label', 'value']} />);
@@ -58,7 +60,7 @@ test('renders description list with a custom id', async () => {
 });
 
 test('renders description list with a custom list class', async () => {
-    render(<DescriptionList id="custom-id" listClass="custom-list-class" labelValuePairs={validLabelValuePairs} />);
+    render(<DescriptionList listClass="custom-list-class" labelValuePairs={validLabelValuePairs} />);
 
     const list = screen.getByTestId('list-description');
 
@@ -66,9 +68,43 @@ test('renders description list with a custom list class', async () => {
 });
 
 test('renders description list with a custom list item class', async () => {
-    render(<DescriptionList id="custom-id" itemClass="custom-item-class" labelValuePairs={validLabelValuePairs} />);
+    render(<DescriptionList itemClass="custom-item-class" labelValuePairs={validLabelValuePairs} />);
 
     const listItem = screen.getByTestId('label-value-pair');
 
     expect(listItem).toHaveClass('custom-item-class');
+});
+
+test('has custom key when label is react fragment', async () => {
+    const testRenderer = TestRenderer.create(
+        <DescriptionList
+            labelValuePairs={[
+                [
+                    <React.Fragment key="test-key">
+                        <span>Test Label</span>
+                    </React.Fragment>,
+                    'Test Value'
+                ]
+            ]}
+        />
+    );
+    const testInstance = testRenderer.root;
+
+    expect(testInstance.findByType(LabelValuePair)._fiber.key).toBe('test-key_0');
+});
+
+test('has default key when label is react fragment', async () => {
+    const testRenderer = TestRenderer.create(
+        <DescriptionList labelValuePairs={[[<span>Test Label</span>, 'Test Value']]} />
+    );
+    const testInstance = testRenderer.root;
+
+    expect(testInstance.findByType(LabelValuePair)._fiber.key).toBe('react-element_0');
+});
+
+test('has key when label is string', async () => {
+    const testRenderer = TestRenderer.create(<DescriptionList labelValuePairs={[['Test Label', 'Test Value']]} />);
+    const testInstance = testRenderer.root;
+
+    expect(testInstance.findByType(LabelValuePair)._fiber.key).toBe('test label_0');
 });

@@ -18,7 +18,14 @@ const DescriptionList = ({
         return null;
     }
 
-    const arr = labelValuePairs.filter((pair) => Array.isArray(pair) && pair.length === 2); // each pair must be an array of 2 elements
+    // each pair must be an array of 2 elements
+    // the first element must be a string or a react element
+    const arr = labelValuePairs.filter(
+        (pair) =>
+            Array.isArray(pair) &&
+            pair.length === 2 &&
+            (typeof pair[0] === 'string' || pair[0].$$typeof === Symbol.for('react.element'))
+    );
 
     if (!arr.length) {
         return null;
@@ -26,14 +33,16 @@ const DescriptionList = ({
 
     return (
         <dl id={id} className={classnames('list-description', listClass)} data-testid="list-description">
-            {arr.map(([label, value], idx) => (
-                <LabelValuePair
-                    key={`${label.toLowerCase()}_${idx}`}
-                    label={label}
-                    value={value}
-                    className={itemClass}
-                />
-            ))}
+            {arr.map(([label, value], idx) => {
+                let key;
+                if (label.$$typeof === Symbol.for('react.element')) {
+                    key = label.key || 'react-element';
+                } else {
+                    key = label.toLowerCase();
+                }
+
+                return <LabelValuePair key={`${key}_${idx}`} label={label} value={value} className={itemClass} />;
+            })}
         </dl>
     );
 };
