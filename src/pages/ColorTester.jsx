@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 
 const ColorTester = () => {
-    const colorLib = new GWColorLib();
+    const colorLib = React.useMemo(() => new GWColorLib(), []);
     const [color, setColor] = useState('123456');
     const [activeColor, setActiveColor] = useState('#123456');
     const [styles, setStyles] = useState(colorLib.getStyles(activeColor));

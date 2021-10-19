@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { titleCase } from '../../utils';
-import { brandColors } from '../Content';
+import { brandColors, colors } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
 const FlashesPage = () => {
@@ -29,6 +29,14 @@ const FlashesPage = () => {
                         </a>
                     </div>
                 ))}
+                {colors.map((color) => (
+                    <div key={`flash-${color}`} className={classnames('flash mb-4', `flash-${color}`)}>
+                        {titleCase(color)} <a href="#demo">anchor link</a>
+                        <a href="#close" className="close">
+                            &times;
+                        </a>
+                    </div>
+                ))}
 
                 <div className="flash flash-primary">Primary, no close.</div>
             </div>
@@ -39,6 +47,16 @@ const FlashesPage = () => {
             </p>
             {brandColors
                 .filter((color) => !['light', 'warning'].includes(color))
+                .map((color) => (
+                    <div
+                        key={`flash-outline-${color}`}
+                        className={classnames('flash fixed mb-4', ` flash-outline-${color}`)}
+                    >
+                        {titleCase(color)} <a href="#demo">anchor link</a>
+                    </div>
+                ))}
+            {colors
+                .filter((color) => !['white', 'silver'].includes(color))
                 .map((color) => (
                     <div
                         key={`flash-outline-${color}`}

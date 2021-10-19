@@ -35,11 +35,11 @@ $modal-close-color: $gray;
     padding: 2rem;
     outline: none;
 
-    @media #{$small} {
+    @include breakpoint('sm') {
         width: 90%;
     }
 
-    @media #{$medium} {
+    @include breakpoint('md') {
         max-width: rem(960);
     }
 }

@@ -44,23 +44,29 @@
     table {
         font-size: 1rem;
     }
+
     td {
         display: block;
-    }
+        &:before {
+            content: attr(data-title);
+            font-weight: bold;
+        }
 
-    td:before {
-        content: attr(data-title);
-        font-weight: bold;
+        // Clear responsive header if data-title is not present
+        &:not([data-title]):before {
+            content: none;
+            margin-right: 0;
+        }
     }
 
     /* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
 
-    @media #{$medium} {
+    @include breakpoint('md') {
         table {
             font-size: rem(13);
         }

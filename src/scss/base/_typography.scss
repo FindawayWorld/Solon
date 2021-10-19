@@ -3,7 +3,7 @@ body {
     font-family: $font-family;
     font-size: 16px;
     font-size: $font-size-base;
-    line-height: 1.5;
+    line-height: $line-height;
     font-style: normal;
 }
 
@@ -40,27 +40,33 @@ h6,
     line-height: 1.2;
 }
 
-h1 {
+h1,
+.h1 {
     font-size: $h1-font-size;
 }
 
-h2 {
+h2,
+.h2 {
     font-size: $h2-font-size;
 }
 
-h3 {
+h3,
+.h3 {
     font-size: $h3-font-size;
 }
 
-h4 {
+h4,
+.h4 {
     font-size: $h4-font-size;
 }
 
-h5 {
+h5,
+.h5 {
     font-size: $h5-font-size;
 }
 
-h6 {
+h6,
+.h6 {
     font-size: $h6-font-size;
 }
 
@@ -106,9 +112,14 @@ sup {
     top: -0.5em;
 }
 
+blockquote {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
 .lead {
     font-size: rem(24);
-    line-height: rem(38);
+    line-height: rem(40);
     font-weight: $light-weight;
 }
 
@@ -120,6 +131,7 @@ li > svg {
     margin-left: 0.5rem;
 }
 
+// Text align
 .txt-center {
     text-align: center !important;
 }
@@ -132,14 +144,101 @@ li > svg {
     text-align: left !important;
 }
 
-.txt-bold {
+// Font Weight
+.fw-normal {
+    font-weight: 400 !important;
+}
+.fw-bold {
     font-weight: 700 !important;
 }
 
-.txt-light {
+.fw-light {
     font-weight: 300 !important;
 }
 
-.overflow-x-hidden {
-    overflow-x: hidden;
+// Whitespace
+.text-normal {
+    white-space: normal;
+}
+.text-nowrap {
+    white-space: nowrap;
+}
+.text-pre {
+    white-space: pre;
+}
+.text-pre-line {
+    white-space: pre-line;
+}
+.text-pre-wrap {
+    white-space: pre-wrap;
+}
+
+// Vertical Align
+.align-middle {
+    vertical-align: middle !important;
+}
+.align-top {
+    vertical-align: top !important;
+}
+.align-baseline {
+    vertical-align: baseline !important;
+}
+.align-bottom {
+    vertical-align: bottom !important;
+}
+
+// Font style
+.italic {
+    font-style: italic !important;
+}
+.not-italic {
+    font-style: normal !important;
+}
+
+// Line Height Helpers
+.lh-1 {
+    line-height: 1 !important;
+}
+.lh-sm {
+    line-height: $line-height - 0.25 !important;
+}
+.lh-base {
+    line-height: $line-height !important;
+}
+.lh-lg {
+    line-height: $line-height + 0.5 !important;
+}
+
+@mixin text($infix: '') {
+    // Responsive font sizes
+    @each $size, $length in $spacers {
+        @if $size >= 3 {
+            .txt#{$infix}-#{$size} {
+                font-size: $length !important;
+            }
+        }
+    }
+    // Responsive text alignment
+    .txt#{$infix}-right {
+        text-align: right !important;
+    }
+    .txt#{$infix}-left {
+        text-align: left !important;
+    }
+    .txt#{$infix}-center {
+        text-align: center !important;
+    }
+    .txt#{$infix}-truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@include text();
+@each $breakpoint in map-keys($standard-breakpoints) {
+    @include breakpoint($breakpoint) {
+        $infix: get-breakpoint-infix($breakpoint);
+        @include text($infix);
+    }
 }

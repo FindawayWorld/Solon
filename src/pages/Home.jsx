@@ -19,11 +19,10 @@ const HomePage = () => (
             </h2>
             <hr />
             <p>
-                Gateway contains all our re-useable React components, so it's a perfect starter for any new React
-                project.
+                Solon contains all our re-useable React components, so it's a perfect starter for any new React project.
             </p>
             <p>
-                Gateway is already bootstrapped with Create-React-App. To use this as a starter for a new React project,
+                Solon is already bootstrapped with Create-React-App. To use this as a starter for a new React project,
                 you can "Use Template" in Github.{' '}
                 <a href="https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template">
                     Learn more here.
@@ -45,7 +44,7 @@ const HomePage = () => (
             <h2>Using with static site</h2>
             <hr />
             <p>
-                Gateway is built with React but the underlying HTML and CSS are useable for any static project. If using
+                Solon is built with React but the underlying HTML and CSS are useable for any static project. If using
                 Sass on your static project, copy the <code>scss</code> folder to your project. If not using Sass,
                 compile the css with a Sass tool and inclue in your project.
             </p>

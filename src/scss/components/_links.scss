@@ -1,4 +1,3 @@
-
 a {
     color: $primary;
     font-weight: inherit;
@@ -9,6 +8,11 @@ a {
     &:active,
     &:focus {
         text-decoration: underline;
+    }
+
+    &[disabled] {
+        pointer-events: none;
+        opacity: 0.65;
     }
 }
 
@@ -64,5 +68,28 @@ a.fancy-cta {
         svg {
             transform: translateX(20px);
         }
+    }
+}
+
+@mixin make-link(
+    $color,
+    $color-hover: scale-color($color, $lightness: -15%),
+    $color-active: scale-color($color, $lightness: -15%)
+) {
+    color: $color;
+
+    &:hover,
+    &:focus {
+        color: $color-hover;
+    }
+    &:active,
+    &.active {
+        color: $color-active;
+    }
+}
+
+@each $color, $value in map-merge($themeColors, $colors) {
+    .link-#{$color} {
+        @include make-link($value);
     }
 }

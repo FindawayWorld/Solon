@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .form-list {
     list-style: none;
     margin: 0;
@@ -33,7 +35,7 @@ fieldset,
 label {
     color: $black;
     display: block;
-    margin-bottom: $line-height / 4;
+    margin-bottom: math.div($line-height, 4);
 
     &.collapse {
         margin-bottom: 0;
@@ -150,7 +152,7 @@ label {
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: $font-size-base;
     font-weight: 400;
     font-family: $font-family;
     line-height: 1.5;
@@ -167,7 +169,7 @@ label {
 
     &:hover,
     &:focus {
-        border-color: $gray;
+        border-color: scale-color($border-color, $lightness: -20%);
         outline: none;
     }
 
@@ -224,7 +226,7 @@ textarea.form-control {
     width: 100%;
     height: calc(1.5em + 0.75rem + 2px);
     padding: 0.375rem 1.75rem 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: $font-size-base;
     font-weight: 400;
     line-height: 1.5;
     color: $font-color;
@@ -280,30 +282,6 @@ textarea.form-control {
         text-shadow: 0 0 0 $font-color;
     }
 }
-
-// .react-select__control {
-//     box-shadow: none !important;
-//     // font-size: $form-font-size;
-//     min-height: 34px !important;
-// }
-// .react-select__control:hover {
-//     border-color: $black !important;
-//     outline: none;
-//     box-shadow: none;
-// }
-// .react-select__input input {
-//     margin: 0;
-//     height: auto;
-//     line-height: normal;
-// }
-
-// .react-select-error .react-select__control {
-//     border-color: $red;
-// }
-
-// .react-select__indicator {
-//     padding: 0 8px !important;
-// }
 
 input[readonly='readonly'] {
     border-color: transparent;
@@ -440,8 +418,17 @@ label.error,
 }
 
 .input-group.error {
+    .input-group-prepend,
+    .input-group-prepend .btn,
+    .input-group-text {
+        border-bottom-left-radius: 0;
+        border-top-color: $red;
+        border-left-color: $red;
+        border-bottom-color: $red;
+    }
     .input-group-append,
-    .input-group-append .btn {
+    .input-group-append .btn,
+    .input-group-text {
         border-bottom-right-radius: 0;
         border-top-color: $red;
         border-right-color: $red;
@@ -483,4 +470,54 @@ label.error,
 
 .list-input-box {
     margin-bottom: 1rem;
+}
+
+// React-select styles
+
+.react-select-wrapper .form-control {
+    padding: 0;
+}
+.react-select__control {
+    border: none;
+    padding: 0;
+    height: 100%;
+    min-height: 0;
+    border-radius: 0;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    // font-size: $form-font-size;
+    min-height: 0 !important;
+}
+.react-select__control:hover {
+    border-color: darken($border-color, 10%) !important;
+    outline: none;
+    box-shadow: none;
+}
+.react-select__input input {
+    margin: 0;
+    height: auto;
+    line-height: normal;
+}
+
+.react-select__value-container {
+    padding: 0 0.75rem !important;
+}
+
+.react-select-error .react-select__control {
+    border-color: $red;
+}
+
+.react-select__indicator {
+    padding: 0 8px !important;
+}
+
+.react-select__menu {
+    border-radius: $border-radius !important;
+}
+
+.react-select-multiple .form-control {
+    min-height: calc(1.5em + 0.75rem + 2px);
+    height: auto;
+    padding: rem(2) 0;
 }

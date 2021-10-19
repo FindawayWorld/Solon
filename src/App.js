@@ -19,10 +19,14 @@ import {
     FaJsSquare,
     FaFont,
     FaGithub,
-    FaChevronLeft
+    FaChevronLeft,
+    FaCog
 } from 'react-icons/fa';
-import { ReactComponent as GatewayLogo } from './svg/GatewayLogo.svg';
-import { sorts } from './utils';
+import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
+import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
+import { asc } from './utils/sorts';
+import BrandSettings from './pages/BrandSettings';
+import useDisabledLinks from './hooks/useDisabledLinks';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -32,23 +36,6 @@ export const ScrollToTop = () => {
     }, [pathname]);
 
     return null;
-};
-
-export const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
-    let match = useRouteMatch({
-        path: to,
-        exact: activeWhenExact
-    });
-
-    return (
-        <Link
-            className={classnames(className, {
-                [activeClass]: match
-            })}
-            to={to}
-            {...props}
-        />
-    );
 };
 
 export const componentsNav = [
@@ -65,21 +52,45 @@ export const componentsNav = [
     ['/components/notifications', 'Notifications']
 ];
 
-componentsNav.sort((a, b) => sorts.asc(a[1], b[1]));
+componentsNav.sort((a, b) => asc(a[1], b[1]));
 
 export const utilsNav = [
     ['/utils/breakpoints', 'Breakpoints'],
     ['/utils/spacing', 'Spacing'],
     ['/utils/colors', 'Colors'],
     ['/utils/grids', 'Grids'],
-    ['/utils/border-radius', 'Border Radius']
+    ['/utils/borders', 'Borders']
 ];
 
-utilsNav.sort((a, b) => sorts.asc(a[1], b[1]));
+utilsNav.sort((a, b) => asc(a[1], b[1]));
 
 const App = () => {
-    const [collapseSidebar, setCollapseSidebar] = React.useState(false);
+    const medium = window.matchMedia('(max-width: 768px)');
+    const [collapseSidebar, setCollapseSidebar] = React.useState(medium.matches);
     const location = useLocation();
+    useDisabledLinks();
+
+    const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
+        let match = useRouteMatch({
+            path: to,
+            exact: activeWhenExact
+        });
+
+        return (
+            <Link
+                className={classnames(className, {
+                    [activeClass]: match
+                })}
+                to={to}
+                onClick={() => {
+                    if (medium.matches) {
+                        setCollapseSidebar(true);
+                    }
+                }}
+                {...props}
+            />
+        );
+    };
 
     return (
         <div className="site-row">
@@ -88,10 +99,17 @@ const App = () => {
                     'sidebar-slim': collapseSidebar
                 })}
             >
-                <div className="sidebar-wrapper py-8">
-                    <NavLink className="logo" activeClass="active" activeWhenExact to="/">
-                        <GatewayLogo height="1.5em" width="1.011em" /> <span>Gateway</span>
-                    </NavLink>
+                <div className="sidebar-wrapper">
+                    <div className="sidebar-header">
+                        <NavLink className="logo" activeClass="active" activeWhenExact to="/">
+                            <SolonIcon width={50} className="small-logo" />
+                            <SolonLogo className="full-logo" />
+                        </NavLink>
+                        <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
+                            <FaChevronLeft />
+                        </button>
+                    </div>
+
                     <ul className="nav flex-column">
                         <li className="nav-item">
                             <NavLink className="nav-link" activeClass="active" to="/content">
@@ -155,6 +173,12 @@ const App = () => {
                                 <span>Font Tester</span>
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/brand-settings">
+                                <FaCog />
+                                <span>Brand Settings</span>
+                            </NavLink>
+                        </li>
                     </ul>
 
                     <hr />
@@ -163,7 +187,7 @@ const App = () => {
                         <li className="nav-item">
                             <a
                                 className="nav-link"
-                                href="https://github.com/FindawayWorld/gateway"
+                                href="https://github.com/FindawayWorld/Solon"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -171,12 +195,9 @@ const App = () => {
                             </a>
                         </li>
                     </ul>
-                    <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
-                        <FaChevronLeft />
-                    </button>
                 </div>
             </nav>
-            <div className="main-wrapper px-12 py-8">
+            <div className="main-wrapper px-4 px-md-12 py-8">
                 <main className="page" role="main">
                     <Switch>
                         <Route exact path="/">
@@ -206,6 +227,10 @@ const App = () => {
                         <Route path="/font-tester">
                             <ScrollToTop />
                             <FontTester />
+                        </Route>
+                        <Route path="/brand-settings">
+                            <ScrollToTop />
+                            <BrandSettings />
                         </Route>
                     </Switch>
                 </main>

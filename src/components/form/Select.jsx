@@ -4,11 +4,8 @@ import classnames from 'classnames';
 const Select = ({
     label = '',
     labelHelp = null,
-    placeholder = null,
     id = 'input',
     name = null,
-    validators = [],
-    errorMessage = '',
     defaultValue = undefined,
     value = undefined,
     required = false,
@@ -20,7 +17,6 @@ const Select = ({
     className = '',
     autoComplete = null,
     disabled = false,
-    hideOptional = false,
     error = false,
     touched = false,
     readOnly = false,
@@ -42,36 +38,48 @@ const Select = ({
     }
 
     return (
-        <div className={classnames('form-group', {'was-validated': !error, 'mb-0': collapse}, className)}>
-            {label && !prependLabel && <div className="label-wrapper">
-                <label htmlFor={id} className={classnames({
-                    'required': isRequired,
-                    'hidden': hidden,
-                    'label-sm': small
-                })}>{label} {isRequired && <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>}</label>
-                {labelHelp}
+        <div className={classnames('form-group', { 'was-validated': !error, 'mb-0': collapse }, className)}>
+            {label && !prependLabel && (
+                <div className="label-wrapper">
+                    <label
+                        htmlFor={id}
+                        className={classnames({
+                            required: isRequired,
+                            hidden: hidden,
+                            'label-sm': small
+                        })}
+                    >
+                        {label}{' '}
+                        {isRequired && (
+                            <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>
+                        )}
+                    </label>
+                    {labelHelp}
                 </div>
-            }
-            <div className={classnames({'input-group': (prepend || prependLabel) || append})}>
-                {prepend &&
-                    <div className={classnames("input-group-prepend", {'input-group-sm': small})}>
+            )}
+            <div className={classnames({ 'input-group': prepend || prependLabel || append })}>
+                {prepend && (
+                    <div className={classnames('input-group-prepend', { 'input-group-sm': small })}>
                         {React.isValidElement(prepend) ? prepend : <span className="input-group-text">{prepend}</span>}
                     </div>
-                }
-                {prependLabel &&
-                    <div className={classnames("input-group-prepend prepend-label", {'input-group-sm': small})}>
-                        <label htmlFor={id} className="input-group-text">{label}</label>
-                    </div>}
+                )}
+                {prependLabel && (
+                    <div className={classnames('input-group-prepend prepend-label', { 'input-group-sm': small })}>
+                        <label htmlFor={id} className="input-group-text">
+                            {label}
+                        </label>
+                    </div>
+                )}
                 <select
                     className={classnames('custom-select', {
                         'form-control': !readOnly,
                         'form-control-plaintext': readOnly,
                         'input-collapse': collapse,
                         'error-visible': touched && error,
-                        'error': touched && error,
+                        error: touched && error,
                         'form-control-sm': small,
-                        'input-group-control': (prepend || prependLabel) || append,
-                        'input-group-control-prepend': (prepend || prependLabel),
+                        'input-group-control': prepend || prependLabel || append,
+                        'input-group-control-prepend': prepend || prependLabel,
                         'input-group-control-append': append
                     })}
                     defaultValue={defaultValue}
@@ -83,7 +91,6 @@ const Select = ({
                     autoComplete={autoComplete}
                     readOnly={readOnly}
                     disabled={disabled}
-
                     onFocus={onFocus}
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -92,19 +99,20 @@ const Select = ({
                     {children}
                 </select>
 
-                {multiple &&
+                {multiple && (
                     <small className="form-text text-muted">
-                        <code>{window.navigator.platform.includes('Mac') ? 'command' : 'ctrl'} + click</code> to select multiple
+                        <code>{window.navigator.platform.includes('Mac') ? 'command' : 'ctrl'} + click</code> to select
+                        multiple
                     </small>
-                }
+                )}
 
-                {error && touched &&
+                {error && touched && (
                     <div className="form-error">
                         <span>{error}</span>
                     </div>
-                }
+                )}
             </div>
         </div>
     );
-}
+};
 export default Select;
