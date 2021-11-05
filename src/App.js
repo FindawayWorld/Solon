@@ -22,6 +22,7 @@ import Register from './pages/auth/Register';
 import BrandSettings from './pages/BrandSettings';
 import { useDispatch } from 'react-redux';
 import { authLoginFailure, authLoginStart, authLoginSuccess } from './slices/authSlice';
+import useDisabledLinks from './hooks/useDisabledLinks';
 
 export const ScrollToTop = () => {
     const { pathname } = useLocation();
@@ -47,6 +48,8 @@ const App = () => {
         }
         persistLogin();
     }, [dispatch]);
+
+    useDisabledLinks();
 
     return (
         <Switch>
