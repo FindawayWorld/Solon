@@ -33,12 +33,12 @@ const GridsPage = () => (
 
             <div className="flash flash-warning mb-4">
                 <p>
-                    <FiAlertTriangle />
-                    Containers are required when using our default grid system.
+                    <FiAlertTriangle className="icon-align" /> Containers are required when using our default grid
+                    system.
                 </p>
                 <p>
-                    <FiAlertTriangle className="align-middle" />
-                    You might need to collapse the sidebar to see the container's max-width at each breakpoint.
+                    <FiAlertTriangle className="icon-align" /> You might need to collapse the sidebar to see the
+                    container's max-width at each breakpoint.
                 </p>
             </div>
 

@@ -13,7 +13,7 @@
 
 @mixin make-badge-outline($color) {
     border-color: $color;
-    background: $white;
+    background: transparent;
     color: $color !important;
 
     a {
@@ -41,13 +41,8 @@
     .badge-#{$color} {
         @include make-badge($value);
     }
-
-    // Omit 'warning' and 'light' styles because
-    // they are too light for outline styles
-    @if $color != warning and $color != light {
-        .badge-outline-#{$color} {
-            border: solid 1px;
-            @include make-badge-outline($value);
-        }
+    .badge-outline-#{$color} {
+        border: solid 1px;
+        @include make-badge-outline($value);
     }
 }

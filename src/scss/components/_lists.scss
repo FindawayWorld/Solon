@@ -2,18 +2,7 @@ ul,
 ol {
     margin-top: 0;
     margin-bottom: 1rem;
-
-    li {
-        line-height: rem(35);
-    }
-}
-
-ul {
-    list-style-type: disc;
-}
-
-ol {
-    list-style-type: decimal;
+    padding-left: 2rem;
 }
 
 dt {
@@ -24,9 +13,9 @@ dd {
     margin-bottom: spacer();
 }
 
-.list-flat {
-    margin: 0;
-    padding: 0;
+.list-flat,
+.list-unstyled {
+    padding-left: 0;
     list-style: none;
 }
 
@@ -58,17 +47,6 @@ dd {
         flex-direction: row;
     }
 }
-/* Error-Handling & Validation */
-.form-inline,
-.list-group {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-// .form-inline .form-control {
-//     width: 75%;
-// }
 
 .list-group-item {
     background: transparent;

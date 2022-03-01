@@ -12,7 +12,7 @@ const JSPage = () => (
             <hr />
 
             <h3>
-                <code>titleCase → {`{String}`}</code>
+                <code>titleCase(str) → {`{String}`}</code>
             </h3>
             <p>Function to format a string as Title Case.</p>
             <p>
@@ -21,7 +21,7 @@ const JSPage = () => (
 
             <h4>Parameters</h4>
 
-            <table className="table mb-4">
+            <table className="table mb-8">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -31,7 +31,7 @@ const JSPage = () => (
                 </thead>
                 <tbody>
                     <tr>
-                        <td>str</td>
+                        <td>string</td>
                         <td>string</td>
                         <td>String to title case</td>
                     </tr>
@@ -40,7 +40,7 @@ const JSPage = () => (
 
             <div className="mb-8">
                 <h3>
-                    <code>demangle → {`{String}`}</code>
+                    <code>demangle(title) → {`{String}`}</code>
                 </h3>
                 <p>Function to "demangle" a title.</p>
                 <p>
@@ -53,7 +53,7 @@ const JSPage = () => (
                     </code>
                 </p>
 
-                <table className="table mb-3">
+                <table className="table mb-8">
                     <thead>
                         <tr>
                             <th>Name</th>

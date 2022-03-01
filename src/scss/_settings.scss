@@ -15,10 +15,11 @@ $container-widths: (
     xxl: 1320
 ) !default;
 
-$font-family: // Safari for macOS and iOS (San Francisco)
+$font-family:
+    // Cross-platform generic font family (default user interface font)
+    system-ui,
+    // Safari for macOS and iOS (San Francisco)
     -apple-system,
-    // Chrome < 56 for macOS (San Francisco)
-    BlinkMacSystemFont,
     // Windows
     'Segoe UI',
     // Android
@@ -28,11 +29,13 @@ $font-family: // Safari for macOS and iOS (San Francisco)
     Arial,
     // Linux
     'Noto Sans',
+    'Liberation Sans',
     // Sans serif fallback
     sans-serif,
     // Emoji fonts
     'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 
 $light-weight: 300 !default;
 $line-height: 1.5 !default;
@@ -76,7 +79,7 @@ $maroon: #85144b !default;
 $white: #ffffff !default;
 $silver: #dddddd !default;
 $gray: #808080 !default;
-$black: #111111 !default;
+$black: #212529 !default;
 
 $font-color: $black !default;
 $border-color: $silver !default;
