@@ -35,7 +35,7 @@ const HomePage = () => (
             <div className="flash flash-warning">
                 <p>
                     <strong>WARNING:</strong> There is a good chance you will need to update/change some or all of the
-                    SCSS variable in the Component SCSS to match your proejct/theme/design.
+                    SCSS variable in the Component SCSS to match your project/theme/design.
                 </p>
             </div>
         </section>
