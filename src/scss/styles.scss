@@ -65,3 +65,54 @@ pre > code {
         padding: 0;
     }
 }
+
+// Documentation Styles
+
+.swatch {
+    display: inline-block;
+    max-width: 100%;
+    width: rem(100);
+    height: rem(100);
+    margin: 0 auto;
+}
+
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
+    padding: 1rem;
+}
+
+.box,
+.box-first,
+.box-large,
+.box-nested,
+.box-row {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 1rem;
+    margin-bottom: 0;
+    background: $primary;
+    overflow: hidden;
+    text-align: center;
+    color: $white;
+}
+
+.box-first {
+    background: $teal;
+    border-color: $primary;
+}
+
+.box-nested {
+    background: $secondary;
+    border-color: $teal;
+}
+
+.box-large {
+    height: 8rem;
+}
+
+.box-row {
+    margin-bottom: 1rem;
+}

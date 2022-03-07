@@ -184,8 +184,8 @@ sans-serif,
 
                 <p>
                     Findaway also revolutionized digital audiobook delivery with AudioEngine, which is quickly becoming
-                    the industry’s largest B2B audiobook delivery platform that enables brands to deliver one of the
-                    world’s largest collections of digital audiobooks within their own experience.
+                    the industry's largest B2B audiobook delivery platform that enables brands to deliver one of the
+                    world's largest collections of digital audiobooks within their own experience.
                 </p>
 
                 <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
@@ -371,16 +371,16 @@ sans-serif,
                     </li>
                 </ul>
                 <p>
-                    {[...brandColors, ...colors].map((color) => (
-                        <a
-                            key={`link-${color}`}
-                            href="#links"
-                            className={classnames(`link-${color} d-inline-block mr-4`, {
-                                'bg-dark p-2 ': color === 'light' || color === 'white' || color === 'silver'
+                    {[...brandColors, ...colors].map(([color]) => (
+                        <div
+                            className={classnames('d-inline-block mr-4 rounded', {
+                                'bg-dark p-2': onDarkOutline.includes(color)
                             })}
                         >
-                            Link {color}
-                        </a>
+                            <a key={`link-${color}`} href="#links" className={`link-${color}`}>
+                                Link {color}
+                            </a>
+                        </div>
                     ))}
                 </p>
             </section>
@@ -503,6 +503,10 @@ sans-serif,
             <section id="tables" className="mb-5">
                 <h2>Tables</h2>
                 <hr />
+
+                <p>
+                    For table color utils see the <Link to="/utils/colors#tables">Color Utils</Link> page.
+                </p>
 
                 <table className="table mb-4">
                     <thead>

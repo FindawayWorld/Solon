@@ -56,7 +56,9 @@ const ColorsPage = () => (
             </p>
         </div>
         <div>
-            <h4 className="mb-0">Table Backgrounds</h4>
+            <h4 className="mb-0" id="tables">
+                Table Backgrounds
+            </h4>
             <p>
                 When applying a background color to table rows, you can apply the <code>.bg-$color</code> class to the{' '}
                 <code>TR</code>.
