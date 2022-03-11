@@ -1,0 +1,21 @@
+.tooltip {
+    // default reachui/tooltip styles override these rules if !important not specified
+    background: $black !important ;
+    color: $white !important;
+    border: none !important;
+    border-radius: 3px !important;
+    padding: 0.5em 1em !important;
+    white-space: normal !important;
+    z-index: 100 !important;
+
+    max-width: 60vw;
+}
+
+.tooltip-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $black;
+}

@@ -7,6 +7,8 @@
     "@reach/auto-id": "^0.12.1",
     "@reach/dialog": "^0.12.1",
     "@reach/menu-button": "^0.12.1",
+    "@reach/portal": "^0.16.2",
+    "@reach/tooltip": "^0.16.2",
     "@reach/visually-hidden": "^0.12.0",
     "classnames": "^2.2.6",
     "color": "^3.1.3",
