@@ -3,19 +3,23 @@ import classnames from 'classnames';
 import { FiCheck } from 'react-icons/fi';
 
 const StatusButton = ({
+    className = '',
     successState = null,
     disabled = false,
     label = 'Submit',
     successLabel = 'Success',
     onClick = null,
-    type = 'submit'
+    type = 'submit',
+    defaultClass = 'btn-primary',
+    successClass = 'btn-success',
+    dangerClass = 'btn-danger'
 }) => {
     const getButtonText = () => {
         switch (successState) {
             case 'success':
                 return (
                     <>
-                        <FiCheck width="1em" height="1em" /> {successLabel}
+                        <FiCheck className="icon-align" width="1em" height="1em" /> {successLabel}
                     </>
                 );
             case 'error':
@@ -26,10 +30,10 @@ const StatusButton = ({
     };
     return (
         <button
-            className={classnames('btn', {
-                'btn-primary': successState !== 'error' && successState !== 'success',
-                'btn-success': successState === 'success',
-                'btn-danger': successState === 'error'
+            className={classnames('btn', className, {
+                [defaultClass]: successState !== 'error' && successState !== 'success',
+                [successClass]: successState === 'success',
+                [dangerClass]: successState === 'error'
             })}
             type={type}
             disabled={disabled || successState === 'disabled'}
