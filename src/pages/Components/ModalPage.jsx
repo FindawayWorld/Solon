@@ -30,6 +30,71 @@ const ModalPage = () => {
 
             <p>Display a "Modal" dialog.</p>
 
+            <h3>Props</h3>
+            <table className="table full-width mb-6">
+                <thead>
+                    <tr>
+                        <th>Prop</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>center</td>
+                        <td>
+                            <em>Boolean</em> <strong>Default: false</strong>
+                        </td>
+                        <td>Center vertcially and horiztonally within the browser window</td>
+                    </tr>
+                    <tr>
+                        <td>disableOverlayClick</td>
+                        <td>
+                            <em>Boolean</em> <strong>Default: false</strong>
+                        </td>
+                        <td>Disable clicking on the overlay to close</td>
+                    </tr>
+                    <tr>
+                        <td>innerClassName</td>
+                        <td>
+                            <em>String</em> <strong>Default: ''</strong>
+                        </td>
+                        <td>Set a class name on the DialogContent element</td>
+                    </tr>
+                    <tr>
+                        <td>label</td>
+                        <td>
+                            <em>String</em> <strong>Default: ''</strong>
+                        </td>
+                        <td>
+                            Label for the modal, provide context.{' '}
+                            <a href="https://reach.tech/dialog/#labeling">https://reach.tech/dialog/#labeling</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>onClose</td>
+                        <td>
+                            <em>Function</em> <strong>Default: noop</strong>
+                        </td>
+                        <td>Function to call when closing the modal</td>
+                    </tr>
+                    <tr>
+                        <td>showClose</td>
+                        <td>
+                            <em>Boolean</em> <strong>Default: true</strong>
+                        </td>
+                        <td>Show or hide the close (x)</td>
+                    </tr>
+                    <tr>
+                        <td>visible</td>
+                        <td>
+                            <em>Boolean</em> <strong>Default: false</strong>
+                        </td>
+                        <td>Set the modal visible or hidden</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <button className="btn btn-primary mr-4" onClick={() => setCurrentModal('a')}>
                 Show Modal
             </button>
@@ -63,9 +128,13 @@ const ModalPage = () => {
 
             <pre>
                 <code>{`<Modal
-    label="STRING"
-    visible={true | false}
-    onClose={function}
+    center = {true | false},
+    disableOverlayClick = {true | false},
+    innerClassName = "STRING",
+    label = "STRING",
+    onClose = {function},
+    showClose = {true | false},
+    visible = {true | false}
 >
     // Any JSX Content
 </Modal>`}</code>
