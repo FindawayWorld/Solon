@@ -1,14 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
-import { Switch, Route, Link, useRouteMatch, useLocation } from 'react-router-dom';
-
-import ComponentsPage from './pages/Components';
-import ContentPage from './pages/Content';
-import UtilsPage from './pages/Utils';
-import HomePage from './pages/Home';
-import JSPage from './pages/Javascript';
-import ColorTester from './pages/ColorTester';
-import FontTester from './pages/FontTester';
+import { useLocation, NavLink } from 'react-router-dom';
 
 import {
     FaFileAlt,
@@ -25,18 +17,9 @@ import {
 import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
 import { asc } from './utils/sorts';
-import BrandSettings from './pages/BrandSettings';
 import useDisabledLinks from './hooks/useDisabledLinks';
-
-export const ScrollToTop = () => {
-    const { pathname } = useLocation();
-
-    React.useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
-
-    return null;
-};
+import classNames from 'classnames';
+import AppRoutes from './AppRoutes';
 
 export const componentsNav = [
     ['/components/badges', 'Badges'],
@@ -69,27 +52,9 @@ const App = () => {
     const location = useLocation();
     useDisabledLinks();
 
-    const NavLink = ({ to, className, activeClass, activeWhenExact = true, ...props }) => {
-        let match = useRouteMatch({
-            path: to,
-            exact: activeWhenExact
-        });
-
-        return (
-            <Link
-                className={classnames(className, {
-                    [activeClass]: match
-                })}
-                to={to}
-                onClick={() => {
-                    if (medium.matches) {
-                        setCollapseSidebar(true);
-                    }
-                }}
-                {...props}
-            />
-        );
-    };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
 
     return (
         <div className="site-row">
@@ -100,7 +65,14 @@ const App = () => {
             >
                 <div className="sidebar-wrapper">
                     <div className="sidebar-header">
-                        <NavLink className="logo" activeClass="active" activeWhenExact to="/">
+                        <NavLink
+                            className={({ isActive }) =>
+                                classNames('logo', {
+                                    active: isActive
+                                })
+                            }
+                            to="/"
+                        >
                             <SolonIcon width={50} className="small-logo" />
                             <SolonLogo className="full-logo" />
                         </NavLink>
@@ -111,7 +83,14 @@ const App = () => {
 
                     <ul className="nav flex-column">
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" to="/content">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                to="/content"
+                            >
                                 <FaFileAlt />
                                 <span>Content</span>
                             </NavLink>
@@ -121,14 +100,28 @@ const App = () => {
                                 active: location.pathname.includes('/components')
                             })}
                         >
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact={false} to="/components">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                to="/components"
+                            >
                                 <FaPuzzlePiece />
                                 <span>Components</span>
                             </NavLink>
                             <ul className="nav">
                                 {componentsNav.map((page) => (
                                     <li key={page[0]} className="nav-item">
-                                        <NavLink className="nav-link" activeClass="active" to={page[0]}>
+                                        <NavLink
+                                            className={({ isActive }) =>
+                                                classNames('nav-link', {
+                                                    active: isActive
+                                                })
+                                            }
+                                            to={page[0]}
+                                        >
                                             {page[1]}
                                         </NavLink>
                                     </li>
@@ -140,14 +133,28 @@ const App = () => {
                                 active: location.pathname.includes('/utils')
                             })}
                         >
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact={false} to="/utils">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                to="/utils"
+                            >
                                 <FaTools />
                                 <span>Utils</span>
                             </NavLink>
                             <ul className="nav">
                                 {utilsNav.map((page) => (
                                     <li key={page[0]} className="nav-item">
-                                        <NavLink className="nav-link" activeClass="active" to={page[0]}>
+                                        <NavLink
+                                            className={({ isActive }) =>
+                                                classNames('nav-link', {
+                                                    active: isActive
+                                                })
+                                            }
+                                            to={page[0]}
+                                        >
                                             {page[1]}
                                         </NavLink>
                                     </li>
@@ -155,25 +162,57 @@ const App = () => {
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/javascript">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                end
+                                to="/javascript"
+                            >
                                 <FaJsSquare />
                                 <span>Javascript</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/color-tester">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                end
+                                to="/color-tester"
+                            >
                                 <FaPalette />
                                 <span>Color Tester</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/font-tester">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                end
+                                to="/font-tester"
+                            >
                                 <FaFont />
                                 <span>Font Tester</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClass="active" activeWhenExact to="/brand-settings">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                end
+                                to="/brand-settings"
+                            >
                                 <FaCog />
                                 <span>Brand Settings</span>
                             </NavLink>
@@ -198,40 +237,7 @@ const App = () => {
             </nav>
             <div className="main-wrapper px-4 px-md-12 py-8">
                 <main className="page" role="main">
-                    <Switch>
-                        <Route exact path="/">
-                            <ScrollToTop />
-                            <HomePage />
-                        </Route>
-                        <Route path="/components">
-                            <ScrollToTop />
-                            <ComponentsPage />
-                        </Route>
-                        <Route path="/content">
-                            <ScrollToTop />
-                            <ContentPage />
-                        </Route>
-                        <Route path="/utils">
-                            <ScrollToTop />
-                            <UtilsPage />
-                        </Route>
-                        <Route path="/javascript">
-                            <ScrollToTop />
-                            <JSPage />
-                        </Route>
-                        <Route path="/color-tester">
-                            <ScrollToTop />
-                            <ColorTester />
-                        </Route>
-                        <Route path="/font-tester">
-                            <ScrollToTop />
-                            <FontTester />
-                        </Route>
-                        <Route path="/brand-settings">
-                            <ScrollToTop />
-                            <BrandSettings />
-                        </Route>
-                    </Switch>
+                    <AppRoutes />
                 </main>
                 <footer className={classnames('site-footer')}>
                     <small>
