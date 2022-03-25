@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';
 import UtilsPage from './pages/Utils';
@@ -22,6 +22,7 @@ import SpacingPage from './pages/Utils/SpacingPage';
 import BreakpointsPage from './pages/Utils/BreakpointsPage';
 import GridsPage from './pages/Utils/GridsPage';
 import BorderRadiusPage from './pages/Utils/BorderRadiusPage';
+import ProgressBarPage from './pages/Components/ProgressBar';
 
 const AppRoutes = () => {
     return (
@@ -39,6 +40,7 @@ const AppRoutes = () => {
                 <Route path="loading" element={<LoadingPage />} />
                 <Route path="modal" element={<ModalPage />} />
                 <Route path="forms" element={<FormsPage />} />
+                <Route path="progress-bar" element={<ProgressBarPage />} />
             </Route>
             <Route path="content" element={<ContentPage />} />
             <Route path="utils">
