@@ -105,7 +105,6 @@ const Input = ({
                 <input
                     className={classnames('form-control', {
                         error: touched && error,
-                        'error-visible': touched && error,
                         'mb-0': collapse,
                         'input-group-control': prepend || prependLabel || append,
                         'input-group-control-prepend': prepend || prependLabel,

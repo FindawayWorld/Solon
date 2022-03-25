@@ -30,7 +30,7 @@ const FormsPage = () => {
             signup: boolean().oneOf([true], 'Please sign up for news'),
             fav_fruit: string().required('Please choose a fruit'),
             jobType: array(),
-            keywords: array().required()
+            keywords: array().min(1).required()
         }),
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 4));

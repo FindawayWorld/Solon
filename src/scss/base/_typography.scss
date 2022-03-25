@@ -1,7 +1,7 @@
 body {
-    color: #303030;
+    color: $font-color;
     font-family: $font-family;
-    font-size: 16px;
+    font-size: 1rem;
     font-size: $font-size-base;
     line-height: $line-height;
     font-style: normal;
@@ -123,12 +123,11 @@ blockquote {
     font-weight: $light-weight;
 }
 
-p > svg,
-li > svg {
-    vertical-align: middle;
+.icon-align {
     display: inline-block;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
+    margin-right: 0.2rem;
+    position: relative;
+    top: 2px;
 }
 
 // Text align

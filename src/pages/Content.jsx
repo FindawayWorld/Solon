@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import { FaSkull } from 'react-icons/fa';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -44,25 +45,37 @@ export const spacers = {
 };
 
 export const colors = [
-    'aqua',
-    'blue',
-    'navy',
-    'teal',
-    'green',
-    'olive',
-    'lime',
-    'yellow',
-    'orange',
-    'red',
-    'fuchsia',
-    'purple',
-    'maroon',
-    'white',
-    'silver',
-    'gray',
-    'black'
+    ['aqua', '#7fdbff'],
+    ['blue', '#0074d9'],
+    ['navy', '#001f3f'],
+    ['teal', '#289c9c'],
+    ['green', '#239930'],
+    ['olive', '#3d9970'],
+    ['lime', '#01ff70'],
+    ['yellow', '#ffdc00'],
+    ['orange', '#ff851b'],
+    ['red', '#e80d00'],
+    ['fuchsia', '#f012be'],
+    ['purple', '#b10dc9'],
+    ['maroon', '#85144b'],
+    ['white', '#ffffff'],
+    ['silver', '#dddddd'],
+    ['gray', '#808080'],
+    ['black', '#212529']
 ];
-export const brandColors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'muted'];
+export const brandColors = [
+    ['primary', '$blue'],
+    ['secondary', '$gray'],
+    ['success', '$green'],
+    ['danger', '$red'],
+    ['warning', '$yellow'],
+    ['light', '#f8f9fa'],
+    ['dark', '#343a40'],
+    ['muted', '#6c757d']
+];
+
+export const onDarkSolid = ['light', 'white', 'silver'];
+export const onDarkOutline = ['light', 'warning', 'white', 'silver', 'yellow', 'lime'];
 
 const ContentPage = () => {
     return (
@@ -79,12 +92,13 @@ const ContentPage = () => {
                 </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
-                        {colors.map((color) => (
+                        {colors.map(([color, hex]) => (
                             <div key={`colors-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`swatch bg-${color}`}></div>
-                                <p>
+                                <div className={`bg-${color} p-4 mb-4`}>
                                     <code>${color}</code>
-                                </p>
+                                    <br />
+                                    <code>{hex}</code>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -93,12 +107,13 @@ const ContentPage = () => {
                 <h3>Brand Colors</h3>
                 <div className="swatch-list">
                     <div className="row">
-                        {brandColors.map((color) => (
+                        {brandColors.map(([color, hex]) => (
                             <div key={`brand-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`swatch bg-${color}`}></div>
-                                <p>
+                                <div className={`bg-${color} p-4 mb-4`}>
                                     <code>${color}</code>
-                                </p>
+                                    <br />
+                                    <code>{hex}</code>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -112,22 +127,25 @@ const ContentPage = () => {
                 <p>Solon uses a “native font stack” for optimum text rendering on every device and OS. . </p>
                 <pre>
                     <code>
-                        {`// Safari for macOS and iOS (San Francisco)
+                        {`// Cross-platform generic font family (default user interface font)
+system-ui,
+// Safari for macOS and iOS (San Francisco)
 -apple-system,
-// Chrome < 56 for macOS (San Francisco)
-BlinkMacSystemFont,
 // Windows
-"Segoe UI",
+'Segoe UI',
 // Android
 Roboto,
 // Basic web fallback
-"Helvetica Neue", Arial,
+'Helvetica Neue',
+Arial,
 // Linux
-"Noto Sans",
+'Noto Sans',
+'Liberation Sans',
 // Sans serif fallback
 sans-serif,
 // Emoji fonts
-"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;`}
+'Apple Color Emoji',
+'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`}
                     </code>
                 </pre>
                 <p>
@@ -166,8 +184,8 @@ sans-serif,
 
                 <p>
                     Findaway also revolutionized digital audiobook delivery with AudioEngine, which is quickly becoming
-                    the industry’s largest B2B audiobook delivery platform that enables brands to deliver one of the
-                    world’s largest collections of digital audiobooks within their own experience.
+                    the industry's largest B2B audiobook delivery platform that enables brands to deliver one of the
+                    world's largest collections of digital audiobooks within their own experience.
                 </p>
 
                 <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
@@ -353,16 +371,16 @@ sans-serif,
                     </li>
                 </ul>
                 <p>
-                    {[...brandColors, ...colors].map((color) => (
-                        <a
-                            key={`link-${color}`}
-                            href="#links"
-                            className={classnames(`link-${color} d-inline-block mr-4`, {
-                                'bg-dark p-2 ': color === 'light' || color === 'white' || color === 'silver'
+                    {[...brandColors, ...colors].map(([color]) => (
+                        <div
+                            className={classnames('d-inline-block mr-4 rounded', {
+                                'bg-dark p-2': onDarkOutline.includes(color)
                             })}
                         >
-                            Link {color}
-                        </a>
+                            <a key={`link-${color}`} href="#links" className={`link-${color}`}>
+                                Link {color}
+                            </a>
+                        </div>
                     ))}
                 </p>
             </section>
@@ -371,7 +389,7 @@ sans-serif,
                 <h2 className="mb-2">List Types</h2>
                 <hr />
 
-                <h3 className="mb-0">
+                <h3>
                     Unordered{' '}
                     <small>
                         <code>ul</code>
@@ -383,7 +401,7 @@ sans-serif,
                     <li>adipisicing elit</li>
                 </ul>
 
-                <h3 className="mb-0">
+                <h3>
                     Ordered{' '}
                     <small>
                         <code>ol</code>
@@ -395,7 +413,7 @@ sans-serif,
                     <li>adipisicing elit</li>
                 </ol>
 
-                <h3 className="mb-0">
+                <h3>
                     Inline{' '}
                     <small>
                         <code>.list-inline</code>
@@ -413,12 +431,35 @@ sans-serif,
                     </li>
                 </ul>
 
-                <h3 className="mb-0">
-                    Flat{' '}
+                <h3>
+                    Flex Inline{' '}
                     <small>
-                        <code>.list-flat</code>
+                        <code>.list-flex-inline</code>
                     </small>
                 </h3>
+                <ul className="list-flex-inline mb-4">
+                    <li>
+                        <a href="#link">lorem ipsum</a>
+                    </li>
+                    <li>
+                        <a href="#link">dolor sit amet</a>
+                    </li>
+                    <li>
+                        <a href="#link">adipisicing elit</a>
+                    </li>
+                </ul>
+
+                <h3>
+                    Unstyled
+                    <small>
+                        <code>.list-unstyled</code>
+                    </small>
+                </h3>
+                <p className="txt-muted">
+                    <small>
+                        Formerly <code>.list-flat</code>, that class is still available but deprecated.
+                    </small>
+                </p>
                 <ul className="list-flat">
                     <li>
                         <a href="#link">lorem ipsum</a>
@@ -428,6 +469,14 @@ sans-serif,
                     </li>
                     <li>
                         <a href="#link">adipisicing elit</a>
+                    </li>
+                    <li>
+                        Nested lists:
+                        <ul>
+                            <li>are unaffected by this style</li>
+                            <li>will still show a bullet</li>
+                            <li>and have appropriate left margin</li>
+                        </ul>
                     </li>
                 </ul>
             </section>
@@ -439,11 +488,25 @@ sans-serif,
                     Use <a href="https://react-icons.netlify.com/#/">React Icons</a> for all your icon needs. Unless
                     provided from creative.
                 </p>
+
+                <p>
+                    You can use the <code>.icon-align</code> class to visually align icons with inline text.
+                </p>
+                <p>
+                    <FaSkull className="txt-red" /> Example without the `icon-align` class.
+                </p>
+                <p>
+                    <FaSkull className="icon-align txt-green" /> Example with the `icon-align` class.
+                </p>
             </section>
 
             <section id="tables" className="mb-5">
                 <h2>Tables</h2>
                 <hr />
+
+                <p>
+                    For table color utils see the <Link to="/utils/colors#tables">Color Utils</Link> page.
+                </p>
 
                 <table className="table mb-4">
                     <thead>

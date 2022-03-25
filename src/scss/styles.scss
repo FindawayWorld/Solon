@@ -18,21 +18,13 @@
     max-width: 100%;
 }
 
-// Style Guide Styles
-
-.swatch {
-    display: inline-block;
-    max-width: 100%;
-    width: rem(100);
-    height: rem(100);
-    margin: 0 auto;
-}
-
 @each $color, $value in map-merge($themeColors, $colors) {
     .border-#{$color} {
         border-color: $value;
     }
-    .bg-#{$color} {
+    .bg-#{$color},
+    tr.bg-#{$color},
+    .striped-#{$color} tr:nth-child(2n) {
         background-color: $value;
         color: color-contrast($value) !important;
         code {
@@ -43,6 +35,45 @@
     .txt-#{$color} {
         color: $value !important;
     }
+}
+
+pre {
+    font-size: 0.875rem;
+}
+
+code {
+    padding: 0.2rem 0.5rem;
+    margin: 0 0.2rem;
+    font-size: 90%;
+    white-space: nowrap;
+    background: $light;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+}
+pre > code {
+    display: block;
+    padding: 1rem 1.5rem;
+    white-space: pre;
+}
+
+.rsh {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    > code {
+        background: none;
+        border: none;
+        padding: 0;
+    }
+}
+
+// Documentation Styles
+
+.swatch {
+    display: inline-block;
+    max-width: 100%;
+    width: rem(100);
+    height: rem(100);
+    margin: 0 auto;
 }
 
 .box,
@@ -84,33 +115,4 @@
 
 .box-row {
     margin-bottom: 1rem;
-}
-
-pre {
-    font-size: 0.875rem;
-}
-
-code {
-    padding: 0.2rem 0.5rem;
-    margin: 0 0.2rem;
-    font-size: 90%;
-    white-space: nowrap;
-    background: $light;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-}
-pre > code {
-    display: block;
-    padding: 1rem 1.5rem;
-    white-space: pre;
-}
-
-.rsh {
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    > code {
-        background: none;
-        border: none;
-        padding: 0;
-    }
 }

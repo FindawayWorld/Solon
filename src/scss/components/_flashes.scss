@@ -18,7 +18,7 @@
 
 @mixin make-flash-outline($color) {
     border-color: $color;
-    background: $white;
+    background: transparent;
     color: $color !important;
 
     a {
@@ -71,11 +71,7 @@
         @include make-flash($value);
     }
 
-    // Omit 'warning' and 'light' styles because
-    // they are too light for outline styles
-    @if $color != 'white' and $color != 'silver' and $color != warning and $color != light {
-        .flash-outline-#{$color} {
-            @include make-flash-outline($value);
-        }
+    .flash-outline-#{$color} {
+        @include make-flash-outline($value);
     }
 }
