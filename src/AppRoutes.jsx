@@ -27,7 +27,7 @@ const AppRoutes = () => {
     return (
         <Routes>
             <Route index element={<HomePage />} />
-            <Route path="components" element={<Outlet />}>
+            <Route path="components">
                 <Route index element={<ComponentsPage />} />
                 <Route path="badges" element={<BadgesPage />} />
                 <Route path="breadcrumbs" element={<BreadcrumbsPage />} />
