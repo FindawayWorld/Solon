@@ -1,4 +1,5 @@
 .progress {
+    display: flex;
     height: 0.5rem;
     margin-bottom: 20px;
     overflow: hidden;
@@ -6,6 +7,7 @@
     border-radius: $border-radius;
     border: solid 1px $border-color;
     box-shadow: none;
+    padding: 1px;
 }
 
 @keyframes l2r {
@@ -29,7 +31,6 @@
     .progress-bar {
         position: relative;
         width: 25%;
-        border-radius: inherit;
         animation-name: l2r;
         animation-duration: 1.75s;
         animation-iteration-count: infinite;
@@ -38,7 +39,6 @@
     }
 }
 .progress-bar {
-    float: left;
     width: 0;
     height: 100%;
     font-size: 12px;
@@ -48,4 +48,5 @@
     background-color: $primary;
     box-shadow: none;
     transition: all 0.6s linear;
+    border-radius: inherit;
 }
