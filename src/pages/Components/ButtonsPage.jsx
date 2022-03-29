@@ -38,9 +38,10 @@ const ButtonsPage = () => {
                 <li>Text color: either black or white depending on the hover color.</li>
             </ul>
 
-            <p className="mb-0">
+            <div className="mb-0">
                 {brandColors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkSolid.includes(color)
                         })}
@@ -51,11 +52,12 @@ const ButtonsPage = () => {
                     </div>
                 ))}
                 <button className="btn btn-link">Link</button>
-            </p>
+            </div>
 
-            <p className="mb-8">
+            <div className="mb-8">
                 {colors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkSolid.includes(color)
                         })}
@@ -65,7 +67,7 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Outline Buttons</h3>
             <p className="mb-1">
@@ -82,9 +84,10 @@ const ButtonsPage = () => {
                     avoid using.
                 </small>
             </p>
-            <p className="mb-0">
+            <div className="mb-0">
                 {brandColors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkOutline.includes(color)
                         })}
@@ -94,10 +97,11 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
-            <p className="mb-8">
+            </div>
+            <div className="mb-8">
                 {colors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkOutline.includes(color)
                         })}
@@ -107,7 +111,7 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Button Tags</h3>
             <p>

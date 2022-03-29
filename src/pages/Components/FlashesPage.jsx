@@ -39,6 +39,7 @@ const FlashesPage = () => {
             </p>
             {[...brandColors, ...colors].map(([color]) => (
                 <div
+                    key={`flash-outline-${color}`}
                     className={classnames('rounded mb-4', {
                         'bg-dark p-2': onDarkOutline.includes(color)
                     })}

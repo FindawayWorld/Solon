@@ -44,13 +44,13 @@ const BreadcrumbsPage = () => (
         <Code
             lang="jsx"
             code={`<Breadcrumbs>
-    // Use with react-router-dom Link component
+    <!-- Use with react-router-dom Link component -->
     <BreadcrumbItem as={Link} to="#a">Page A</BreadcrumbItem>
 
     <BreadcrumbItem href="#b">Page B</BreadcrumbItem>
     <BreadcrumbItem href="#c">Page C</BreadcrumbItem>
 
-    // Set current page
+    <!-- Set current page -->
     <BreadcrumbItem current>Page D</BreadcrumbItem>
 </Breadcrumbs>`}
         />
