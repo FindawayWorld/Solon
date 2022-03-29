@@ -23,6 +23,7 @@ const BadgesPage = () => (
         <div className="mb-4">
             {brandColors.map(([color]) => (
                 <div
+                    key={`badge-${color}`}
                     className={classnames('d-inline-block mr-1 mb-1 rounded', {
                         'bg-dark p-2': onDarkSolid.includes(color)
                     })}
@@ -43,6 +44,7 @@ const BadgesPage = () => (
         <div className="mb-4">
             {colors.map(([color]) => (
                 <div
+                    key={`badge-${color}`}
                     className={classnames('d-inline-block mr-1 mb-1 rounded', {
                         'bg-dark p-2': onDarkSolid.includes(color)
                     })}
@@ -61,6 +63,7 @@ const BadgesPage = () => (
         <div className="mb-4">
             {brandColors.map(([color]) => (
                 <div
+                    key={`badge-outline-${color}`}
                     className={classnames('d-inline-block mr-1 mb-1 rounded', {
                         'bg-dark p-2': onDarkOutline.includes(color)
                     })}
@@ -74,6 +77,7 @@ const BadgesPage = () => (
         <div>
             {colors.map(([color]) => (
                 <div
+                    key={`badge-outline-${color}`}
                     className={classnames('d-inline-block mr-1 mb-1 rounded', {
                         'bg-dark p-2': onDarkOutline.includes(color)
                     })}
