@@ -125,7 +125,7 @@ const ContentPage = () => {
                 <h2>Native font stack</h2>
                 <hr />
 
-                <p>Solon uses a “native font stack” for optimum text rendering on every device and OS. . </p>
+                <p>Solon uses a “native font stack” for optimum text rendering on every device and OS.</p>
                 <Code
                     lang="scss"
                     code={`$font-family:
@@ -147,7 +147,10 @@ const ContentPage = () => {
     sans-serif,
     // Emoji fonts
     'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';`}
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+// Monospace fonts
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;`}
                 />
                 <p>
                     Read more about native font stacks in this{' '}
@@ -217,7 +220,9 @@ const ContentPage = () => {
                 {['top', 'middle', 'bottom', 'baseline'].map((al) => (
                     <p key={`align-${al}`} className="px-2 bg-gray">
                         <span style={{ lineHeight: '3rem' }}>Text aligned {al}</span>{' '}
-                        <span className={`align-${al}`}>.align-{al}</span>
+                        <span className={`align-${al}`}>
+                            <code>.align-{al}</code>
+                        </span>
                     </p>
                 ))}
             </section>
@@ -323,6 +328,60 @@ const ContentPage = () => {
                 </p>
             </section>
 
+            <section id="code-blocks" className="mb-5">
+                <h2>Code</h2>
+                <hr />
+
+                <h3>Inline Code</h3>
+                <p>
+                    Inline code can be marked up using the <code>code</code> tag.
+                </p>
+                <h3>Code Blocks</h3>
+                <p>
+                    Code blocks can be makedup using <code>pre</code> and <code>code</code> tags, and will get minimal
+                    styles.
+                </p>
+                <pre className="mb-4">
+                    <code>This is an example Code Block</code>
+                </pre>
+                <h3>Highlihghted Code Blocks</h3>
+                <p>
+                    The <code>Code</code> component gives you syntax highlighted code blocks using{' '}
+                    <a href="https://highlightjs.org/" target="_blank" rel="noopener noreferrer">
+                        highlight.js
+                    </a>
+                    .
+                </p>
+                <Code
+                    className="mb-4"
+                    lang="jsx"
+                    code={`<Code
+    lang={string}
+    code={string}
+/>`}
+                />
+                <h4>Languages</h4>
+                <p>
+                    Currently the <code>Code</code> component only implements <code>jsx</code>, <code>html</code>, and{' '}
+                    <code>javascript</code> language highlighting. To implement a new language update the{' '}
+                    <code>Code</code> component to import the aproprate language from{' '}
+                    <code>highlight.js/lib/languages/</code> and register the name using{' '}
+                    <code>hljs.registerLanguage</code>. A list of supported languages can be found{' '}
+                    <a
+                        href="https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        on the highlight.js GitHub
+                    </a>
+                    .
+                </p>
+                <Code
+                    lang="js"
+                    code={`import markdown from 'highlight.js/lib/languages/markdown';\nhljs.registerLanguage('markdown', markdown);`}
+                />
+            </section>
+
             <section id="font-size" className="mb-5">
                 <h2>Font Sizes</h2>
                 <hr />
@@ -371,9 +430,10 @@ const ContentPage = () => {
                         </a>
                     </li>
                 </ul>
-                <p>
+                <div>
                     {[...brandColors, ...colors].map(([color]) => (
                         <div
+                            key={`link-${color}`}
                             className={classnames('d-inline-block mr-4 rounded', {
                                 'bg-dark p-2': onDarkOutline.includes(color)
                             })}
@@ -383,7 +443,7 @@ const ContentPage = () => {
                             </a>
                         </div>
                     ))}
-                </p>
+                </div>
             </section>
 
             <section id="lists" className="mb-5">

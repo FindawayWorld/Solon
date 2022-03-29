@@ -66,15 +66,26 @@ const ModalPage = () => {
             </div>
 
             <Code
+                className="mb-6"
                 lang="jsx"
                 code={`<Modal
-    label={string}
-    visible={boolean}
-    onClose={function}
+    center = {boolean},
+    disableOverlayClick = {boolean},
+    innerClassName = {string},
+    label = {string},
+    onClose = {function},
+    showClose = {boolean},
+    visible = {boolean}
 >
     // Any JSX Content
 </Modal>`}
             />
+
+            <h3>Labels</h3>
+            <p>
+                For accessibliyt it is <strong>required</strong> that you provide a <code>label</code> to every modal.
+                This is just a descriptive text, ususally whatever the title or header text is for that modal.
+            </p>
         </section>
     );
 };

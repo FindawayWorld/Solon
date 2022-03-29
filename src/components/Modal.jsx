@@ -6,13 +6,13 @@ import VisuallyHidden from '@reach/visually-hidden';
 
 const Modal = ({
     center = false,
-    visible = false,
+    children = [],
+    disableOverlayClick = false,
     innerClassName = '',
     label = undefined,
     onClose = () => {},
-    children = [],
     showClose = true,
-    disableOverlayClick = false
+    visible = false
 }) => {
     return (
         <DialogOverlay
