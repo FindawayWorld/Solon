@@ -6,6 +6,7 @@ import { titleCase } from '../../utils';
 import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
+import Code from '../../components/Code';
 
 const ButtonsPage = () => {
     return (
@@ -152,11 +153,6 @@ const ButtonsPage = () => {
 
             <h3>Status Button</h3>
             <p>Display an ephemeral status.</p>
-            <pre>
-                <code>
-                    {`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
-                </code>
-            </pre>
             <p>
                 <StatusButton label="Normal State" />
             </p>
@@ -169,6 +165,11 @@ const ButtonsPage = () => {
             <p className="mb-8">
                 <StatusButton label="Normal State" successLabel="Success State" successState="error" />
             </p>
+            <Code
+                className="mb-6"
+                lang="jsx"
+                code={`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
+            />
 
             <h3>Button Groups</h3>
             <div className="btn-group mb-4">

@@ -1,4 +1,5 @@
 import React from 'react';
+import Code from '../components/Code';
 
 const BrandSettings = () => {
     return (
@@ -13,9 +14,10 @@ const BrandSettings = () => {
             <p>Below are some examples for existing brands/sites.</p>
 
             <h2>Findaway</h2>
-            <pre className="mb-6">
-                <code>
-                    {`// Colors
+            <Code
+                className="mb-6"
+                lang="scss"
+                code={`// Colors
 $teal: #a8d7ce;
 $blue: #008fd5;
 $dark-blue: #626677;
@@ -38,12 +40,12 @@ $secondary: $dark-blue;
 
 $border-radius: 0;
 `}
-                </code>
-            </pre>
+            />
 
             <h2>Passport</h2>
-            <pre>
-                <code>{`// Colors
+            <Code
+                lang="scss"
+                code={`// Colors
 $black: #222;
 $white: #ffffff;
 $primary: #ea7340;
@@ -65,8 +67,8 @@ $green-dark: #28a745;
 
 $border-color: #BCC9D4;
 
-$primary: $blue;`}</code>
-            </pre>
+$primary: $blue;`}
+            />
         </>
     );
 };

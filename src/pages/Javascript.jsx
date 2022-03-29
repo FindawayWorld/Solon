@@ -1,4 +1,5 @@
 import React from 'react';
+import Code from '../components/Code';
 
 const JSPage = () => (
     <>
@@ -11,32 +12,19 @@ const JSPage = () => (
             </p>
             <hr />
 
-            <h3>
-                <code>titleCase(str) → {`{String}`}</code>
-            </h3>
-            <p>Function to format a string as Title Case.</p>
-            <p>
-                <strong>Example:</strong> <code>"the hunger games" → "The Hunger Games"</code>
-            </p>
-
-            <h4>Parameters</h4>
-
-            <table className="table mb-8">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>string</td>
-                        <td>string</td>
-                        <td>String to title case</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className="mb-8">
+                <h3>
+                    <code>titleCase(str) → {`{String}`}</code>
+                </h3>
+                <p>Function to format a string as Title Case.</p>
+                <p>
+                    <strong>Example:</strong> <code>"the hunger games" → "The Hunger Games"</code>
+                </p>
+                <Code
+                    lang="javascript"
+                    code={`import { titleCase } from '/path/to/utils';\nlet newTitle = titleCase('the hunger games'); // The Hunger Games`}
+                />
+            </div>
 
             <div className="mb-8">
                 <h3>
@@ -53,22 +41,10 @@ const JSPage = () => (
                     </code>
                 </p>
 
-                <table className="table mb-8">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>title</td>
-                            <td>string</td>
-                            <td>Title to "demangle"</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <Code
+                    lang="javascript"
+                    code={`import { demangle } from '/path/to/utils';\nlet newTitle = demangle('Hunger Games, The'); // The Hunger Games`}
+                />
             </div>
 
             <h3>
@@ -82,12 +58,7 @@ const JSPage = () => (
                 Function to sort an array ascending based on passed values. This is to be used with the{' '}
                 <code>Array.sort</code> method.
             </p>
-            <p>
-                <code>import {'{ asc }'} from 'path/to/utils/sorts';</code>
-            </p>
-            <p>
-                <strong>Example:</strong> <code>[].sort((x,y) => asc(x,y))</code>
-            </p>
+            <Code lang="javascript" code={`import { asc } from 'path/to/utils/sorts';\n[].sort((x,y) => asc(x,y))`} />
 
             <h3>
                 <code>desc</code>
@@ -96,12 +67,7 @@ const JSPage = () => (
                 Function to sort an array descending based on passed values. This is to be used with the{' '}
                 <code>Array.sort</code> method.
             </p>
-            <p>
-                <code>import {'{ desc }'} from 'path/to/utils/sorts';</code>
-            </p>
-            <p>
-                <strong>Example:</strong> <code>[].sort((x,y) => desc(x,y))</code>
-            </p>
+            <Code lang="javascript" code={`import { desc } from 'path/to/utils/sorts';\n[].sort((x,y) => desc(x,y))`} />
         </section>
     </>
 );

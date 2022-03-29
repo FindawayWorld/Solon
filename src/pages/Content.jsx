@@ -3,6 +3,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { FaSkull } from 'react-icons/fa';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import Code from '../components/Code';
 
 const spacer = 1;
 export const spacers = {
@@ -125,29 +126,29 @@ const ContentPage = () => {
                 <hr />
 
                 <p>Solon uses a “native font stack” for optimum text rendering on every device and OS. . </p>
-                <pre>
-                    <code>
-                        {`// Cross-platform generic font family (default user interface font)
-system-ui,
-// Safari for macOS and iOS (San Francisco)
--apple-system,
-// Windows
-'Segoe UI',
-// Android
-Roboto,
-// Basic web fallback
-'Helvetica Neue',
-Arial,
-// Linux
-'Noto Sans',
-'Liberation Sans',
-// Sans serif fallback
-sans-serif,
-// Emoji fonts
-'Apple Color Emoji',
-'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`}
-                    </code>
-                </pre>
+                <Code
+                    lang="scss"
+                    code={`$font-family:
+    // Cross-platform generic font family (default user interface font)
+    system-ui,
+    // Safari for macOS and iOS (San Francisco)
+    -apple-system,
+    // Windows
+    'Segoe UI',
+    // Android
+    Roboto,
+    // Basic web fallback
+    'Helvetica Neue',
+    Arial,
+    // Linux
+    'Noto Sans',
+    'Liberation Sans',
+    // Sans serif fallback
+    sans-serif,
+    // Emoji fonts
+    'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';`}
+                />
                 <p>
                     Read more about native font stacks in this{' '}
                     <a

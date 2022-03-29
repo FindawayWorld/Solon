@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs, BreadcrumbItem } from '../../components/Breadcrumbs';
 import { Link } from 'react-router-dom';
+import Code from '../../components/Code';
 
 const BreadcrumbsPage = () => (
     <section className="mb-5">
@@ -40,9 +41,9 @@ const BreadcrumbsPage = () => (
             <BreadcrumbItem current>Page D</BreadcrumbItem>
         </Breadcrumbs>
 
-        <pre>
-            <code>
-                {`<Breadcrumbs>
+        <Code
+            lang="jsx"
+            code={`<Breadcrumbs>
     // Use with react-router-dom Link component
     <BreadcrumbItem as={Link} to="#a">Page A</BreadcrumbItem>
 
@@ -52,8 +53,7 @@ const BreadcrumbsPage = () => (
     // Set current page
     <BreadcrumbItem current>Page D</BreadcrumbItem>
 </Breadcrumbs>`}
-            </code>
-        </pre>
+        />
     </section>
 );
 
