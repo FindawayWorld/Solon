@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import ComponentsPage from './pages/Components';
 import ContentPage from './pages/Content';
 import UtilsPage from './pages/Utils';
