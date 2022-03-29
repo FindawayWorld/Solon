@@ -28,9 +28,7 @@ const BadgesPage = () => (
                         'bg-dark p-2': onDarkSolid.includes(color)
                     })}
                 >
-                    <div key={`badge-${color}`} className={classnames('badge', ` badge-${color}`)}>
-                        {titleCase(color)}
-                    </div>
+                    <div className={classnames('badge', ` badge-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
 
@@ -49,9 +47,7 @@ const BadgesPage = () => (
                         'bg-dark p-2': onDarkSolid.includes(color)
                     })}
                 >
-                    <div key={`badge-${color}`} className={classnames('badge', ` badge-${color}`)}>
-                        {titleCase(color)}
-                    </div>
+                    <div className={classnames('badge', ` badge-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
         </div>
@@ -68,9 +64,7 @@ const BadgesPage = () => (
                         'bg-dark p-2': onDarkOutline.includes(color)
                     })}
                 >
-                    <div key={`badge-outline-${color}`} className={classnames('badge', ` badge-outline-${color}`)}>
-                        {titleCase(color)}
-                    </div>
+                    <div className={classnames('badge', ` badge-outline-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
         </div>
@@ -82,9 +76,7 @@ const BadgesPage = () => (
                         'bg-dark p-2': onDarkOutline.includes(color)
                     })}
                 >
-                    <div key={`badge-outline-${color}`} className={classnames('badge', ` badge-outline-${color}`)}>
-                        {titleCase(color)}
-                    </div>
+                    <div className={classnames('badge', ` badge-outline-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
         </div>
