@@ -338,7 +338,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 </p>
                 <h3>Code Blocks</h3>
                 <p>
-                    Code blocks can be makedup using <code>pre</code> and <code>code</code> tags, and will get minimal
+                    Code blocks can be marked up using <code>pre</code> and <code>code</code> tags, and will get minimal
                     styles.
                 </p>
                 <pre className="mb-4">
