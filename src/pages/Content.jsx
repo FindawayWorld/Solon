@@ -364,7 +364,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 <p>
                     Currently the <code>Code</code> component only implements <code>jsx</code>, <code>html</code>, and{' '}
                     <code>javascript</code> language highlighting. To implement a new language update the{' '}
-                    <code>Code</code> component to import the aproprate language from{' '}
+                    <code>Code</code> component to import the appropriate language from{' '}
                     <code>highlight.js/lib/languages/</code> and register the name using{' '}
                     <code>hljs.registerLanguage</code>. A list of supported languages can be found{' '}
                     <a

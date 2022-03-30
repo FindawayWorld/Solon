@@ -83,7 +83,7 @@ const ModalPage = () => {
 
             <h3>Labels</h3>
             <p>
-                For accessibliyt it is <strong>required</strong> that you provide a <code>label</code> to every modal.
+                For accessibility it is <strong>required</strong> that you provide a <code>label</code> to every modal.
                 This is just a descriptive text, ususally whatever the title or header text is for that modal.
             </p>
         </section>
