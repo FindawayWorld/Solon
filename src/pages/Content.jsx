@@ -377,9 +377,24 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                     .
                 </p>
                 <Code
+                    className="mb-6"
                     lang="js"
                     code={`import markdown from 'highlight.js/lib/languages/markdown';\nhljs.registerLanguage('markdown', markdown);`}
                 />
+
+                <h4>Themes</h4>
+                <p>
+                    By default the <code>Code</code> component uses the <code>atom-one-dark</code> highlight.js theme.
+                    More themes{' '}
+                    <a
+                        href="https://github.com/highlightjs/highlight.js/tree/main/src/styles"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        can be found here
+                    </a>
+                    . To update the theme just change the imported CSS in the <code>Code</code> component.
+                </p>
             </section>
 
             <section id="font-size" className="mb-5">
