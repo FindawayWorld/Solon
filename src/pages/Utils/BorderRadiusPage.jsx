@@ -72,7 +72,7 @@ const BorderRadiusPage = () => (
             {[...brandColors, ...colors].map(([color]) => (
                 <div
                     key={`border-${color}`}
-                    className={classNames(`d-inline-block mr-4`, {
+                    className={classNames(`d-inline-block mr-4 mb-2`, {
                         'bg-dark rounded p-2': onDarkOutline.includes(color)
                     })}
                 >
