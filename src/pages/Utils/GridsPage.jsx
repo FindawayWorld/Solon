@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { FiAlertTriangle } from 'react-icons/fi';
+import Code from '../../components/Code';
 
 const GridsPage = () => (
     <section id="grids" className="mb-5">
@@ -124,14 +125,15 @@ const GridsPage = () => (
             <p>
                 <code>{`{column count}`}</code> - Number of columns to span between 1 - 12.
             </p>
-            <pre>
-                <code>{`<div className="row">
+            <Code
+                lang="jsx"
+                code={`<div className="row">
     <div className="col-12">100%</div>
     <div className="col-6">50%</div>
     <div className="col-4">33.333%</div>
     <div className="col-3">25%</div>
-</div>`}</code>
-            </pre>
+</div>`}
+            />
         </section>
 
         <section className="page-section mb-5">

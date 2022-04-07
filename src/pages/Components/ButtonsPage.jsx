@@ -6,6 +6,7 @@ import { titleCase } from '../../utils';
 import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
+import Code from '../../components/Code';
 
 const ButtonsPage = () => {
     return (
@@ -37,9 +38,10 @@ const ButtonsPage = () => {
                 <li>Text color: either black or white depending on the hover color.</li>
             </ul>
 
-            <p className="mb-0">
+            <div className="mb-0">
                 {brandColors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkSolid.includes(color)
                         })}
@@ -50,11 +52,12 @@ const ButtonsPage = () => {
                     </div>
                 ))}
                 <button className="btn btn-link">Link</button>
-            </p>
+            </div>
 
-            <p className="mb-8">
+            <div className="mb-8">
                 {colors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkSolid.includes(color)
                         })}
@@ -64,7 +67,7 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Outline Buttons</h3>
             <p className="mb-1">
@@ -81,9 +84,10 @@ const ButtonsPage = () => {
                     avoid using.
                 </small>
             </p>
-            <p className="mb-0">
+            <div className="mb-0">
                 {brandColors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkOutline.includes(color)
                         })}
@@ -93,10 +97,11 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
-            <p className="mb-8">
+            </div>
+            <div className="mb-8">
                 {colors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
                             'bg-dark p-2': onDarkOutline.includes(color)
                         })}
@@ -106,7 +111,7 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Button Tags</h3>
             <p>
@@ -152,11 +157,6 @@ const ButtonsPage = () => {
 
             <h3>Status Button</h3>
             <p>Display an ephemeral status.</p>
-            <pre>
-                <code>
-                    {`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
-                </code>
-            </pre>
             <p>
                 <StatusButton label="Normal State" />
             </p>
@@ -169,6 +169,11 @@ const ButtonsPage = () => {
             <p className="mb-8">
                 <StatusButton label="Normal State" successLabel="Success State" successState="error" />
             </p>
+            <Code
+                className="mb-6"
+                lang="jsx"
+                code={`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
+            />
 
             <h3>Button Groups</h3>
             <div className="btn-group mb-4">

@@ -124,7 +124,7 @@ const SpacingPage = () => (
             </thead>
             <tbody>
                 {Object.keys(spacers).map((key) => (
-                    <tr>
+                    <tr key={`spacer_${key}`}>
                         <td>{key}</td>
                         <td>{spacers[key] * 16}px</td>
                         <td>{spacers[key]}rem</td>

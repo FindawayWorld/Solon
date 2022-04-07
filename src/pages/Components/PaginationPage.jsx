@@ -2,6 +2,7 @@ import React from 'react';
 import Pagination from '../../components/Pagination';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import Code from '../../components/Code';
 
 const PaginationPage = () => {
     return (
@@ -25,12 +26,13 @@ const PaginationPage = () => {
             <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
             <Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />
 
-            <pre>
-                <code>{`<Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
+            <Code
+                lang="html"
+                code={`<Pagination as={Link} toProp="to" numPages={100} perPage={10} currentPage={1} />
 <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} />
 <Pagination as={Link} toProp="to" numPages={1000} perPage={20} currentPage={60} pagesToShow={5} />
-<Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />`}</code>
-            </pre>
+<Pagination numPages={1000} perPage={20} currentPage={60} pagesToShow={5} showJumpFirst showJumpLast />`}
+            />
         </section>
     );
 };

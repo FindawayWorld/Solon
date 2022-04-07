@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import Code from '../../components/Code';
 import FormattedPlural from '../../components/FormattedPlural';
 
 const FormattedPluralPage = () => {
@@ -28,11 +29,12 @@ const FormattedPluralPage = () => {
                 0 <FormattedPlural value={0} one="Scooter" many="Scooters" />
             </p>
 
-            <pre>
-                <code>{`<FormattedPlural value={10} one="Car" many="Cars" />
+            <Code
+                lang="jsx"
+                code={`<FormattedPlural value={10} one="Car" many="Cars" />
 <FormattedPlural value={1} one="Bike" many="Bikes" />
-<FormattedPlural value={0} one="Scooter" many="Scooters" />`}</code>
-            </pre>
+<FormattedPlural value={0} one="Scooter" many="Scooters" />`}
+            />
         </section>
     );
 };

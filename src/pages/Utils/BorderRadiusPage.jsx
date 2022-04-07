@@ -46,14 +46,14 @@ const BorderRadiusPage = () => (
                 No <code>{`{side}`}</code> is all sides
             </li>
         </ul>
-        <div class="borders mb-8">
-            <span class="swatch bg-light mr-4 border">.border</span>
-            <span class="swatch bg-light mr-4 border-t">.border-t</span>
-            <span class="swatch bg-light mr-4 border-r">.border-r</span>
-            <span class="swatch bg-light mr-4 border-b">.border-b</span>
-            <span class="swatch bg-light mr-4 border-l">.border-l</span>
-            <span class="swatch bg-light mr-4 border-x">.border-x</span>
-            <span class="swatch bg-light mr-4 border-y">.border-y</span>
+        <div className="borders mb-8">
+            <span className="swatch bg-light mr-4 border">.border</span>
+            <span className="swatch bg-light mr-4 border-t">.border-t</span>
+            <span className="swatch bg-light mr-4 border-r">.border-r</span>
+            <span className="swatch bg-light mr-4 border-b">.border-b</span>
+            <span className="swatch bg-light mr-4 border-l">.border-l</span>
+            <span className="swatch bg-light mr-4 border-x">.border-x</span>
+            <span className="swatch bg-light mr-4 border-y">.border-y</span>
         </div>
 
         <h2>Border Colors</h2>
@@ -71,14 +71,12 @@ const BorderRadiusPage = () => (
         <div className="mb-8">
             {[...brandColors, ...colors].map(([color]) => (
                 <div
-                    className={classNames(`d-inline-block mr-4`, {
+                    key={`border-${color}`}
+                    className={classNames(`d-inline-block mr-4 mb-2`, {
                         'bg-dark rounded p-2': onDarkOutline.includes(color)
                     })}
                 >
-                    <div
-                        key={`border-${color}`}
-                        className={`d-block border-b border-2 border-${color}`}
-                    >{`.border-${color}`}</div>
+                    <div className={`d-block border-b border-2 border-${color}`}>{`.border-${color}`}</div>
                 </div>
             ))}
         </div>
@@ -96,11 +94,11 @@ const BorderRadiusPage = () => (
             <code>{`{size}`}</code> one of the pre-defined sizes, 1-5(px).
         </p>
         <div className="mb-8">
-            <span class="swatch bg-light mr-4 border border-1">border-1</span>
-            <span class="swatch bg-light mr-4 border border-2">border-2</span>
-            <span class="swatch bg-light mr-4 border border-3">border-3</span>
-            <span class="swatch bg-light mr-4 border border-4">border-4</span>
-            <span class="swatch bg-light mr-4 border border-5">border-5</span>
+            <span className="swatch bg-light mr-4 border border-1">border-1</span>
+            <span className="swatch bg-light mr-4 border border-2">border-2</span>
+            <span className="swatch bg-light mr-4 border border-3">border-3</span>
+            <span className="swatch bg-light mr-4 border border-4">border-4</span>
+            <span className="swatch bg-light mr-4 border border-5">border-5</span>
         </div>
 
         <h2>Border Radius</h2>

@@ -30,6 +30,7 @@
         code {
             background: none;
             border-color: inherit;
+            color: inherit;
         }
     }
     .txt-#{$color} {
@@ -37,32 +38,38 @@
     }
 }
 
+code,
+kbd,
+pre,
+samp {
+    font-family: $font-family-monospace;
+    font-size: 1rem;
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
 pre {
+    display: block;
+    margin: 0;
+    overflow: auto;
     font-size: 0.875rem;
 }
 
 code {
-    padding: 0.2rem 0.5rem;
-    margin: 0 0.2rem;
-    font-size: 90%;
-    white-space: nowrap;
-    background: $light;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-}
-pre > code {
-    display: block;
-    padding: 1rem 1.5rem;
-    white-space: pre;
+    font-size: 0.875rem;
+    color: $purple;
+    word-wrap: break-word;
 }
 
-.rsh {
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    > code {
-        background: none;
-        border: none;
-        padding: 0;
+pre code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+}
+
+.code-block {
+    code {
+        border-radius: $border-radius;
     }
 }
 
