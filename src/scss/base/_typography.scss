@@ -7,21 +7,6 @@ body {
     font-style: normal;
 }
 
-$select-bg: rgba($primary, 0.5);
-$select-color: color-contrast($select-bg);
-
-@mixin custom-selection {
-    color: $select-color;
-    background: $select-bg;
-}
-
-::-moz-selection {
-    @include custom-selection;
-}
-::selection {
-    @include custom-selection;
-}
-
 h1,
 h2,
 h3,
@@ -38,6 +23,7 @@ h6,
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
+
     code {
         color: inherit;
     }
@@ -150,6 +136,7 @@ blockquote {
 .fw-normal {
     font-weight: 400 !important;
 }
+
 .fw-bold {
     font-weight: 700 !important;
 }
@@ -162,15 +149,19 @@ blockquote {
 .text-normal {
     white-space: normal;
 }
+
 .text-nowrap {
     white-space: nowrap;
 }
+
 .text-pre {
     white-space: pre;
 }
+
 .text-pre-line {
     white-space: pre-line;
 }
+
 .text-pre-wrap {
     white-space: pre-wrap;
 }
@@ -179,12 +170,15 @@ blockquote {
 .align-middle {
     vertical-align: middle !important;
 }
+
 .align-top {
     vertical-align: top !important;
 }
+
 .align-baseline {
     vertical-align: baseline !important;
 }
+
 .align-bottom {
     vertical-align: bottom !important;
 }
@@ -193,6 +187,7 @@ blockquote {
 .italic {
     font-style: italic !important;
 }
+
 .not-italic {
     font-style: normal !important;
 }
@@ -201,35 +196,44 @@ blockquote {
 .lh-1 {
     line-height: 1 !important;
 }
+
 .lh-sm {
     line-height: $line-height - 0.25 !important;
 }
+
 .lh-base {
     line-height: $line-height !important;
 }
+
 .lh-lg {
     line-height: $line-height + 0.5 !important;
 }
 
 @mixin text($infix: '') {
+
     // Responsive font sizes
-    @each $size, $length in $spacers {
-        @if $size >= 3 {
+    @each $size,
+    $length in $spacers {
+        @if $size>=3 {
             .txt#{$infix}-#{$size} {
                 font-size: $length !important;
             }
         }
     }
+
     // Responsive text alignment
     .txt#{$infix}-right {
         text-align: right !important;
     }
+
     .txt#{$infix}-left {
         text-align: left !important;
     }
+
     .txt#{$infix}-center {
         text-align: center !important;
     }
+
     .txt#{$infix}-truncate {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -238,6 +242,7 @@ blockquote {
 }
 
 @include text();
+
 @each $breakpoint in map-keys($standard-breakpoints) {
     @include breakpoint($breakpoint) {
         $infix: get-breakpoint-infix($breakpoint);

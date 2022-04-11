@@ -31,10 +31,6 @@ const BadgesPage = () => (
                     <div className={classnames('badge', ` badge-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
-
-            <div className="badge badge-primary mr-1">
-                Primary, with <a href="#demo">anchor link</a>
-            </div>
             <div className="badge badge-primary">
                 With Icon <FaStar />
             </div>
@@ -53,9 +49,6 @@ const BadgesPage = () => (
         </div>
 
         <h3>Outline Badges</h3>
-        <p>
-            <code>light</code> and <code>warning</code> omitted due to poor visibility.
-        </p>
         <div className="mb-4">
             {brandColors.map(([color]) => (
                 <div

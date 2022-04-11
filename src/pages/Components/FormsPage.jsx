@@ -77,7 +77,7 @@ const FormsPage = () => {
                 label="Appended Button Group"
                 append={
                     <div className="btn-group mb-4">
-                        <button className="btn btn-primary active">Save</button>
+                        <button className="btn btn-primary">Save</button>
                         <button className="btn btn-outline-secondary">Cancel</button>
                     </div>
                 }

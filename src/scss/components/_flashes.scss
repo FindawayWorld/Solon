@@ -1,40 +1,38 @@
-@mixin make-flash(
-    $background,
-    $border: scale-color($background, $lightness: -20%),
-    $color: color-contrast($background)
-) {
+@mixin make-flash($background, $border, $color) {
     border-color: $border;
+
     background: $background;
     color: $color !important;
 
     a {
         color: $color;
-        text-decoration: underline;
-        &:hover {
-            text-decoration: none;
-        }
     }
 }
 
-@mixin make-flash-outline($color) {
-    border-color: $color;
+@mixin make-flash-outline($border, $color) {
+    border-color: $border;
     background: transparent;
     color: $color !important;
 
     a {
         color: $color;
-        text-decoration: underline;
-        &:hover {
-            text-decoration: none;
-        }
     }
 }
 
 .flash {
-    padding: 0.75rem 3rem 0.75rem 1rem;
+    padding: 0.75rem 1rem;
     border-radius: $border-radius;
     border: solid 1px $border-color;
     position: relative;
+
+    a {
+        font-weight: 700;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 
     &.fixed {
         padding: 0.75rem 1rem;
@@ -44,16 +42,27 @@
         margin-bottom: 0;
     }
 
+    &.flash-dismissible {
+        padding-right: 3rem;
+    }
+
     .close {
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: $black;
         position: absolute;
         font-size: 1.4rem;
-        line-height: 1;
+        line-height: 1.4rem;
         text-decoration: none;
         opacity: 0.75;
-        right: 0.75rem;
-        top: 50%;
-        margin-top: -0.85rem;
+        right: 0;
+        top: 0;
+        padding: 0.75rem 1rem;
+        margin: 0;
+
         transition: all 250ms ease-in-out;
+
         &:hover {
             opacity: 1;
         }
@@ -66,12 +75,20 @@
     }
 }
 
-@each $color, $value in map-merge($themeColors, $colors) {
-    .flash-#{$color} {
-        @include make-flash($value);
+$alert-bg-scale: -70%;
+$alert-border-scale: -25%;
+$alert-color-scale: 50%;
+
+@each $color, $value in $themeColors {
+    $alert-background: shift-color($value, $alert-bg-scale);
+    $alert-border: shift-color($value, $alert-border-scale);
+    $alert-color: shift-color($value, $alert-color-scale);
+
+    @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
+        $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
     }
 
-    .flash-outline-#{$color} {
-        @include make-flash-outline($value);
+    .flash-#{$color} {
+        @include make-flash($alert-background, $alert-border, $alert-color);
     }
 }

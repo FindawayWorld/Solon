@@ -15,8 +15,7 @@ $container-widths: (
     xxl: 1320
 ) !default;
 
-$font-family:
-    // Cross-platform generic font family (default user interface font)
+$font-family: // Cross-platform generic font family (default user interface font)
     system-ui,
     // Safari for macOS and iOS (San Francisco)
     -apple-system,
@@ -66,7 +65,7 @@ $border-widths: (
 $aqua: #7fdbff !default;
 $blue: #0074d9 !default;
 $navy: #001f3f !default;
-$teal: #289c9c !default;
+$teal: #39cccc !default;
 $green: #239930 !default;
 $olive: #3d9970 !default;
 $lime: #01ff70 !default;

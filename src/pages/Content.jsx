@@ -70,6 +70,7 @@ export const brandColors = [
     ['success', '$green'],
     ['danger', '$red'],
     ['warning', '$yellow'],
+    ['info', '$teal'],
     ['light', '#f8f9fa'],
     ['dark', '#343a40'],
     ['muted', '#6c757d']

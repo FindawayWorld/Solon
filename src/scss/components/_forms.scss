@@ -5,7 +5,7 @@
 }
 
 .field-row {
-    > label {
+    >label {
         display: block;
     }
 }
@@ -96,6 +96,7 @@ label {
         .input-group-text {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
+
             &:not(:first-child) {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
@@ -114,6 +115,7 @@ label {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
         }
+
         .btn:not(:last-child) {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
@@ -190,6 +192,7 @@ label {
         background: $orange;
         color: $white;
         border-color: $orange;
+
         &::placeholder {
             color: lighten($orange, 15%);
         }
@@ -220,8 +223,7 @@ label {
     line-height: 1.5;
     color: $font-color;
     vertical-align: middle;
-    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
-        no-repeat right 0.75rem center/8px 10px;
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
     background-color: rgba(0, 0, 0, 0);
     background-color: $white;
     border: 1px solid $border-color;
@@ -248,10 +250,12 @@ label {
         padding-right: 0.75rem;
         background-image: none;
     }
+
     // Hides the default caret in IE11
     &::-ms-expand {
         display: none;
     }
+
     // Remove outline from select box in FF
     &:-moz-focusring {
         color: transparent;
@@ -261,6 +265,7 @@ label {
 
 input[readonly='readonly'] {
     border-color: transparent;
+
     &:hover,
     &:active,
     &:focus {
@@ -337,22 +342,27 @@ label.required:before {
     padding-right: 0.2em;
 }
 
+$form-error-background: shift-color($red, $alert-bg-scale);
+$form-error-border: shift-color($red, $alert-border-scale);
+$form-error-color: shift-color($red, $alert-color-scale);
+
 input.error,
 select.error,
 textarea.error,
 label.error,
 .react-select-error .react-select__control {
-    color: $red;
+    color: $form-error-color;
     border-radius: $border-radius $border-radius 0 0;
-    border-color: $red;
+    border-color: $form-error-border;
 
     &:focus,
     &:hover {
-        border-color: $red !important;
+        border-color: $form-error-border;
     }
 
-    &:focus ~ .parsley-errors-list {
+    &:focus~.parsley-errors-list {
         opacity: 1;
+
         &:empty {
             opacity: 0;
         }
@@ -360,6 +370,7 @@ label.error,
 }
 
 .input-group.error {
+
     .input-group-prepend,
     .input-group-prepend .btn,
     .input-group-text {
@@ -368,6 +379,7 @@ label.error,
         border-left-color: $red;
         border-bottom-color: $red;
     }
+
     .input-group-append,
     .input-group-append .btn,
     .input-group-text {
@@ -378,28 +390,24 @@ label.error,
     }
 }
 
-.invalid-feedback {
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 80%;
-    color: #dc3545;
-}
-
 .form-error {
     font-size: 0.8125rem;
-    background-color: $red;
+    border: solid 1px $form-error-border;
+    border-top: none;
+    background-color: $form-error-background;
     border-radius: 0 0 $border-radius $border-radius;
-    color: color-contrast($red) !important;
+    color: $form-error-color;
     padding: 0.25rem 0.5rem;
     top: 100%;
     left: 0;
     right: 0;
 
     * {
-        color: color-contrast($red) !important;
+        color: $form-error-color;
     }
 
     &.standalone {
+        border: solid 1px $form-error-border;
         border-radius: $border-radius;
     }
 
@@ -417,6 +425,7 @@ label.error,
 .react-select-wrapper .form-control {
     padding: 0;
 }
+
 .react-select__control {
     border: none;
     padding: 0;
@@ -429,11 +438,13 @@ label.error,
     // font-size: $form-font-size;
     min-height: 0 !important;
 }
+
 .react-select__control:hover {
     border-color: darken($border-color, 10%) !important;
     outline: none;
     box-shadow: none;
 }
+
 .react-select__input input {
     margin: 0;
     height: auto;

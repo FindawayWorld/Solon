@@ -2,8 +2,9 @@ import React from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { titleCase } from '../../utils';
-import { brandColors, colors, onDarkOutline } from '../Content';
+import { brandColors } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import { FaInfoCircle } from 'react-icons/fa';
 
 const FlashesPage = () => {
     return (
@@ -21,37 +22,42 @@ const FlashesPage = () => {
                     <strong>Required assets:</strong> <code>scss/components/_flashes.scss</code>,{' '}
                     <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
                 </p>
-                {[...brandColors, ...colors].map(([color]) => (
+                {brandColors.map(([color]) => (
                     <div key={`flash-${color}`} className={classnames('flash mb-4', `flash-${color}`)}>
                         {titleCase(color)} <a href="#demo">anchor link</a>
-                        <a href="#close" className="close">
-                            &times;
-                        </a>
                     </div>
                 ))}
 
-                <div className="flash flash-primary">Primary, no close.</div>
-            </div>
-
-            <h3>Outline Flashes</h3>
-            <p>
-                <code>light</code> and <code>warning</code> omitted due to poor visibility.
-            </p>
-            {[...brandColors, ...colors].map(([color]) => (
-                <div
-                    key={`flash-outline-${color}`}
-                    className={classnames('rounded mb-4', {
-                        'bg-dark p-2': onDarkOutline.includes(color)
-                    })}
-                >
-                    <div
-                        key={`flash-outline-${color}`}
-                        className={classnames('flash fixed', ` flash-outline-${color}`)}
-                    >
-                        {titleCase(color)} <a href="#demo">anchor link</a>
-                    </div>
+                <div className="flash flash-primary flash-dismissible mb-4">
+                    Primary, dismissible. <button className="close">&times;</button>
                 </div>
-            ))}
+                <div className="flash flash-success mb-4" role="alert">
+                    <h4>Success!</h4>
+                    <p>
+                        This example text is going to run a bit longer so that you can see how spacing within flashes
+                        works with this kind of content.
+                    </p>
+                    <hr />
+                    <p class="mb-0">
+                        Whenever you need to, be sure to use <Link to="/utils/spacing">spacing utilities</Link> to keep
+                        things nice and tidy.
+                    </p>
+                </div>
+                <div className="flash flash-danger mb-4" role="alert">
+                    <h6>Errors</h6>
+                    <ul className="mb-0">
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                        <li>lorem</li>
+                    </ul>
+                </div>
+                <div className="flash flash-info d-flex middle">
+                    <FaInfoCircle className="mr-2" />
+                    <div>This is a Flash with an Icon.</div>
+                </div>
+            </div>
         </section>
     );
 };
