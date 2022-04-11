@@ -48,20 +48,15 @@
 
     .close {
         cursor: pointer;
-        background: none;
-        border: none;
-        color: $black;
-        position: absolute;
         font-size: 1.4rem;
-        line-height: 1.4rem;
-        text-decoration: none;
+        line-height: 1;
+        margin-top: -0.85rem;
         opacity: 0.75;
-        right: 0;
-        top: 0;
-        padding: 0.75rem 1rem;
-        margin: 0;
-
-        transition: all 250ms ease-in-out;
+        position: absolute;
+        right: 0.75rem;
+        text-decoration: none;
+        top: 50%;
+        transition: all 0.25s ease-in-out;
 
         &:hover {
             opacity: 1;
