@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { FiAlertTriangle } from 'react-icons/fi';
+import Code from '../../components/Code';
 
 const GridsPage = () => (
     <section id="grids" className="mb-5">
@@ -33,12 +34,12 @@ const GridsPage = () => (
 
             <div className="flash flash-warning mb-4">
                 <p>
-                    <FiAlertTriangle />
-                    Containers are required when using our default grid system.
+                    <FiAlertTriangle className="icon-align" /> Containers are required when using our default grid
+                    system.
                 </p>
                 <p>
-                    <FiAlertTriangle className="align-middle" />
-                    You might need to collapse the sidebar to see the container's max-width at each breakpoint.
+                    <FiAlertTriangle className="icon-align" /> You might need to collapse the sidebar to see the
+                    container's max-width at each breakpoint.
                 </p>
             </div>
 
@@ -124,14 +125,15 @@ const GridsPage = () => (
             <p>
                 <code>{`{column count}`}</code> - Number of columns to span between 1 - 12.
             </p>
-            <pre>
-                <code>{`<div className="row">
+            <Code
+                lang="jsx"
+                code={`<div className="row">
     <div className="col-12">100%</div>
     <div className="col-6">50%</div>
     <div className="col-4">33.333%</div>
     <div className="col-3">25%</div>
-</div>`}</code>
-            </pre>
+</div>`}
+            />
         </section>
 
         <section className="page-section mb-5">

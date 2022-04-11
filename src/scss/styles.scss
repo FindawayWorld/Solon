@@ -10,7 +10,7 @@
     'components/lists', 'components/tables';
 
 @import 'mods/breadcrumbs', 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal',
-    'mods/pagination', 'mods/sidebar', 'mods/tooltip';
+    'mods/pagination', 'mods/progress-bar', 'mods/sidebar', 'mods/tooltip';
 
 .img-center {
     display: block;
@@ -18,7 +18,62 @@
     max-width: 100%;
 }
 
-// Style Guide Styles
+@each $color, $value in map-merge($themeColors, $colors) {
+    .border-#{$color} {
+        border-color: $value;
+    }
+    .bg-#{$color},
+    tr.bg-#{$color},
+    .striped-#{$color} tr:nth-child(2n) {
+        background-color: $value;
+        color: color-contrast($value) !important;
+        code {
+            background: none;
+            border-color: inherit;
+            color: inherit;
+        }
+    }
+    .txt-#{$color} {
+        color: $value !important;
+    }
+}
+
+code,
+kbd,
+pre,
+samp {
+    font-family: $font-family-monospace;
+    font-size: 1rem;
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
+pre {
+    display: block;
+    margin: 0;
+    overflow: auto;
+    font-size: 0.875rem;
+}
+
+code {
+    font-size: 0.875rem;
+    color: $purple;
+    word-wrap: break-word;
+}
+
+pre code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+}
+
+.code-block {
+    code {
+        border-radius: $border-radius;
+    }
+}
+
+// Documentation Styles
 
 .swatch {
     display: inline-block;
@@ -26,23 +81,6 @@
     width: rem(100);
     height: rem(100);
     margin: 0 auto;
-}
-
-@each $color, $value in map-merge($themeColors, $colors) {
-    .border-#{$color} {
-        border-color: $value;
-    }
-    .bg-#{$color} {
-        background-color: $value;
-        color: color-contrast($value) !important;
-        code {
-            background: none;
-            border-color: inherit;
-        }
-    }
-    .txt-#{$color} {
-        color: $value !important;
-    }
 }
 
 .box,
@@ -84,33 +122,4 @@
 
 .box-row {
     margin-bottom: 1rem;
-}
-
-pre {
-    font-size: 0.875rem;
-}
-
-code {
-    padding: 0.2rem 0.5rem;
-    margin: 0 0.2rem;
-    font-size: 90%;
-    white-space: nowrap;
-    background: $light;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-}
-pre > code {
-    display: block;
-    padding: 1rem 1.5rem;
-    white-space: pre;
-}
-
-.rsh {
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
-    > code {
-        background: none;
-        border: none;
-        padding: 0;
-    }
 }

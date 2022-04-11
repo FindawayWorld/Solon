@@ -1,7 +1,7 @@
 import React from 'react';
 import { titleCase } from '../../utils';
 import classnames from 'classnames';
-import { brandColors, colors } from '../Content';
+import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Breadcrumbs, BreadcrumbItem } from '../../components/Breadcrumbs';
@@ -21,13 +21,18 @@ const BadgesPage = () => (
             <code>scss/_settings.scss</code>, and <code>scss/_functions.scss</code>
         </p>
         <div className="mb-4">
-            {brandColors.map((color) => (
-                <div key={`badge-${color}`} className={classnames('badge mr-4', `badge-${color}`)}>
-                    {titleCase(color)}
+            {brandColors.map(([color]) => (
+                <div
+                    key={`badge-${color}`}
+                    className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                        'bg-dark p-2': onDarkSolid.includes(color)
+                    })}
+                >
+                    <div className={classnames('badge', ` badge-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
 
-            <div className="badge badge-primary mr-4">
+            <div className="badge badge-primary mr-1">
                 Primary, with <a href="#demo">anchor link</a>
             </div>
             <div className="badge badge-primary">
@@ -35,9 +40,14 @@ const BadgesPage = () => (
             </div>
         </div>
         <div className="mb-4">
-            {colors.map((color) => (
-                <div key={`badge-${color}`} className={classnames('badge mr-4', `badge-${color}`)}>
-                    {titleCase(color)}
+            {colors.map(([color]) => (
+                <div
+                    key={`badge-${color}`}
+                    className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                        'bg-dark p-2': onDarkSolid.includes(color)
+                    })}
+                >
+                    <div className={classnames('badge', ` badge-${color}`)}>{titleCase(color)}</div>
                 </div>
             ))}
         </div>
@@ -47,28 +57,28 @@ const BadgesPage = () => (
             <code>light</code> and <code>warning</code> omitted due to poor visibility.
         </p>
         <div className="mb-4">
-            {brandColors
-                .filter((color) => !['light', 'warning'].includes(color))
-                .map((color) => (
-                    <div
-                        key={`badge-outline-${color}`}
-                        className={classnames('badge fixed mr-4', ` badge-outline-${color}`)}
-                    >
-                        {titleCase(color)}
-                    </div>
-                ))}
+            {brandColors.map(([color]) => (
+                <div
+                    key={`badge-outline-${color}`}
+                    className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                        'bg-dark p-2': onDarkOutline.includes(color)
+                    })}
+                >
+                    <div className={classnames('badge', ` badge-outline-${color}`)}>{titleCase(color)}</div>
+                </div>
+            ))}
         </div>
         <div>
-            {colors
-                .filter((color) => !['white', 'silver'].includes(color))
-                .map((color) => (
-                    <div
-                        key={`badge-outline-${color}`}
-                        className={classnames('badge fixed mr-4', ` badge-outline-${color}`)}
-                    >
-                        {titleCase(color)}
-                    </div>
-                ))}
+            {colors.map(([color]) => (
+                <div
+                    key={`badge-outline-${color}`}
+                    className={classnames('d-inline-block mr-1 mb-1 rounded', {
+                        'bg-dark p-2': onDarkOutline.includes(color)
+                    })}
+                >
+                    <div className={classnames('badge', ` badge-outline-${color}`)}>{titleCase(color)}</div>
+                </div>
+            ))}
         </div>
     </section>
 );

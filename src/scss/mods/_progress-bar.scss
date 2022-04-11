@@ -1,0 +1,52 @@
+.progress {
+    display: flex;
+    height: 0.5rem;
+    margin-bottom: 20px;
+    overflow: hidden;
+    background-color: $light;
+    border-radius: $border-radius;
+    border: solid 1px $border-color;
+    box-shadow: none;
+    padding: 1px;
+}
+
+@keyframes l2r {
+    from {
+        left: 0;
+    }
+    to {
+        left: calc(100% - 25%);
+    }
+}
+
+.progress-md {
+    height: 1rem;
+}
+
+.progress-lg {
+    height: 1.5rem;
+}
+
+.indeterminate {
+    .progress-bar {
+        position: relative;
+        width: 25%;
+        animation-name: l2r;
+        animation-duration: 1.75s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: linear;
+    }
+}
+.progress-bar {
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: $white;
+    text-align: center;
+    background-color: $primary;
+    box-shadow: none;
+    transition: all 0.6s linear;
+    border-radius: inherit;
+}

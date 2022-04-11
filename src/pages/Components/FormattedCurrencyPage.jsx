@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import Code from '../../components/Code';
 import FormattedCurrency from '../../components/FormattedCurrency';
 
 const FormattedCurrencyPage = () => {
@@ -36,12 +37,13 @@ const FormattedCurrencyPage = () => {
             <p>
                 <FormattedCurrency value={123456.789} currency="CAD" />
             </p>
-            <pre>
-                <code>{`<FormattedCurrency value={10.56} currency="USD" />
+            <Code
+                lang="jsx"
+                code={`<FormattedCurrency value={10.56} currency="USD" />
 <FormattedCurrency value="230.99" currency="EUR" />
 <FormattedCurrency value={16.75} currency="JPY" />
-<FormattedCurrency value={123456.789} currency="CAD" />`}</code>
-            </pre>
+<FormattedCurrency value={123456.789} currency="CAD" />`}
+            />
         </section>
     );
 };

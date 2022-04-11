@@ -3,9 +3,10 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 import { titleCase } from '../../utils';
-import { brandColors, colors } from '../Content';
+import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
+import Code from '../../components/Code';
 
 const ButtonsPage = () => {
     return (
@@ -31,17 +32,18 @@ const ButtonsPage = () => {
             <p className="mb-1">
                 Solid button <code>:hover</code> style is as follows.
             </p>
-            <ul className="mt-0">
+            <ul>
                 <li>Background color: shades the original color by 15%</li>
                 <li>Border color: shades the original color by 20%</li>
                 <li>Text color: either black or white depending on the hover color.</li>
             </ul>
 
-            <p className="mb-8">
-                {brandColors.map((color) => (
+            <div className="mb-0">
+                {brandColors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
-                            'bg-dark p-2': color === 'light'
+                            'bg-dark p-2': onDarkSolid.includes(color)
                         })}
                     >
                         <button key={`btn-${color}`} className={classnames('btn', `btn-${color}`)}>
@@ -50,13 +52,14 @@ const ButtonsPage = () => {
                     </div>
                 ))}
                 <button className="btn btn-link">Link</button>
-            </p>
+            </div>
 
-            <p className="mb-8">
-                {colors.map((color) => (
+            <div className="mb-8">
+                {colors.map(([color]) => (
                     <div
+                        key={`btn-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
-                            'bg-dark p-2': color === 'white'
+                            'bg-dark p-2': onDarkSolid.includes(color)
                         })}
                     >
                         <button key={`btn-${color}`} className={classnames('btn', `btn-${color}`)}>
@@ -64,13 +67,13 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Outline Buttons</h3>
             <p className="mb-1">
                 Outline button <code>:hover</code> style is as follows.
             </p>
-            <ul className="mt-0">
+            <ul>
                 <li>Background color: the original color</li>
                 <li>Border color: the original color</li>
                 <li>Text color: either black or white depending on the hover color.</li>
@@ -81,11 +84,12 @@ const ButtonsPage = () => {
                     avoid using.
                 </small>
             </p>
-            <p>
-                {brandColors.map((color) => (
+            <div className="mb-0">
+                {brandColors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
-                            'bg-dark p-2': color === 'light'
+                            'bg-dark p-2': onDarkOutline.includes(color)
                         })}
                     >
                         <button key={`btn-outline-${color}`} className={classnames('btn', `btn-outline-${color}`)}>
@@ -93,12 +97,13 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
-            <p>
-                {colors.map((color) => (
+            </div>
+            <div className="mb-8">
+                {colors.map(([color]) => (
                     <div
+                        key={`btn-outline-${color}`}
                         className={classnames('d-inline-block mr-1 mb-1 rounded', {
-                            'bg-dark p-2': ['white', 'silver'].includes(color)
+                            'bg-dark p-2': onDarkOutline.includes(color)
                         })}
                     >
                         <button key={`btn-outline-${color}`} className={classnames('btn', `btn-outline-${color}`)}>
@@ -106,7 +111,7 @@ const ButtonsPage = () => {
                         </button>
                     </div>
                 ))}
-            </p>
+            </div>
 
             <h3>Button Tags</h3>
             <p>
@@ -114,7 +119,7 @@ const ButtonsPage = () => {
                 also use these classes on <code>&lt;a&gt;</code> or <code>&lt;input&gt;</code> elements (though some
                 browsers may apply a slightly different rendering).
             </p>
-            <p>
+            <p className="mb-8">
                 <a className="btn btn-primary mr-1 mb-1" href="#demo" role="button">
                     Link/Anchor
                 </a>
@@ -128,25 +133,27 @@ const ButtonsPage = () => {
 
             <h3>Button Sizes</h3>
 
-            <p>
+            <p className="mb-8">
                 <button className="btn btn-primary btn-lg mr-3">Large</button>
                 <button className="btn btn-primary mr-3">Normal</button>
                 <button className="btn btn-primary btn-sm">Small</button>
             </p>
 
             <h3>Reach-UI MenuButton</h3>
-            <Menu>
-                <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
-                <MenuList className="dropdown-menu">
-                    <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
-                    <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
-                    <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
-                    <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-                    <MenuLink as={Link} to="/content">
-                        Go to Content Page
-                    </MenuLink>
-                </MenuList>
-            </Menu>
+            <div className="mb-8">
+                <Menu>
+                    <MenuButton className="btn btn-primary mr-1">Actions</MenuButton>
+                    <MenuList className="dropdown-menu">
+                        <MenuItem onSelect={() => alert('Download')}>Download</MenuItem>
+                        <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
+                        <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
+                        <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
+                        <MenuLink as={Link} to="/content">
+                            Go to Content Page
+                        </MenuLink>
+                    </MenuList>
+                </Menu>
+            </div>
 
             <h3>Status Button</h3>
             <p>Display an ephemeral status.</p>
@@ -159,9 +166,14 @@ const ButtonsPage = () => {
             <p>
                 <StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />
             </p>
-            <p>
+            <p className="mb-8">
                 <StatusButton label="Normal State" successLabel="Success State" successState="error" />
             </p>
+            <Code
+                className="mb-6"
+                lang="jsx"
+                code={`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
+            />
 
             <h3>Button Groups</h3>
             <div className="btn-group mb-4">
