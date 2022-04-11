@@ -23,6 +23,7 @@ import BreakpointsPage from './pages/Utils/BreakpointsPage';
 import GridsPage from './pages/Utils/GridsPage';
 import BorderRadiusPage from './pages/Utils/BorderRadiusPage';
 import ProgressBarPage from './pages/Components/ProgressBar';
+import TooltipPage from './pages/Components/TooltipPage';
 
 const AppRoutes = () => {
     return (
@@ -41,6 +42,7 @@ const AppRoutes = () => {
                 <Route path="modal" element={<ModalPage />} />
                 <Route path="forms" element={<FormsPage />} />
                 <Route path="progress-bar" element={<ProgressBarPage />} />
+                <Route path="tooltip" element={<TooltipPage />} />
             </Route>
             <Route path="content" element={<ContentPage />} />
             <Route path="utils">
