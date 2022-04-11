@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
+import Code from '../../components/Code';
 import ProgressBar from '../../components/ProgressBar';
 const ProgressBarPage = () => {
     return (
@@ -48,15 +49,16 @@ const ProgressBarPage = () => {
                     />
                 </div>
 
-                <pre>
-                    <code>{`<ProgressBar
+                <Code
+                    lang="jsx"
+                    code={`<ProgressBar
     label={string} // Required accessible label
     max={number} // Required Max/total value
     value={number} // Current value
     className={string} // Class to apply to outer .progress element
     barClassName={string} // Class to apply to inner .progress-bar element
-/>`}</code>
-                </pre>
+/>`}
+                />
             </div>
         </section>
     );
