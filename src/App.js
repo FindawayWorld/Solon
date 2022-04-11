@@ -32,7 +32,8 @@ export const componentsNav = [
     ['/components/loading', 'Loading'],
     ['/components/modal', 'Modal'],
     ['/components/pagination', 'Pagination'],
-    ['/components/tooltip', 'Tooltip'][('/components/progress-bar', 'Progress Bar')]
+    ['/components/tooltip', 'Tooltip'],
+    ['/components/progress-bar', 'Progress Bar']
 ];
 
 componentsNav.sort((a, b) => asc(a[1], b[1]));
