@@ -45,7 +45,8 @@ const FlashesPage = () => {
                 </div>
                 <div className="flash flash-danger mb-4" role="alert">
                     <h6>Errors</h6>
-                    <ul className="mb-0">
+                    <hr className="my-2" />
+                    <ul className="mb-0 pl-5">
                         <li>lorem</li>
                         <li>lorem</li>
                         <li>lorem</li>

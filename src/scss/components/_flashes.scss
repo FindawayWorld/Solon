@@ -34,6 +34,9 @@
     border-radius: $border-radius;
     border: solid 1px $border-color;
     position: relative;
+    hr {
+        background-color: currentColor;
+    }
 
     a {
         font-weight: 700;
