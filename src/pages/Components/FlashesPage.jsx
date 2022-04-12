@@ -53,9 +53,45 @@ const FlashesPage = () => {
                         <li>lorem</li>
                     </ul>
                 </div>
-                <div className="flash flash-info d-flex middle">
+                <div className="flash flash-info d-flex middle mb-4" role="alert">
                     <FaInfoCircle className="mr-2" />
                     <div>This is a Flash with an Icon.</div>
+                </div>
+
+                <h3>Flash Groups</h3>
+                <hr />
+
+                <h4>Same Flash Type</h4>
+                <div className="flash-group flash-warning mb-4">
+                    <div className="flash d-flex middle pb-0" role="alert">
+                        <FaInfoCircle className="mr-2" />
+                        <div>
+                            This is a Flash with an Icon, inside a <code>.flash-group</code>. This flash uses{' '}
+                            <code>.pb-0</code> to tighten the spacing between flashes.
+                        </div>
+                    </div>
+                    <div className="flash d-flex middle" role="alert">
+                        <FaInfoCircle className="mr-2" />
+                        <div>
+                            This is a Flash with an Icon, inside a <code>.flash-group</code>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Different flash types</h4>
+                <div className="flash-group">
+                    <div className="flash d-flex middle flash-danger" role="alert">
+                        <FaInfoCircle className="mr-2" />
+                        <div>
+                            This is a Flash with an Icon, inside a <code>.flash-group</code>
+                        </div>
+                    </div>
+                    <div className="flash d-flex middle flash-warning" role="alert">
+                        <FaInfoCircle className="mr-2" />
+                        <div>
+                            This is a Flash with an Icon, inside a <code>.flash-group</code>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

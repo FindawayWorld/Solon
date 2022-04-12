@@ -12,69 +12,7 @@
 @import 'mods/breadcrumbs', 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal',
     'mods/pagination', 'mods/progress-bar', 'mods/sidebar';
 
-.img-center {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-}
-
-@each $color, $value in map-merge($themeColors, $colors) {
-    .border-#{$color} {
-        border-color: $value;
-    }
-    .bg-#{$color},
-    tr.bg-#{$color},
-    .striped-#{$color} tr:nth-child(2n) {
-        background-color: $value;
-        color: color-contrast($value) !important;
-        code {
-            background: none;
-            border-color: inherit;
-            color: inherit;
-        }
-    }
-    .txt-#{$color} {
-        color: $value !important;
-    }
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: $font-family-monospace;
-    font-size: 1rem;
-    direction: ltr;
-    unicode-bidi: bidi-override;
-}
-
-pre {
-    display: block;
-    margin: 0;
-    overflow: auto;
-    font-size: 0.875rem;
-}
-
-code {
-    font-size: 0.875rem;
-    color: $purple;
-    word-wrap: break-word;
-}
-
-pre code {
-    font-size: inherit;
-    color: inherit;
-    word-break: normal;
-}
-
-.code-block {
-    code {
-        border-radius: $border-radius;
-    }
-}
-
 // Documentation Styles
-
 .swatch {
     display: inline-block;
     max-width: 100%;

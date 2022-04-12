@@ -75,10 +75,40 @@ abbr[title] {
     text-decoration: underline dotted;
 }
 
+// Code Blocks
 code,
 kbd,
+pre,
 samp {
-    font-family: monospace, monospace;
+    font-family: $font-family-monospace;
+    font-size: 1rem;
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
+pre {
+    display: block;
+    margin: 0;
+    overflow: auto;
+    font-size: 0.875rem;
+}
+
+code {
+    font-size: 0.875rem;
+    color: $purple;
+    word-wrap: break-word;
+}
+
+pre code {
+    font-size: inherit;
+    color: inherit;
+    word-break: normal;
+}
+
+.code-block {
+    code {
+        border-radius: $border-radius;
+    }
 }
 
 small {
@@ -210,10 +240,8 @@ blockquote {
 }
 
 @mixin text($infix: '') {
-
     // Responsive font sizes
-    @each $size,
-    $length in $spacers {
+    @each $size, $length in $spacers {
         @if $size>=3 {
             .txt#{$infix}-#{$size} {
                 font-size: $length !important;
