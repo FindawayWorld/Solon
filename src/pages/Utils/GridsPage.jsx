@@ -32,15 +32,17 @@ const GridsPage = () => (
                 can be nested, most layouts do not require a nested container.
             </p>
 
-            <div className="flash flash-warning mb-4">
-                <p>
-                    <FiAlertTriangle className="icon-align" /> Containers are required when using our default grid
-                    system.
-                </p>
-                <p>
-                    <FiAlertTriangle className="icon-align" /> You might need to collapse the sidebar to see the
-                    container's max-width at each breakpoint.
-                </p>
+            <div className="flash-group flash-warning mb-4">
+                <div className="flash d-flex middle pb-0">
+                    <FiAlertTriangle className="mr-2" />
+                    <div>Containers are required when using our default grid system.</div>
+                </div>
+                <div className="flash d-flex middle">
+                    <FiAlertTriangle className="mr-2" />
+                    <div>
+                        You might need to collapse the sidebar to see the container's max-width at each breakpoint.
+                    </div>
+                </div>
             </div>
 
             <div className="container bg-blue py-4 mb-4">

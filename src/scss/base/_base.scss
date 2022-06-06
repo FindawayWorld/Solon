@@ -40,6 +40,11 @@ hr {
 img {
     border-style: none;
 }
+.img-center {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
 
 .main-wrapper {
     flex: 1;

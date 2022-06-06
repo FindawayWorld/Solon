@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 @function rem($px) {
     @return math.div($px, 16) * 1rem;
@@ -6,7 +6,8 @@
 
 @mixin breakpoint($breakpoint, $allBreakpoints: $standard-breakpoints) {
     $width: map-get($allBreakpoints, $breakpoint);
-    @if ($width != 0) {
+
+    @if ($width !=0) {
         @media only screen and (min-width: #{$width}) {
             @content;
         }
@@ -14,9 +15,11 @@
         @content;
     }
 }
+
 @mixin breakpoint-retina($breakpoint, $allBreakpoints: $standard-breakpoints) {
     $width: map-get($allBreakpoints, $breakpoint);
-    @if ($width != 0) {
+
+    @if ($width !=0) {
         @media only screen and (min-width: #{$width}) and (-webkit-min-device-pixel-ratio: 2) {
             @content;
         }
@@ -29,14 +32,17 @@
 
 @function get-breakpoint-infix($breakpoint, $allBreakpoints: $standard-breakpoints) {
     $width: map-get($allBreakpoints, $breakpoint);
-    @return if($width != 0, '-#{$breakpoint}', '');
+    @return if($width !=0, '-#{$breakpoint}', '');
 }
+
 @function shade($color, $percent) {
-    @return mix(#000, $color, $percent);
+    @return scale-color($color, $lightness: -$percent);
 }
+
 @function tint($color, $percent) {
-    @return mix(#fff, $color, $percent);
+    @return scale-color($color, $lightness: $percent);
 }
+
 // Color contrast
 @function color-yiq($color, $dark: $black, $light: $white) {
     $r: red($color);
@@ -45,7 +51,7 @@
 
     $yiq: math.div(($r * 299) + ($g * 587) + ($b * 114), 1000);
 
-    @return if($yiq >= 200, $dark, $light);
+    @return if($yiq >=200, $dark, $light);
 }
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
@@ -83,6 +89,13 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
     @return if($contrast < $min-contrast-ratio, $color-contrast-dark, $color-contrast-light);
 }
 
+@function contrast-ratio($background, $foreground: $color-contrast-light) {
+    $l1: luminance($background);
+    $l2: luminance(opaque($background, $foreground));
+
+    @return if($l1 > $l2, math.div($l1 + 0.05, $l2 + 0.05), math.div($l2 + 0.05, $l1 + 0.05));
+}
+
 // Return WCAG2.0 relative luminance
 // See https://www.w3.org/WAI/GL/wiki/Relative_luminance
 // See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
@@ -94,7 +107,11 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
     );
 
     @each $name, $value in $rgb {
-        $value: if(math.div($value, 255) < 0.03928, math.div(math.div($value, 255), 12.92), nth($_luminance-list, $value + 1));
+        $value: if(
+            math.div($value, 255) < 0.03928,
+            math.div(math.div($value, 255), 12.92),
+            nth($_luminance-list, $value + 1)
+        );
         $rgb: map-merge(
             $rgb,
             (
@@ -133,12 +150,13 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (('<', '%3c'), ('>', '%3e'), ('#', '%23'), ('(', '%28'), (')', '%29')) !default;
+
 // See https://codepen.io/kevinweber/pen/dXWoRw
 @function escape-svg($string) {
     @if str-index($string, 'data:image/svg+xml') {
         @each $char, $encoded in $escaped-characters {
             // Do not escape the url brackets
-            @if str-index($string, 'url(') == 1 {
+            @if str-index($string, 'url(') ==1 {
                 $string: url('#{str-replace(str-slice($string, 6, -3), $char, $encoded)}');
             } @else {
                 $string: str-replace($string, $char, $encoded);
@@ -147,4 +165,18 @@ $escaped-characters: (('<', '%3c'), ('>', '%3e'), ('#', '%23'), ('(', '%28'), ('
     }
 
     @return $string;
+}
+
+@function tint-color($color, $weight) {
+    @return mix(white, $color, $weight);
+}
+
+// Shade a color: mix a color with black
+@function shade-color($color, $weight) {
+    @return mix(black, $color, $weight);
+}
+
+// Shade the color if the weight is positive, else tint it
+@function shift-color($color, $weight) {
+    @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
 }
