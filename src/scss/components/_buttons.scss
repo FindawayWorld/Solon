@@ -53,6 +53,40 @@
     }
 }
 
+.btn-status {
+    position: relative;
+    overflow: hidden;
+
+    .progress {
+        height: .25rem;
+        background: transparent;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+    }
+    .progress-bar {
+        transition-timing-function: ease-in-out;
+    }
+}
+
+.btn-link {
+    color: $primary;
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
 @mixin make-button(
     $background,
     $border,
@@ -68,6 +102,10 @@
     border-color: $border;
     color: $color;
 
+    .progress-bar {
+        background-color: $color;
+    }
+
     &:hover,
     &:focus {
         background-color: $hover-background;
@@ -79,17 +117,6 @@
         background-color: $active-background;
         border-color: $active-border;
         color: $active-color;
-    }
-}
-
-.btn-link {
-    color: $primary;
-    font-weight: inherit;
-    text-decoration: none;
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: underline;
     }
 }
 

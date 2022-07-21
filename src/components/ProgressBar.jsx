@@ -3,11 +3,12 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) => {
-    let progress = value ? Math.ceil((value / max) * 100) : undefined;
+    let progress = value >= 0 ? Math.ceil((value / max) * 100) : undefined;
+    console.log(progress);
     return (
         <div
             className={classNames('progress', className, {
-                indeterminate: !value
+                indeterminate: !(value >= 0)
             })}
         >
             <div
@@ -17,7 +18,7 @@ const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) =
                 aria-valuenow={progress}
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={progress && { width: `${progress}%` }}
+                style={!!progress ? { width: `${progress}%` } : {}}
             >
                 <VisuallyHidden>{progress}% Complete</VisuallyHidden>
             </div>

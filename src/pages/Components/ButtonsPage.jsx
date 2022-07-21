@@ -7,6 +7,7 @@ import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
 import Code from '../../components/Code';
+import ConfirmButton from '../../components/ConfirmButton';
 
 const ButtonsPage = () => {
     return (
@@ -173,6 +174,34 @@ const ButtonsPage = () => {
                 className="mb-6"
                 lang="jsx"
                 code={`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
+            />
+
+            <h3>Confirmation Button</h3>
+            <p>
+                <ConfirmButton />
+            </p>
+            <p>
+                <ConfirmButton
+                    label="Do something destructive!"
+                    confirmLabel="Are you absolutely sure, this cannot be un-done?"
+                    successLabel="Yay! You destroyed all the puny humans!"
+                />
+            </p>
+            <p>
+                <ConfirmButton
+                    label="Custom Classes"
+                    defaultClass="btn-fuchsia"
+                    successClass="btn-lime"
+                    confirmClass="btn-yellow"
+                />
+            </p>
+            <p className="mb-8">
+                <ConfirmButton label="Custom 10s Timeout" timeout={10000} />
+            </p>
+            <Code
+                className="mb-6"
+                lang="jsx"
+                code={`<ConfirmButton />\n<ConfirmButton label="Do something destructive!" confirmLabel="Are you absolutely sure, this cannot be un-done?" successLabel="Yay! You destroyed all the puny humans!"/>\n<ConfirmButton label="Custom Classes" defaultClass="btn-fuchsia" successClass="btn-lime" confirmClass="btn-yellow"/>\n<ConfirmButton label="Custom 10s Timeout" timeout={10000} />`}
             />
 
             <h3>Button Groups</h3>
