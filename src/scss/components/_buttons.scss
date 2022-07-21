@@ -80,10 +80,6 @@
     border-color: $border;
     color: $color;
 
-    .progress-bar {
-        background-color: $color;
-    }
-
     &:hover,
     &:focus {
         background-color: $hover-background;
