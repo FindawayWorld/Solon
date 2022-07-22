@@ -3,12 +3,13 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) => {
-    let progress = value >= 0 ? Math.ceil((value / max) * 100) : undefined;
-    console.log(progress);
+    let hasValue = ![null, undefined, false].includes(value);
+    let progress = hasValue ? Math.ceil((value / max) * 100) : undefined;
+
     return (
         <div
             className={classNames('progress', className, {
-                indeterminate: !(value >= 0)
+                indeterminate: !hasValue
             })}
         >
             <div
@@ -29,7 +30,7 @@ const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) =
 ProgressBar.propTypes = {
     label: PropTypes.string.isRequired,
     max: PropTypes.number.isRequired,
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     className: PropTypes.string,
     barClassName: PropTypes.string
 };

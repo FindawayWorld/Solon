@@ -178,13 +178,25 @@ const ButtonsPage = () => {
 
             <h3>Confirmation Button</h3>
             <p>
-                <ConfirmButton />
+                <code>ConfirmButton</code> only requires an <code>onConfirm</code> prop which is a function. If this
+                function returns a promise the button will wait until the promise resolves before updating, regardless
+                of the timeout provided.
+            </p>
+            <p>
+                <ConfirmButton
+                    onConfirm={() => {
+                        alert('You Confirmed!');
+                    }}
+                />
             </p>
             <p>
                 <ConfirmButton
                     label="Do something destructive!"
                     confirmLabel="Are you absolutely sure, this cannot be un-done?"
                     successLabel="Yay! You destroyed all the puny humans!"
+                    onConfirm={() => {
+                        console.log('Done!');
+                    }}
                 />
             </p>
             <p>
@@ -201,7 +213,17 @@ const ButtonsPage = () => {
             <Code
                 className="mb-6"
                 lang="jsx"
-                code={`<ConfirmButton />\n<ConfirmButton label="Do something destructive!" confirmLabel="Are you absolutely sure, this cannot be un-done?" successLabel="Yay! You destroyed all the puny humans!"/>\n<ConfirmButton label="Custom Classes" defaultClass="btn-fuchsia" successClass="btn-lime" confirmClass="btn-yellow"/>\n<ConfirmButton label="Custom 10s Timeout" timeout={10000} />`}
+                code={`<ConfirmButton
+    label={string} // Required
+    confirmLabel={string}
+    successLabel={string}
+
+    defaultClass={string}
+    confirmClass={string}
+    successClass={string}
+
+    onConfirm={function} // Required
+/>`}
             />
 
             <h3>Button Groups</h3>

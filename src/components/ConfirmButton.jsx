@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { FiCheck } from 'react-icons/fi';
 import useTimeoutFn from '../hooks/useTimeout';
@@ -22,17 +23,17 @@ const ConfirmButton = ({
     successClass = 'btn-success',
     confirmClass = 'btn-danger',
     timeout = 3000,
-    onClick = () => {}
+    onConfirm = () => {}
 }) => {
     const [buttonState, setButtonState] = useState(null);
 
-    let isConfirm = buttonState === CONFIRM_STATES.CONFIRM || buttonState === CONFIRM_STATES.DONE;
+    const isConfirm = [CONFIRM_STATES.CONFIRM, CONFIRM_STATES.DONE].includes(buttonState);
 
     const handleTimeout = () => {
         setButtonState(CONFIRM_STATES.READY);
     };
 
-    const [isReady, cancel, reset] = useTimeoutFn(handleTimeout, isConfirm ? timeout : false); // eslint-disable-line
+    const [, , reset] = useTimeoutFn(handleTimeout, isConfirm ? timeout : false);
 
     const getButtonText = () => {
         switch (buttonState) {
@@ -49,12 +50,12 @@ const ConfirmButton = ({
         }
     };
 
-    const handleClick = () => {
+    const handleClick = async () => {
         switch (buttonState) {
             case CONFIRM_STATES.CONFIRM:
+                await onConfirm();
                 setButtonState(CONFIRM_STATES.DONE);
                 reset();
-                onClick();
                 break;
             case CONFIRM_STATES.READY:
             default:
@@ -77,6 +78,18 @@ const ConfirmButton = ({
             {getButtonText()}
         </button>
     );
+};
+
+ConfirmButton.propTypes = {
+    label: PropTypes.string.isRequired,
+    confirmLabel: PropTypes.string,
+    successLabel: PropTypes.string,
+
+    defaultClass: PropTypes.string,
+    confirmClass: PropTypes.string,
+    successClass: PropTypes.string,
+
+    onConfirm: PropTypes.func.isRequired
 };
 
 export default ConfirmButton;

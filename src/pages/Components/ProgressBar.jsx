@@ -37,8 +37,8 @@ const ProgressBarPage = () => {
                 <ProgressBar label="Uploading Audio" value={75} max={100} className="progress-lg" />
                 <p>Indeterminate Progress</p>
                 <p>
-                    Removing the <code>value</code> prop (or setting to nullish or falsey value) will put the progress
-                    bar into an indeterminate state.
+                    Removing the <code>value</code> prop (or setting to <code>null</code>, <code>false</code>, or{' '}
+                    <code>undefined</code>) will put the progress bar into an indeterminate state.
                 </p>
                 <div style={{ width: '400px' }}>
                     <ProgressBar
