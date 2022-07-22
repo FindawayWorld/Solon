@@ -205,10 +205,11 @@ const ButtonsPage = () => {
                     defaultClass="btn-fuchsia"
                     successClass="btn-lime"
                     confirmClass="btn-yellow"
+                    onConfirm={() => {}}
                 />
             </p>
             <p className="mb-8">
-                <ConfirmButton label="Custom 10s Timeout" timeout={10000} />
+                <ConfirmButton label="Custom 10s Timeout" timeout={10000} onConfirm={() => {}} />
             </p>
             <Code
                 className="mb-6"

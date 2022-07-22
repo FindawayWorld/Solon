@@ -81,7 +81,7 @@ const ConfirmButton = ({
 };
 
 ConfirmButton.propTypes = {
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     confirmLabel: PropTypes.string,
     successLabel: PropTypes.string,
 
