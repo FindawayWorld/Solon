@@ -53,6 +53,18 @@
     }
 }
 
+.btn-link {
+    color: $primary;
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
 @mixin make-button(
     $background,
     $border,
@@ -79,17 +91,6 @@
         background-color: $active-background;
         border-color: $active-border;
         color: $active-color;
-    }
-}
-
-.btn-link {
-    color: $primary;
-    font-weight: inherit;
-    text-decoration: none;
-    &:hover,
-    &:active,
-    &:focus {
-        text-decoration: underline;
     }
 }
 

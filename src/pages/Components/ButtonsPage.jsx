@@ -7,6 +7,7 @@ import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
 import Code from '../../components/Code';
+import ConfirmButton from '../../components/ConfirmButton';
 
 const ButtonsPage = () => {
     return (
@@ -173,6 +174,57 @@ const ButtonsPage = () => {
                 className="mb-6"
                 lang="jsx"
                 code={`<StatusButton label="Normal State" />\n<StatusButton label="Success State" successLabel="Success State" successState="success" />\n<StatusButton label="Disabled State" successLabel="Success State" successState="disabled" />\n<StatusButton label="Normal State" successLabel="Success State" successState="error" />`}
+            />
+
+            <h3>Confirmation Button</h3>
+            <p>
+                <code>ConfirmButton</code> only requires an <code>onConfirm</code> prop which is a function. If this
+                function returns a promise the button will wait until the promise resolves before updating, regardless
+                of the timeout provided.
+            </p>
+            <p>
+                <ConfirmButton
+                    onConfirm={() => {
+                        alert('You Confirmed!');
+                    }}
+                />
+            </p>
+            <p>
+                <ConfirmButton
+                    label="Do something destructive!"
+                    confirmLabel="Are you absolutely sure, this cannot be un-done?"
+                    successLabel="Yay! You destroyed all the puny humans!"
+                    onConfirm={() => {
+                        console.log('Done!');
+                    }}
+                />
+            </p>
+            <p>
+                <ConfirmButton
+                    label="Custom Classes"
+                    defaultClass="btn-fuchsia"
+                    successClass="btn-lime"
+                    confirmClass="btn-yellow"
+                    onConfirm={() => {}}
+                />
+            </p>
+            <p className="mb-8">
+                <ConfirmButton label="Custom 10s Timeout" timeout={10000} onConfirm={() => {}} />
+            </p>
+            <Code
+                className="mb-6"
+                lang="jsx"
+                code={`<ConfirmButton
+    label={string} // Required
+    confirmLabel={string}
+    successLabel={string}
+
+    defaultClass={string}
+    confirmClass={string}
+    successClass={string}
+
+    onConfirm={function} // Required
+/>`}
             />
 
             <h3>Button Groups</h3>

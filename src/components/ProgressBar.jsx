@@ -3,11 +3,13 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) => {
-    let progress = value ? Math.ceil((value / max) * 100) : undefined;
+    const hasValue = typeof value === 'number' && value >= 0;
+    const progress = hasValue ? Math.ceil((value / max) * 100) : undefined;
+
     return (
         <div
             className={classNames('progress', className, {
-                indeterminate: !value
+                indeterminate: !hasValue
             })}
         >
             <div
@@ -17,7 +19,7 @@ const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) =
                 aria-valuenow={progress}
                 aria-valuemin="0"
                 aria-valuemax="100"
-                style={progress && { width: `${progress}%` }}
+                style={!!progress ? { width: `${progress}%` } : {}}
             >
                 <VisuallyHidden>{progress}% Complete</VisuallyHidden>
             </div>
@@ -28,7 +30,7 @@ const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) =
 ProgressBar.propTypes = {
     label: PropTypes.string.isRequired,
     max: PropTypes.number.isRequired,
-    value: PropTypes.number,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
     className: PropTypes.string,
     barClassName: PropTypes.string
 };
