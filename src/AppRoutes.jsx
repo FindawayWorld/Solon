@@ -1,61 +1,68 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import ComponentsPage from './pages/Components';
-import ContentPage from './pages/Content';
-import UtilsPage from './pages/Utils';
-import HomePage from './pages/Home';
-import JSPage from './pages/Javascript';
-import ColorTester from './pages/ColorTester';
-import FontTester from './pages/FontTester';
-import BadgesPage from './pages/Components/BadgesPage';
-import BreadcrumbsPage from './pages/Components/BreadcrumbsPage';
-import ButtonsPage from './pages/Components/ButtonsPage';
-import FlashesPage from './pages/Components/FlashesPage';
-import FormattedCurrencyPage from './pages/Components/FormattedCurrencyPage';
-import FormattedPluralPage from './pages/Components/FormattedPluralPage';
-import PaginationPage from './pages/Components/PaginationPage';
-import LoadingPage from './pages/Components/LoadingPage';
-import ModalPage from './pages/Components/ModalPage';
-import FormsPage from './pages/Components/FormsPage';
-import BrandSettings from './pages/BrandSettings';
-import ColorsPage from './pages/Utils/ColorsPage';
-import SpacingPage from './pages/Utils/SpacingPage';
-import BreakpointsPage from './pages/Utils/BreakpointsPage';
-import GridsPage from './pages/Utils/GridsPage';
-import BorderRadiusPage from './pages/Utils/BorderRadiusPage';
-import ProgressBarPage from './pages/Components/ProgressBar';
+import Loading from './components/Loading';
+
+const ContentPage = lazy(() => import('./pages/Content'));
+const UtilsPage = lazy(() => import('./pages/Utils'));
+
+const ColorTester = lazy(() => import('./pages/ColorTester'));
+const FontTester = lazy(() => import('./pages/FontTester'));
+const BadgesPage = lazy(() => import('./pages/Components/BadgesPage'));
+const BreadcrumbsPage = lazy(() => import('./pages/Components/BreadcrumbsPage'));
+const ButtonsPage = lazy(() => import('./pages/Components/ButtonsPage'));
+const FlashesPage = lazy(() => import('./pages/Components/FlashesPage'));
+const FormattedCurrencyPage = lazy(() => import('./pages/Components/FormattedCurrencyPage'));
+const FormattedPluralPage = lazy(() => import('./pages/Components/FormattedPluralPage'));
+const PaginationPage = lazy(() => import('./pages/Components/PaginationPage'));
+const LoadingPage = lazy(() => import('./pages/Components/LoadingPage'));
+const ModalPage = lazy(() => import('./pages/Components/ModalPage'));
+const FormsPage = lazy(() => import('./pages/Components/FormsPage'));
+const BrandSettings = lazy(() => import('./pages/BrandSettings'));
+const ColorsPage = lazy(() => import('./pages/Utils/ColorsPage'));
+const SpacingPage = lazy(() => import('./pages/Utils/SpacingPage'));
+const BreakpointsPage = lazy(() => import('./pages/Utils/BreakpointsPage'));
+const GridsPage = lazy(() => import('./pages/Utils/GridsPage'));
+const BorderRadiusPage = lazy(() => import('./pages/Utils/BorderRadiusPage'));
+const ProgressBarPage = lazy(() => import('./pages/Components/ProgressBar'));
+
+const HomePage = lazy(() => import('./pages/Home'));
+const ComponentsPage = lazy(() => import('./pages/Components'));
+const JSPage = lazy(() => import('./pages/Javascript'));
 
 const AppRoutes = () => {
     return (
-        <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="components">
-                <Route index element={<ComponentsPage />} />
-                <Route path="badges" element={<BadgesPage />} />
-                <Route path="breadcrumbs" element={<BreadcrumbsPage />} />
-                <Route path="buttons" element={<ButtonsPage />} />
-                <Route path="flashes" element={<FlashesPage />} />
-                <Route path="formatted-currency" element={<FormattedCurrencyPage />} />
-                <Route path="formatted-plural" element={<FormattedPluralPage />} />
-                <Route path="pagination" element={<PaginationPage />} />
-                <Route path="loading" element={<LoadingPage />} />
-                <Route path="modal" element={<ModalPage />} />
-                <Route path="forms" element={<FormsPage />} />
-                <Route path="progress-bar" element={<ProgressBarPage />} />
-            </Route>
-            <Route path="content" element={<ContentPage />} />
-            <Route path="utils">
-                <Route index element={<UtilsPage />} />
-                <Route path="colors" element={<ColorsPage />} />
-                <Route path="spacing" element={<SpacingPage />} />
-                <Route path="breakpoints" element={<BreakpointsPage />} />
-                <Route path="grids" element={<GridsPage />} />
-                <Route path="borders" element={<BorderRadiusPage />} />
-            </Route>
-            <Route path="javascript" element={<JSPage />} />
-            <Route path="color-tester" element={<ColorTester />} />
-            <Route path="font-tester" element={<FontTester />} />
-            <Route path="brand-settings" element={<BrandSettings />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+            <Routes>
+                <Route index element={<HomePage />} />
+                <Route path="components">
+                    <Route index element={<ComponentsPage />} />
+                    <Route path="badges" element={<BadgesPage />} />
+                    <Route path="breadcrumbs" element={<BreadcrumbsPage />} />
+                    <Route path="buttons" element={<ButtonsPage />} />
+                    <Route path="flashes" element={<FlashesPage />} />
+                    <Route path="formatted-currency" element={<FormattedCurrencyPage />} />
+                    <Route path="formatted-plural" element={<FormattedPluralPage />} />
+                    <Route path="pagination" element={<PaginationPage />} />
+                    <Route path="loading" element={<LoadingPage />} />
+                    <Route path="modal" element={<ModalPage />} />
+                    <Route path="forms" element={<FormsPage />} />
+                    <Route path="progress-bar" element={<ProgressBarPage />} />
+                </Route>
+                <Route path="content" element={<ContentPage />} />
+                <Route path="utils">
+                    <Route index element={<UtilsPage />} />
+                    <Route path="colors" element={<ColorsPage />} />
+                    <Route path="spacing" element={<SpacingPage />} />
+                    <Route path="breakpoints" element={<BreakpointsPage />} />
+                    <Route path="grids" element={<GridsPage />} />
+                    <Route path="borders" element={<BorderRadiusPage />} />
+                </Route>
+                <Route path="javascript" element={<JSPage />} />
+                <Route path="color-tester" element={<ColorTester />} />
+                <Route path="font-tester" element={<FontTester />} />
+                <Route path="brand-settings" element={<BrandSettings />} />
+            </Routes>
+        </Suspense>
     );
 };
 export default AppRoutes;
