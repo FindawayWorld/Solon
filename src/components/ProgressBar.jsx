@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) => {
-    let hasValue = ![null, undefined, false].includes(value);
-    let progress = hasValue ? Math.ceil((value / max) * 100) : undefined;
+    const hasValue = typeof value === 'number' && value >= 0;
+    const progress = hasValue ? Math.ceil((value / max) * 100) : undefined;
 
     return (
         <div
