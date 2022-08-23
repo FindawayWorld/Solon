@@ -86,155 +86,75 @@ const App = () => {
                     </div>
 
                     <ul className="nav flex-column">
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/content"
-                            >
-                                <FaFileAlt aria-label="Content" />
-                                <span aria-hidden>Content</span>
-                            </NavLink>
-                        </li>
-                        <li
-                            className={classnames('nav-item', {
-                                active: location.pathname.includes('/components')
-                            })}
-                        >
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/components"
-                            >
-                                <FaPuzzlePiece aria-label="Components" />
-                                <span aria-hidden>Components</span>
-                            </NavLink>
-                            <ul className="nav">
-                                {componentsNav.map((page) => (
-                                    <li key={page[0]} className="nav-item">
-                                        <NavLink
-                                            className={({ isActive }) =>
-                                                classNames('nav-link', {
-                                                    active: isActive
-                                                })
-                                            }
-                                            to={page[0]}
-                                        >
-                                            {page[1]}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                        <li
-                            className={classnames('nav-item', {
-                                active: location.pathname.includes('/utils')
-                            })}
-                        >
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/utils"
-                            >
-                                <FaTools aria-label="Utils" />
-                                <span aria-hidden>Utils</span>
-                            </NavLink>
-                            <ul className="nav">
-                                {utilsNav.map((page) => (
-                                    <li key={page[0]} className="nav-item">
-                                        <NavLink
-                                            className={({ isActive }) =>
-                                                classNames('nav-link', {
-                                                    active: isActive
-                                                })
-                                            }
-                                            to={page[0]}
-                                        >
-                                            {page[1]}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/javascript"
-                            >
-                                <FaJsSquare aria-label="Javascript" />
-                                <span aria-hidden>Javascript</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/color-tester"
-                            >
-                                <FaPalette aria-label="Color-tester" />
-                                <span aria-hidden>Color Tester</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/font-tester"
-                            >
-                                <FaFont aria-label="Font-tester" />
-                                <span aria-hidden>Font Tester</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/brand-settings"
-                            >
-                                <FaCog aria-label="Brand-settings" />
-                                <span aria-hidden>Brand Settings</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/accessibility"
-                            >
-                                <FaUniversalAccess aria-label="Accessibility" />
-                                <span aria-hidden>Accessibility</span>
-                            </NavLink>
-                        </li>
+                        {[
+                            { path: 'content', icon: <FaFileAlt aria-label="Content" /> },
+                            {
+                                path: 'components',
+                                icon: <FaPuzzlePiece aria-label="Components" />,
+                                child: (
+                                    <ul className="nav">
+                                        {componentsNav.map((page) => (
+                                            <li key={page[0]} className="nav-item">
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        classNames('nav-link', {
+                                                            active: isActive
+                                                        })
+                                                    }
+                                                    to={page[0]}
+                                                >
+                                                    {page[1]}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            },
+                            {
+                                path: 'utils',
+                                icon: <FaTools aria-label="Utils" />,
+                                child: (
+                                    <ul className="nav">
+                                        {utilsNav.map((page) => (
+                                            <li key={page[0]} className="nav-item">
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        classNames('nav-link', {
+                                                            active: isActive
+                                                        })
+                                                    }
+                                                    to={page[0]}
+                                                >
+                                                    {page[1]}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            },
+                            { path: 'javascript', icon: <FaJsSquare aria-label="Javascript" /> },
+                            { path: 'color-tester', icon: <FaPalette aria-label="Color-tester" /> },
+                            { path: 'font-tester', icon: <FaFont aria-label="Font-tester" /> },
+                            { path: 'brand-settings', icon: <FaCog aria-label="Brand-settings" /> },
+                            { path: 'accessibility', icon: <FaUniversalAccess aria-label="Accessibility" /> }
+                        ].map((item) => (
+                            <li className="nav-item">
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        classNames('nav-link', {
+                                            active: isActive
+                                        })
+                                    }
+                                    to={`/${item.path}`}
+                                >
+                                    {item.icon}
+                                    <span aria-hidden className="capitalize">
+                                        {item.path.split('-').join(' ')}
+                                    </span>
+                                </NavLink>
+                                {item?.child && item.child}
+                            </li>
+                        ))}
                     </ul>
 
                     <hr />
