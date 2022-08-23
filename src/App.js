@@ -12,7 +12,8 @@ import {
     FaFont,
     FaGithub,
     FaChevronLeft,
-    FaCog
+    FaCog,
+    FaUniversalAccess
 } from 'react-icons/fa';
 import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
@@ -20,6 +21,7 @@ import { asc } from './utils/sorts';
 import useDisabledLinks from './hooks/useDisabledLinks';
 import classNames from 'classnames';
 import AppRoutes from './AppRoutes';
+import VisuallyHidden from '@reach/visually-hidden';
 
 export const componentsNav = [
     ['/components/badges', 'Badges'],
@@ -78,7 +80,8 @@ const App = () => {
                             <SolonLogo className="full-logo" />
                         </NavLink>
                         <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
-                            <FaChevronLeft />
+                            <VisuallyHidden>{`${collapseSidebar ? 'expand' : 'collapse'} sidebar`}</VisuallyHidden>
+                            <FaChevronLeft aria-hidden />
                         </button>
                     </div>
 
@@ -92,8 +95,8 @@ const App = () => {
                                 }
                                 to="/content"
                             >
-                                <FaFileAlt />
-                                <span>Content</span>
+                                <FaFileAlt aria-label="Content" />
+                                <span aria-hidden>Content</span>
                             </NavLink>
                         </li>
                         <li
@@ -109,8 +112,8 @@ const App = () => {
                                 }
                                 to="/components"
                             >
-                                <FaPuzzlePiece />
-                                <span>Components</span>
+                                <FaPuzzlePiece aria-label="Components" />
+                                <span aria-hidden>Components</span>
                             </NavLink>
                             <ul className="nav">
                                 {componentsNav.map((page) => (
@@ -142,8 +145,8 @@ const App = () => {
                                 }
                                 to="/utils"
                             >
-                                <FaTools />
-                                <span>Utils</span>
+                                <FaTools aria-label="Utils" />
+                                <span aria-hidden>Utils</span>
                             </NavLink>
                             <ul className="nav">
                                 {utilsNav.map((page) => (
@@ -172,8 +175,8 @@ const App = () => {
                                 end
                                 to="/javascript"
                             >
-                                <FaJsSquare />
-                                <span>Javascript</span>
+                                <FaJsSquare aria-label="Javascript" />
+                                <span aria-hidden>Javascript</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -186,8 +189,8 @@ const App = () => {
                                 end
                                 to="/color-tester"
                             >
-                                <FaPalette />
-                                <span>Color Tester</span>
+                                <FaPalette aria-label="Color-tester" />
+                                <span aria-hidden>Color Tester</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -200,8 +203,8 @@ const App = () => {
                                 end
                                 to="/font-tester"
                             >
-                                <FaFont />
-                                <span>Font Tester</span>
+                                <FaFont aria-label="Font-tester" />
+                                <span aria-hidden>Font Tester</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
@@ -214,8 +217,22 @@ const App = () => {
                                 end
                                 to="/brand-settings"
                             >
-                                <FaCog />
-                                <span>Brand Settings</span>
+                                <FaCog aria-label="Brand-settings" />
+                                <span aria-hidden>Brand Settings</span>
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink
+                                className={({ isActive }) =>
+                                    classNames('nav-link', {
+                                        active: isActive
+                                    })
+                                }
+                                end
+                                to="/accessibility"
+                            >
+                                <FaUniversalAccess aria-label="Accessibility" />
+                                <span aria-hidden>Accessibility</span>
                             </NavLink>
                         </li>
                     </ul>
@@ -230,7 +247,7 @@ const App = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaGithub /> <span>Github</span>
+                                <FaGithub aria-label="Github" /> <span aria-hidden>Github</span>
                             </a>
                         </li>
                     </ul>
