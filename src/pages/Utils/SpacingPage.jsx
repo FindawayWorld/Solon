@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { spacers } from '../Content';
 
+const items = Array.from({ length: 20 }, (_, i) => (
+    <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
+        {i}
+    </div>
+));
+
 const SpacingPage = () => (
     <section id="spacing-utils">
         <Breadcrumbs>
@@ -270,35 +276,17 @@ const SpacingPage = () => (
         <p>
             <strong>All</strong> <code>.g-#</code>
         </p>
-        <div className="d-flex wrap g-2 mb-5">
-            {Array.from({ length: 20 }, (_, i) => (
-                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
-                    {i}
-                </div>
-            ))}
-        </div>
+        <div className="d-flex wrap g-2 mb-5">{items}</div>
 
         <p>
             <strong>Right/Left (x axis)</strong> <code>.gx-#</code>
         </p>
-        <div className="d-flex wrap gx-2 mb-5">
-            {Array.from({ length: 20 }, (_, i) => (
-                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
-                    {i}
-                </div>
-            ))}
-        </div>
+        <div className="d-flex wrap gx-2 mb-5">{items}</div>
 
         <p>
             <strong>Top/Bottom (y axis)</strong> <code>.gy-#</code>
         </p>
-        <div className="d-flex wrap gy-2">
-            {Array.from({ length: 20 }, (_, i) => (
-                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
-                    {i}
-                </div>
-            ))}
-        </div>
+        <div className="d-flex wrap gy-2">{items}</div>
     </section>
 );
 
