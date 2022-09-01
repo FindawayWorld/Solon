@@ -525,27 +525,6 @@ const GridsPage = () => (
                     </div>
                 </div>
             </div>
-
-            <p>
-                <code>{`.wrap-{breakpoint}`}</code>
-            </p>
-            <div className="row">
-                <div className="col-12">
-                    <div className="box box-container">
-                        <div className="row">
-                            <div className="col-6">
-                                <div className="box-nested"></div>
-                            </div>
-                            <div className="col-12">
-                                <div className="box-nested"></div>
-                            </div>
-                            <div className="col-6">
-                                <div className="box-nested"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section className="page-section mb-5">
