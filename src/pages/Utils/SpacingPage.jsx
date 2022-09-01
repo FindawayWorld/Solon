@@ -59,6 +59,9 @@ const SpacingPage = () => (
             <li>
                 <code>p</code> - <code>padding</code>
             </li>
+            <li>
+                <code>g</code> - <code>gap</code>
+            </li>
         </ul>
 
         <p>
@@ -79,13 +82,15 @@ const SpacingPage = () => (
                 <code>r</code> - <code>margin-right</code> or <code>padding-right</code>
             </li>
             <li>
-                <code>x</code> - both <code>*-left</code> and <code>*-right</code>
+                <code>x</code> - both <code>*-left</code> and <code>*-right</code>. For <code>gap</code>, this is{' '}
+                <code>row-gap</code>.
             </li>
             <li>
-                <code>y</code> - both <code>*-top</code> and <code>*-bottom</code>
+                <code>y</code> - both <code>*-top</code> and <code>*-bottom</code>. For <code>gap</code>, this is{' '}
+                <code>column-gap</code>.
             </li>
             <li>
-                blank - <code>margin</code> or <code>padding</code> on all 4 sides of the element
+                blank - <code>margin</code>, <code>padding</code>, or <code>gap</code> on all sides of the element
             </li>
         </ul>
 
@@ -201,7 +206,7 @@ const SpacingPage = () => (
 
         <h3>Padding Examples</h3>
 
-        <div className="row">
+        <div className="row mb-5">
             <div className="col-12 col-md-4 col-lg-2">
                 <p>
                     <strong>Top</strong> <code>.pt-#</code>
@@ -258,6 +263,41 @@ const SpacingPage = () => (
                     <div className="box-nested"></div>
                 </div>
             </div>
+        </div>
+
+        <h3>Flex Examples</h3>
+
+        <p>
+            <strong>All</strong> <code>.g-#</code>
+        </p>
+        <div className="d-flex wrap g-2 mb-5">
+            {Array.from({ length: 20 }, (_, i) => (
+                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
+                    {i}
+                </div>
+            ))}
+        </div>
+
+        <p>
+            <strong>Right/Left (x axis)</strong> <code>.gx-#</code>
+        </p>
+        <div className="d-flex wrap gx-2 mb-5">
+            {Array.from({ length: 20 }, (_, i) => (
+                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
+                    {i}
+                </div>
+            ))}
+        </div>
+
+        <p>
+            <strong>Top/Bottom (y axis)</strong> <code>.gy-#</code>
+        </p>
+        <div className="d-flex wrap gy-2">
+            {Array.from({ length: 20 }, (_, i) => (
+                <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
+                    {i}
+                </div>
+            ))}
         </div>
     </section>
 );
