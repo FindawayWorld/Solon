@@ -75,6 +75,30 @@ const DisplayPage = () => (
         {displayValues.map((display) => (
             <Example display={display} />
         ))}
+
+        <h4>Flex</h4>
+
+        <p>
+            <strong>Without Flex Wrap</strong> <code>{`.d-flex`}</code>
+        </p>
+        <div className={'d-flex bg-blue p-8 mb-5'}>
+            {Array.from({ length: 20 }, (_, i) => (
+                <span key={i} className="bg-gray py-4 px-12">
+                    {i}
+                </span>
+            ))}
+        </div>
+
+        <p>
+            <strong>With Flex Wrap</strong> <code>{`.d-flex.wrap`}</code>
+        </p>
+        <div className={'d-flex wrap bg-blue p-8'}>
+            {Array.from({ length: 20 }, (_, i) => (
+                <span key={i} className="bg-gray py-4 px-12">
+                    {i}
+                </span>
+            ))}
+        </div>
     </section>
 );
 
