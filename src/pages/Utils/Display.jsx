@@ -78,6 +78,16 @@ const DisplayPage = () => (
 
         <h4>Flex</h4>
 
+        <h5>Wrap</h5>
+
+        <p>
+            Assign <code>flex-wrap: wrap</code> to an element.
+        </p>
+
+        <p>
+            The classes are named using the format <code>{`.wrap-{breakpoint}`}</code>.
+        </p>
+
         <p>
             <strong>Without Flex Wrap</strong> <code>{`.d-flex`}</code>
         </p>
