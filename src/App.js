@@ -42,7 +42,8 @@ export const utilsNav = [
     ['/utils/spacing', 'Spacing'],
     ['/utils/colors', 'Colors'],
     ['/utils/grids', 'Grids'],
-    ['/utils/borders', 'Borders']
+    ['/utils/borders', 'Borders'],
+    ['/utils/display', 'Display']
 ];
 
 utilsNav.sort((a, b) => asc(a[1], b[1]));
