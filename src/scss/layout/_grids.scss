@@ -55,7 +55,7 @@
 }
 
 @mixin margins($infix: '') {
-    @each $prop, $abbrev in (margin: m, padding: p, gap: g) {
+    @each $prop, $abbrev in (margin: m, padding: p) {
         @each $size, $length in $spacers {
             .#{$abbrev}#{$infix}-#{$size} {
                 #{$prop}: $length !important;
