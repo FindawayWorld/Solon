@@ -102,11 +102,11 @@ const ContentPage = () => {
                                 return <p> {color} not found</p>;
                             }
                             return (
-                                <div key={`colors-${color}`} className="col-6 col-md-3 txt-center">
+                                <div key={`colors-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
                                     <div className={`bg-${color} p-4 mb-4`}>
-                                        <code className="txt-4">${color}</code>
+                                        <code>${color}</code>
                                         <br />
-                                        <code className="txt-4">{hex}</code>
+                                        <code>{hex}</code>
                                     </div>
                                 </div>
                             );
@@ -123,11 +123,11 @@ const ContentPage = () => {
                                 return <p> {color} not found</p>;
                             }
                             return (
-                                <div key={`brand-${color}`} className="col-6 col-md-3 txt-center">
+                                <div key={`brand-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
                                     <div className={`bg-${color} p-4 mb-4`}>
-                                        <code className="txt-4">${color}</code>
+                                        <code>${color}</code>
                                         <br />
-                                        <code className="txt-4">{name || hex}</code>
+                                        <code>{name || hex}</code>
                                     </div>
                                 </div>
                             );
