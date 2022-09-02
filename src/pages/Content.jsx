@@ -46,23 +46,23 @@ export const spacers = {
 };
 
 export const colors = [
-    ['aqua', '#7fdbff'],
-    ['blue', '#0074d9'],
-    ['navy', '#001f3f'],
-    ['teal', '#289c9c'],
-    ['green', '#239930'],
-    ['olive', '#3d9970'],
-    ['lime', '#01ff70'],
-    ['yellow', '#ffdc00'],
-    ['orange', '#ff851b'],
-    ['red', '#e80d00'],
-    ['fuchsia', '#f012be'],
-    ['purple', '#b10dc9'],
-    ['maroon', '#85144b'],
-    ['white', '#ffffff'],
-    ['silver', '#dddddd'],
-    ['gray', '#808080'],
-    ['black', '#212529']
+    ['aqua'],
+    ['blue'],
+    ['navy'],
+    ['teal'],
+    ['green'],
+    ['olive'],
+    ['lime'],
+    ['yellow'],
+    ['orange'],
+    ['red'],
+    ['fuchsia'],
+    ['purple'],
+    ['maroon'],
+    ['white'],
+    ['silver'],
+    ['gray'],
+    ['black']
 ];
 export const brandColors = [
     ['primary', '$blue'],
@@ -71,15 +71,17 @@ export const brandColors = [
     ['danger', '$red'],
     ['warning', '$yellow'],
     ['info', '$teal'],
-    ['light', '#f8f9fa'],
-    ['dark', '#343a40'],
-    ['muted', '#6c757d']
+    ['light', ''],
+    ['dark', ''],
+    ['muted', '']
 ];
-
 export const onDarkSolid = ['light', 'white', 'silver'];
 export const onDarkOutline = ['light', 'warning', 'white', 'silver', 'yellow', 'lime'];
 
 const ContentPage = () => {
+    const root = document.querySelector(':root');
+    const rootStyles = root && getComputedStyle(root);
+
     return (
         <>
             <section id="colors" className="mb-5">
@@ -94,30 +96,42 @@ const ContentPage = () => {
                 </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
-                        {colors.map(([color, hex]) => (
-                            <div key={`colors-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`bg-${color} p-4 mb-4`}>
-                                    <code>${color}</code>
-                                    <br />
-                                    <code>{hex}</code>
+                        {colors.map(([color]) => {
+                            let hex = rootStyles?.getPropertyValue(`--${color}`);
+                            if (!hex) {
+                                return <p> {color} not found</p>;
+                            }
+                            return (
+                                <div key={`colors-${color}`} className="col-6 col-md-3 txt-center">
+                                    <div className={`bg-${color} p-4 mb-4`}>
+                                        <code className="txt-4">${color}</code>
+                                        <br />
+                                        <code className="txt-4">{hex}</code>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 
                 <h3>Brand Colors</h3>
                 <div className="swatch-list">
                     <div className="row">
-                        {brandColors.map(([color, hex]) => (
-                            <div key={`brand-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`bg-${color} p-4 mb-4`}>
-                                    <code>${color}</code>
-                                    <br />
-                                    <code>{hex}</code>
+                        {brandColors.map(([color, name]) => {
+                            let hex = rootStyles?.getPropertyValue(`--${color}`);
+                            if (!hex) {
+                                return <p> {color} not found</p>;
+                            }
+                            return (
+                                <div key={`brand-${color}`} className="col-6 col-md-3 txt-center">
+                                    <div className={`bg-${color} p-4 mb-4`}>
+                                        <code className="txt-4">${color}</code>
+                                        <br />
+                                        <code className="txt-4">{name || hex}</code>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
