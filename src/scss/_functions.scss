@@ -60,7 +60,7 @@
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
-$min-contrast-ratio: 3 !default;
+$min-contrast-ratio: 4.5 !default;
 
 // Color contrast
 // See https://github.com/twbs/bootstrap/pull/30168
@@ -71,12 +71,7 @@ $_luminance-list: 0.0008 0.001 0.0011 0.0013 0.0015 0.0017 0.002 0.0022 0.0025 0
 
 
 @function color-contrast($background, $color-contrast-dark: $black, $color-contrast-light: $white) {
-    $l1: luminance($background);
-    $l2: luminance(opaque($background, $color-contrast-light));
-
-    $contrast: if($l1 > $l2, math.div($l1 + 0.05, $l2 + 0.05), math.div($l2 + 0.05, $l1 + 0.05));
-
-    @return if($contrast < $min-contrast-ratio, $color-contrast-dark, $color-contrast-light);
+    @return ch-best-color-contrast($background, ($color-contrast-light, $color-contrast-dark))
 }
 
 @function contrast-ratio($background, $foreground: $color-contrast-light) {

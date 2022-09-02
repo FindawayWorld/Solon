@@ -1,3 +1,5 @@
+@import 'sass-color-helpers';
+
 @import 'brand_settings';
 
 @import 'functions', 'settings';
@@ -7,10 +9,10 @@
 @import 'layout/grids';
 
 @import 'components/badges', 'components/flashes', 'components/forms', 'components/buttons', 'components/links',
-    'components/lists', 'components/tables';
+'components/lists', 'components/tables';
 
 @import 'mods/breadcrumbs', 'mods/header', 'mods/footer', 'mods/loading', 'mods/menu-button', 'mods/modal',
-    'mods/pagination', 'mods/progress-bar', 'mods/sidebar';
+'mods/pagination', 'mods/progress-bar', 'mods/sidebar';
 
 // Documentation Styles
 .swatch {
