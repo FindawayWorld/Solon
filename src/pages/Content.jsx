@@ -51,8 +51,6 @@ export const colors = [
     ['navy'],
     ['teal'],
     ['green'],
-    ['olive'],
-    ['lime'],
     ['yellow'],
     ['orange'],
     ['red'],
@@ -164,8 +162,9 @@ const ContentPage = () => {
     'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-// Monospace fonts
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;`}
+$font-family-monospace:
+    // Monospace fonts
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;`}
                 />
                 <p>
                     Read more about native font stacks in this{' '}
@@ -210,7 +209,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
             </section>
 
-            <section id="text-alignment" className="mb-5">
+            <section className="text-alignment mb-5">
                 <h2>Text Alignment</h2>
                 <hr />
                 <p>
@@ -229,7 +228,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 </p>
             </section>
 
-            <section id="text-alignment" className="mb-5">
+            <section className="text-alignment mb-5">
                 <h2>Vertical Alignment</h2>
                 <hr />
                 {['top', 'middle', 'bottom', 'baseline'].map((al) => (

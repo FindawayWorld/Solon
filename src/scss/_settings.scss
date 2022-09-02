@@ -69,9 +69,7 @@ $aqua: #91EEDA !default;
 $blue: #283EA3 !default;
 $navy: #202F72 !default;
 $teal: #19E68C !default;
-$green: #056952 !default;
-$olive: #4B917D !default;
-$lime: #1ED760 !default;
+$green: #1ED760 !default;
 $yellow: #FCE54F !default;
 $orange: #FF7439 !default;
 $red: #E91429 !default;
@@ -81,7 +79,7 @@ $maroon: #8A202B !default;
 $white: #ffffff !default;
 $silver: #d9d9d9 !default;
 $gray: #7F7F7F !default;
-$black: #000000 !default;
+$black: #121212 !default;
 $font-color: $black !default;
 $border-color: $silver !default;
 
@@ -92,8 +90,6 @@ $colors: map-merge(('aqua': $aqua,
         'navy': $navy,
         'teal': $teal,
         'green': $green,
-        'olive': $olive,
-        'lime': $lime,
         'yellow': $yellow,
         'orange': $orange,
         'red': $red,
@@ -191,8 +187,6 @@ $spacers: map-merge(( // 0px
     --teal: #{$teal};
     --teal-dark: #{$teal-dark};
     --green:#{$green};
-    --olive:#{$olive};
-    --lime:#{$lime};
     --yellow: #{$yellow};
     --orange: #{$orange};
     --red: #{$red};
