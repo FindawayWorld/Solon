@@ -23,8 +23,8 @@ class GWColorLib {
         0.9734, 0.9823, 0.9911, 1
     ];
     color = null;
-    minContrastRatio = 3;
-    constructor(color, minContrastRatio = 3) {
+    minContrastRatio = 4.5;
+    constructor(color, minContrastRatio = 4.5) {
         this.color = color;
         this.minContrastRatio = minContrastRatio;
     }
