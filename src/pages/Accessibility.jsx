@@ -5,7 +5,7 @@ const Accessibility = () => {
         <section>
             <h2>Accessibility</h2>
             <p>Elements (such as Buttons, Images, Icons) without text must include aria attributes.</p>
-            <p>The purpose of the element visually must be represented audibly as well.</p>
+            <p>The purpose of the element visually must also be represented audibly.</p>
             <p>2 Examples of a button icon without text:</p>
             <div className="flash mb-6">
                 <code>
