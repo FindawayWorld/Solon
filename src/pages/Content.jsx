@@ -240,7 +240,15 @@ $font-family-monospace:
                     </p>
                 ))}
             </section>
+            <section id="text-tranform" className="mb-5">
+                <h2>Text Transform</h2>
+                <hr />
+                <p>
+                    Text Tranform Capitalize can be applied using <code>{`.capitalize`}</code>
+                </p>
 
+                <p className="capitalize">capitalize</p>
+            </section>
             <section id="text-weight" className="mb-5">
                 <h2>Font Weight</h2>
                 <hr />
