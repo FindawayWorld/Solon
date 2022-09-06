@@ -97,7 +97,7 @@ const ContentPage = () => {
                         {colors.map(([color]) => {
                             let hex = rootStyles?.getPropertyValue(`--${color}`);
                             if (!hex) {
-                                return <p> {color} not found</p>;
+                                return null;
                             }
                             return (
                                 <div key={`colors-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
@@ -118,7 +118,7 @@ const ContentPage = () => {
                         {brandColors.map(([color, name]) => {
                             let hex = rootStyles?.getPropertyValue(`--${color}`);
                             if (!hex) {
-                                return <p> {color} not found</p>;
+                                return null;
                             }
                             return (
                                 <div key={`brand-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
