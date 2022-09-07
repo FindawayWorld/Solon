@@ -28,14 +28,16 @@ const Accessibility = () => {
                     />
                 </div>
                 <p>
-                    <strong>Summary:</strong> Both examples above have the aria-hidden attribute - defaulting to true
-                    when present. Since they are wrapped in a button that has either, an aria-label or text within the
-                    VisuallyHidden, the screen reader will read that the element is a button and read the button's
-                    purpose, the label. Therefore the screen reader never needs to focus on the icon, which is why we
-                    set aria-hidden to true and focusable false.
+                    <strong>Summary:</strong> Both examples above have the <code>aria-hidden</code> attribute -
+                    defaulting to <code>true</code> when present. Since they are wrapped in a button that has either, an
+                    aria-label or text within the <code>VisuallyHidden</code>, the screen reader will read that the
+                    element is a button and read the button's purpose, the label. Therefore the screen reader never
+                    needs to focus on the icon, which is why we set <code>aria-hidden</code> to <code>true</code> and{' '}
+                    <code>focusable</code> to <code>false</code>.
                 </p>
                 <p>
-                    It's good practice to include <code>focusable="false"</code> with aria-hidden because the attribute
+                    It's good practice to include <code>focusable="false"</code> with <code>aria-hidden</code> because
+                    the attribute
                     <code> aria-hidden="true"</code> hides an element and all its children from assistive technologies,
                     but users can still use the keyboard to navigate to any focusable child elements, but their content
                     is inaccessible to people who use assistive technologies.
