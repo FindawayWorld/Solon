@@ -148,7 +148,7 @@ const App = () => {
                                     to={`/${item.path}`}
                                 >
                                     {item.icon}
-                                    <span aria-hidden className="capitalize">
+                                    <span aria-hidden className="capitalize" focusable="false">
                                         {item.path.split('-').join(' ')}
                                     </span>
                                 </NavLink>
@@ -167,7 +167,10 @@ const App = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <FaGithub aria-label="Github" /> <span aria-hidden>Github</span>
+                                <FaGithub aria-label="Github" />{' '}
+                                <span aria-hidden focusable="false">
+                                    Github
+                                </span>
                             </a>
                         </li>
                     </ul>
