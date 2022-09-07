@@ -38,7 +38,7 @@ const Accessibility = () => {
                     It's good practice to include <code>focusable="false"</code> with aria-hidden because the attribute
                     <code> aria-hidden="true"</code> hides an element and all its children from assistive technologies,
                     but users can still use the keyboard to navigate to any focusable child elements, but their content
-                    is inaccessible to people who use assistive technologies.{' '}
+                    is inaccessible to people who use assistive technologies.
                 </p>
             </div>
         </section>

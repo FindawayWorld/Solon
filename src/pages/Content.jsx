@@ -95,7 +95,7 @@ const ContentPage = () => {
                 <div className="swatch-list mb-3">
                     <div className="row">
                         {colors.map(([color]) => {
-                            let hex = rootStyles?.getPropertyValue(`--${color}`);
+                            const hex = rootStyles?.getPropertyValue(`--${color}`);
                             if (!hex) {
                                 return null;
                             }
@@ -116,7 +116,7 @@ const ContentPage = () => {
                 <div className="swatch-list">
                     <div className="row">
                         {brandColors.map(([color, name]) => {
-                            let hex = rootStyles?.getPropertyValue(`--${color}`);
+                            const hex = rootStyles?.getPropertyValue(`--${color}`);
                             if (!hex) {
                                 return null;
                             }
