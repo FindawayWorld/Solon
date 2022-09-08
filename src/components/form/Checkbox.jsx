@@ -1,12 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
-import {useId} from '@reach/auto-id';
+import { useId } from '@reach/auto-id';
 
 const Checkbox = ({
     checked = undefined,
     label = '',
     help = null,
-    placeholder = null,
     id = null,
     name = null,
     error = false,
@@ -32,13 +31,15 @@ const Checkbox = ({
     }
 
     return (
-        <div className={classnames('form-group form-check', className, {
-            'checkbox-inline': inline
-        })}>
+        <div
+            className={classnames('form-group form-check', className, {
+                'checkbox-inline': inline
+            })}
+        >
             <input
                 className={classnames('form-check-input', {
-                    'success': touched && !error,
-                    'error': error
+                    success: touched && !error,
+                    error: error
                 })}
                 checked={checked}
                 value={value}
@@ -50,14 +51,20 @@ const Checkbox = ({
                 onBlur={handleBlur}
                 disabled={disabled}
             />
-            <label htmlFor={id} className={classnames('form-check-label', {
-                'required': required
-            })}>
+            <label
+                htmlFor={id}
+                className={classnames('form-check-label', {
+                    required: required
+                })}
+            >
                 {label || children}
-            </label> {help}
-            {error && touched && <div className="form-error standalone">
-                <span>{error}</span>
-            </div>}
+            </label>{' '}
+            {help}
+            {error && touched && (
+                <div className="form-error standalone">
+                    <span>{error}</span>
+                </div>
+            )}
         </div>
     );
 };
