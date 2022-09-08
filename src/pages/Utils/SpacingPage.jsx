@@ -5,7 +5,7 @@ import { spacers } from '../Content';
 
 const items = Array.from({ length: 20 }, (_, i) => (
     <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
-        {i}
+        {i + 1}
     </div>
 ));
 
