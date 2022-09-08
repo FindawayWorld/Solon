@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 .row {
     box-sizing: border-box;
@@ -109,6 +109,21 @@
             .mx#{$infix}-n#{$size} {
                 margin-left: -$length !important;
             }
+        }
+    }
+
+    // Gap utilities (e.g., where `.g-1` is the same as `.gx-1.gy-1`)
+    @each $size, $length in $spacers {
+        .g#{$infix}-#{$size} {
+            gap: $length !important;
+        }
+
+        .gx#{$infix}-#{$size} {
+            column-gap: $length !important;
+        }
+
+        .gy#{$infix}-#{$size} {
+            row-gap: $length !important;
         }
     }
 
