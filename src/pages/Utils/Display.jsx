@@ -21,9 +21,9 @@ const Example = ({ display }) => (
         </p>
 
         {Array.from({ length: 2 }, (_, i) => (
-            <div key={i} className={`d-${display} bg-blue p-8`}>
+            <div key={i} className={`d-${display} bg-blue p-4 m-8`}>
                 {Array.from({ length: 3 }, (_, i) => (
-                    <span key={i} className="bg-gray p-4">
+                    <span key={i} className="bg-gray p-4 txt-white m-1">
                         {i}
                     </span>
                 ))}
@@ -55,7 +55,7 @@ const DisplayPage = () => (
 
         <p>
             Where <code>{`{breakpoint}`}</code> is one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+            <Link to="/utils/breakpoints">responsive breakpoints</Link>.
         </p>
 
         <p>
