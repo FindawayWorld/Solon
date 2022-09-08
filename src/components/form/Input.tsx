@@ -2,38 +2,89 @@ import React from 'react';
 import classnames from 'classnames';
 import { useId } from '@reach/auto-id';
 
-const Input = ({
-    label = '',
-    labelHelp = null,
-    placeholder = null,
-    id = undefined,
-    name = null,
-    value = undefined,
-    defaultValue = undefined,
-    required = false,
-    className = '',
-    type = 'text',
-    collapse = false,
-    hideLabel = false,
-    inputStyles = {},
-    restricted = [],
-    showRequired = false,
-    prependLabel = false,
-    autoComplete = null,
-    hidden = false,
-    children = false,
-    prepend = null,
+interface InputProps {
+    append?: React.ReactNode;
+    autoComplete?: React.InputHTMLAttributes<HTMLInputElement>['autoComplete'];
+    children?: React.ReactNode;
+    className?: string;
+    collapse?: boolean;
+    defaultValue?: React.InputHTMLAttributes<HTMLInputElement>['value'];
+    disabled?: boolean;
+    enterkeyhint?: string;
+    error?: string;
+    errorStyle?: object;
+    flex?: boolean;
+    ghost?: boolean;
+    guidance?: React.ReactNode;
+    help?: React.ReactNode;
+    hidden?: boolean;
+    hideLabel?: boolean;
+    id: string;
+    innerClassName?: React.HTMLAttributes<HTMLDivElement>['className'];
+    inputClass?: string;
+    inputStyles?: object;
+    isHistoryInput?: boolean;
+    label?: string;
+    labelClass?: string;
+    labelHelp?: React.ReactNode;
+    labelledBy?: string;
+    max?: number;
+    maxLength?: number;
+    min?: number;
+    name?: string;
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: React.FocusEventHandler<HTMLInputElement>;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+    placeholder?: React.InputHTMLAttributes<HTMLInputElement>['placeholder'];
+    prepend?: React.ReactNode;
+    prependLabel?: boolean;
+    readOnly?: boolean;
+    required?: boolean;
+    restricted?: string[];
+    showRequired?: boolean;
+    small?: boolean;
+    step?: React.InputHTMLAttributes<HTMLInputElement>['step'];
+    touched?: boolean;
+    type?: string;
+    value: React.InputHTMLAttributes<HTMLInputElement>['value'];
+    warning?: string | false;
+}
+
+const Input: React.FC<InputProps> = ({
     append = null,
-    small = false,
+    autoComplete = undefined,
+    children = undefined,
+    className = '',
+    collapse = false,
+    defaultValue = undefined,
     disabled = false,
-    readOnly = false,
-    labelClass = null,
-    help = null,
+    error = null,
     flex = false,
     ghost = false,
-    error = null,
-    touched = false,
+    help = null,
+    hidden = false,
+    hideLabel = false,
+    id = undefined,
+    inputStyles = {},
+    label = '',
+    labelClass = null,
+    labelHelp = null,
+    name = null,
+    placeholder = undefined,
+    prepend = null,
+    prependLabel = false,
+    readOnly = false,
+    required = false,
+    restricted = [],
+    showRequired = false,
+    small = false,
     step = undefined,
+    touched = false,
+    type = 'text',
+    value = undefined,
     onBlur = () => {},
     onChange = () => {},
     onFocus = () => {},

@@ -1,4 +1,3 @@
-import React from 'react';
 import Code from '../components/Code';
 
 const JSPage = () => (
@@ -58,7 +57,14 @@ const JSPage = () => (
                 Function to sort an array ascending based on passed values. This is to be used with the{' '}
                 <code>Array.sort</code> method.
             </p>
-            <Code lang="javascript" code={`import { asc } from 'path/to/utils/sorts';\n[].sort((x,y) => asc(x,y))`} />
+            <Code
+                lang="javascript"
+                code={`
+import { asc } from 'path/to/utils/sorts';
+flatArray.sort(asc)
+arrayOfObjects.sort((a,b) => asc(a.key, b.key))
+arrayOfArrays.sort((a,b) => asc(a[1], b[1]))`}
+            />
 
             <h3>
                 <code>desc</code>
@@ -67,7 +73,30 @@ const JSPage = () => (
                 Function to sort an array descending based on passed values. This is to be used with the{' '}
                 <code>Array.sort</code> method.
             </p>
-            <Code lang="javascript" code={`import { desc } from 'path/to/utils/sorts';\n[].sort((x,y) => desc(x,y))`} />
+            <Code
+                lang="javascript"
+                code={`
+import { desc } from 'path/to/utils/sorts';
+flatArray.sort(desc)
+arrayOfObjects.sort((a,b) => desc(a.key, b.key))
+arrayOfArrays.sort((a,b) => desc(a[1], b[1]))`}
+            />
+
+            <h3>
+                <code>sorted</code>
+            </h3>
+            <p>
+                Use any sort function <code>asc</code>, or <code>desc</code> and return a new array. Great when working
+                with immutable data.
+            </p>
+            <Code
+                lang="javascript"
+                code={`
+import { asc, desc, sorted } from 'path/to/utils/sorts';
+const newFlatArray = sorted(flatArray, desc)
+const newArrayOfObjects = sorted(arrayOfObjects, (a,b) => asc(a.key, b.key))
+const newArrayOfArrays = sorted(arrayOfArrays, (a,b) => desc(a[1], b[1]))`}
+            />
         </section>
     </>
 );
