@@ -13,7 +13,6 @@ interface CheckboxProps {
     inline?: boolean;
     label?: React.ReactNode;
     name?: React.InputHTMLAttributes<HTMLInputElement>['name'];
-    placeholder?: React.InputHTMLAttributes<HTMLInputElement>['placeholder'];
     required?: boolean;
     touched?: boolean;
     value?: React.InputHTMLAttributes<HTMLInputElement>['value'];
@@ -32,7 +31,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
     inline = false,
     label = '',
     name = undefined,
-    placeholder = undefined,
     required = false,
     touched = false,
     value = undefined,
