@@ -14,24 +14,6 @@ const displayValues = [
     'inline-flex'
 ];
 
-const Example = ({ display }) => (
-    <div className="mb-5">
-        <p>
-            <strong>{display}</strong> <code>{`.d-{breakpoint}-${display}`}</code>
-        </p>
-
-        {Array.from({ length: 2 }, (_, i) => (
-            <div key={i} className={`d-${display} bg-blue p-8`}>
-                {Array.from({ length: 3 }, (_, i) => (
-                    <span key={i} className="bg-gray p-4">
-                        {i}
-                    </span>
-                ))}
-            </div>
-        ))}
-    </div>
-);
-
 const DisplayPage = () => (
     <section id="display-utils">
         <Breadcrumbs>
@@ -55,7 +37,7 @@ const DisplayPage = () => (
 
         <p>
             Where <code>{`{breakpoint}`}</code> is one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+            <Link to="/utils/breakpoints">responsive breakpoints</Link>.
         </p>
 
         <p>
@@ -73,7 +55,21 @@ const DisplayPage = () => (
         <h3>Display Examples</h3>
 
         {displayValues.map((display) => (
-            <Example display={display} />
+            <div className="mb-5">
+                <p>
+                    <strong>{display}</strong> <code>{`.d-{breakpoint}-${display}`}</code>
+                </p>
+
+                {Array.from({ length: 2 }, (_, i) => (
+                    <div key={i} className={`d-${display} bg-blue p-4 m-8`}>
+                        {Array.from({ length: 3 }, (_, i) => (
+                            <span key={i} className="bg-gray p-4 txt-white m-1">
+                                {i + 1}
+                            </span>
+                        ))}
+                    </div>
+                ))}
+            </div>
         ))}
 
         <h4>Flex</h4>
