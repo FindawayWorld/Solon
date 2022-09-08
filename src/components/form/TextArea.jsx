@@ -6,8 +6,6 @@ const TextArea = ({
     prependLabel = false,
     placeholder = null,
     id = 'textarea',
-    validators = [],
-    errorMessage = '',
     defaultValue = undefined,
     value = undefined,
     required = false,
@@ -16,8 +14,6 @@ const TextArea = ({
     className = '',
     collapse = false,
     hideLabel = false,
-    inputStyles = {},
-    restricted = [],
     autoComplete = null,
     rows = 3,
 
@@ -41,7 +37,6 @@ const TextArea = ({
     onKeyDown = () => {},
     onKeyPress = () => {}
 }) => {
-
     let isRequired = required || showRequired;
     let handleChange = onChange;
     let handleBlur = onBlur;
@@ -51,42 +46,45 @@ const TextArea = ({
     }
 
     return (
-        <div className={classnames('form-group position-relative', {'mb-0': collapse}, className)}>
-            {label && !prependLabel &&
+        <div className={classnames('form-group position-relative', { 'mb-0': collapse }, className)}>
+            {label && !prependLabel && (
                 <label
                     htmlFor={id}
                     className={classnames(labelClass, {
-                        'required': isRequired,
+                        required: isRequired,
                         'sr-only': hideLabel,
-                        'flex': flex,
+                        flex: flex,
                         'label-sm': small
                     })}
                 >
-                    {label} {isRequired && <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>}
+                    {label}{' '}
+                    {isRequired && (
+                        <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>
+                    )}
                 </label>
-            }
-            <div className={classnames({'input-group': (prepend || prependLabel) || append})}>
-                {prepend &&
+            )}
+            <div className={classnames({ 'input-group': prepend || prependLabel || append })}>
+                {prepend && (
                     <div className="input-group-prepend">
                         {React.isValidElement(prepend) ? prepend : <span className="input-group-text">{prepend}</span>}
                     </div>
-                }
-                {prependLabel &&
-                    <div className={classnames("input-group-prepend prepend-label", {'input-group-sm': small})}>
-                        <label htmlFor={id} className="input-group-text">{label}</label>
+                )}
+                {prependLabel && (
+                    <div className={classnames('input-group-prepend prepend-label', { 'input-group-sm': small })}>
+                        <label htmlFor={id} className="input-group-text">
+                            {label}
+                        </label>
                     </div>
-                }
+                )}
                 <textarea
                     className={classnames('form-control', {
-                        'error': error && touched,
+                        error: error && touched,
                         'mb-0': collapse,
-                        'input-group-control': (prepend || prependLabel) || append,
-                        'input-group-control-prepend': (prepend || prependLabel),
+                        'input-group-control': prepend || prependLabel || append,
+                        'input-group-control-prepend': prepend || prependLabel,
                         'input-group-control-append': append,
                         'form-control-sm': small
                     })}
-
-                    style={inputStyles}
                     defaultValue={defaultValue}
                     value={value}
                     name={id}
@@ -97,7 +95,6 @@ const TextArea = ({
                     autoComplete={autoComplete}
                     readOnly={readOnly}
                     rows={rows}
-
                     onFocus={onFocus}
                     onBlur={handleBlur}
                     onChange={handleChange}
@@ -105,24 +102,22 @@ const TextArea = ({
                     onKeyDown={onKeyDown}
                     onKeyPress={onKeyPress}
                 />
-                {append &&
+                {append && (
                     <div className="input-group-append">
                         {React.isValidElement(append) ? append : <span className="input-group-text">{append}</span>}
                     </div>
-                }
-                {help && !readOnly &&
-                    <small className="form-text text-muted">{help}</small>
-                }
-                {error && touched &&
+                )}
+                {help && !readOnly && <small className="form-text text-muted">{help}</small>}
+                {error && touched && (
                     <div className="form-error">
                         <span>{error}</span>
                     </div>
-                }
+                )}
             </div>
 
             {children}
         </div>
     );
-}
+};
 
 export default TextArea;
