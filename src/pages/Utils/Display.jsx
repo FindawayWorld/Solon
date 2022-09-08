@@ -64,7 +64,7 @@ const DisplayPage = () => (
                     <div key={i} className={`d-${display} bg-blue p-4 m-8`}>
                         {Array.from({ length: 3 }, (_, i) => (
                             <span key={i} className="bg-gray p-4 txt-white m-1">
-                                {i}
+                                {i + 1}
                             </span>
                         ))}
                     </div>
