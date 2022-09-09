@@ -62,24 +62,22 @@ $border-widths: (
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
-$aqua: #7fdbff !default;
-$blue: #0074d9 !default;
-$navy: #001f3f !default;
-$teal: #39cccc !default;
-$green: #239930 !default;
-$olive: #3d9970 !default;
-$lime: #01ff70 !default;
-$yellow: #ffdc00 !default;
-$orange: #ff851b !default;
-$red: #e80d00 !default;
-$fuchsia: #f012be !default;
-$purple: #b10dc9 !default;
-$maroon: #85144b !default;
+$teal-dark: #289f93 !default;
+$aqua: #91eeda !default;
+$blue: #283ea3 !default;
+$navy: #202f72 !default;
+$teal: #19e68c !default;
+$green: #1ed760 !default;
+$yellow: #fce54f !default;
+$orange: #ff7439 !default;
+$red: #e91429 !default;
+$fuchsia: #f036a4 !default;
+$purple: #503659 !default;
+$maroon: #8a202b !default;
 $white: #ffffff !default;
-$silver: #dddddd !default;
-$gray: #808080 !default;
-$black: #212529 !default;
-
+$silver: #d9d9d9 !default;
+$gray: #7f7f7f !default;
+$black: #121212 !default;
 $font-color: $black !default;
 $border-color: $silver !default;
 
@@ -92,8 +90,6 @@ $colors: map-merge(
         'navy': $navy,
         'teal': $teal,
         'green': $green,
-        'olive': $olive,
-        'lime': $lime,
         'yellow': $yellow,
         'orange': $orange,
         'red': $red,
@@ -113,9 +109,9 @@ $secondary: $gray !default;
 $success: $green !default;
 $danger: $red !default;
 $warning: $yellow !default;
-$light: #f8f9fa !default;
-$dark: #343a40 !default;
-$muted: #6c757d !default;
+$light: #f8f8f8 !default;
+$dark: #333333 !default;
+$muted: #b3b3b3 !default;
 
 $themeColors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -186,3 +182,32 @@ $spacers: map-merge(
     ),
     $spacers
 );
+
+//root vars are being queried by name in the JS code. renaming these CSS vars will break JS code.
+:root {
+    --aqua: #{$aqua};
+    --blue: #{$blue};
+    --navy: #{$navy};
+    --teal: #{$teal};
+    --teal-dark: #{$teal-dark};
+    --green: #{$green};
+    --yellow: #{$yellow};
+    --orange: #{$orange};
+    --red: #{$red};
+    --fuchsia: #{$fuchsia};
+    --purple: #{$purple};
+    --maroon: #{$maroon};
+    --white: #{$white};
+    --silver: #{$silver};
+    --gray: #{$gray};
+    --black: #{$black};
+    --primary: #{$blue};
+    --secondary: #{$gray};
+    --success: #{$green};
+    --danger: #{$red};
+    --warning: #{$yellow};
+    --info: #{$teal};
+    --light: #{$light};
+    --dark: #{$dark};
+    --muted: #{$muted};
+}

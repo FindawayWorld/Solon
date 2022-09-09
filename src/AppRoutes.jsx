@@ -23,6 +23,7 @@ import BreakpointsPage from './pages/Utils/BreakpointsPage';
 import GridsPage from './pages/Utils/GridsPage';
 import BorderRadiusPage from './pages/Utils/BorderRadiusPage';
 import ProgressBarPage from './pages/Components/ProgressBar';
+import Accessibility from './pages/Accessibility';
 import DisplayPage from './pages/Utils/Display';
 
 const AppRoutes = () => {
@@ -57,6 +58,7 @@ const AppRoutes = () => {
             <Route path="color-tester" element={<ColorTester />} />
             <Route path="font-tester" element={<FontTester />} />
             <Route path="brand-settings" element={<BrandSettings />} />
+            <Route path="accessibility" element={<Accessibility />} />
         </Routes>
     );
 };

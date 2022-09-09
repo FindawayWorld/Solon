@@ -29,6 +29,7 @@ $sidebar-bg-active: $silver;
     .small-logo {
         display: none;
     }
+
     .full-logo {
         display: block;
         width: rem(150);
@@ -52,32 +53,39 @@ $sidebar-bg-active: $silver;
     .nav-item {
         white-space: nowrap;
         overflow: hidden;
+
         span {
             white-space: nowrap;
         }
 
         &.active {
             background-color: $sidebar-bg-active;
-            > .nav {
+
+            >.nav {
                 display: block;
             }
-            > .nav .nav-link {
+
+            >.nav .nav-link {
                 border-color: $sidebar-bg-active;
             }
         }
 
-        > .nav {
+        >.nav {
             display: none;
             margin-bottom: 0;
+
             .nav-link {
                 font-size: 0.875rem;
                 padding-left: rem(40);
                 height: rem(35);
+
                 svg {
                     display: none;
                 }
+
                 &.active {
                     border-color: $sidebar-bg-active;
+
                     svg {
                         display: inline-block;
                     }
@@ -152,6 +160,7 @@ $sidebar-bg-active: $silver;
             opacity: 1;
         }
     }
+
     .sidebar-wrapper {
         position: sticky;
         top: 0;
@@ -181,21 +190,26 @@ $sidebar-bg-active: $silver;
         display: flex;
         justify-content: space-between;
     }
+
     hr {
         display: none;
     }
+
     ul.nav {
         display: flex;
         justify-content: space-between;
         margin-bottom: 0;
         align-items: center;
     }
+
     .small-logo {
         display: none;
     }
+
     .full-logo {
         display: block;
     }
+
     .logo {
         margin-bottom: 0;
     }
@@ -203,13 +217,15 @@ $sidebar-bg-active: $silver;
     .fw-logo {
         display: none;
     }
+
     .nav-item {
         height: 100%;
 
-        &.active > .nav {
+        &.active>.nav {
             display: none;
         }
     }
+
     .nav-link {
         display: none;
 
@@ -230,26 +246,33 @@ $sidebar-bg-active: $silver;
 @include breakpoint('lg') {
     .sidebar-slim {
         width: auto;
+
         .small-logo {
             display: block;
         }
+
         .full-logo {
             display: none;
         }
+
         .logo {
             padding: 0;
             justify-content: center;
         }
+
         hr {
             display: block;
         }
+
         .sidebar-wrapper {
             display: block;
         }
+
         ul.nav {
             display: block;
             margin-bottom: 1rem;
         }
+
         .nav-link {
             display: block;
             height: auto;
@@ -265,10 +288,12 @@ $sidebar-bg-active: $silver;
                 display: none;
             }
         }
+
         .collapse-button {
             opacity: 1;
         }
     }
+
     .sidebar-wrapper {
         display: block;
     }
@@ -296,6 +321,16 @@ $sidebar-bg-active: $silver;
 
     .sidebar-slim & {
         transform: rotate(-90deg);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: $blue !important;
+
+        svg {
+            color: $blue;
+        }
     }
 
     @include breakpoint('lg') {
