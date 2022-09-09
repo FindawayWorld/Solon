@@ -46,23 +46,21 @@ export const spacers = {
 };
 
 export const colors = [
-    ['aqua', '#7fdbff'],
-    ['blue', '#0074d9'],
-    ['navy', '#001f3f'],
-    ['teal', '#289c9c'],
-    ['green', '#239930'],
-    ['olive', '#3d9970'],
-    ['lime', '#01ff70'],
-    ['yellow', '#ffdc00'],
-    ['orange', '#ff851b'],
-    ['red', '#e80d00'],
-    ['fuchsia', '#f012be'],
-    ['purple', '#b10dc9'],
-    ['maroon', '#85144b'],
-    ['white', '#ffffff'],
-    ['silver', '#dddddd'],
-    ['gray', '#808080'],
-    ['black', '#212529']
+    ['aqua'],
+    ['blue'],
+    ['navy'],
+    ['teal'],
+    ['green'],
+    ['yellow'],
+    ['orange'],
+    ['red'],
+    ['fuchsia'],
+    ['purple'],
+    ['maroon'],
+    ['white'],
+    ['silver'],
+    ['gray'],
+    ['black']
 ];
 export const brandColors = [
     ['primary', '$blue'],
@@ -71,15 +69,17 @@ export const brandColors = [
     ['danger', '$red'],
     ['warning', '$yellow'],
     ['info', '$teal'],
-    ['light', '#f8f9fa'],
-    ['dark', '#343a40'],
-    ['muted', '#6c757d']
+    ['light', ''],
+    ['dark', ''],
+    ['muted', '']
 ];
-
 export const onDarkSolid = ['light', 'white', 'silver'];
 export const onDarkOutline = ['light', 'warning', 'white', 'silver', 'yellow', 'lime'];
 
 const ContentPage = () => {
+    const root = document.querySelector(':root');
+    const rootStyles = root && getComputedStyle(root);
+
     return (
         <>
             <section id="colors" className="mb-5">
@@ -94,30 +94,42 @@ const ContentPage = () => {
                 </p>
                 <div className="swatch-list mb-3">
                     <div className="row">
-                        {colors.map(([color, hex]) => (
-                            <div key={`colors-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`bg-${color} p-4 mb-4`}>
-                                    <code>${color}</code>
-                                    <br />
-                                    <code>{hex}</code>
+                        {colors.map(([color]) => {
+                            const hex = rootStyles?.getPropertyValue(`--${color}`);
+                            if (!hex) {
+                                return null;
+                            }
+                            return (
+                                <div key={`colors-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
+                                    <div className={`bg-${color} p-4 mb-4`}>
+                                        <code>${color}</code>
+                                        <br />
+                                        <code>{hex}</code>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 
                 <h3>Brand Colors</h3>
                 <div className="swatch-list">
                     <div className="row">
-                        {brandColors.map(([color, hex]) => (
-                            <div key={`brand-${color}`} className="col-6 col-md-2 txt-center">
-                                <div className={`bg-${color} p-4 mb-4`}>
-                                    <code>${color}</code>
-                                    <br />
-                                    <code>{hex}</code>
+                        {brandColors.map(([color, name]) => {
+                            const hex = rootStyles?.getPropertyValue(`--${color}`);
+                            if (!hex) {
+                                return null;
+                            }
+                            return (
+                                <div key={`brand-${color}`} className="col-6 col-md-3 col-xl-2 txt-center">
+                                    <div className={`bg-${color} p-4 mb-4`}>
+                                        <code>${color}</code>
+                                        <br />
+                                        <code>{name || hex}</code>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -150,8 +162,9 @@ const ContentPage = () => {
     'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
-// Monospace fonts
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;`}
+$font-family-monospace:
+    // Monospace fonts
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;`}
                 />
                 <p>
                     Read more about native font stacks in this{' '}
@@ -196,7 +209,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 <p>To learn more about Findaway and the Findawayers who make it all happen, visit www.findaway.com</p>
             </section>
 
-            <section id="text-alignment" className="mb-5">
+            <section className="text-alignment mb-5">
                 <h2>Text Alignment</h2>
                 <hr />
                 <p>
@@ -215,7 +228,7 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                 </p>
             </section>
 
-            <section id="text-alignment" className="mb-5">
+            <section className="text-alignment mb-5">
                 <h2>Vertical Alignment</h2>
                 <hr />
                 {['top', 'middle', 'bottom', 'baseline'].map((al) => (
@@ -227,7 +240,15 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
                     </p>
                 ))}
             </section>
+            <section id="text-transform" className="mb-5">
+                <h2>Text Transform</h2>
+                <hr />
+                <p>
+                    Text Transform Capitalize can be applied using <code>{`.capitalize`}</code>
+                </p>
 
+                <p className="capitalize">capitalize</p>
+            </section>
             <section id="text-weight" className="mb-5">
                 <h2>Font Weight</h2>
                 <hr />
