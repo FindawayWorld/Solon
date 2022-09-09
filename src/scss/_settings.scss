@@ -137,7 +137,7 @@ $themeColors: map-merge(
 $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
-$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
+$displays: none, inline, inline-block, block, flex, inline-flex !default;
 $positions: (
     left: l,
     right: r,

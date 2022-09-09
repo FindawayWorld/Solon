@@ -2,17 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
-const displayValues = [
-    'none',
-    'inline',
-    'inline-block',
-    'block',
-    'table',
-    'table-row',
-    'table-cell',
-    'flex',
-    'inline-flex'
-];
+const displayValues = ['none', 'inline', 'inline-block', 'block', 'flex', 'inline-flex'];
 
 const DisplayPage = () => (
     <section id="display-utils">
