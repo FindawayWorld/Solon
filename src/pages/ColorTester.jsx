@@ -20,6 +20,14 @@ const ColorTester = () => {
 
             <h1>Color Tester</h1>
             <p>Use this page to test how colors will display as Button, Flash, and Util classes.</p>
+            <p>
+                First check that the color contrast ratio passes <span className="fw-bold">WCAG AA</span>, on both
+                normal and large text, using the{' '}
+                <a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noreferrer">
+                    Webaim Contrast Checker
+                </a>
+                .
+            </p>
             <hr />
             <form
                 className="mb-8"

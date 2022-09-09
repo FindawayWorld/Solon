@@ -149,6 +149,10 @@ blockquote {
     top: 2px;
 }
 
+.capitalize {
+    text-transform: capitalize !important;
+}
+
 // Text align
 .txt-center {
     text-align: center !important;
@@ -240,8 +244,10 @@ blockquote {
 }
 
 @mixin text($infix: '') {
+
     // Responsive font sizes
-    @each $size, $length in $spacers {
+    @each $size,
+    $length in $spacers {
         @if $size>=3 {
             .txt#{$infix}-#{$size} {
                 font-size: $length !important;
