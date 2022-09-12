@@ -87,10 +87,10 @@ const App = () => {
 
                     <ul className="nav flex-column">
                         {[
-                            { path: 'content', icon: <FaFileAlt aria-label="Content" /> },
+                            { path: 'content', icon: <FaFileAlt aria-hidden /> },
                             {
                                 path: 'components',
-                                icon: <FaPuzzlePiece aria-label="Components" />,
+                                icon: <FaPuzzlePiece aria-hidden />,
                                 child: (
                                     <ul className="nav">
                                         {componentsNav.map((page) => (
@@ -112,7 +112,7 @@ const App = () => {
                             },
                             {
                                 path: 'utils',
-                                icon: <FaTools aria-label="Utils" />,
+                                icon: <FaTools aria-hidden />,
                                 child: (
                                     <ul className="nav">
                                         {utilsNav.map((page) => (
@@ -132,11 +132,11 @@ const App = () => {
                                     </ul>
                                 )
                             },
-                            { path: 'javascript', icon: <FaJsSquare aria-label="Javascript" /> },
-                            { path: 'color-tester', icon: <FaPalette aria-label="Color-tester" /> },
-                            { path: 'font-tester', icon: <FaFont aria-label="Font-tester" /> },
-                            { path: 'brand-settings', icon: <FaCog aria-label="Brand-settings" /> },
-                            { path: 'accessibility', icon: <FaUniversalAccess aria-label="Accessibility" /> }
+                            { path: 'javascript', icon: <FaJsSquare aria-hidden /> },
+                            { path: 'color-tester', icon: <FaPalette aria-hidden /> },
+                            { path: 'font-tester', icon: <FaFont aria-hidden /> },
+                            { path: 'brand-settings', icon: <FaCog aria-hidden /> },
+                            { path: 'accessibility', icon: <FaUniversalAccess aria-hidden /> }
                         ].map((item) => (
                             <li className="nav-item">
                                 <NavLink
@@ -146,9 +146,10 @@ const App = () => {
                                         })
                                     }
                                     to={`/${item.path}`}
+                                    aria-labelledby={item.path}
                                 >
                                     {item.icon}
-                                    <span aria-hidden className="capitalize" focusable="false">
+                                    <span aria-hidden className="capitalize" id={item.path}>
                                         {item.path.split('-').join(' ')}
                                     </span>
                                 </NavLink>
@@ -166,9 +167,10 @@ const App = () => {
                                 href="https://github.com/FindawayWorld/Solon"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-labelledby="github"
                             >
-                                <FaGithub aria-label="Github" />{' '}
-                                <span aria-hidden focusable="false">
+                                <FaGithub aria-hidden />{' '}
+                                <span aria-hidden id="github">
                                     Github
                                 </span>
                             </a>
