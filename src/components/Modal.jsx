@@ -26,9 +26,7 @@ const Modal = ({
                 {showClose && (
                     <button className="modal-close" onClick={onClose}>
                         <VisuallyHidden>Close</VisuallyHidden>
-                        <span aria-hidden focusable="false">
-                            &times;
-                        </span>
+                        <span aria-hidden>&times;</span>
                     </button>
                 )}
                 {children}

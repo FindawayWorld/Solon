@@ -22,7 +22,8 @@ const Accessibility = () => {
                     </p>
                     <p>
                         If you want to hide a child of a focusable element then you can simply add{' '}
-                        <code>aria-hidden</code> to remove redundant elements, without <code>focusable="false"</code>.
+                        <code>aria-hidden</code> to remove redundant accessibility tree elements, without{' '}
+                        <code>focusable="false"</code>.
                     </p>
                     <p>Button icon without text examples:</p>
                     <div className="flash mb-6 bg-black">
