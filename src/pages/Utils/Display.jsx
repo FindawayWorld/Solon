@@ -61,6 +61,38 @@ const DisplayPage = () => (
                 ))}
             </div>
         ))}
+
+        <h3>Flex Wrap</h3>
+
+        <p>
+            Assign <code>flex-wrap: wrap</code> to an element.
+        </p>
+
+        <p>
+            The classes are named using the format <code>{`.wrap-{breakpoint}`}</code>.
+        </p>
+
+        <p>
+            <strong>Without Flex Wrap</strong> <code>{`.d-flex`}</code>
+        </p>
+        <div className={'d-flex bg-blue p-8 mb-5'}>
+            {Array.from({ length: 20 }, (_, i) => (
+                <span key={i} className="bg-gray py-4 px-12">
+                    {i + 1}
+                </span>
+            ))}
+        </div>
+
+        <p>
+            <strong>With Flex Wrap</strong> <code>{`.d-flex.wrap`}</code>
+        </p>
+        <div className={'d-flex wrap bg-blue p-8'}>
+            {Array.from({ length: 20 }, (_, i) => (
+                <span key={i} className="bg-gray py-4 px-12">
+                    {i + 1}
+                </span>
+            ))}
+        </div>
     </section>
 );
 
