@@ -24,6 +24,7 @@ import GridsPage from './pages/Utils/GridsPage';
 import BorderRadiusPage from './pages/Utils/BorderRadiusPage';
 import ProgressBarPage from './pages/Components/ProgressBar';
 import Accessibility from './pages/Accessibility';
+import DisplayPage from './pages/Utils/Display';
 
 const AppRoutes = () => {
     return (
@@ -51,6 +52,7 @@ const AppRoutes = () => {
                 <Route path="breakpoints" element={<BreakpointsPage />} />
                 <Route path="grids" element={<GridsPage />} />
                 <Route path="borders" element={<BorderRadiusPage />} />
+                <Route path="display" element={<DisplayPage />} />
             </Route>
             <Route path="javascript" element={<JSPage />} />
             <Route path="color-tester" element={<ColorTester />} />

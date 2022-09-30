@@ -1,44 +1,40 @@
-$standard-breakpoints: (xs: 0,
+$standard-breakpoints: (
+    xs: 0,
     sm: 576px,
     md: 768px,
     lg: 992px,
     xl: 1200px,
-    xxl: 1400px) !default;
+    xxl: 1400px
+) !default;
 
-$container-widths: (sm: 540,
+$container-widths: (
+    sm: 540,
     md: 720,
     lg: 960,
     xl: 1140,
-    xxl: 1320) !default;
+    xxl: 1320
+) !default;
 
 $font-family: // Cross-platform generic font family (default user interface font)
-system-ui,
-// Safari for macOS and iOS (San Francisco)
--apple-system,
-// Windows
-'Segoe UI',
-// Android
-Roboto,
-// Basic web fallback
-'Helvetica Neue',
-Arial,
-// Linux
-'Noto Sans',
-'Liberation Sans',
-// Sans serif fallback
-sans-serif,
-// Emoji fonts
-'Apple Color Emoji',
-'Segoe UI Emoji',
-'Segoe UI Symbol',
-'Noto Color Emoji' !default;
-$font-family-monospace: SFMono-Regular,
-Menlo,
-Monaco,
-Consolas,
-'Liberation Mono',
-'Courier New',
-monospace !default;
+    system-ui,
+    // Safari for macOS and iOS (San Francisco)
+    -apple-system,
+    // Windows
+    'Segoe UI',
+    // Android
+    Roboto,
+    // Basic web fallback
+    'Helvetica Neue',
+    Arial,
+    // Linux
+    'Noto Sans',
+    'Liberation Sans',
+    // Sans serif fallback
+    sans-serif,
+    // Emoji fonts
+    'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 
 $light-weight: 300 !default;
 $line-height: 1.5 !default;
@@ -56,36 +52,40 @@ $h6-font-size: $font-size-base !default;
 
 $border-radius: rem(3) !default;
 $border-width: 1px !default;
-$border-widths: (1: 1px,
+$border-widths: (
+    1: 1px,
     2: 2px,
     3: 3px,
     4: 4px,
-    5: 5px) !default;
+    5: 5px
+) !default;
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
 $teal-dark: #289f93 !default;
-$aqua: #91EEDA !default;
-$blue: #283EA3 !default;
-$navy: #202F72 !default;
-$teal: #19E68C !default;
-$green: #1ED760 !default;
-$yellow: #FCE54F !default;
-$orange: #FF7439 !default;
-$red: #E91429 !default;
-$fuchsia: #F036A4 !default;
+$aqua: #91eeda !default;
+$blue: #283ea3 !default;
+$navy: #202f72 !default;
+$teal: #19e68c !default;
+$green: #1ed760 !default;
+$yellow: #fce54f !default;
+$orange: #ff7439 !default;
+$red: #e91429 !default;
+$fuchsia: #f036a4 !default;
 $purple: #503659 !default;
-$maroon: #8A202B !default;
+$maroon: #8a202b !default;
 $white: #ffffff !default;
 $silver: #d9d9d9 !default;
-$gray: #7F7F7F !default;
+$gray: #7f7f7f !default;
 $black: #121212 !default;
 $font-color: $black !default;
 $border-color: $silver !default;
 
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-$colors: map-merge(('aqua': $aqua,
+$colors: map-merge(
+    (
+        'aqua': $aqua,
         'blue': $blue,
         'navy': $navy,
         'teal': $teal,
@@ -99,8 +99,10 @@ $colors: map-merge(('aqua': $aqua,
         'white': $white,
         'silver': $silver,
         'gray': $gray,
-        'black': $black),
-    $colors);
+        'black': $black
+    ),
+    $colors
+);
 
 $primary: $blue !default;
 $secondary: $gray !default;
@@ -113,7 +115,9 @@ $muted: #b3b3b3 !default;
 
 $themeColors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-$themeColors: map-merge(('primary': $primary,
+$themeColors: map-merge(
+    (
+        'primary': $primary,
         'secondary': $secondary,
         'success': $success,
         'danger': $danger,
@@ -121,27 +125,25 @@ $themeColors: map-merge(('primary': $primary,
         'info': $teal,
         'light': $light,
         'dark': $dark,
-        'muted': $muted),
-    $themeColors);
+        'muted': $muted
+    ),
+    $themeColors
+);
 
 $col_count: 12;
 $spacer: 1rem !default;
 $spacers: () !default;
-$displays: none,
-inline,
-inline-block,
-block,
-table,
-table-row,
-table-cell,
-flex,
-inline-flex !default;
-$positions: (left: l,
+$displays: none, inline, inline-block, block, flex, inline-flex !default;
+$positions: (
+    left: l,
     right: r,
     top: t,
-    bottom: b) !default;
+    bottom: b
+) !default;
 
-$spacers: map-merge(( // 0px
+$spacers: map-merge(
+    (
+        // 0px
         0: 0,
         //  4px
         1: $spacer * 0.25,
@@ -176,23 +178,25 @@ $spacers: map-merge(( // 0px
         // 224px
         56: $spacer * 14,
         // 256px
-        64: $spacer * 16),
-    $spacers);
+        64: $spacer * 16
+    ),
+    $spacers
+);
 
 //root vars are being queried by name in the JS code. renaming these CSS vars will break JS code.
 :root {
-    --aqua:#{$aqua};
+    --aqua: #{$aqua};
     --blue: #{$blue};
-    --navy:#{$navy};
+    --navy: #{$navy};
     --teal: #{$teal};
     --teal-dark: #{$teal-dark};
-    --green:#{$green};
+    --green: #{$green};
     --yellow: #{$yellow};
     --orange: #{$orange};
     --red: #{$red};
-    --fuchsia:#{$fuchsia};
+    --fuchsia: #{$fuchsia};
     --purple: #{$purple};
-    --maroon:#{$maroon};
+    --maroon: #{$maroon};
     --white: #{$white};
     --silver: #{$silver};
     --gray: #{$gray};
