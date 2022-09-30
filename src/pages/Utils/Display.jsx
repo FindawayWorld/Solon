@@ -62,9 +62,7 @@ const DisplayPage = () => (
             </div>
         ))}
 
-        <h4>Flex</h4>
-
-        <h5>Wrap</h5>
+        <h3>Flex Wrap</h3>
 
         <p>
             Assign <code>flex-wrap: wrap</code> to an element.
