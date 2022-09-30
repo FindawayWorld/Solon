@@ -14,12 +14,14 @@ hljs.registerLanguage('json', js_n);
 hljs.registerLanguage('scss', scss);
 
 const Code = ({ code, lang, className = '' }) => {
-    const el = useRef();
+    const el = useRef<HTMLElement>(null);
+
     useEffect(() => {
-        if (code) {
+        if (code && el.current) {
             hljs.highlightElement(el.current);
         }
     }, [code]);
+
     return (
         <div className={classNames('code-block', className)}>
             <pre>

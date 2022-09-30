@@ -1,10 +1,28 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const InputWrapper = ({
+interface InputWrapperProps {
+    label?: React.ReactNode;
+    labelHelp?: React.ReactNode;
+    id?: React.InputHTMLAttributes<HTMLInputElement>['id'];
+    required?: React.InputHTMLAttributes<HTMLInputElement>['required'];
+    showRequired?: boolean;
+    prependLabel?: boolean;
+    hidden?: boolean;
+    collapse?: boolean;
+    small?: boolean;
+    className?: string;
+    error?: string;
+    touched?: boolean;
+    prepend?: boolean;
+    append?: boolean;
+    children?: React.ReactNode;
+}
+
+const InputWrapper: React.FC<InputWrapperProps> = ({
     label = '',
-    labelHelp = null,
-    id = null,
+    labelHelp = undefined,
+    id = undefined,
     required = false,
     showRequired = false,
     prependLabel = false,
@@ -14,9 +32,9 @@ const InputWrapper = ({
     className = '',
     error = false,
     touched = false,
-    prepend = null,
-    append = null,
-    children = null
+    prepend = undefined,
+    append = undefined,
+    children = undefined
 }) => {
     let isRequired = required || showRequired;
 

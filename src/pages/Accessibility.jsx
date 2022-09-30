@@ -15,10 +15,9 @@ const Accessibility = () => {
                 <div className="flash">
                     <p>
                         It's good practice to include <code>focusable="false"</code> with <code>aria-hidden</code>{' '}
-                        because the attribute
-                        <code> aria-hidden="true"</code> hides an element and all its children from assistive
-                        technologies, but users can still use the keyboard to navigate to any focusable child elements,
-                        but their content is inaccessible to people who use assistive technologies.
+                        because the attribute <code>aria-hidden="true"</code> hides an element and all its children from
+                        assistive technologies, but users can still use the keyboard to navigate to any focusable child
+                        elements, but their content is inaccessible to people who use assistive technologies.
                     </p>
                     <p>Button icon without text examples:</p>
                     <div className="flash mb-6 bg-black">

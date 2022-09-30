@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { FiCheck } from 'react-icons/fi';
 import useTimeoutFn from '../hooks/useTimeout';
@@ -7,10 +6,23 @@ import useTimeoutFn from '../hooks/useTimeout';
 const CONFIRM_STATES = {
     CONFIRM: 'confirm',
     DONE: 'done',
-    READY: null
+    READY: 'ready'
 };
 
-const ConfirmButton = ({
+interface ConfirmButtonProps {
+    className?: string;
+    disabled?: boolean;
+    label?: string;
+    confirmLabel?: string;
+    successLabel?: string;
+    defaultClass?: string;
+    successClass?: string;
+    confirmClass?: string;
+    timeout?: number | false;
+    onConfirm?: () => void;
+}
+
+const ConfirmButton: React.FC<ConfirmButtonProps> = ({
     className = '',
     disabled = false,
 
@@ -18,14 +30,13 @@ const ConfirmButton = ({
     confirmLabel = 'Are you sure?',
     successLabel = 'Thanks!',
 
-    type = 'submit',
     defaultClass = 'btn-primary',
     successClass = 'btn-success',
     confirmClass = 'btn-danger',
     timeout = 3000,
     onConfirm = () => {}
 }) => {
-    const [buttonState, setButtonState] = useState(null);
+    const [buttonState, setButtonState] = useState('ready');
 
     const isConfirm = [CONFIRM_STATES.CONFIRM, CONFIRM_STATES.DONE].includes(buttonState);
 
@@ -78,18 +89,6 @@ const ConfirmButton = ({
             {getButtonText()}
         </button>
     );
-};
-
-ConfirmButton.propTypes = {
-    label: PropTypes.string,
-    confirmLabel: PropTypes.string,
-    successLabel: PropTypes.string,
-
-    defaultClass: PropTypes.string,
-    confirmClass: PropTypes.string,
-    successClass: PropTypes.string,
-
-    onConfirm: PropTypes.func.isRequired
 };
 
 export default ConfirmButton;
