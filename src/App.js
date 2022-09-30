@@ -12,7 +12,8 @@ import {
     FaFont,
     FaGithub,
     FaChevronLeft,
-    FaCog
+    FaCog,
+    FaUniversalAccess
 } from 'react-icons/fa';
 import { ReactComponent as SolonLogo } from './svg/solon_logo.svg';
 import { ReactComponent as SolonIcon } from './svg/solon_icon.svg';
@@ -20,6 +21,7 @@ import { asc } from './utils/sorts';
 import useDisabledLinks from './hooks/useDisabledLinks';
 import classNames from 'classnames';
 import AppRoutes from './AppRoutes';
+import VisuallyHidden from '@reach/visually-hidden';
 
 export const componentsNav = [
     ['/components/badges', 'Badges'],
@@ -79,146 +81,82 @@ const App = () => {
                             <SolonLogo className="full-logo" />
                         </NavLink>
                         <button className="btn collapse-button" onClick={() => setCollapseSidebar(!collapseSidebar)}>
-                            <FaChevronLeft />
+                            <VisuallyHidden>{`${collapseSidebar ? 'expand' : 'collapse'} sidebar`}</VisuallyHidden>
+                            <FaChevronLeft aria-hidden />
                         </button>
                     </div>
 
                     <ul className="nav flex-column">
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/content"
-                            >
-                                <FaFileAlt />
-                                <span>Content</span>
-                            </NavLink>
-                        </li>
-                        <li
-                            className={classnames('nav-item', {
-                                active: location.pathname.includes('/components')
-                            })}
-                        >
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/components"
-                            >
-                                <FaPuzzlePiece />
-                                <span>Components</span>
-                            </NavLink>
-                            <ul className="nav">
-                                {componentsNav.map((page) => (
-                                    <li key={page[0]} className="nav-item">
-                                        <NavLink
-                                            className={({ isActive }) =>
-                                                classNames('nav-link', {
-                                                    active: isActive
-                                                })
-                                            }
-                                            to={page[0]}
-                                        >
-                                            {page[1]}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                        <li
-                            className={classnames('nav-item', {
-                                active: location.pathname.includes('/utils')
-                            })}
-                        >
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                to="/utils"
-                            >
-                                <FaTools />
-                                <span>Utils</span>
-                            </NavLink>
-                            <ul className="nav">
-                                {utilsNav.map((page) => (
-                                    <li key={page[0]} className="nav-item">
-                                        <NavLink
-                                            className={({ isActive }) =>
-                                                classNames('nav-link', {
-                                                    active: isActive
-                                                })
-                                            }
-                                            to={page[0]}
-                                        >
-                                            {page[1]}
-                                        </NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/javascript"
-                            >
-                                <FaJsSquare />
-                                <span>Javascript</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/color-tester"
-                            >
-                                <FaPalette />
-                                <span>Color Tester</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/font-tester"
-                            >
-                                <FaFont />
-                                <span>Font Tester</span>
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink
-                                className={({ isActive }) =>
-                                    classNames('nav-link', {
-                                        active: isActive
-                                    })
-                                }
-                                end
-                                to="/brand-settings"
-                            >
-                                <FaCog />
-                                <span>Brand Settings</span>
-                            </NavLink>
-                        </li>
+                        {[
+                            { path: 'content', icon: <FaFileAlt aria-hidden /> },
+                            {
+                                path: 'components',
+                                icon: <FaPuzzlePiece aria-hidden />,
+                                child: (
+                                    <ul className="nav">
+                                        {componentsNav.map((page) => (
+                                            <li key={page[0]} className="nav-item">
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        classNames('nav-link', {
+                                                            active: isActive
+                                                        })
+                                                    }
+                                                    to={page[0]}
+                                                >
+                                                    {page[1]}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            },
+                            {
+                                path: 'utils',
+                                icon: <FaTools aria-hidden />,
+                                child: (
+                                    <ul className="nav">
+                                        {utilsNav.map((page) => (
+                                            <li key={page[0]} className="nav-item">
+                                                <NavLink
+                                                    className={({ isActive }) =>
+                                                        classNames('nav-link', {
+                                                            active: isActive
+                                                        })
+                                                    }
+                                                    to={page[0]}
+                                                >
+                                                    {page[1]}
+                                                </NavLink>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )
+                            },
+                            { path: 'javascript', icon: <FaJsSquare aria-hidden /> },
+                            { path: 'color-tester', icon: <FaPalette aria-hidden /> },
+                            { path: 'font-tester', icon: <FaFont aria-hidden /> },
+                            { path: 'brand-settings', icon: <FaCog aria-hidden /> },
+                            { path: 'accessibility', icon: <FaUniversalAccess aria-hidden /> }
+                        ].map((item) => (
+                            <li className="nav-item" key={item.path}>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        classNames('nav-link', {
+                                            active: isActive
+                                        })
+                                    }
+                                    to={`/${item.path}`}
+                                    aria-labelledby={item.path}
+                                >
+                                    {item.icon}
+                                    <span aria-hidden className="capitalize" id={item.path}>
+                                        {item.path.split('-').join(' ')}
+                                    </span>
+                                </NavLink>
+                                {item?.child && item.child}
+                            </li>
+                        ))}
                     </ul>
 
                     <hr />
@@ -230,8 +168,12 @@ const App = () => {
                                 href="https://github.com/FindawayWorld/Solon"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-labelledby="github"
                             >
-                                <FaGithub /> <span>Github</span>
+                                <FaGithub aria-hidden />{' '}
+                                <span aria-hidden id="github">
+                                    Github
+                                </span>
                             </a>
                         </li>
                     </ul>
