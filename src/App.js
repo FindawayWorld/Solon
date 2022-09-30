@@ -138,7 +138,7 @@ const App = () => {
                             { path: 'brand-settings', icon: <FaCog aria-hidden /> },
                             { path: 'accessibility', icon: <FaUniversalAccess aria-hidden /> }
                         ].map((item) => (
-                            <li className="nav-item">
+                            <li className="nav-item" key={item.path}>
                                 <NavLink
                                     className={({ isActive }) =>
                                         classNames('nav-link', {
