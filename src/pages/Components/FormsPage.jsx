@@ -12,6 +12,7 @@ import DisplayFormikState from '../../components/DisplayFormikState';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import ReactSelect from '../../components/form/ReactSelect';
+import WysiwygEditor from '../../components/form/WysiwygEditor';
 
 const FormsPage = () => {
     let fruits = ['apple', 'banana', 'orange', 'avocado'];
@@ -135,6 +136,18 @@ const FormsPage = () => {
             <h3>Text Area</h3>
             <hr />
             <TextArea id="text_area" label="Text Area" />
+
+            <h3>WYSIWYG Editor</h3>
+            <hr />
+            <WysiwygEditor
+                label="WYSIWYG Editor"
+                html={`<p>Pellentesque habitant <strong style="color: red">morbi tristique senectus</strong> <img src=x onerror=alert('this should never get shown') /> fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>`}
+            />
+            <WysiwygEditor
+                label="Read Only WYSIWYG Editor"
+                html="<p>Pellentesque habitant <strong>morbi tristique senectus</strong> <img src=x onerror=alert('this should never get shown') /> et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>"
+                readOnly
+            />
 
             <h3>Checkbox</h3>
             <hr />

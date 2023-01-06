@@ -2,6 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 
 import ReactQuill from 'react-quill';
+import SafeInnerHTML, { purifySettings } from '../SafeInnerHTML';
+import DOMPurify from 'isomorphic-dompurify';
+
+import 'react-quill/dist/quill.snow.css';
 
 const WysiwygEditor = ({
     id = 'wysiwyg1',
@@ -14,6 +18,7 @@ const WysiwygEditor = ({
     required = false,
     showRequired = false,
     className = null,
+    hideLabel = false,
 
     errors = null,
     touched = null,
@@ -33,48 +38,55 @@ const WysiwygEditor = ({
     let isRequired = required || showRequired;
 
     const labelClassName = classnames({
-        'required': isRequired
+        required: isRequired
     });
+
+    const cleanHTML = DOMPurify.sanitize(html, purifySettings);
 
     return (
         <div className={classnames('form-group', className)}>
-            <div className="label-wrapper">
-                <label htmlFor={id} className={labelClassName}>{label} {isRequired && <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>}</label>
-                {labelHelp}
-            </div>
-            {readOnly && <div dangerouslySetInnerHTML={{__html: html}} />}
-            {!readOnly &&
+            {!!label && !hideLabel && (
+                <div className="label-wrapper">
+                    <label htmlFor={id} className={labelClassName}>
+                        {label}{' '}
+                        {isRequired && (
+                            <small className="text-muted font-weight-normal font-italic text-danger">(required)</small>
+                        )}
+                    </label>
+                    {labelHelp}
+                </div>
+            )}
+            {readOnly && <SafeInnerHTML html={cleanHTML} />}
+            {!readOnly && (
                 <ReactQuill
                     className={classnames('wysiwyg-editor', {
-                        'error': errors
+                        error: errors
                     })}
                     placeholder={placeholder}
-                    defaultValue={html}
+                    defaultValue={cleanHTML}
                     formats={['bold', 'italic', 'underline', 'blockquote', 'header', 'list']}
                     modules={{
                         toolbar: [
-                            [{ 'header': [1, 2, false] }],
+                            [{ header: [1, 2, false] }],
                             ['bold', 'italic', 'underline'],
-                            [{'list': 'ordered'}, {'list': 'bullet'}]
+                            [{ list: 'ordered' }, { list: 'bullet' }]
                         ]
                     }}
                     onChange={onQuillChange}
                     onFocus={onFocus}
                     onBlur={onBlur}
                 />
-            }
+            )}
 
-            {help &&
-                <small className="form-text text-muted">{help}</small>
-            }
+            {help && <small className="form-text text-muted">{help}</small>}
 
-            {!!errors && touched &&
+            {!!errors && touched && (
                 <div className="form-error">
                     <span>{errors}</span>
                 </div>
-            }
+            )}
         </div>
     );
-}
+};
 
 export default WysiwygEditor;
