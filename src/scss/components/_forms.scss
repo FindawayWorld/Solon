@@ -472,3 +472,23 @@ label.error,
     height: auto;
     padding: rem(2) 0;
 }
+
+// React Quill
+.wysiwyg-editor,
+.quill {
+    background: $white;
+    .ql-toolbar {
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        border-color: $border-color;
+    }
+
+    .ql-container {
+        font-size: 1rem;
+        border-bottom-left-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        border-color: $border-color;
+    }
+}
+
+
