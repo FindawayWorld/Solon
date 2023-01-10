@@ -8,11 +8,11 @@ export const purifySettings = {
     FORBID_ATTR: ['style'] // In most cases we don't want inline css
 };
 
-const SafeInnerHTML = ({ as = 'div', html = '' }) => {
+const SafeInnerHTML = ({ as = 'div', html = '', ...props }) => {
     const Comp = as;
     if (!html) return null;
 
-    return <Comp dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html, purifySettings) }} />;
+    return <Comp {...props} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html, purifySettings) }} />;
 };
 
 SafeInnerHTML.propTypes = {
