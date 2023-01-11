@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { FiAlertTriangle } from 'react-icons/fi';
 import Code from '../../components/Code';
@@ -7,7 +7,7 @@ import Code from '../../components/Code';
 const GridsPage = () => (
     <section id="grids" className="mb-5">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Utils
             </BreadcrumbItem>
             <BreadcrumbItem current>Grids</BreadcrumbItem>
@@ -122,7 +122,7 @@ const GridsPage = () => (
             </p>
             <p>
                 <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
-                <Link to="/utils/breakpoints">responsive breakpoints</Link>
+                <Link href="/utils/breakpoints">responsive breakpoints</Link>
             </p>
             <p>
                 <code>{`{column count}`}</code> - Number of columns to span between 1 - 12.

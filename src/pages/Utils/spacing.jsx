@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
-import { spacers } from '../Content';
+import { spacers } from '../content';
 
 const items = Array.from({ length: 20 }, (_, i) => (
     <div key={i} className="box-nested" style={{ flexBasis: '200px' }}>
@@ -12,7 +12,7 @@ const items = Array.from({ length: 20 }, (_, i) => (
 const SpacingPage = () => (
     <section id="spacing-utils">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Utils
             </BreadcrumbItem>
             <BreadcrumbItem current>Spacing</BreadcrumbItem>
@@ -101,7 +101,7 @@ const SpacingPage = () => (
         </ul>
 
         <p>
-            Where <code>{`{breakpoint}`}</code> is one of our <Link to="/utils/breakpoints">Breakpoint</Link> Class
+            Where <code>{`{breakpoint}`}</code> is one of our <Link href="/utils/breakpoints">Breakpoint</Link> Class
             Prefixes.
         </p>
 

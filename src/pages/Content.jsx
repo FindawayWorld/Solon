@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { FaSkull } from 'react-icons/fa';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Code from '../components/Code';
 
 const spacer = 1;
@@ -77,8 +77,12 @@ export const onDarkSolid = ['light', 'white', 'silver'];
 export const onDarkOutline = ['light', 'warning', 'white', 'silver', 'yellow', 'lime'];
 
 const ContentPage = () => {
-    const root = document.querySelector(':root');
-    const rootStyles = root && getComputedStyle(root);
+    const [rootStyles, setRootStyles] = useState();
+
+    useEffect(() => {
+        const root = document.querySelector(':root');
+        setRootStyles(root && getComputedStyle(root));
+    }, []);
 
     return (
         <>
@@ -447,7 +451,7 @@ $font-family-monospace:
                         </a>
                     </li>
                     <li>
-                        <Link to="/components" disabled>
+                        <Link href="/components" disabled>
                             Link Disabled
                         </Link>
                     </li>
@@ -603,7 +607,7 @@ $font-family-monospace:
                 <hr />
 
                 <p>
-                    For table color utils see the <Link to="/utils/colors#tables">Color Utils</Link> page.
+                    For table color utils see the <Link href="/utils/colors#tables">Color Utils</Link> page.
                 </p>
 
                 <table className="table mb-4">

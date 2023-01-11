@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import Code from '../../components/Code';
 import FormattedCurrency from '../../components/FormattedCurrency';
@@ -8,7 +8,7 @@ const FormattedCurrencyPage = () => {
     return (
         <section id="formatted-currency" className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Formatted Currency</BreadcrumbItem>

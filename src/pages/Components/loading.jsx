@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import Loading from '../../components/Loading';
 
@@ -7,7 +7,7 @@ const LoadingPage = () => {
     return (
         <section>
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Loading</BreadcrumbItem>

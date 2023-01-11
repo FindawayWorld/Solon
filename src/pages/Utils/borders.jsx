@@ -1,11 +1,11 @@
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
-import { brandColors, colors, onDarkOutline } from '../Content';
+import { brandColors, colors, onDarkOutline } from '../content';
 const BorderRadiusPage = () => (
     <section id="border-radius" className="mb-5">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Utils
             </BreadcrumbItem>
             <BreadcrumbItem current>Borders</BreadcrumbItem>
@@ -18,7 +18,7 @@ const BorderRadiusPage = () => (
         </p>
         <p>
             <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+            <Link href="/utils/breakpoints">responsive breakpoints</Link>
         </p>
         <p>
             <code>{`{side}`}</code> one of the pre-defined sides.
@@ -63,10 +63,10 @@ const BorderRadiusPage = () => (
         </p>
         <p>
             <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+            <Link href="/utils/breakpoints">responsive breakpoints</Link>
         </p>
         <p>
-            <code>{`{color}`}</code> one of the pre-defined <Link to="/content#colors">colors</Link>
+            <code>{`{color}`}</code> one of the pre-defined <Link href="/content#colors">colors</Link>
         </p>
         <div className="mb-8">
             {[...brandColors, ...colors].map(([color]) => (
@@ -88,7 +88,7 @@ const BorderRadiusPage = () => (
         </p>
         <p>
             <code>{`{breakpoint}`}</code> one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>
+            <Link href="/utils/breakpoints">responsive breakpoints</Link>
         </p>
         <p>
             <code>{`{size}`}</code> one of the pre-defined sizes, 1-5(px).

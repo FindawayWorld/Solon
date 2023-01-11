@@ -1,12 +1,12 @@
 import React from 'react';
 import { Breadcrumbs, BreadcrumbItem } from '../../components/Breadcrumbs';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Code from '../../components/Code';
 
 const BreadcrumbsPage = () => (
     <section className="mb-5">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/components">
+            <BreadcrumbItem as={Link} href="/components">
                 Components
             </BreadcrumbItem>
             <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
@@ -21,14 +21,14 @@ const BreadcrumbsPage = () => (
         </p>
 
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/components">
+            <BreadcrumbItem as={Link} href="/components">
                 Components
             </BreadcrumbItem>
             <BreadcrumbItem current>Breadcrumbs</BreadcrumbItem>
         </Breadcrumbs>
 
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Title Management
             </BreadcrumbItem>
             <BreadcrumbItem current>You're Never Weird on the Internet (Almost) [94189]</BreadcrumbItem>
@@ -44,8 +44,8 @@ const BreadcrumbsPage = () => (
         <Code
             lang="jsx"
             code={`<Breadcrumbs>
-    <!-- Use with react-router-dom Link component -->
-    <BreadcrumbItem as={Link} to="#a">Page A</BreadcrumbItem>
+    <!-- Use with Next.js Link component -->
+    <BreadcrumbItem as={Link} href="#a">Page A</BreadcrumbItem>
 
     <BreadcrumbItem href="#b">Page B</BreadcrumbItem>
     <BreadcrumbItem href="#c">Page C</BreadcrumbItem>

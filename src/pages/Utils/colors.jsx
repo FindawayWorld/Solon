@@ -1,14 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
-import { brandColors, colors, onDarkOutline } from '../Content';
-import { Link } from 'react-router-dom';
+import { brandColors, colors, onDarkOutline } from '../content';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { FiAlertTriangle } from 'react-icons/fi';
 
 const ColorsPage = () => (
     <section id="color-utils" className="mb-5">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Utils
             </BreadcrumbItem>
             <BreadcrumbItem current>Color Utils</BreadcrumbItem>

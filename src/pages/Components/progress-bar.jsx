@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import Code from '../../components/Code';
 import ProgressBar from '../../components/ProgressBar';
@@ -6,7 +6,7 @@ const ProgressBarPage = () => {
     return (
         <section className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Progress Bar</BreadcrumbItem>
@@ -17,8 +17,8 @@ const ProgressBarPage = () => {
                 <strong>Required assets:</strong> <code>scss/mods/_progress-bar.scss</code>
             </p>
             <p>
-                <strong>Works with:</strong> <Link to="/utils/colors">Background Color Utils</Link>,{' '}
-                <Link to="/utils/borders">Border Utils</Link>
+                <strong>Works with:</strong> <Link href="/utils/colors">Background Color Utils</Link>,{' '}
+                <Link href="/utils/borders">Border Utils</Link>
             </p>
 
             <div className="mb-4">

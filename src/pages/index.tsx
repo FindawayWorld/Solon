@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const HomePage = () => (
     <>
         <div className="mb-12">
@@ -62,11 +64,12 @@ const HomePage = () => (
             </p>
             <div className="flash flash-warning">
                 <p>
-                    <strong>WARNING:</strong> This project uses <code>react-router-dom</code>, any routing specific
-                    Components (Pagination) will have to be updated to work with Gatsby's router. Any components
-                    affected should include notes on Gatsby compat.
+                    <strong>WARNING:</strong> This project uses <code>Next.js</code>, any routing specific Components
+                    (Pagination) will have to be updated to work with Gatsby's router. Any components affected should
+                    include notes on Gatsby compat.
                 </p>
             </div>
+            <Link href="pikachu">Lets go Pikachu!</Link>
         </section>
     </>
 );

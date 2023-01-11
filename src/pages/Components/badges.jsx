@@ -1,15 +1,15 @@
 import React from 'react';
 import { titleCase } from '../../utils';
 import classnames from 'classnames';
-import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
+import { brandColors, colors, onDarkOutline, onDarkSolid } from '../content';
 import { FaStar } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Breadcrumbs, BreadcrumbItem } from '../../components/Breadcrumbs';
 
 const BadgesPage = () => (
     <section className="mb-5">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/components">
+            <BreadcrumbItem as={Link} href="/components">
                 Components
             </BreadcrumbItem>
             <BreadcrumbItem current>Badges</BreadcrumbItem>

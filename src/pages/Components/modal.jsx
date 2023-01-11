@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import Code from '../../components/Code';
 import Modal from '../../components/Modal';
@@ -9,7 +9,7 @@ const ModalPage = () => {
     return (
         <section id="modal" className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Modal</BreadcrumbItem>
@@ -84,7 +84,7 @@ const ModalPage = () => {
             <h3>Labels</h3>
             <p>
                 For accessibility it is <strong>required</strong> that you provide a <code>label</code> to every modal.
-                This is just a descriptive text, ususally whatever the title or header text is for that modal.
+                This is just a descriptive text, usually whatever the title or header text is for that modal.
             </p>
         </section>
     );

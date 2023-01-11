@@ -1,0 +1,201 @@
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import classNames from 'classnames';
+import Link from 'next/link';
+
+import {
+    FaFileAlt,
+    FaHeart,
+    FaPalette,
+    FaPuzzlePiece,
+    FaTools,
+    FaJsSquare,
+    FaFont,
+    FaGithub,
+    FaChevronLeft,
+    FaCog,
+    FaUniversalAccess
+} from 'react-icons/fa';
+import VisuallyHidden from '@reach/visually-hidden';
+
+import { asc } from '../utils/sorts';
+
+export const componentsNav = [
+    ['/components/badges', 'Badges'],
+    ['/components/breadcrumbs', 'Breadcrumbs'],
+    ['/components/buttons', 'Buttons'],
+    ['/components/flashes', 'Flashes (alerts)'],
+    ['/components/forms', 'Forms'],
+    ['/components/formatted-currency', 'Formatted Currency'],
+    ['/components/formatted-plural', 'Formatted Plural'],
+    ['/components/loading', 'Loading'],
+    ['/components/modal', 'Modal'],
+    ['/components/pagination', 'Pagination'],
+    ['/components/progress-bar', 'Progress Bar']
+];
+
+componentsNav.sort((a, b) => asc(a[1], b[1]));
+
+export const utilsNav = [
+    ['/utils/breakpoints', 'Breakpoints'],
+    ['/utils/spacing', 'Spacing'],
+    ['/utils/colors', 'Colors'],
+    ['/utils/grids', 'Grids'],
+    ['/utils/borders', 'Borders'],
+    ['/utils/display', 'Display']
+];
+
+utilsNav.sort((a, b) => asc(a[1], b[1]));
+const Layout = ({ children }) => {
+    const router = useRouter();
+    const [collapseSidebar, setCollapseSidebar] = useState(false);
+    // useDisabledLinks();
+
+    useEffect(() => {
+        const medium = window.matchMedia('(max-width: 768px)');
+        setCollapseSidebar(medium.matches);
+    }, []);
+    return (
+        <>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
+            <div className="site-row">
+                <nav
+                    className={classNames('sidebar', {
+                        'sidebar-slim': collapseSidebar
+                    })}
+                >
+                    <div className="sidebar-wrapper">
+                        <div className="sidebar-header">
+                            <Link
+                                className={classNames('logo', {
+                                    active: router.asPath === '/'
+                                })}
+                                href="/"
+                            >
+                                {/* <SolonIcon width={50} className="small-logo" />
+                            <SolonLogo className="full-logo" /> */}
+                            </Link>
+                            <button
+                                className="btn collapse-button"
+                                onClick={() => setCollapseSidebar(!collapseSidebar)}
+                            >
+                                <VisuallyHidden>{`${collapseSidebar ? 'expand' : 'collapse'} sidebar`}</VisuallyHidden>
+                                <FaChevronLeft aria-hidden />
+                            </button>
+                        </div>
+
+                        <ul className="nav flex-column">
+                            {[
+                                { path: 'content', icon: <FaFileAlt aria-hidden /> },
+                                {
+                                    path: 'components',
+                                    icon: <FaPuzzlePiece aria-hidden />,
+                                    child: (
+                                        <ul className="nav">
+                                            {componentsNav.map((page) => (
+                                                <li key={page[0]} className="nav-item">
+                                                    <Link
+                                                        className={classNames('nav-link', {
+                                                            active: router.asPath === page[0]
+                                                        })}
+                                                        href={page[0]}
+                                                    >
+                                                        {page[1]}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )
+                                },
+                                {
+                                    path: 'utils',
+                                    icon: <FaTools aria-hidden />,
+                                    child: (
+                                        <ul className="nav">
+                                            {utilsNav.map((page) => (
+                                                <li key={page[0]} className="nav-item">
+                                                    <Link
+                                                        className={classNames('nav-link', {
+                                                            active: router.asPath === page[0]
+                                                        })}
+                                                        href={page[0]}
+                                                    >
+                                                        {page[1]}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )
+                                },
+                                { path: 'javascript', icon: <FaJsSquare aria-hidden /> },
+                                { path: 'color-tester', icon: <FaPalette aria-hidden /> },
+                                { path: 'font-tester', icon: <FaFont aria-hidden /> },
+                                { path: 'brand-settings', icon: <FaCog aria-hidden /> },
+                                { path: 'accessibility', icon: <FaUniversalAccess aria-hidden /> }
+                            ].map((item) => {
+                                const isActive = router.asPath.includes(`/${item.path}`);
+                                return (
+                                    <li
+                                        className={classNames('nav-item', {
+                                            active: isActive
+                                        })}
+                                        key={item.path}
+                                    >
+                                        <Link
+                                            className={classNames('nav-link', {
+                                                active: isActive
+                                            })}
+                                            href={`/${item.path}`}
+                                            aria-labelledby={item.path}
+                                        >
+                                            {item.icon}
+                                            <span aria-hidden className="capitalize" id={item.path}>
+                                                {item.path.split('-').join(' ')}
+                                            </span>
+                                        </Link>
+                                        {item?.child && item.child}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+
+                        <hr />
+
+                        <ul className="nav">
+                            <li className="nav-item">
+                                <a
+                                    className="nav-link"
+                                    href="https://github.com/FindawayWorld/Solon"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-labelledby="github"
+                                >
+                                    <FaGithub aria-hidden />{' '}
+                                    <span aria-hidden id="github">
+                                        Github
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div className="main-wrapper px-4 px-md-12 py-8">
+                    <main className="page" role="main">
+                        {children}
+                    </main>
+                    <footer className={classNames('site-footer')}>
+                        <small>
+                            Built with <FaHeart style={{ color: 'red' }} /> by{' '}
+                            <a href="https://findaway.com">Findaway</a>, in CLE.
+                        </small>
+                    </footer>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default Layout;

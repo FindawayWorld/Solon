@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { componentsNav } from '../../App';
+import { componentsNav } from '../../components/Layout';
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ComponentsPage = () => {
     return (
@@ -12,7 +12,7 @@ const ComponentsPage = () => {
             <ul className="list-flat">
                 {componentsNav.map((page) => (
                     <li key={page[0]} className="nav-item">
-                        <Link to={page[0]}>{page[1]}</Link>
+                        <Link href={page[0]}>{page[1]}</Link>
                     </li>
                 ))}
             </ul>

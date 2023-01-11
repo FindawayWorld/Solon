@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 
 const displayValues = ['none', 'inline', 'inline-block', 'block', 'flex', 'inline-flex'];
@@ -7,7 +7,7 @@ const displayValues = ['none', 'inline', 'inline-block', 'block', 'flex', 'inlin
 const DisplayPage = () => (
     <section id="display-utils">
         <Breadcrumbs>
-            <BreadcrumbItem as={Link} to="/utils">
+            <BreadcrumbItem as={Link} href="/utils">
                 Utils
             </BreadcrumbItem>
             <BreadcrumbItem current>Display</BreadcrumbItem>
@@ -27,7 +27,7 @@ const DisplayPage = () => (
 
         <p>
             Where <code>{`{breakpoint}`}</code> is one of the pre-defined{' '}
-            <Link to="/utils/breakpoints">responsive breakpoints</Link>.
+            <Link href="/utils/breakpoints">responsive breakpoints</Link>.
         </p>
 
         <p>

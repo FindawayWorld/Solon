@@ -1,8 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { titleCase } from '../../utils';
-import { brandColors } from '../Content';
+import { brandColors } from '../content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import { FaInfoCircle } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ const FlashesPage = () => {
     return (
         <section className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Flashes (alerts)</BreadcrumbItem>
@@ -39,8 +39,8 @@ const FlashesPage = () => {
                     </p>
                     <hr />
                     <p class="mb-0">
-                        Whenever you need to, be sure to use <Link to="/utils/spacing">spacing utilities</Link> to keep
-                        things nice and tidy.
+                        Whenever you need to, be sure to use <Link href="/utils/spacing">spacing utilities</Link> to
+                        keep things nice and tidy.
                     </p>
                 </div>
                 <div className="flash flash-danger mb-4" role="alert">

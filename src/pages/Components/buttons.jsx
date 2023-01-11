@@ -1,19 +1,19 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Link } from 'react-router-dom';
 import { Menu, MenuList, MenuButton, MenuItem, MenuLink } from '@reach/menu-button';
 import { titleCase } from '../../utils';
-import { brandColors, colors, onDarkOutline, onDarkSolid } from '../Content';
+import { brandColors, colors, onDarkOutline, onDarkSolid } from '../content';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
 import StatusButton from '../../components/StatusButton';
 import Code from '../../components/Code';
 import ConfirmButton from '../../components/ConfirmButton';
+import Link from 'next/link';
 
 const ButtonsPage = () => {
     return (
         <section id="Buttons" className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Buttons</BreadcrumbItem>
@@ -149,7 +149,7 @@ const ButtonsPage = () => {
                         <MenuItem onSelect={() => alert('Copy')}>Create a Copy</MenuItem>
                         <MenuItem onSelect={() => alert('Mark as Draft')}>Mark as Draft</MenuItem>
                         <MenuItem onSelect={() => alert('Delete')}>Delete</MenuItem>
-                        <MenuLink as={Link} to="/content">
+                        <MenuLink as={Link} href="/content">
                             Go to Content Page
                         </MenuLink>
                     </MenuList>

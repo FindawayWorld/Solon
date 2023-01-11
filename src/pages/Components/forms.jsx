@@ -10,7 +10,7 @@ import { object, string, boolean, array } from 'yup';
 
 import DisplayFormikState from '../../components/DisplayFormikState';
 import { BreadcrumbItem, Breadcrumbs } from '../../components/Breadcrumbs';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import ReactSelect from '../../components/form/ReactSelect';
 
 const FormsPage = () => {
@@ -41,7 +41,7 @@ const FormsPage = () => {
     return (
         <section id="forms" className="mb-5">
             <Breadcrumbs>
-                <BreadcrumbItem as={Link} to="/components">
+                <BreadcrumbItem as={Link} href="/components">
                     Components
                 </BreadcrumbItem>
                 <BreadcrumbItem current>Forms</BreadcrumbItem>

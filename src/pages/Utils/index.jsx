@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { asc } from '../../utils/sorts';
 
-import { utilsNav } from '../../App';
+import { utilsNav } from '../../components/Layout';
 
 const UtilsPage = () => (
     <>
@@ -14,7 +14,7 @@ const UtilsPage = () => (
                 .sort((a, b) => asc(a[1], b[1]))
                 .map((page) => (
                     <li key={page[0]} className="nav-item">
-                        <Link to={page[0]}>{page[1]}</Link>
+                        <Link href={page[0]}>{page[1]}</Link>
                     </li>
                 ))}
         </ul>
