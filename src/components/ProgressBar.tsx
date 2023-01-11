@@ -1,8 +1,15 @@
 import VisuallyHidden from '@reach/visually-hidden';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
-const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) => {
+interface ProgressBarProps {
+    value: number;
+    label: string;
+    max: number;
+    className?: string;
+    barClassName?: string;
+}
+
+const ProgressBar: React.FC<ProgressBarProps> = ({ value, label, max, className = '', barClassName = '' }) => {
     const hasValue = typeof value === 'number' && value >= 0;
     const progress = hasValue ? Math.ceil((value / max) * 100) : undefined;
 
@@ -17,22 +24,14 @@ const ProgressBar = ({ value, label, max, className = '', barClassName = '' }) =
                 role="progressbar"
                 aria-label={label}
                 aria-valuenow={progress}
-                aria-valuemin="0"
-                aria-valuemax="100"
+                aria-valuemin={0}
+                aria-valuemax={100}
                 style={!!progress ? { width: `${progress}%` } : {}}
             >
                 <VisuallyHidden>{progress}% Complete</VisuallyHidden>
             </div>
         </div>
     );
-};
-
-ProgressBar.propTypes = {
-    label: PropTypes.string.isRequired,
-    max: PropTypes.number.isRequired,
-    value: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-    className: PropTypes.string,
-    barClassName: PropTypes.string
 };
 
 export default ProgressBar;

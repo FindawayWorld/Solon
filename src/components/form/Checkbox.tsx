@@ -2,22 +2,40 @@ import React from 'react';
 import classnames from 'classnames';
 import { useId } from '@reach/auto-id';
 
-const Checkbox = ({
+interface CheckboxProps {
+    checked?: React.InputHTMLAttributes<HTMLInputElement>['checked'];
+    children?: React.ReactNode[];
+    className?: string;
+    disabled?: React.InputHTMLAttributes<HTMLInputElement>['disabled'];
+    error?: string;
+    help?: React.ReactNode;
+    id: React.InputHTMLAttributes<HTMLInputElement>['id'];
+    inline?: boolean;
+    label?: React.ReactNode;
+    name?: React.InputHTMLAttributes<HTMLInputElement>['name'];
+    required?: boolean;
+    touched?: boolean;
+    value?: React.InputHTMLAttributes<HTMLInputElement>['value'];
+    onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Checkbox: React.FC<CheckboxProps> = ({
     checked = undefined,
-    label = '',
-    help = null,
-    id = null,
-    name = null,
+    children = undefined,
+    className = '',
+    disabled = false,
     error = false,
+    help = undefined,
+    id = undefined,
+    inline = false,
+    label = '',
+    name = undefined,
+    required = false,
     touched = false,
     value = undefined,
-    required = false,
-    className = '',
-    inline = false,
-    disabled = false,
-    children = null,
-    onChange = () => {},
-    onBlur = () => {}
+    onBlur = () => {},
+    onChange = () => {}
 }) => {
     let handleChange = onChange;
     let handleBlur = onBlur;

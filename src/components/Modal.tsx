@@ -1,10 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import VisuallyHidden from '@reach/visually-hidden';
 
-const Modal = ({
+interface ModalProps {
+    visible: boolean;
+    label: string;
+    onClose: () => void;
+    disableOverlayClick?: boolean;
+    children: React.ReactNode;
+    showClose?: boolean;
+    innerClassName?: string;
+    center?: boolean;
+}
+
+const Modal: React.FC<ModalProps> = ({
     center = false,
     children = [],
     disableOverlayClick = false,
@@ -33,16 +43,6 @@ const Modal = ({
             </DialogContent>
         </DialogOverlay>
     );
-};
-
-Modal.propTypes = {
-    visible: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired,
-    children: PropTypes.node.isRequired,
-    showClose: PropTypes.bool,
-    innerClassName: PropTypes.string,
-    center: PropTypes.bool
 };
 
 export default Modal;

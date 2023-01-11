@@ -1,8 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-export const Breadcrumbs = ({ children, className }) => {
+interface BreadcrumbsProps {
+    className?: string;
+}
+
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ children, className }) => {
     return (
         <nav aria-label="breadcrumb" className={classnames(className)}>
             <ol className="breadcrumb">{children}</ol>
@@ -10,22 +13,24 @@ export const Breadcrumbs = ({ children, className }) => {
     );
 };
 
-Breadcrumbs.propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string
-};
+interface BreadcrumbItemProps {
+    current?: boolean;
+    as?: React.ElementType;
+    to?: string;
+    href?: string;
+}
 
-export const BreadcrumbItem = ({ children = null, current = false, as: Comp = 'a', ...props }) => {
+export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
+    children = null,
+    current = false,
+    as = 'a',
+    ...props
+}) => {
+    const Comp = as;
     return (
         <li className={classnames('breadcrumb-item', { active: current })} aria-current={current ? 'page' : undefined}>
             {current && children}
             {!current && <Comp {...props}>{children}</Comp>}
         </li>
     );
-};
-
-BreadcrumbItem.propTypes = {
-    children: PropTypes.node.isRequired,
-    current: PropTypes.bool,
-    as: PropTypes.elementType
 };

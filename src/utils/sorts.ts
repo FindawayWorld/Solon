@@ -1,3 +1,7 @@
+type Sortable = string | number | boolean;
+interface SortFunction<T extends Sortable> {
+    (a: T, b:T): -1|0|1
+}
 /**
  * Sort Ascending
  * [].sort((x, y) => asc(x, y));
@@ -5,7 +9,7 @@
  * @param a
  * @param b
  */
-export const asc = (a, b) => {
+export const asc: SortFunction<Sortable> = (a : Sortable, b : Sortable) => {
     let at = typeof a === 'string' ? a.toLowerCase() : a;
     let bt = typeof b === 'string' ? b.toLowerCase() : b;
     if (at < bt) {
@@ -24,7 +28,7 @@ export const asc = (a, b) => {
  * @param a
  * @param b
  */
-export const desc = (a, b) => {
+export const desc: SortFunction<Sortable> = (a : Sortable, b : Sortable) => {
     let at = typeof a === 'string' ? a.toLowerCase() : a;
     let bt = typeof b === 'string' ? b.toLowerCase() : b;
     if (at > bt) {
@@ -36,6 +40,10 @@ export const desc = (a, b) => {
     }
 };
 
-const sorts = { asc, desc };
+export const sorted = <T extends Sortable>(array: T[], sortCallback: SortFunction<T>) => {
+    return [...array || []].sort(sortCallback);
+};
+
+const sorts = { asc, desc, sorted };
 
 export default sorts;

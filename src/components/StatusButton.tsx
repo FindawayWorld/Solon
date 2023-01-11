@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import classnames from 'classnames';
 import { FiCheck } from 'react-icons/fi';
 
-const StatusButton = ({
+interface StatusButtonProps {
+    className?: string;
+    successState?: string;
+    disabled?: boolean;
+    label?: string;
+    successLabel?: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+    type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
+    defaultClass?: string;
+    successClass?: string;
+    dangerClass?: string;
+}
+
+const StatusButton: React.FC<StatusButtonProps> = ({
     className = '',
     successState = null,
     disabled = false,
     label = 'Submit',
     successLabel = 'Success',
-    onClick = null,
+    onClick = () => {},
     type = 'submit',
     defaultClass = 'btn-primary',
     successClass = 'btn-success',
