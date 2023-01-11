@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-interface BreadcrumbsProps extends React.PropsWithChildren {
+interface BreadcrumbsProps {
     className?: string;
 }
 
@@ -13,7 +13,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ children, className })
     );
 };
 
-interface BreadcrumbItemProps extends React.PropsWithChildren {
+interface BreadcrumbItemProps {
     current?: boolean;
     as?: React.ElementType;
     to?: string;

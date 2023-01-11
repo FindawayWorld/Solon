@@ -4,6 +4,6 @@ interface FormattedPluralProps {
     many: string;
 }
 
-const FormattedPlural = ({ value = 1, one = '', many = '' }: FormattedPluralProps) => (value === 1 ? one : many);
+const FormattedPlural = ({ value, one, many }: FormattedPluralProps) => (value === 1 ? one : many);
 
 export default FormattedPlural;

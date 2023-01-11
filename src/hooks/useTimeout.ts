@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef } from 'react';
 
-const useTimeoutFn = (fn: () => void, ms: number | false = 0): array => {
-    const ready = useRef(false);
-    const timeout = useRef();
+const useTimeoutFn = (fn: () => void, ms: number | false = 0): readonly [() => boolean | null, () => void, () => void] => {
+    const ready = useRef<boolean|null>(false);
+    const timeout = useRef<number>();
     const callback = useRef(fn);
 
     const isReady = useCallback(() => ready.current, []);
@@ -15,7 +15,7 @@ const useTimeoutFn = (fn: () => void, ms: number | false = 0): array => {
         timeout.current = setTimeout(() => {
             ready.current = true;
             callback.current();
-        }, ms);
+        }, ms) as unknown as number;
     }, [ms]);
 
     const clear = useCallback(() => {

@@ -3,11 +3,11 @@ import classnames from 'classnames';
 import { FiCheck } from 'react-icons/fi';
 import useTimeoutFn from '../hooks/useTimeout';
 
-const CONFIRM_STATES = {
-    CONFIRM: 'confirm',
-    DONE: 'done',
-    READY: 'ready'
-};
+enum CONFIRM_STATES {
+    CONFIRM = 'confirm',
+    DONE = 'done',
+    READY = 'ready'
+}
 
 interface ConfirmButtonProps {
     className?: string;
@@ -36,7 +36,7 @@ const ConfirmButton: React.FC<ConfirmButtonProps> = ({
     timeout = 3000,
     onConfirm = () => {}
 }) => {
-    const [buttonState, setButtonState] = useState('ready');
+    const [buttonState, setButtonState] = useState(CONFIRM_STATES.READY);
 
     const isConfirm = [CONFIRM_STATES.CONFIRM, CONFIRM_STATES.DONE].includes(buttonState);
 
