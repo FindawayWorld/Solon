@@ -1,0 +1,11 @@
+{
+    "extends": ["next", "prettier"],
+    "settings": {
+        "next": {
+            "rootDir": "src"
+        }
+    },
+    "rules": {
+        "react/no-unescaped-entities": "off"
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 const Select = ({
@@ -29,9 +29,14 @@ const Select = ({
     onBlur = () => {},
     onFocus = () => {}
 }) => {
+    const [isMac, setIsMac] = useState(false);
     let isRequired = required || showRequired;
     let handleChange = onChange;
     let handleBlur = onBlur;
+
+    useEffect(() => {
+        setIsMac(window?.navigator?.platform.includes('Mac'));
+    }, []);
 
     if (readOnly) {
         return value;
@@ -101,8 +106,7 @@ const Select = ({
 
                 {multiple && (
                     <small className="form-text text-muted">
-                        <code>{window.navigator.platform.includes('Mac') ? 'command' : 'ctrl'} + click</code> to select
-                        multiple
+                        <code>{isMac ? 'command' : 'ctrl'} + click</code> to select multiple
                     </small>
                 )}
 

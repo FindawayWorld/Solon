@@ -1,4 +1,20 @@
-@mixin make-badge($background, $color: color-contrast($background)) {
+@mixin make-badge($background, $border, $color: color-contrast($background)) {
+    background: $background;
+    border-color: $border;
+    color: $color !important;
+
+    a {
+        color: $color;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin make-badge-outline($color, $background) {
+    border-color: $color;
     background: $background;
     color: $color !important;
 
@@ -12,22 +28,8 @@
     }
 }
 
-@mixin make-badge-outline($color) {
-    border-color: $color;
-    background: transparent;
-    color: $color !important;
-
-    a {
-        color: $color;
-        text-decoration: underline;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-}
-
 .badge {
+    border: solid 1px $border-color;
     display: inline-block;
     padding: 0.35em 0.65em;
     font-size: .75em;
@@ -44,14 +46,38 @@
     }
 }
 
-@each $color,
-$value in map-merge($themeColors, $colors) {
+$alert-bg-scale: -70%;
+$alert-border-scale: -25%;
+$alert-color-scale: 50%;
+
+@each $color, $value in map-merge($themeColors, $colors) {
+    $alert-background: shift-color($value, $alert-bg-scale);
+    $alert-border: shift-color($value, $alert-border-scale);
+    $alert-color: shift-color($value, $alert-color-scale);
+
+    @if (contrast-ratio($alert-background, $alert-color) < $min-contrast-ratio) {
+        $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+    }
+
     .badge-#{$color} {
-        @include make-badge($value);
+        @include make-badge($alert-background, $alert-border, $alert-color);
+    }
+}
+
+@each $color, $value in map-merge($themeColors, $colors) {
+    $alert-background: $white;
+    $alert-border: $value;
+    $alert-color: $value;
+
+    $ratio: contrast-ratio($alert-background, $alert-color);
+
+    @debug $ratio;
+
+    @if ($ratio < $min-contrast-ratio) {
+        $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
     }
 
     .badge-outline-#{$color} {
-        border: solid 1px;
-        @include make-badge-outline($value);
+        @include make-badge-outline($alert-color, $alert-background);
     }
 }
