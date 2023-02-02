@@ -45,7 +45,7 @@ const DisplayPage = () => (
         <h3>Display Examples</h3>
 
         {displayValues.map((display) => (
-            <div className="mb-5">
+            <div key={display} className="mb-5">
                 <p>
                     <strong>{display}</strong> <code>{`.d-{breakpoint}-${display}`}</code>
                 </p>

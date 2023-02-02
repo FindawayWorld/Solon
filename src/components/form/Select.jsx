@@ -34,13 +34,13 @@ const Select = ({
     let handleChange = onChange;
     let handleBlur = onBlur;
 
-    if (readOnly) {
-        return value;
-    }
-
     useEffect(() => {
         setIsMac(window?.navigator?.platform.includes('Mac'));
     }, []);
+
+    if (readOnly) {
+        return value;
+    }
 
     return (
         <div className={classnames('form-group', { 'was-validated': !error, 'mb-0': collapse }, className)}>

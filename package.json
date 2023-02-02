@@ -29,13 +29,11 @@
     "yup": "^0.32.11"
   },
   "scripts": {
+    "lint": "next lint",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "build:css": "sass src/scss/styles.scss .next/solon.css"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -55,6 +53,9 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
-    "eslint": "^8.31.0"
+    "eslint": "^8.31.0",
+    "eslint-config-next": "^13.1.6",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.1"
   }
 }

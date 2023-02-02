@@ -21,7 +21,7 @@ const ButtonsPage = () => {
             <h2>Buttons</h2>
             <hr />
             <p>
-                Button styles are based on the defined <a href="/content">color</a> variables.
+                Button styles are based on the defined <Link href="/content">color</Link> variables.
             </p>
             <p>
                 <strong>Required assets:</strong> <code>scss/components/_buttons.scss</code>,{' '}
