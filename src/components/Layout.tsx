@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import classNames from 'classnames';
 import Link from 'next/link';
+import SolonIcon from '../svg/solon_icon.svg';
+import SolonLogo from '../svg/solon_logo.svg';
 
 import {
     FaFileAlt,
@@ -75,8 +77,8 @@ const Layout = ({ children }) => {
                                 })}
                                 href="/"
                             >
-                                {/* <SolonIcon width={50} className="small-logo" />
-                            <SolonLogo className="full-logo" /> */}
+                                <SolonIcon width={50} className="small-logo" />
+                                <SolonLogo className="full-logo" />
                             </Link>
                             <button
                                 className="btn collapse-button"
